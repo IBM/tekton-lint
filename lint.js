@@ -1,7 +1,12 @@
 const yaml = require('js-yaml');
-const execSync = require('child_process').execSync;
+const fs = require('fs');
 
-const docs = yaml.safeLoadAll(execSync('cat .pipeline/*', {encoding: 'utf-8'}));
+const docs = [];
+for (const file of process.argv.slice(2)) {
+  for (const doc of yaml.safeLoadAll(fs.readFileSync(file, 'utf-8'))) {
+    docs.push(doc);
+  }
+}
 
 const tekton = {
   tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
