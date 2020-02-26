@@ -1,0 +1,19 @@
+{
+  "name": "tekton-lint",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Linter for Tekton definitions",
+  "main": "lint.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:cocoa/tekton-lint.git"
+  },
+  "bin": {
+    "tekton-lint": "lint.js"
+  },
+  "author": "Bence Dányi <bence.danyi@ibm.com>",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  }
+}
