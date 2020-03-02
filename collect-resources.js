@@ -6,7 +6,7 @@ module.exports = docs => {
 
     obj[item.kind][item.metadata.name] = item;
 
-    if (item.spec.resourcetemplates) {
+    if (item.spec && item.spec.resourcetemplates) {
       const { resourcetemplates } = item.spec;
       const subResources = resourcetemplates
         .filter(item => item.kind !== "undefined")
