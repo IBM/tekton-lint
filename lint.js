@@ -77,7 +77,10 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   for (const [index, task] of Object.entries(pipeline.spec.tasks)) {
     if (!task.taskRef) continue;
     const name = task.taskRef.name;
-    if (!tekton.tasks[name]) continue;
+    if (!tekton.tasks[name]) {
+      console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
+      continue;
+    }
 
     const provided = task.params.map(param => param.name);
     const all = tekton.tasks[name].spec.inputs.params
