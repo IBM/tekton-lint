@@ -24,6 +24,14 @@ const tekton = {
     item.metadata.name,
     item,
   ])),
+  listeners: Object.fromEntries(docs.filter(item => item.kind === 'EventListener').map(item => [
+    item.metadata.name,
+    item,
+  ])),
+  triggerTemplates: Object.fromEntries(docs.filter(item => item.kind === 'TriggerTemplate').map(item => [
+    item.metadata.name,
+    item,
+  ])),
 };
 
 function walk(node, path, visitor) {
@@ -98,6 +106,17 @@ for (const task of Object.values(tekton.tasks)) {
   for (const param of Object.keys(params)) {
     if (params[param]) continue;
     console.log(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`);
+  }
+}
+
+for (const listener of Object.values(tekton.listeners)) {
+  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+    if (!trigger.template) continue;
+    const name = trigger.template.name;
+    if (!tekton.triggerTemplates[name]) {
+      console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
+      continue;
+    }
   }
 }
 
