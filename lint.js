@@ -83,21 +83,27 @@ const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
 }
 
 const isValidName = (name) => {
-  const valid = new RegExp(`^[a-z\-\(\)\$]*$`);
+  const valid = new RegExp(`^[a-z0-9\-\(\)\$]*$`);
   return valid.test(name)
 }
 
 const naming = (resource, prefix) => (node, path) => {
-  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-
-  const m = node.match(r2);
   let name = node
-  if (m) {
-    name = m[1]
+  const isNameDefinition = /.name$/.test(path)
+
+  if (isNameDefinition && !isValidName(name)) {
+    console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+    return
   }
 
-  if (!isValidName(name)) {
-    console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+  const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
+  const m = node.match(parameterPlacementRx);
+
+  if (m) {
+    name = m[1]
+    if (!isValidName(name)) {
+      console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+    }
   }
 }
 
