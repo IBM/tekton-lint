@@ -69,6 +69,19 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
+const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
+  const isTaskExists = step => pipelineTasks.map(task => task.name).includes(step);
+
+  pipelineTasks.forEach(({ runAfter, name, taskRef }) => {
+    if (!runAfter) return;
+
+    runAfter.forEach(step => {
+      if (step === name) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' cannot be itself.`);
+      if (!isTaskExists(step)) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
+    });
+  });
+}
+
 const isValidName = (name) => {
   const valid = new RegExp(`^[a-z\-\(\)\$]*$`);
   return valid.test(name)
@@ -134,6 +147,8 @@ for (const listener of Object.values(tekton.listeners)) {
 
 for (const pipeline of Object.values(tekton.pipelines)) {
   const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
+
+  validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
 
   walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
   walk(pipeline.spec.tasks, 'spec.steps', naming(pipeline.metadata.name, 'params'));
