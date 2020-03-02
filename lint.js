@@ -32,6 +32,10 @@ const tekton = {
     item.metadata.name,
     item,
   ])),
+  triggerBindings: Object.fromEntries(docs.filter(item => item.kind === 'TriggerBinding').map(item => [
+    item.metadata.name,
+    item,
+  ])),
 };
 
 function walk(node, path, visitor) {
@@ -115,6 +119,14 @@ for (const listener of Object.values(tekton.listeners)) {
     const name = trigger.template.name;
     if (!tekton.triggerTemplates[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
+      continue;
+    }
+  }
+  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+    if (!trigger.binding) continue;
+    const name = trigger.binding.name;
+    if (!tekton.triggerBindings[name]) {
+      console.log(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`)
       continue;
     }
   }
