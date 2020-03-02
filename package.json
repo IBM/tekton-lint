@@ -14,6 +14,7 @@
   "author": "Bence Dányi <bence.danyi@ibm.com>",
   "license": "MIT",
   "dependencies": {
+    "fast-glob": "^3.2.2",
     "js-yaml": "^3.13.1"
   }
 }

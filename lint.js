@@ -2,9 +2,12 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
+const glob = require('fast-glob');
 
 const docs = [];
-for (const file of process.argv.slice(2)) {
+const files = glob.sync(process.argv.slice(2));
+
+for (const file of files) {
   for (const doc of yaml.safeLoadAll(fs.readFileSync(file, 'utf-8'))) {
     docs.push(doc);
   }
@@ -53,6 +56,8 @@ const unused = (resource, params, prefix) => (node, path) => {
 };
 
 for (const task of Object.values(tekton.tasks)) {
+  if (!task.spec) continue;
+
   const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, params, 'inputs.params'));
