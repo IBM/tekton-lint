@@ -4,6 +4,8 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const glob = require('fast-glob');
 
+const collectResources = require('./collect-resources')
+
 const docs = [];
 const files = glob.sync(process.argv.slice(2));
 
@@ -55,6 +57,36 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
+const isValidName = (name) => {
+  const valid = new RegExp(`^[a-z\-\(\)\$]*$`);
+  return valid.test(name)
+}
+
+const naming = (resource, prefix) => (node, path) => {
+  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
+
+  const m = node.match(r2);
+  let name = node
+  if (m) {
+    name = m[1]
+  }
+
+  if (!isValidName(name)) {
+    console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+  }
+}
+
+
+const resources = collectResources(docs);
+
+Object.entries(resources).map(([type, resourceList]) => {
+  Object.entries(resourceList).forEach(([name, resource]) => {
+    if (!isValidName(resource.metadata.name)) {
+      console.log(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+    }
+  });
+});
+
 for (const task of Object.values(tekton.tasks)) {
   if (!task.spec) continue;
 
@@ -73,6 +105,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
   walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
+  walk(pipeline.spec.tasks, 'spec.steps', naming(pipeline.metadata.name, 'params'));
 
   for (const param of Object.keys(params)) {
     if (params[param]) continue;
