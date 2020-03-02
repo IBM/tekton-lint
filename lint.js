@@ -169,4 +169,22 @@ for (const pipeline of Object.values(tekton.pipelines)) {
       console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
     }
   }
+
+  for (const template of Object.values(tekton.triggerTemplates)) {
+    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef &&item.spec.pipelineRef.name === pipeline.metadata.name);
+    if (matchingResource) {
+      const pipelineParams = pipeline.spec.params;
+      const templateParams = matchingResource.spec.params;
+
+      const missing = pipelineParams.filter(pipelineParam => !templateParams.some(templateParam => templateParam.name === pipelineParam.name) && typeof pipelineParam.default === 'undefined');
+      const extra = templateParams.filter(templateParam => !pipelineParams.some(pipelineParam => pipelineParam.name === templateParam.name));
+      for (const param of extra) {
+        console.log(`TriggerTemplate '${template.metadata.name}' defines parameter '${param.name}', but it's not used anywhere in the pipeline spec '${pipeline.metadata.name}'`);
+      }
+
+      for (const param of missing) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references param '${param.name}', but it is not supplied in triggerTemplate '${template.metadata.name}'`);
+      }
+    }
+  }
 }
