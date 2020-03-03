@@ -107,7 +107,6 @@ const naming = (resource, prefix) => (node, path) => {
   }
 }
 
-
 const resources = collectResources(docs);
 
 Object.entries(resources).map(([type, resourceList]) => {
@@ -120,6 +119,21 @@ Object.entries(resources).map(([type, resourceList]) => {
 
 for (const task of Object.values(tekton.tasks)) {
   if (!task.spec) continue;
+
+  for (const step of Object.values(task.spec.steps)) {
+    const {
+      image,
+      name: stepName
+    } = step
+    const { name: taskName } = task.metadata
+
+    if (/:latest$/.test(image)) {
+      console.log(`Invalid base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
+    }
+    if (/^[^:]*$/.test(image)) {
+      console.log(`Missing base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
+    }
+  }
 
   const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
 
