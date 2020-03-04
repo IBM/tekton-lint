@@ -1,6 +1,12 @@
 {
-  "name": "tekton-lint",
-  "private": true,
+  "name": "@cocoa/tekton-lint",
+  "publishConfig": {
+    "registry": "https://eu.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/"
+  },
+  "files": [
+    "lint.js",
+    "collect-resources.js"
+  ],
   "version": "0.0.0",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
