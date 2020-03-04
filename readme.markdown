@@ -8,10 +8,32 @@ The only requirement is [node] (at least `12.0.0`).
 
 ## Install
 
-Install the package directly from the repo (other distributions are coming):
+Make sure that `npm` is configured to be able to fetch code from [TaaS Artifactory][taas].
+
+Append the following configuration to your `~/.npmrc` to be able to fetch code from the `wcp-compliance-automation-team-npm-local` registry.
+
+```
+@cocoa:registry=https://na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/
+//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:_password=<BASE64_PASSWORD>
+//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:username=<USERNAME>
+//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:email=<USERNAME>
+//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:always-auth=true
+```
+
+`<BASE64_PASSWORD>` is your base64 encoded [API key][taas-api], `<USERNAME>` is your ibm email.
+
+The same configuration snippet can be acquired with the following `curl` command:
 
 ```sh
-$ npm install -g git+ssh://git@github.ibm.com:cocoa/tekton-lint.git
+$ curl -u <EMAIL> https://na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/auth/cocoa
+```
+
+In this case replace `<EMAIL>` with your IBM email address, and provide your [API key][taas-api] as password.
+
+Install the package from [TaaS Artifactory][taas]:
+
+```sh
+$ npm install -g @cocoa/tekton-lint
 ```
 
 ## Usage
@@ -33,3 +55,5 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
 [pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
+[taas]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/home
+[taas-api]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/profile
