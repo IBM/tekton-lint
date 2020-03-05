@@ -147,8 +147,13 @@ for (const task of Object.values(tekton.tasks)) {
 }
 
 for (const task of Object.values(tekton.tasks)) {
-  const volumes = Object.values(task.spec.volumes).map(volume => volume.name);
+  let volumes = [];
+  if (typeof task.spec.volumes !== 'undefined') {
+    volumes = Object.values(task.spec.volumes).map(volume => volume.name);
+  }
   for (const step of Object.values(task.spec.steps)) {
+    if (typeof step.volumeMounts === 'undefined') continue;
+
     for (const { name } of Object.values(step.volumeMounts)) {
       if (!volumes.includes(name)) {
         console.log(`Task '${task.metadata.name}' wants to mount volume '${name}' in step '${step.name}', but this volume is not defined.`)
