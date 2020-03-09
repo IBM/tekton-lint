@@ -7,7 +7,7 @@
     "lint.js",
     "collect-resources.js"
   ],
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
   "repository": {
