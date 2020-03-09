@@ -52,6 +52,38 @@ $ tekton-lint '**/*.yaml'
 $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 ```
 
+## Rules
+
+### Detecting errors
+
+> These rules are straightforward, violations indicate that there's a good
+> chance that you won't be able to run your `Pipeline`
+
+- Missing `Task` defintions
+- Missing `Pipeline` defintions
+- Missing `TriggerTemplate` defintions
+- Missing `TriggerBinding` defintions
+- Missing parameter declarations within `Task`s
+- Missing parameter declarations within `Pipeline`s
+- Missing parameter declarations within `TriggerTemplate`s
+- Missing volume defintions in `Task`s
+- Missing required `Pipeline` parameters in `TriggerTemplate`s
+- Missing required `Task` parameters in `Pipeline`s
+- Extra parameters passed to `Pipeline`s
+- Extra parameters passed to `Task`s
+- Invalid `runAfter` conditions
+
+### Best practices
+
+> If you violate these rules, the `Pipeline` is probably going to be just fine,
+> these rules are more like a collection of best practices that we collected
+> while we were working with tekton.
+
+- Unused `Task` parameters
+- Unused `Pipeline` parameters
+- Unpinned images in `Task` steps
+- _kebab-case_ naming violations
+
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
 [pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
