@@ -76,16 +76,16 @@ const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
     if (!runAfter) return;
 
     runAfter.forEach(step => {
-      if (step === name) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' cannot be itself.`);
-      if (!isTaskExists(step)) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
+      step === name && console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' cannot be itself.`);
+      !isTaskExists(step) && console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
     });
   });
-}
+};
 
 const isValidName = (name) => {
   const valid = new RegExp(`^[a-z0-9\-\(\)\$]*$`);
   return valid.test(name)
-}
+};
 
 const naming = (resource, prefix) => (node, path) => {
   let name = node
@@ -109,7 +109,7 @@ const naming = (resource, prefix) => (node, path) => {
 
 const resources = collectResources(docs);
 
-Object.entries(resources).map(([type, resourceList]) => {
+Object.entries(resources).forEach(([type, resourceList]) => {
   Object.entries(resourceList).forEach(([name, resource]) => {
     if (!isValidName(resource.metadata.name)) {
       console.log(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
@@ -163,20 +163,18 @@ for (const task of Object.values(tekton.tasks)) {
 }
 
 for (const listener of Object.values(tekton.listeners)) {
-  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+  for (const [, trigger] of Object.entries(listener.spec.triggers)) {
     if (!trigger.template) continue;
     const name = trigger.template.name;
     if (!tekton.triggerTemplates[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
-      continue;
     }
   }
-  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+  for (const [, trigger] of Object.entries(listener.spec.triggers)) {
     if (!trigger.binding) continue;
     const name = trigger.binding.name;
     if (!tekton.triggerBindings[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`)
-      continue;
     }
   }
 }
@@ -194,7 +192,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     console.log(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
   }
 
-  for (const [index, task] of Object.entries(pipeline.spec.tasks)) {
+  for (const [, task] of Object.entries(pipeline.spec.tasks)) {
     if (!task.taskRef) continue;
     const name = task.taskRef.name;
     if (!tekton.tasks[name]) {
