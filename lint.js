@@ -193,6 +193,18 @@ for (const binding of Object.values(tekton.triggerBindings)) {
   }
 }
 
+for (const template of Object.values(tekton.triggerTemplates)) {
+  const params = new Set();
+  if (!template.spec.params) continue;
+  for (const { name } of template.spec.params) {
+    if (!params.has(name)) {
+      params.add(name);
+    } else {
+      console.log(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`)
+    }
+  }
+}
+
 for (const pipeline of Object.values(tekton.pipelines)) {
   const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
