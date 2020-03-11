@@ -88,6 +88,20 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
+const checkMissingPipelines = (triggerTemplates, pipelines) => {
+  for (const template of Object.values(triggerTemplates)) {
+    for (const resourceTemplate of template.spec.resourcetemplates) {
+      if (resourceTemplate.kind != 'PipelineRun') continue;
+
+      if (!pipelines[resourceTemplate.spec.pipelineRef.name]) {
+        console.log(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
+      }
+    }
+  }
+};
+
+checkMissingPipelines(tekton.triggerTemplates, tekton.pipelines);
+
 const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
   const isTaskExists = step => pipelineTasks.map(task => task.name).includes(step);
 
@@ -321,12 +335,6 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
-    for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (resourceTemplate.kind != 'PipelineRun') continue;
-      if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
-        console.log(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
-      }
-    }
     const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef &&item.spec.pipelineRef.name === pipeline.metadata.name);
     if (matchingResource) {
       const pipelineParams = pipeline.spec.params;
