@@ -120,7 +120,7 @@ const resources = collectResources(docs);
 checkInvalidResourceKey('resourceVersion', resources);
 
 Object.entries(resources).forEach(([type, resourceList]) => {
-  Object.entries(resourceList).forEach(([name, resource]) => {
+  Object.values(resourceList).forEach(resource => {
     if (!isValidName(resource.metadata.name)) {
       console.log(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
@@ -173,14 +173,15 @@ for (const task of Object.values(tekton.tasks)) {
 }
 
 for (const listener of Object.values(tekton.listeners)) {
-  for (const [, trigger] of Object.entries(listener.spec.triggers)) {
+  for (const trigger of listener.spec.triggers) {
     if (!trigger.template) continue;
     const name = trigger.template.name;
     if (!tekton.triggerTemplates[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
     }
   }
-  for (const [, trigger] of Object.entries(listener.spec.triggers)) {
+
+  for (const trigger of listener.spec.triggers) {
     if (!trigger.binding) continue;
     const name = trigger.binding.name;
     if (!tekton.triggerBindings[name]) {
@@ -202,7 +203,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     console.log(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
   }
 
-  for (const [, task] of Object.entries(pipeline.spec.tasks)) {
+  for (const task of pipeline.spec.tasks) {
     if (!task.taskRef) continue;
     const name = task.taskRef.name;
     if (!tekton.tasks[name]) {
