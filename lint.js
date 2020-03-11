@@ -82,6 +82,14 @@ const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
   });
 };
 
+const checkInvalidResourceKey = (invalidKey, resources) => {
+  Object.entries(resources).forEach(([type, resourceList]) => {
+    Object.entries(resourceList).forEach(([name, resource]) => {
+      resource.metadata[invalidKey] && console.log(`Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`);
+    });
+  });
+};
+
 const isValidName = (name) => {
   const valid = new RegExp(`^[a-z0-9\-\(\)\$]*$`);
   return valid.test(name)
@@ -108,6 +116,8 @@ const naming = (resource, prefix) => (node, path) => {
 }
 
 const resources = collectResources(docs);
+
+checkInvalidResourceKey('resourceVersion', resources);
 
 Object.entries(resources).forEach(([type, resourceList]) => {
   Object.entries(resourceList).forEach(([name, resource]) => {
