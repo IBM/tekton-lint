@@ -182,6 +182,17 @@ for (const listener of Object.values(tekton.listeners)) {
 }
 
 for (const pipeline of Object.values(tekton.pipelines)) {
+  if (pipeline.spec.params) {
+    const paramNames = new Set();
+    for (const { name } of pipeline.spec.params) {
+      if (!paramNames.has(name)) {
+        paramNames.add(name);
+      } else {
+        console.log(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
+      }
+    }
+  }
+
   const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
   validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
