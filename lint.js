@@ -181,6 +181,18 @@ for (const listener of Object.values(tekton.listeners)) {
   }
 }
 
+for (const binding of Object.values(tekton.triggerBindings)) {
+  const params = new Set();
+  if (!binding.spec.params) continue;
+  for (const { name } of binding.spec.params) {
+    if (!params.has(name)) {
+      params.add(name);
+    } else {
+      console.log(`TriggerBinding '${binding.metadata.name}' has param '${name}' duplicated.`)
+    }
+  }
+}
+
 for (const pipeline of Object.values(tekton.pipelines)) {
   const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
