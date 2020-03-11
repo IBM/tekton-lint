@@ -197,6 +197,18 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   for (const [index, task] of Object.entries(pipeline.spec.tasks)) {
     if (!task.taskRef) continue;
     const name = task.taskRef.name;
+
+    if (task.params) {
+      const taskParamNames = new Set();
+      for (const param of task.params) {
+        if (!taskParamNames.has(param.name)) {
+          taskParamNames.add(param.name);
+        } else {
+          console.log(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`);
+        }
+      }
+    }
+
     if (!tekton.tasks[name]) {
       console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
       continue;
