@@ -190,6 +190,20 @@ for (const task of Object.values(tekton.tasks)) {
   }
 }
 
+for (const task of Object.values(tekton.tasks)) {
+  for (const step of task.spec.steps) {
+    if (!step.env) continue;
+    const envVariables = new Set();
+    for (const { name } of step.env) {
+      if (!envVariables.has(name)) {
+        envVariables.add(name);
+      } else {
+        console.log(`Step '${step.name}' has env variable '${name}' duplicated in task '${task.metadata.name}'.`);
+      }
+    }
+  }
+}
+
 for (const listener of Object.values(tekton.listeners)) {
   for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
     if (!trigger.template) continue;
