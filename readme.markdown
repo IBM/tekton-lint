@@ -42,6 +42,10 @@ $ npm install -g @cocoa/tekton-lint
 on the resulting document set. [More details on the pattern syntax.][pattern]
 
 ```sh
+Options:
+$ tekton-lint --version # Show version number
+$ tekton-lint --help    # Show help
+
 # exact file path
 $ tekton-lint my-pipeline.yaml my-task.yaml
 

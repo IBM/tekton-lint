@@ -1,10 +1,38 @@
 #!/usr/bin/env node
 
+const { version } = require('./package.json');
 const yaml = require('js-yaml');
 const fs = require('fs');
 const glob = require('fast-glob');
-
 const collectResources = require('./collect-resources')
+
+const usageMessage = `Usage:
+tekton-lint <path-to-yaml-files>
+
+Options:
+$ tekton-lint --version # Show version number
+$ tekton-lint --help    # Show help
+
+Examples:
+# Globstar matching
+$ tekton-lint '**/*.yaml'
+
+# Exact file path
+$ tekton-lint my-pipeline.yaml my-task.yaml
+
+# Multiple glob patterns
+$ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'`;
+
+if (process.argv[2]) {
+  if (process.argv[2] === '--version') {
+    return console.log(`Version: ${version}`);
+  }
+  if (process.argv[2] === '--help') {
+    return console.log(usageMessage);
+  }
+} else {
+  return console.log(usageMessage);
+}
 
 const docs = [];
 const files = glob.sync(process.argv.slice(2));
