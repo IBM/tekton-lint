@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
 const { version } = require('./package.json');
-const yaml = require('js-yaml');
-const fs = require('fs');
-const glob = require('fast-glob');
-const collectResources = require('./collect-resources')
+const collector = require('./Collector');
+const collectResources = require('./collect-resources');
 
 const usageMessage = `Usage:
 tekton-lint <path-to-yaml-files>
@@ -34,14 +32,7 @@ if (process.argv[2]) {
   return console.log(usageMessage);
 }
 
-const docs = [];
-const files = glob.sync(process.argv.slice(2));
-
-for (const file of files) {
-  for (const doc of yaml.safeLoadAll(fs.readFileSync(file, 'utf-8'))) {
-    docs.push(doc);
-  }
-}
+const docs = collector(process.argv.slice(2)).map(doc => doc.content);
 
 const tekton = {
   tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
