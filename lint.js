@@ -259,16 +259,18 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     }
   }
 
-  const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
+  const params = pipeline.spec.params && Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
   validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
 
-  walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
-  walk(pipeline.spec.tasks, 'spec.steps', naming(pipeline.metadata.name, 'params'));
+  if (params) {
+    walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
+    walk(pipeline.spec.tasks, 'spec.steps', naming(pipeline.metadata.name, 'params'));
 
-  for (const param of Object.keys(params)) {
-    if (params[param]) continue;
-    console.log(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
+    for (const param of Object.keys(params)) {
+      if (params[param]) continue;
+      console.log(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
+    }
   }
 
   for (const [index, task] of Object.entries(pipeline.spec.tasks)) {
