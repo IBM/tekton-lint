@@ -223,6 +223,23 @@ for (const listener of Object.values(tekton.listeners)) {
   }
 }
 
+for (const triggerTemplate of Object.values(tekton.triggerTemplates)) {
+  const resourceTemplates = triggerTemplate.spec.resourcetemplates
+
+  for (const resourceTemplate of resourceTemplates) {
+    if (resourceTemplate.spec && resourceTemplate.spec.params && resourceTemplate.kind === 'PipelineRun') {
+      const paramNames = new Set();
+      for (const { name } of resourceTemplate.spec.params) {
+        if (!paramNames.has(name)) {
+          paramNames.add(name);
+        } else {
+          console.log(`PipelineRun '${resourceTemplate.metadata.name}' in TriggerTemplate '${triggerTemplate.metadata.name}' has a duplicate param name: '${name}'.`);
+        }
+      }
+    }
+  }
+}
+
 for (const binding of Object.values(tekton.triggerBindings)) {
   const params = new Set();
   if (!binding.spec.params) continue;
