@@ -209,6 +209,19 @@ for (const task of Object.values(tekton.tasks)) {
   }
 }
 
+for (const template of Object.values(tekton.triggerTemplates)) {
+  if (!template.spec.params) continue;
+  const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
+  for (const resourceTemplate of template.spec.resourcetemplates) {
+    if (!resourceTemplate.spec) continue;
+    walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
+  }
+  for (const param of Object.keys(params)) {
+    if (params[param]) continue;
+    console.log(`TriggerTemplate '${template.metadata.name}' defines parameter '${param}', but it's not used anywhere in the resourceTemplates specs`);
+  }
+}
+
 for (const listener of Object.values(tekton.listeners)) {
   for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
     if (!trigger.template) continue;
