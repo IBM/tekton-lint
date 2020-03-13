@@ -163,7 +163,7 @@ for (const task of Object.values(tekton.tasks)) {
     if (/:latest$/.test(image)) {
       console.log(`Invalid base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
     }
-    if (/^[^:]*$/.test(image)) {
+    if (/^[^:$]*$/.test(image)) {
       console.log(`Missing base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
   }
