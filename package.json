@@ -5,7 +5,8 @@
   },
   "files": [
     "lint.js",
-    "collect-resources.js"
+    "collect-resources.js",
+    "Collector.js"
   ],
   "version": "0.0.5",
   "description": "Linter for Tekton definitions",
