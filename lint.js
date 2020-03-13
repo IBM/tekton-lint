@@ -186,7 +186,7 @@ for (const task of Object.values(tekton.tasks)) {
   }
   if (task.spec.inputs.params) {
     const paramNames = new Set();
-    for (const { name } of task.spec.inputs.params){
+    for (const { name } of task.spec.inputs.params) {
       if (!paramNames.has(name)) {
         paramNames.add(name);
       } else {
@@ -358,7 +358,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
-    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef &&item.spec.pipelineRef.name === pipeline.metadata.name);
+    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
     if (matchingResource) {
       const pipelineParams = pipeline.spec.params;
       const templateParams = matchingResource.spec.params;
