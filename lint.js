@@ -167,6 +167,7 @@ for (const task of Object.values(tekton.tasks)) {
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, params, 'inputs.params'));
   walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, params, 'inputs.params'));
+
   for (const param of Object.keys(params)) {
     if (params[param]) continue;
     console.log(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`);
@@ -184,7 +185,7 @@ for (const task of Object.values(tekton.tasks)) {
       if (!paramNames.has(name)) {
         paramNames.add(name);
       } else {
-        console.log(`Task '${task.metadata.name}' has a duplicated '${name}'.`);
+        console.log(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
       }
     }
   }
