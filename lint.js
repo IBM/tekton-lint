@@ -184,6 +184,16 @@ for (const task of Object.values(tekton.tasks)) {
   if (typeof task.spec.volumes !== 'undefined') {
     volumes = Object.values(task.spec.volumes).map(volume => volume.name);
   }
+  if (task.spec.inputs.params) {
+    const paramNames = new Set();
+    for (const { name } of task.spec.inputs.params){
+      if (!paramNames.has(name)) {
+        paramNames.add(name);
+      } else {
+        console.log(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
+      }
+    }
+  }
   for (const step of Object.values(task.spec.steps)) {
     if (typeof step.volumeMounts === 'undefined') continue;
 
