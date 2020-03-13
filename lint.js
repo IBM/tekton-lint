@@ -186,7 +186,7 @@ for (const task of Object.values(tekton.tasks)) {
   }
   if (task.spec.inputs.params) {
     const paramNames = new Set();
-    for (const { name } of task.spec.inputs.params){
+    for (const { name } of task.spec.inputs.params) {
       if (!paramNames.has(name)) {
         paramNames.add(name);
       } else {
@@ -304,6 +304,14 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     }
   }
 
+  for (const task of Object.values(pipeline.spec.tasks)) {
+    for (const param of Object.values(task.params)) {
+      if (typeof param.value == 'undefined') {
+        console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`)
+      }
+    }
+  }
+
   const params = pipeline.spec.params && Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
   validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
@@ -358,7 +366,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
-    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef &&item.spec.pipelineRef.name === pipeline.metadata.name);
+    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
     if (matchingResource) {
       const pipelineParams = pipeline.spec.params;
       const templateParams = matchingResource.spec.params;
