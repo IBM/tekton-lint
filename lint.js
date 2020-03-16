@@ -124,24 +124,24 @@ const checkInvalidResourceKey = (invalidKey, resources) => {
 };
 
 const isValidName = (name) => {
-  const valid = new RegExp(`^[a-z0-9\-\(\)\$]*$`);
-  return valid.test(name)
+  const valid = new RegExp('^[a-z0-9-()$.]*$');
+  return valid.test(name);
 };
 
 const naming = (resource, prefix) => (node, path) => {
-  let name = node
-  const isNameDefinition = /.name$/.test(path)
+  let name = node;
+  const isNameDefinition = /.name$/.test(path);
 
   if (isNameDefinition && !isValidName(name)) {
     console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
-    return
+    return;
   }
 
   const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
   const m = node.match(parameterPlacementRx);
 
   if (m) {
-    name = m[1]
+    name = m[1];
     if (!isValidName(name)) {
       console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
