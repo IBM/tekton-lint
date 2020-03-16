@@ -336,41 +336,62 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const task of pipeline.spec.tasks) {
-    if (!task.taskRef) continue;
-    const name = task.taskRef.name;
+    if (task.taskRef) {
+      const name = task.taskRef.name;
 
-    if (task.params) {
-      const taskParamNames = new Set();
-      for (const param of task.params) {
-        if (!taskParamNames.has(param.name)) {
-          taskParamNames.add(param.name);
-        } else {
-          console.log(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`);
+      if (task.params) {
+        const taskParamNames = new Set();
+        for (const param of task.params) {
+          if (!taskParamNames.has(param.name)) {
+            taskParamNames.add(param.name);
+          } else {
+            console.log(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`);
+          }
         }
       }
+
+      if (!tekton.tasks[name]) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
+        continue;
+      }
+
+      const provided = task.params.map(param => param.name);
+      const all = tekton.tasks[name].spec.inputs.params
+        .map(param => param.name);
+      const required = tekton.tasks[name].spec.inputs.params
+        .filter(param => typeof param.default == 'undefined')
+        .map(param => param.name);
+
+      const extra = provided.filter(param => !all.includes(param));
+      const missing = required.filter(param => !provided.includes(param));
+
+      for (const param of extra) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`);
+      }
+
+      for (const param of missing) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
+      }
     }
+    
+    if (task.taskSpec) {
+      const provided = task.params.map(param => param.name);
+      const all = task.taskSpec.inputs.params
+        .map(param => param.name);
+      const required = task.taskSpec.inputs.params
+        .filter(param => typeof param.default == 'undefined')
+        .map(param => param.name);
 
-    if (!tekton.tasks[name]) {
-      console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
-      continue;
-    }
+      const extra = provided.filter(param => !all.includes(param));
+      const missing = required.filter(param => !provided.includes(param));
+    
+      for (const param of extra) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
+      }
 
-    const provided = task.params.map(param => param.name);
-    const all = tekton.tasks[name].spec.inputs.params
-      .map(param => param.name);
-    const required = tekton.tasks[name].spec.inputs.params
-      .filter(param => typeof param.default == 'undefined')
-      .map(param => param.name);
-
-    const extra = provided.filter(p => !all.includes(p));
-    const missing = required.filter(p => !provided.includes(p));
-
-    for (const param of extra) {
-      console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`);
-    }
-
-    for (const param of missing) {
-      console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
+      for (const param of missing) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+      }
     }
   }
 
