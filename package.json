@@ -5,9 +5,10 @@
   },
   "files": [
     "lint.js",
-    "collect-resources.js"
+    "collect-resources.js",
+    "Collector.js"
   ],
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
   "repository": {
@@ -22,5 +23,15 @@
   "dependencies": {
     "fast-glob": "^3.2.2",
     "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

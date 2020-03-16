@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
 const { version } = require('./package.json');
-const yaml = require('js-yaml');
-const fs = require('fs');
-const glob = require('fast-glob');
-const collectResources = require('./collect-resources')
+const collector = require('./Collector');
+const collectResources = require('./collect-resources');
 
 const usageMessage = `Usage:
 tekton-lint <path-to-yaml-files>
@@ -34,14 +32,7 @@ if (process.argv[2]) {
   return console.log(usageMessage);
 }
 
-const docs = [];
-const files = glob.sync(process.argv.slice(2));
-
-for (const file of files) {
-  for (const doc of yaml.safeLoadAll(fs.readFileSync(file, 'utf-8'))) {
-    docs.push(doc);
-  }
-}
+const docs = collector(process.argv.slice(2)).map(doc => doc.content);
 
 const tekton = {
   tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
@@ -97,6 +88,20 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
+const checkMissingPipelines = (triggerTemplates, pipelines) => {
+  for (const template of Object.values(triggerTemplates)) {
+    for (const resourceTemplate of template.spec.resourcetemplates) {
+      if (resourceTemplate.kind != 'PipelineRun') continue;
+
+      if (!pipelines[resourceTemplate.spec.pipelineRef.name]) {
+        console.log(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
+      }
+    }
+  }
+};
+
+checkMissingPipelines(tekton.triggerTemplates, tekton.pipelines);
+
 const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
   const isTaskExists = step => pipelineTasks.map(task => task.name).includes(step);
 
@@ -108,27 +113,35 @@ const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
       if (!isTaskExists(step)) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
     });
   });
-}
+};
+
+const checkInvalidResourceKey = (invalidKey, resources) => {
+  Object.entries(resources).forEach(([type, resourceList]) => {
+    Object.entries(resourceList).forEach(([name, resource]) => {
+      if (resource.metadata[invalidKey]) console.log(`Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`);
+    });
+  });
+};
 
 const isValidName = (name) => {
-  const valid = new RegExp(`^[a-z0-9\-\(\)\$]*$`);
-  return valid.test(name)
-}
+  const valid = new RegExp('^[a-z0-9-()$.]*$');
+  return valid.test(name);
+};
 
 const naming = (resource, prefix) => (node, path) => {
-  let name = node
-  const isNameDefinition = /.name$/.test(path)
+  let name = node;
+  const isNameDefinition = /.name$/.test(path);
 
   if (isNameDefinition && !isValidName(name)) {
     console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
-    return
+    return;
   }
 
   const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
   const m = node.match(parameterPlacementRx);
 
   if (m) {
-    name = m[1]
+    name = m[1];
     if (!isValidName(name)) {
       console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
@@ -137,8 +150,10 @@ const naming = (resource, prefix) => (node, path) => {
 
 const resources = collectResources(docs);
 
-Object.entries(resources).map(([type, resourceList]) => {
-  Object.entries(resourceList).forEach(([name, resource]) => {
+checkInvalidResourceKey('resourceVersion', resources);
+
+Object.entries(resources).forEach(([type, resourceList]) => {
+  Object.values(resourceList).forEach(resource => {
     if (!isValidName(resource.metadata.name)) {
       console.log(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
@@ -158,7 +173,7 @@ for (const task of Object.values(tekton.tasks)) {
     if (/:latest$/.test(image)) {
       console.log(`Invalid base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
     }
-    if (/^[^:]*$/.test(image)) {
+    if (/^[^:$]*$/.test(image)) {
       console.log(`Missing base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
   }
@@ -178,6 +193,16 @@ for (const task of Object.values(tekton.tasks)) {
   let volumes = [];
   if (typeof task.spec.volumes !== 'undefined') {
     volumes = Object.values(task.spec.volumes).map(volume => volume.name);
+  }
+  if (task.spec.inputs.params) {
+    const paramNames = new Set();
+    for (const { name } of task.spec.inputs.params) {
+      if (!paramNames.has(name)) {
+        paramNames.add(name);
+      } else {
+        console.log(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
+      }
+    }
   }
   for (const step of Object.values(task.spec.steps)) {
     if (typeof step.volumeMounts === 'undefined') continue;
@@ -204,21 +229,33 @@ for (const task of Object.values(tekton.tasks)) {
   }
 }
 
+for (const template of Object.values(tekton.triggerTemplates)) {
+  if (!template.spec.params) continue;
+  const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
+  for (const resourceTemplate of template.spec.resourcetemplates) {
+    if (!resourceTemplate.spec) continue;
+    walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
+  }
+  for (const param of Object.keys(params)) {
+    if (params[param]) continue;
+    console.log(`TriggerTemplate '${template.metadata.name}' defines parameter '${param}', but it's not used anywhere in the resourceTemplates specs`);
+  }
+}
+
 for (const listener of Object.values(tekton.listeners)) {
-  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+  for (const trigger of listener.spec.triggers) {
     if (!trigger.template) continue;
     const name = trigger.template.name;
     if (!tekton.triggerTemplates[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
-      continue;
     }
   }
-  for (const [index, trigger] of Object.entries(listener.spec.triggers)) {
+
+  for (const trigger of listener.spec.triggers) {
     if (!trigger.binding) continue;
     const name = trigger.binding.name;
     if (!tekton.triggerBindings[name]) {
       console.log(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`)
-      continue;
     }
   }
 }
@@ -272,6 +309,14 @@ for (const pipeline of Object.values(tekton.pipelines)) {
         paramNames.add(name);
       } else {
         console.log(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
+      }
+    }
+  }
+
+  for (const task of Object.values(pipeline.spec.tasks)) {
+    for (const param of Object.values(task.params)) {
+      if (typeof param.value == 'undefined') {
+        console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`)
       }
     }
   }
@@ -351,13 +396,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
-    for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (resourceTemplate.kind != 'PipelineRun') continue;
-      if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
-        console.log(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
-      }
-    }
-    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef &&item.spec.pipelineRef.name === pipeline.metadata.name);
+    const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
     if (matchingResource) {
       const pipelineParams = pipeline.spec.params;
       const templateParams = matchingResource.spec.params;
