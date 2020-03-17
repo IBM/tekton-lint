@@ -314,9 +314,11 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 
   for (const task of Object.values(pipeline.spec.tasks)) {
-    for (const param of Object.values(task.params)) {
-      if (typeof param.value == 'undefined') {
-        console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`)
+    if (task.params) {
+      for (const param of Object.values(task.params)) {
+        if (typeof param.value == 'undefined') {
+          console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`)
+        }
       }
     }
   }
