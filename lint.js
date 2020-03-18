@@ -91,7 +91,7 @@ const unused = (resource, params, prefix) => (node, path) => {
 const checkMissingPipelines = (triggerTemplates, pipelines) => {
   for (const template of Object.values(triggerTemplates)) {
     for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (resourceTemplate.kind != 'PipelineRun') continue;
+      if (resourceTemplate.kind !== 'PipelineRun') continue;
 
       if (!pipelines[resourceTemplate.spec.pipelineRef.name]) {
         console.log(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
@@ -108,7 +108,7 @@ const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
   pipelineTasks.forEach(({ runAfter, name, taskRef }) => {
     if (!runAfter) return;
 
-    runAfter.forEach(step => {
+    runAfter.forEach((step) => {
       if (step === name) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' cannot be itself.`);
       if (!isTaskExists(step)) console.log(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
     });
@@ -146,14 +146,14 @@ const naming = (resource, prefix) => (node, path) => {
       console.log(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
   }
-}
+};
 
 const resources = collectResources(docs);
 
 checkInvalidResourceKey('resourceVersion', resources);
 
 Object.entries(resources).forEach(([type, resourceList]) => {
-  Object.values(resourceList).forEach(resource => {
+  Object.values(resourceList).forEach((resource) => {
     if (!isValidName(resource.metadata.name)) {
       console.log(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
@@ -166,9 +166,9 @@ for (const task of Object.values(tekton.tasks)) {
   for (const step of Object.values(task.spec.steps)) {
     const {
       image,
-      name: stepName
-    } = step
-    const { name: taskName } = task.metadata
+      name: stepName,
+    } = step;
+    const { name: taskName } = task.metadata;
 
     if (/:latest$/.test(image)) {
       console.log(`Invalid base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
@@ -209,7 +209,7 @@ for (const task of Object.values(tekton.tasks)) {
 
     for (const { name } of Object.values(step.volumeMounts)) {
       if (!volumes.includes(name)) {
-        console.log(`Task '${task.metadata.name}' wants to mount volume '${name}' in step '${step.name}', but this volume is not defined.`)
+        console.log(`Task '${task.metadata.name}' wants to mount volume '${name}' in step '${step.name}', but this volume is not defined.`);
       }
     }
   }
@@ -247,7 +247,7 @@ for (const listener of Object.values(tekton.listeners)) {
     if (!trigger.template) continue;
     const name = trigger.template.name;
     if (!tekton.triggerTemplates[name]) {
-      console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`)
+      console.log(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`);
     }
   }
 
@@ -255,13 +255,13 @@ for (const listener of Object.values(tekton.listeners)) {
     if (!trigger.binding) continue;
     const name = trigger.binding.name;
     if (!tekton.triggerBindings[name]) {
-      console.log(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`)
+      console.log(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`);
     }
   }
 }
 
 for (const triggerTemplate of Object.values(tekton.triggerTemplates)) {
-  const resourceTemplates = triggerTemplate.spec.resourcetemplates
+  const resourceTemplates = triggerTemplate.spec.resourcetemplates;
 
   for (const resourceTemplate of resourceTemplates) {
     if (resourceTemplate.spec && resourceTemplate.spec.params && resourceTemplate.kind === 'PipelineRun') {
@@ -284,7 +284,7 @@ for (const binding of Object.values(tekton.triggerBindings)) {
     if (!params.has(name)) {
       params.add(name);
     } else {
-      console.log(`TriggerBinding '${binding.metadata.name}' has param '${name}' duplicated.`)
+      console.log(`TriggerBinding '${binding.metadata.name}' has param '${name}' duplicated.`);
     }
   }
 }
@@ -296,7 +296,7 @@ for (const template of Object.values(tekton.triggerTemplates)) {
     if (!params.has(name)) {
       params.add(name);
     } else {
-      console.log(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`)
+      console.log(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`);
     }
   }
 }
@@ -317,7 +317,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     if (task.params) {
       for (const param of Object.values(task.params)) {
         if (typeof param.value == 'undefined') {
-          console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`)
+          console.log(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`);
         }
       }
     }
@@ -375,7 +375,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
         console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
       }
     }
-    
+
     if (task.taskSpec) {
       const provided = task.params.map(param => param.name);
       const all = task.taskSpec.inputs.params
@@ -386,7 +386,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
 
       const extra = provided.filter(param => !all.includes(param));
       const missing = required.filter(param => !provided.includes(param));
-    
+
       for (const param of extra) {
         console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
       }

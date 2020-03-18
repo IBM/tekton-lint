@@ -8,6 +8,9 @@
     "collect-resources.js",
     "Collector.js"
   ],
+  "scripts": {
+    "lint": "eslint './*.js'"
+  },
   "version": "0.0.7",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
@@ -27,10 +30,12 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "eslint": "^6.8.0",
     "husky": "^4.2.3"
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
