@@ -377,22 +377,40 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     }
 
     if (task.taskSpec) {
-      const provided = task.params.map(param => param.name);
-      const all = task.taskSpec.inputs.params
-        .map(param => param.name);
-      const required = task.taskSpec.inputs.params
+      if (task.params == null && task.taskSpec.inputs.params == null) continue;
+
+      if (task.params == null) {
+        const required = task.taskSpec.inputs.params
         .filter(param => typeof param.default == 'undefined')
         .map(param => param.name);
 
-      const extra = provided.filter(param => !all.includes(param));
-      const missing = required.filter(param => !provided.includes(param));
+        for (const param of required) {
+          console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+        }
+      } else if (task.taskSpec.inputs.params == null) {
+          const provided = task.params.map(param => param.name);
 
-      for (const param of extra) {
-        console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
-      }
+          for (const param of provided) {
+          console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
+        }
+      } else {
+        const provided = task.params.map(param => param.name);
+        const all = task.taskSpec.inputs.params
+          .map(param => param.name);
+        const required = task.taskSpec.inputs.params
+          .filter(param => typeof param.default == 'undefined')
+          .map(param => param.name);
 
-      for (const param of missing) {
-        console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+        const extra = provided.filter(param => !all.includes(param));
+        const missing = required.filter(param => !provided.includes(param));
+
+        for (const param of extra) {
+          console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
+        }
+
+        for (const param of missing) {
+          console.log(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+        }
       }
     }
   }
