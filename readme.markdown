@@ -36,6 +36,21 @@ Install the package from [TaaS Artifactory][taas]:
 $ npm install -g @cocoa/tekton-lint
 ```
 
+### Install without artifactory
+
+Make sure `node -v` indicates you are on at least 12.0.0
+
+```sh
+git clone <this repository>
+cd <repository dir>
+npm link
+```
+
+Verify that `tekton-lint` is available by running:
+```sh
+which tekton-lint
+```
+
 ## Usage
 
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
