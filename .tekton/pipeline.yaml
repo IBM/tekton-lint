@@ -1,0 +1,66 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline
+spec:
+  params:
+    - name: repository
+      description: the git repo
+    - name: target-branch
+      description: target branch
+    - name: pipeline-pvc
+      description: pipeline pvc name place holder
+    - name: ibmcloud-api-key
+      description: ibmcloud api key
+  tasks:
+
+    - name: get-git-credentials
+      taskRef:
+        name: get-git-credentials
+      params:
+        - name: credentials-pvc
+          value: $(params.pipeline-pvc)
+        - name: ibmcloud-api-key
+          value: $(params.ibmcloud-api-key)
+        - name: repository
+          value: $(params.repository)
+
+    - name: clone-repo
+      taskRef:
+        name: git-clone
+      runAfter:
+        - get-git-credentials
+      params:
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
+        - name: repository
+          value: $(params.repository)
+        - name: branch
+          value: $(params.target-branch)
+
+    - name: setup-repo
+      taskRef:
+        name: task-setup-repo
+      runAfter:
+        - clone-repo
+      params:
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
+
+    - name: lint
+      taskRef:
+        name: task-lint
+      runAfter:
+        - setup-repo
+      params:
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
+
+    - name: tekton-test
+      taskRef:
+        name: task-tekton-test
+      runAfter:
+        - setup-repo
+      params:
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
