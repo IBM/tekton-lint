@@ -1,0 +1,77 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: template
+spec:
+  params:
+    - name: pipeline-id
+    - name: repository
+      description: The git repo
+    - name: branch
+      description: branch
+    - name: target-branch
+      description: target branch
+    - name: pr-number
+      description: the PR number
+    - name: pr-commit
+      description: the latest commit in the PR
+    - name: ibmcloud-api-key
+      description: ibmcloud api key
+    - name: dockerconfigjson
+      description: dockerconfigjson from kube Secret to pull baseimage
+  resourcetemplates:
+    - apiVersion: v1
+      kind: Secret
+      data:
+        .dockerconfigjson: $(params.dockerconfigjson)
+      metadata:
+        name: cocoa-pullsecret
+      type: kubernetes.io/dockerconfigjson
+
+    - apiVersion: v1
+      kind: ServiceAccount
+      imagePullSecrets:
+      - name: cocoa-pullsecret
+      metadata:
+        name: sa-pullsecret
+
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: pipelinerun-$(uid)-pvc
+      spec:
+        resources:
+          requests:
+            storage:  5Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: context
+      data:
+        PIPELINE_RUN_URL: https://cloud.ibm.com/devops/pipelines/tekton/$(params.pipeline-id)/runs/$(uid)?env_id=ibm:yp:us-south
+        PR_COMMIT: $(params.pr-commit)
+        PR_NUMBER: $(params.pr-number)
+        TARGET_BRANCH: $(params.target-branch)
+        BRANCH: $(params.branch)
+
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        name: pipelinerun-$(uid)
+      spec:
+        pipelineRef:
+          name: pipeline
+        serviceAccountName: sa-pullsecret
+        params:
+          - name: pipeline-pvc
+            value: pipelinerun-$(uid)-pvc
+          - name: repository
+            value: $(params.repository)
+          - name: target-branch
+            value: $(params.target-branch)
+          - name: ibmcloud-api-key
+            value: $(params.ibmcloud-api-key)
