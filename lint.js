@@ -341,6 +341,11 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     if (task.taskRef) {
       const name = task.taskRef.name;
 
+      if (!tekton.tasks[name]) {
+        console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
+        continue;
+      }
+
       if (task.params) {
         const taskParamNames = new Set();
         for (const param of task.params) {
@@ -367,11 +372,6 @@ for (const pipeline of Object.values(tekton.pipelines)) {
         for (const param of missing) {
           console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
         }
-      }
-
-      if (!tekton.tasks[name]) {
-        console.log(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
-        continue;
       }
     }
 
