@@ -108,3 +108,10 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 [pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
 [taas]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/home
 [taas-api]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/profile
+
+## Report a Bug / Request a Feature
+
+We track our issues in [this github repository](https://github.ibm.com/cocoa/board).
+Please use the following issue templates to:
+- [Report a Bug](https://github.ibm.com/cocoa/board/issues/new?template=bug.md)
+- [Request a Feature](https://github.ibm.com/cocoa/board/issues/new?template=feature.md)
