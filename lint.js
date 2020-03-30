@@ -178,6 +178,15 @@ for (const task of Object.values(tekton.tasks)) {
     }
   }
 
+  for (const param of task.spec.inputs.params) {
+    const value = param.default || param.value;
+    if (value) {
+      if (typeof value === 'string') continue;
+      if (Array.isArray(value) && value.every(element => typeof element === 'string')) continue;
+      console.log(`Task '${task.metadata.name}' defines parameter '${param.name}' with wrong value type (values should be of type 'string', 'array of strings')`);
+    }
+  }
+
   const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, params, 'inputs.params'));
