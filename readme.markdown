@@ -78,19 +78,27 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 > These rules are straightforward, violations indicate that there's a good
 > chance that you won't be able to run your `Pipeline`
 
-- Missing `Task` defintions
-- Missing `Pipeline` defintions
-- Missing `TriggerTemplate` defintions
-- Missing `TriggerBinding` defintions
+- Missing `Task` definitions
+- Missing `Pipeline` definitions
+- Missing `TriggerTemplate` definitions
+- Missing `TriggerBinding` definitions 
 - Missing parameter declarations within `Task`s
 - Missing parameter declarations within `Pipeline`s
 - Missing parameter declarations within `TriggerTemplate`s
-- Missing volume defintions in `Task`s
+- Missing volume definitions in `Task`s
 - Missing required `Pipeline` parameters in `TriggerTemplate`s
 - Missing required `Task` parameters in `Pipeline`s
 - Extra parameters passed to `Pipeline`s
 - Extra parameters passed to `Task`s
 - Invalid `runAfter` conditions
+- Invalid `resourceVersion` key
+- Duplicate parameters name in `Task`s
+- Duplicate environment variables in `Step`s
+- Duplicate `PipelineRun`'s parameters name in `TriggerTemplate`s
+- Duplicate parameters name in `TriggerBinding`s
+- Duplicate parameters name in `TriggerTemplate`s
+- Duplicate parameters name in `Pipeline`s
+- Missing `Task` parameter value in `Pipeline`s
 - Invalid `Task` parameter value types (must be `string`, `multiline string` or `array of strings`)
 
 ### Best practices
@@ -101,6 +109,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 
 - Unused `Task` parameters
 - Unused `Pipeline` parameters
+- Unused `TriggerTemplate` parameters
 - Unpinned images in `Task` steps
 - _kebab-case_ naming violations
 
