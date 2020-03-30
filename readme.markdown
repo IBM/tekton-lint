@@ -91,6 +91,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Extra parameters passed to `Pipeline`s
 - Extra parameters passed to `Task`s
 - Invalid `runAfter` conditions
+- Invalid `Task` parameter value types (must be `string`, `multiline string` or `array of strings`)
 
 ### Best practices
 
