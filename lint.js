@@ -178,6 +178,12 @@ for (const task of Object.values(tekton.tasks)) {
     }
   }
 
+  for (const param of task.spec.inputs.params) {
+    if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
+      console.log(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+    }
+  }
+
   const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, params, 'inputs.params'));
