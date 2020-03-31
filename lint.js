@@ -88,6 +88,18 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
+function checkEmptyKey(path, toCheck) {
+  if (!toCheck && toCheck !== '') {
+    console.error(`The following key${path} is empty please consider removing it`);
+  } else if (typeof toCheck === 'object') {
+    for (const [key, value] of Object.entries(toCheck)) {
+      checkEmptyKey(`${path}${Array.isArray(toCheck) ? ` at position: ${key}` : `.${key}`}`, value);
+    }
+  }
+}
+
+checkEmptyKey('', tekton);
+
 const checkMissingPipelines = (triggerTemplates, pipelines) => {
   for (const template of Object.values(triggerTemplates)) {
     for (const resourceTemplate of template.spec.resourcetemplates) {
@@ -176,6 +188,9 @@ for (const task of Object.values(tekton.tasks)) {
     if (/^[^:$]*$/.test(image)) {
       console.log(`Missing base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
+  }
+  if (task.spec.inputs && task.spec.inputs.params === null) {
+    continue;
   }
 
   const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
@@ -417,6 +432,7 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   for (const template of Object.values(tekton.triggerTemplates)) {
     const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
     if (matchingResource) {
+      if (pipeline.spec.params == null || matchingResource.spec.params == null) continue;
       const pipelineParams = pipeline.spec.params;
       const templateParams = matchingResource.spec.params;
 
