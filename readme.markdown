@@ -99,7 +99,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Duplicate parameters name in `TriggerTemplate`s
 - Duplicate parameters name in `Pipeline`s
 - Missing `Task` parameter value in `Pipeline`s
-- Invalid `Task` parameter value types (must be `string`, `multiline string` or `array of strings`)
+- Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter value types (must be `string`, `multiline string` or `array of strings`)
 
 ### Best practices
 
