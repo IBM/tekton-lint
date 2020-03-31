@@ -304,6 +304,9 @@ for (const template of Object.values(tekton.triggerTemplates)) {
     } else {
       console.log(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`);
     }
+    if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
+      console.log(`TriggerTemplate '${template.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+    }
   }
 }
 
@@ -315,6 +318,9 @@ for (const pipeline of Object.values(tekton.pipelines)) {
         paramNames.add(name);
       } else {
         console.log(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
+      }
+      if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
+        console.log(`Pipeline '${pipeline.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
       }
     }
   }
