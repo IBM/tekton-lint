@@ -1,6 +1,6 @@
 # tekton-lint
 
-> A linter for [tekton] resource defintions
+> A linter for [tekton] resource definitions
 
 ## Requirements
 
@@ -81,7 +81,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Missing `Task` definitions
 - Missing `Pipeline` definitions
 - Missing `TriggerTemplate` definitions
-- Missing `TriggerBinding` definitions 
+- Missing `TriggerBinding` definitions
 - Missing parameter declarations within `Task`s
 - Missing parameter declarations within `Pipeline`s
 - Missing parameter declarations within `TriggerTemplate`s
@@ -111,6 +111,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Unused `TriggerTemplate` parameters
 - Unpinned images in `Task` steps
 - _kebab-case_ naming violations
+- Keys without value
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
