@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "eslint './*.js'"
   },
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
   "repository": {
