@@ -112,6 +112,17 @@ const checkMissingPipelines = (triggerTemplates, pipelines) => {
   }
 };
 
+const checkParameterValues = (resourceName, resourceKind, params) => {
+  for (const param of params) {
+    const value = param.default || param.value;
+    if (value) {
+      if (typeof value === 'string') continue;
+      if (Array.isArray(value) && value.every(element => typeof element === 'string')) continue;
+      console.log(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong value type (values should be of type 'string', 'array of strings')`);
+    }
+  }
+};
+
 checkMissingPipelines(tekton.triggerTemplates, tekton.pipelines);
 
 const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
@@ -174,6 +185,9 @@ Object.entries(resources).forEach(([type, resourceList]) => {
 
 for (const task of Object.values(tekton.tasks)) {
   if (!task.spec) continue;
+  if (task.spec.inputs.params) {
+    checkParameterValues(task.metadata.name, task.kind, task.spec.inputs.params);
+  }
 
   for (const step of Object.values(task.spec.steps)) {
     const {
@@ -246,6 +260,7 @@ for (const task of Object.values(tekton.tasks)) {
 
 for (const template of Object.values(tekton.triggerTemplates)) {
   if (!template.spec.params) continue;
+  checkParameterValues(template.metadata.name, template.kind, template.spec.params);
   const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
   for (const resourceTemplate of template.spec.resourcetemplates) {
     if (!resourceTemplate.spec) continue;
@@ -318,6 +333,7 @@ for (const template of Object.values(tekton.triggerTemplates)) {
 
 for (const pipeline of Object.values(tekton.pipelines)) {
   if (pipeline.spec.params) {
+    checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params);
     const paramNames = new Set();
     for (const { name } of pipeline.spec.params) {
       if (!paramNames.has(name)) {
