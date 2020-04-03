@@ -1,0 +1,99 @@
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-1
+spec:
+  triggers:
+    - binding:
+        name: binding-with-params
+      template:
+        name: template-with-params
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-2
+spec:
+  triggers:
+    - binding:
+        name: binding-without-params
+      template:
+        name: template-without-params
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-3
+spec:
+  triggers:
+    - binding:
+        name: binding-null-params
+      template:
+        name: template-null-params
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-4
+spec:
+  triggers:
+    - binding:
+        name: binding-params-without-value
+      template:
+        name: template-without-resource-templates
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-5
+spec:
+  triggers:
+    - binding:
+        name: binding-params-duplicate
+      template:
+        name: template-with-null-resource-templates
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-with-params
+spec:
+  params:
+  - name: revision
+    value: master
+  - name: branch
+    value: "master"
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-without-params
+spec:
+  params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-null-params
+spec:
+  params:
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-params-without-value
+spec:
+  params:
+  - name: revision
+  - name: branch
+    value: "master"
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-params-duplicate
+spec:
+  params:
+  - name: revision
+  - name: branch
+  - name: revision
