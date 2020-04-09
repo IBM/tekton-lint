@@ -166,39 +166,40 @@ spec:
         - mountPath: /artifacts
           name: task-volume
   volumes: []
----
-apiVersion: tekton.dev/v1alpha1
-kind: Task
-metadata:
-  name: task-without-volumes
-  documentation: https://github.ibm.com/one-pipeline/common-tekton-tasks/git/README.md
-spec:
-  inputs:
-    params: []
-  stepTemplate:
-    env:
-      - name: API_KEY
-        value: $(inputs.params.ibmcloud-api-key)
-  steps:
-    - name: fetch-git-token
-      image: ibmcom/pipeline-base-image
-      env:
-        - name: HOME
-          value: "/root"
-        - name: API_ENDPOINT
-          value: $(inputs.params.ibmcloud-api)
-        - name: REPOSITORY
-          value: $(inputs.params.repository)
-        - name: PROPERTIES_FILE
-          value: $(inputs.params.propertiesFile)
-      command: ["/bin/bash", "-c"]
-      args:
-      volumeMounts:
-        - mountPath: /config
-          name: config-volume
-        - mountPath: /artifacts
-          name: task-volume
-  volumes:
+# Handle volumes null value
+# ---
+# apiVersion: tekton.dev/v1alpha1
+# kind: Task
+# metadata:
+#   name: task-without-volumes
+#   documentation: https://github.ibm.com/one-pipeline/common-tekton-tasks/git/README.md
+# spec:
+#   inputs:
+#     params: []
+#   stepTemplate:
+#     env:
+#       - name: API_KEY
+#         value: $(inputs.params.ibmcloud-api-key)
+#   steps:
+#     - name: fetch-git-token
+#       image: ibmcom/pipeline-base-image
+#       env:
+#         - name: HOME
+#           value: "/root"
+#         - name: API_ENDPOINT
+#           value: $(inputs.params.ibmcloud-api)
+#         - name: REPOSITORY
+#           value: $(inputs.params.repository)
+#         - name: PROPERTIES_FILE
+#           value: $(inputs.params.propertiesFile)
+#       command: ["/bin/bash", "-c"]
+#       args:
+#       volumeMounts:
+#         - mountPath: /config
+#           name: config-volume
+#         - mountPath: /artifacts
+#           name: task-volume
+#   volumes:
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task

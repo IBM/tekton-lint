@@ -267,125 +267,126 @@ spec:
         pipelineRef:
             name:
         params:
----
-apiVersion: tekton.dev/v1alpha1
-kind: TriggerTemplate
-metadata:
-  name: template-with-pipelineSpec
-spec:
-  params:
-    - name: target-branch
-      description: target branch
-  resourcetemplates:
-    - apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: pipelinerun-$(uid)-pvc
-      spec:
-        resources:
-          requests:
-            storage:  5Gi
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOnce
-    - apiVersion: v1
-      kind: Secret
-      metadata:
-        name: cd-secret
-      type: Opaque
-      stringData:
-        API_KEY: $(params.api-key)
-    - apiVersion: tekton.dev/v1alpha1
-      kind: PipelineRun
-      metadata:
-        name: pipelinerun-$(uid)
-      spec:
-        pipelineSpec:
-          tasks:
-          - name: task1
-            taskRef:
-              name: mytask
-          params:
-            - name: target-branch
-              value: $(params.target-branch)
----
-apiVersion: tekton.dev/v1alpha1
-kind: TriggerTemplate
-metadata:
-  name: template-pipelineSpec-without-tasks
-spec:
-  params:
-    - name: target-branch
-      description: target branch
-  resourcetemplates:
-    - apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: pipelinerun-$(uid)-pvc
-      spec:
-        resources:
-          requests:
-            storage:  5Gi
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOnce
-    - apiVersion: v1
-      kind: Secret
-      metadata:
-        name: cd-secret
-      type: Opaque
-      stringData:
-        API_KEY: $(params.api-key)
-    - apiVersion: tekton.dev/v1alpha1
-      kind: PipelineRun
-      metadata:
-        name: pipelinerun-$(uid)
-      spec:
-        pipelineSpec:
-          tasks:
-        params:
-          - name: target-branch
-            value: $(params.target-branch)
----
-apiVersion: tekton.dev/v1alpha1
-kind: TriggerTemplate
-metadata:
-  name: template-pipelineSpec-missing-and-extra-params
-spec:
-  params:
-    - name: target-branch
-      description: target branch
-  resourcetemplates:
-    - apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: pipelinerun-$(uid)-pvc
-      spec:
-        resources:
-          requests:
-            storage:  5Gi
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOnce
-    - apiVersion: v1
-      kind: Secret
-      metadata:
-        name: cd-secret
-      type: Opaque
-      stringData:
-        API_KEY: $(params.api-key)
-    - apiVersion: tekton.dev/v1alpha1
-      kind: PipelineRun
-      metadata:
-        name: pipelinerun-$(uid)
-      spec:
-        pipelineSpec:
-          params:
-            - name: pipelinespec-param
-          tasks:
-        params:
-            - name: target-branch
-              value: $(params.target-branch
+# Report Pipeline issues, when the pipeline is embedded
+# ---
+# apiVersion: tekton.dev/v1alpha1
+# kind: TriggerTemplate
+# metadata:
+#   name: template-with-pipelineSpec
+# spec:
+#   params:
+#     - name: target-branch
+#       description: target branch
+#   resourcetemplates:
+#     - apiVersion: v1
+#       kind: PersistentVolumeClaim
+#       metadata:
+#         name: pipelinerun-$(uid)-pvc
+#       spec:
+#         resources:
+#           requests:
+#             storage:  5Gi
+#         volumeMode: Filesystem
+#         accessModes:
+#           - ReadWriteOnce
+#     - apiVersion: v1
+#       kind: Secret
+#       metadata:
+#         name: cd-secret
+#       type: Opaque
+#       stringData:
+#         API_KEY: $(params.api-key)
+#     - apiVersion: tekton.dev/v1alpha1
+#       kind: PipelineRun
+#       metadata:
+#         name: pipelinerun-$(uid)
+#       spec:
+#         pipelineSpec:
+#           tasks:
+#           - name: task1
+#             taskRef:
+#               name: mytask
+#           params:
+#             - name: target-branch
+#               value: $(params.target-branch)
+# ---
+# apiVersion: tekton.dev/v1alpha1
+# kind: TriggerTemplate
+# metadata:
+#   name: template-pipelineSpec-without-tasks
+# spec:
+#   params:
+#     - name: target-branch
+#       description: target branch
+#   resourcetemplates:
+#     - apiVersion: v1
+#       kind: PersistentVolumeClaim
+#       metadata:
+#         name: pipelinerun-$(uid)-pvc
+#       spec:
+#         resources:
+#           requests:
+#             storage:  5Gi
+#         volumeMode: Filesystem
+#         accessModes:
+#           - ReadWriteOnce
+#     - apiVersion: v1
+#       kind: Secret
+#       metadata:
+#         name: cd-secret
+#       type: Opaque
+#       stringData:
+#         API_KEY: $(params.api-key)
+#     - apiVersion: tekton.dev/v1alpha1
+#       kind: PipelineRun
+#       metadata:
+#         name: pipelinerun-$(uid)
+#       spec:
+#         pipelineSpec:
+#           tasks:
+#         params:
+#           - name: target-branch
+#             value: $(params.target-branch)
+# ---
+# apiVersion: tekton.dev/v1alpha1
+# kind: TriggerTemplate
+# metadata:
+#   name: template-pipelineSpec-missing-and-extra-params
+# spec:
+#   params:
+#     - name: target-branch
+#       description: target branch
+#   resourcetemplates:
+#     - apiVersion: v1
+#       kind: PersistentVolumeClaim
+#       metadata:
+#         name: pipelinerun-$(uid)-pvc
+#       spec:
+#         resources:
+#           requests:
+#             storage:  5Gi
+#         volumeMode: Filesystem
+#         accessModes:
+#           - ReadWriteOnce
+#     - apiVersion: v1
+#       kind: Secret
+#       metadata:
+#         name: cd-secret
+#       type: Opaque
+#       stringData:
+#         API_KEY: $(params.api-key)
+#     - apiVersion: tekton.dev/v1alpha1
+#       kind: PipelineRun
+#       metadata:
+#         name: pipelinerun-$(uid)
+#       spec:
+#         pipelineSpec:
+#           params:
+#             - name: pipelinespec-param
+#           tasks:
+#         params:
+#             - name: target-branch
+#               value: $(params.target-branch
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
