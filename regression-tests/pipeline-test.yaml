@@ -1,0 +1,329 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-params
+spec:
+  params:
+    - name: statuses_url
+      description: the status url to update
+    - name: statuses_base_url
+      description: base url for reop to update the staus for
+    - name: pipeline-pvc
+      description: the pipeline pvc name
+    - name: ibm-cloud-api-key
+      description: ibm cloud api key
+    - name: repository
+      description: the git repo
+    - name: branch
+      description: the branch for the git repo
+    - name: origin
+      description: origin to merge the code with
+    - name: revision
+      description: |
+        the git revision/commit to update the git HEAD to.
+        Default is to mean only use the branch
+  tasks:
+    - name: task-with-params
+      taskRef:
+        name: task-with-params
+      params:
+        - name: credentials-pvc
+          value: $(params.pipeline-pvc)
+        - name: ibmcloud-api-key
+          value: $(params.ibm-cloud-api-key)
+        - name: repository
+          value: $(params.statuses_base_url)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-without-params
+spec:
+  params: []
+  tasks:
+    - name: task-with-params
+      taskRef:
+        name: task-with-params
+      params:
+        - name: credentials-pvc
+          value: $(params.pipeline-pvc)
+        - name: ibmcloud-api-key
+          value: $(params.ibm-cloud-api-key)
+        - name: repository
+          value: $(params.statuses_base_url)
+    - name: clone
+      taskRef:
+        name: git-clone
+      runAfter:
+        - get-git-credentials
+      params:
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
+        - name: repository
+          value: $(params.repository)
+        - name: branch
+          value: $(params.branch)
+        - name: origin
+          value: "master"
+        - name: revision
+          value: $(params.revision)
+    - name: linting
+      taskRef:
+        name: yaml-lint
+      runAfter:
+        - clone
+      params:
+        - name: rules
+          value: "yamllint-rules.yaml"
+        - name: fail_task
+          value: "true"
+        - name: statuses_url
+          value: $(params.statuses_url)
+        - name: task-pvc
+          value: $(params.pipeline-pvc)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-null-params
+spec:
+  params:
+  tasks:
+    - name: get-git-credentials
+      taskRef:
+        name: get-git-credentials
+      params:
+        - name: credentials-pvc
+          value: $(params.pipeline-pvc)
+        - name: ibmcloud-api-key
+          value: $(params.ibm-cloud-api-key)
+        - name: repository
+          value: $(params.statuses_base_url)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskref-without-name
+spec:
+  params:
+    - name: statuses_url
+      description: the status url to update
+    - name: statuses_base_url
+      description: base url for reop to update the staus for
+    - name: pipeline-pvc
+      description: the pipeline pvc name
+    - name: ibm-cloud-api-key
+      description: ibm cloud api key
+    - name: repository
+      description: the git repo
+    - name: branch
+      description: the branch for the git repo
+    - name: origin
+      description: origin to merge the code with
+    - name: revision
+      description: |
+        the git revision/commit to update the git HEAD to.
+        Default is to mean only use the branch
+  tasks:
+    - name: get-git-credentials
+      taskRef:
+        name:
+      params:
+        - name: credentials-pvc
+          value: $(params.pipeline-pvc)
+        - name: ibmcloud-api-key
+          value: $(params.ibm-cloud-api-key)
+        - name: repository
+          value: $(params.statuses_base_url)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskref-without-params
+spec:
+  params:
+    - name: statuses_url
+      description: the status url to update
+    - name: statuses_base_url
+      description: base url for reop to update the staus for
+    - name: pipeline-pvc
+      description: the pipeline pvc name
+    - name: ibm-cloud-api-key
+      description: ibm cloud api key
+    - name: repository
+      description: the git repo
+    - name: branch
+      description: the branch for the git repo
+    - name: origin
+      description: origin to merge the code with
+    - name: revision
+      description: |
+        the git revision/commit to update the git HEAD to.
+        Default is to mean only use the branch
+  tasks:
+    - name: get-git-credentials
+      taskRef:
+        name: task-without-params
+      params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskref-with-null-params
+spec:
+  params:
+    - name: statuses_url
+      description: the status url to update
+    - name: statuses_base_url
+      description: base url for reop to update the staus for
+    - name: pipeline-pvc
+      description: the pipeline pvc name
+    - name: ibm-cloud-api-key
+      description: ibm cloud api key
+    - name: repository
+      description: the git repo
+    - name: branch
+      description: the branch for the git repo
+    - name: origin
+      description: origin to merge the code with
+    - name: revision
+      description: |
+        the git revision/commit to update the git HEAD to.
+        Default is to mean only use the branch
+  tasks:
+    - name: get-git-credentials
+      taskRef:
+        name: task-without-params
+      params:
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: template-for-pipeline-params-tests
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        name: my-pipelinerun
+      spec:
+        pipelineRef:
+          name: pipeline-with-missing-and-extra-params
+        params:
+          - name: ok-param
+            value: foo
+          - name: extra-param
+            value: bar
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-missing-and-extra-params
+spec:
+  params:
+    - name: ok-param
+      description: a regular parameter
+    - name: missing-param
+      description: a parameter that's missing
+    - name: default-param
+      description: a parameter with a default value
+      default: foo
+  tasks: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskspec
+spec:
+  params: []
+  tasks:
+    - name: taskspec-with-extra-and-missing-params
+      taskSpec:
+        inputs:
+          params:
+            - name: bar
+        steps: []
+      params:
+        - name: foo
+          value: some-value
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskspec
+spec:
+  params: []
+  tasks:
+    - name: taskspec-without-required-params
+      taskSpec:
+        inputs:
+          params: []
+        steps: []
+      params:
+        - name: foo
+          value: some-value
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskspec
+spec:
+  params: []
+  tasks:
+    - name: taskspec-without-params
+      taskSpec:
+        inputs:
+          params:
+            - name: bar
+        steps: []
+      params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-with-taskspec
+spec:
+  params: []
+  tasks:
+    - name: taskspec-null-params
+      taskSpec:
+        inputs:
+          params:
+        steps: []
+      params:
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-task-missing-runafter
+spec:
+  params: []
+  tasks:
+   - name: foo
+     taskRef:
+       name: foo-task
+     params: []
+   - name: bar
+     runAfter:
+      - runafter-test
+     taskRef:
+       name: bar-task
+     params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline-task-with-null-runafter
+spec:
+  params: []
+  tasks:
+   - name: foo
+     taskRef:
+       name: foo-task
+     params: []
+   - name: bar
+     runAfter:
+      - 
+     taskRef:
+       name: bar-task
+     params: []

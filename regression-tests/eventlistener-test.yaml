@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener-test
+spec:
+  triggers:
+    - binding:
+        name: binding-missing
+      template:
+        name: template-missing
+# Tekton linter should handle EventListener bindings
+# ---
+# apiVersion: tekton.dev/v1alpha1
+# kind: EventListener
+# metadata:
+#   name: listener-2
+# spec:
+#   triggers:
+#       bindings:
+#        - name: binding
+#        - name: binding2
+#       template:
+#         name: template
