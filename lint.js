@@ -185,13 +185,13 @@ const resources = collectResources(docs);
 
 checkInvalidResourceKey('resourceVersion', resources);
 
-Object.entries(resources).forEach(([type, resourceList]) => {
-  Object.values(resourceList).forEach((resource) => {
+for (const [kind, resourceMap] of Object.entries(resources)) {
+  for (const resource of Object.values(resourceMap)) {
     if (!isValidName(resource.metadata.name)) {
-      error(`Invalid name for ${type} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+      error(`Invalid name for ${kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
     }
-  });
-});
+  }
+}
 
 for (const task of Object.values(tekton.tasks)) {
   if (!task.spec.inputs || !task.spec.inputs.params) continue;
