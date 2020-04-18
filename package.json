@@ -9,7 +9,8 @@
     "Collector.js"
   ],
   "scripts": {
-    "lint": "eslint './*.js'"
+    "lint": "eslint './*.js'",
+    "sanity-check": "node lint.js 'regression-tests/**/*.yaml'"
   },
   "version": "0.0.8",
   "description": "Linter for Tekton definitions",
@@ -35,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "npm run lint && npm run sanity-check",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
