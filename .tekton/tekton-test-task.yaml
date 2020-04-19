@@ -59,7 +59,7 @@ spec:
           cocoa set-status --state="pending" --targetURL=$PIPELINE_RUN_URL --context="tekton/tekton-test" --description="Testing on Tekton definitions check is running."
 
           echo "Running tekton-lint on 'compliance-ci-toolchain', 'compliance-cd-toolchain', 'common-tekton-tasks'..."
-          tekton-lint '../common-tekton-tasks/preview/**/*.(yaml|yml)' '../compliance-ci-toolchain/.pipeline/*.(yaml|yml)' '../compliance-cd-toolchain/.tekton/*.(yaml|yml)'
+          NODE_ENV=test tekton-lint '../common-tekton-tasks/preview/**/*.(yaml|yml)' '../compliance-ci-toolchain/.pipeline/*.(yaml|yml)' '../compliance-cd-toolchain/.tekton/*.(yaml|yml)'
 
           if [ $? -eq 0 ]; then
             echo "tekton-lint ran successfully!"
