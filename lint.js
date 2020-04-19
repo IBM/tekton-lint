@@ -190,17 +190,11 @@ for (const task of Object.values(tekton.tasks)) {
   }
 
   for (const step of Object.values(task.spec.steps)) {
-    const {
-      image,
-      name: stepName,
-    } = step;
-    const { name: taskName } = task.metadata;
-
-    if (/:latest$/.test(image)) {
-      console.log(`Invalid base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
+    if (/:latest$/.test(step.image)) {
+      console.log(`Invalid base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
     }
-    if (/^[^:$]*$/.test(image)) {
-      console.log(`Missing base image version '${image}' for step '${stepName}' in Task '${taskName}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
+    if (/^[^:$]*$/.test(step.image)) {
+      console.log(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
   }
   if (task.spec.inputs && task.spec.inputs.params === null) {
