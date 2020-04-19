@@ -184,11 +184,21 @@ Object.entries(resources).forEach(([type, resourceList]) => {
 });
 
 for (const task of Object.values(tekton.tasks)) {
-  if (!task.spec) continue;
-  if (task.spec.inputs.params) {
-    checkParameterValues(task.metadata.name, task.kind, task.spec.inputs.params);
-  }
+  if (!task.spec.inputs || !task.spec.inputs.params) continue;
+  checkParameterValues(task.metadata.name, task.kind, task.spec.inputs.params);
+}
 
+for (const template of Object.values(tekton.triggerTemplates)) {
+  if (!template.spec.params) continue;
+  checkParameterValues(template.metadata.name, template.kind, template.spec.params);
+}
+
+for (const pipeline of Object.values(tekton.pipelines)) {
+  if (!pipeline.spec.params) continue;
+  checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params);
+}
+
+for (const task of Object.values(tekton.tasks)) {
   for (const step of Object.values(task.spec.steps)) {
     if (/:latest$/.test(step.image)) {
       console.log(`Invalid base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
@@ -260,7 +270,6 @@ for (const task of Object.values(tekton.tasks)) {
 
 for (const template of Object.values(tekton.triggerTemplates)) {
   if (!template.spec.params) continue;
-  checkParameterValues(template.metadata.name, template.kind, template.spec.params);
   const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
   for (const resourceTemplate of template.spec.resourcetemplates) {
     if (!resourceTemplate.spec) continue;
@@ -336,7 +345,6 @@ for (const template of Object.values(tekton.triggerTemplates)) {
 
 for (const pipeline of Object.values(tekton.pipelines)) {
   if (pipeline.spec.params) {
-    checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params);
     const paramNames = new Set();
     for (const { name } of pipeline.spec.params) {
       if (!paramNames.has(name)) {
