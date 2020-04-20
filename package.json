@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "lint": "eslint './*.js'",
-    "sanity-check": "node lint.js 'regression-tests/**/*.yaml'"
+    "sanity-check": "NODE_ENV=test node lint.js 'regression-tests/**/*.yaml'"
   },
   "version": "0.0.8",
   "description": "Linter for Tekton definitions",
