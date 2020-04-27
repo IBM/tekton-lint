@@ -181,6 +181,11 @@ const naming = (resource, prefix) => (node, path) => {
   }
 };
 
+function getTaskParams(spec) {
+  if (spec.inputs) return spec.inputs.params;
+  return spec.params;
+}
+
 const resources = collectResources(docs);
 
 checkInvalidResourceKey('resourceVersion', resources);
@@ -194,8 +199,9 @@ for (const [kind, resourceMap] of Object.entries(resources)) {
 }
 
 for (const task of Object.values(tekton.tasks)) {
-  if (!task.spec.inputs || !task.spec.inputs.params) continue;
-  checkParameterValues(task.metadata.name, task.kind, task.spec.inputs.params);
+  const params = getTaskParams(task.spec);
+  if (!params) continue;
+  checkParameterValues(task.metadata.name, task.kind, params);
 }
 
 for (const template of Object.values(tekton.triggerTemplates)) {
@@ -217,23 +223,25 @@ for (const task of Object.values(tekton.tasks)) {
       warning(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
   }
-  if (task.spec.inputs && task.spec.inputs.params === null) {
-    continue;
-  }
 
-  for (const param of task.spec.inputs.params) {
+  const params = getTaskParams(task.spec);
+  if (!params) continue;
+
+  for (const param of params) {
     if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
       error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
     }
   }
 
-  const params = Object.fromEntries(task.spec.inputs.params.map(param => [param.name, 0]));
+  const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
 
-  walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, params, 'inputs.params'));
-  walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, params, 'inputs.params'));
+  walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'inputs.params'));
+  walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'inputs.params'));
+  walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'params'));
+  walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'params'));
 
-  for (const param of Object.keys(params)) {
-    if (params[param]) continue;
+  for (const param of Object.keys(occurences)) {
+    if (occurences[param]) continue;
     warning(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`);
   }
 }
@@ -243,9 +251,11 @@ for (const task of Object.values(tekton.tasks)) {
   if (typeof task.spec.volumes !== 'undefined') {
     volumes = Object.values(task.spec.volumes).map(volume => volume.name);
   }
-  if (task.spec.inputs.params) {
+
+  const params = getTaskParams(task.spec);
+  if (params) {
     const paramNames = new Set();
-    for (const { name } of task.spec.inputs.params) {
+    for (const { name } of params) {
       if (!paramNames.has(name)) {
         paramNames.add(name);
       } else {
@@ -411,9 +421,9 @@ for (const pipeline of Object.values(tekton.pipelines)) {
           }
         }
         const provided = task.params.map(param => param.name);
-        const all = tekton.tasks[name].spec.inputs.params
-          .map(param => param.name);
-        const required = tekton.tasks[name].spec.inputs.params
+        const params = getTaskParams(tekton.tasks[name].spec);
+        const all = params.map(param => param.name);
+        const required = params
           .filter(param => typeof param.default == 'undefined')
           .map(param => param.name);
 
@@ -431,17 +441,18 @@ for (const pipeline of Object.values(tekton.pipelines)) {
     }
 
     if (task.taskSpec) {
-      if (task.params == null && task.taskSpec.inputs.params == null) continue;
+      const params = getTaskParams(task.taskSpec);
+      if (task.params == null && params == null) continue;
 
       if (task.params == null) {
-        const required = task.taskSpec.inputs.params
-        .filter(param => typeof param.default == 'undefined')
-        .map(param => param.name);
+        const required = params
+          .filter(param => typeof param.default == 'undefined')
+          .map(param => param.name);
 
         for (const param of required) {
           error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
         }
-      } else if (task.taskSpec.inputs.params == null) {
+      } else if (params == null) {
           const provided = task.params.map(param => param.name);
 
           for (const param of provided) {
@@ -449,9 +460,8 @@ for (const pipeline of Object.values(tekton.pipelines)) {
         }
       } else {
         const provided = task.params.map(param => param.name);
-        const all = task.taskSpec.inputs.params
-          .map(param => param.name);
-        const required = task.taskSpec.inputs.params
+        const all = params.map(param => param.name);
+        const required = params
           .filter(param => typeof param.default == 'undefined')
           .map(param => param.name);
 
