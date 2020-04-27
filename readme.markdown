@@ -114,6 +114,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Unpinned images in `Task` steps
 - _kebab-case_ naming violations
 - Keys without value
+- `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org

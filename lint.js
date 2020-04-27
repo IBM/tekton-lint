@@ -190,6 +190,18 @@ const resources = collectResources(docs);
 
 checkInvalidResourceKey('resourceVersion', resources);
 
+for (const task of Object.values(tekton.tasks)) {
+  if (task.apiVersion === 'tekton.dev/v1alpha1') {
+    warning(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`);
+  }
+}
+
+for (const pipeline of Object.values(tekton.pipelines)) {
+  if (pipeline.apiVersion === 'tekton.dev/v1alpha1') {
+    warning(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`);
+  }
+}
+
 for (const [kind, resourceMap] of Object.entries(resources)) {
   for (const resource of Object.values(resourceMap)) {
     if (!isValidName(resource.metadata.name)) {
