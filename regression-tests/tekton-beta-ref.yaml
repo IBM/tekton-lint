@@ -1,0 +1,62 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: my-alpha-task
+spec:
+  inputs:
+    params:
+      - name: my-param
+      - name: my-unused-param
+      - name: my-missing-pipeline-param
+  steps:
+    - name: my-step
+      image: node:14
+      env:
+        - name: ENV_KEY
+          value: $(inputs.params.my-param)
+        - name: OTHER_ENV_KEY
+          value: $(inputs.params.my-missing-param)
+        - name: YET_ANOTHER_ENV_KEY
+          value: $(inputs.params.my-missing-pipeline-param)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: my-alpha-pipeline
+spec:
+  tasks:
+    - name: my-pipeline-task
+      taskRef:
+        name: my-alpha-task
+      params:
+        - name: my-param
+          value: foo
+        - name: my-unused-param
+          value: foo
+        - name: my-extra-param
+          value: bar
+    - name: my-other-pipeline-task
+      taskSpec:
+        inputs:
+          params:
+            - name: my-param
+            - name: my-unused-param
+            - name: my-missing-pipeline-param
+        steps:
+          - name: my-step
+            image: node:14
+            env:
+              - name: ENV_KEY
+                value: $(inputs.params.my-param)
+              - name: OTHER_ENV_KEY
+                value: $(inputs.params.my-missing-param)
+              - name: YET_ANOTHER_ENV_KEY
+                value: $(inputs.params.my-missing-pipeline-param)
+      params:
+        - name: my-param
+          value: foo
+        - name: my-unused-param
+          value: foo
+        - name: my-extra-param
+          value: bar
