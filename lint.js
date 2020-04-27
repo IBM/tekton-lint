@@ -202,6 +202,31 @@ for (const pipeline of Object.values(tekton.pipelines)) {
   }
 }
 
+for (const task of Object.values(tekton.tasks)) {
+  switch (task.apiVersion) {
+    case 'tekton.dev/v1alpha1':
+      if (task.spec.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.`);
+      break;
+    case 'tekton.dev/v1beta1':
+      if (task.spec.inputs && task.spec.inputs.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.`);
+      break;
+  }
+}
+
+for (const pipeline of Object.values(tekton.pipelines)) {
+  for (const task of pipeline.spec.tasks) {
+    if (!task.taskSpec) continue;
+    switch (pipeline.apiVersion) {
+      case 'tekton.dev/v1alpha1':
+        if (task.taskSpec.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (${task.name}) with spec.params. Use spec.inputs.params instead.`);
+        break;
+      case 'tekton.dev/v1beta1':
+        if (task.taskSpec.inputs && task.taskSpec.inputs.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (${task.name}) with spec.inputs.params. Use spec.params instead.`);
+        break;
+    }
+  }
+}
+
 for (const [kind, resourceMap] of Object.entries(resources)) {
   for (const resource of Object.values(resourceMap)) {
     if (!isValidName(resource.metadata.name)) {
