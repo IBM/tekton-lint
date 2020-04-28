@@ -85,7 +85,7 @@ function walk(node, path, visitor) {
 const unused = (resource, params, prefix) => (node, path) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
   const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-  const m = node.match(r1);
+  const m = node.toString().match(r1);
   if (!m) return;
   for (const item of m) {
     const m2 = item.match(r2);
