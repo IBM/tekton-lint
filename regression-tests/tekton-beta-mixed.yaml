@@ -1,0 +1,42 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: tekton-alpha-mixed
+spec:
+  params:
+    - name: my-param
+  steps: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: tekton-alpha-mixed-pipeline
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        params:
+          - name: my-param
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: tekton-beta-mixed
+spec:
+  inputs:
+    params:
+      - name: my-param
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: tekton-beta-mixed-pipeline
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        inputs:
+          params:
+            - name: my-param

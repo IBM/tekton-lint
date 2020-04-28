@@ -101,6 +101,7 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 - Missing `Task` parameter value in `Pipeline`s
 - Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter names (alpha-numeric characters, `-` and `_` and can only start with alpha characters and `_`)
 - Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter value types (must be `string`, `multiline string` or `array of strings`)
+- Invalid `Task` parameter syntax (using `v1beta1` syntax in `v1alpha1` defintions, and vice versa)
 
 ### Best practices
 
