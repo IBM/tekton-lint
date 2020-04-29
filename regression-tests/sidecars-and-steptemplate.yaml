@@ -1,0 +1,28 @@
+---
+apiVersion: v1beta1
+kind: Task
+metadata:
+  name: my-task-with-sidecars
+spec:
+  params:
+    - name: my-param
+  steps: []
+  sidecars:
+    - name: my-sidecar
+      image: my-sidecar-image
+      env:
+        - name: MY_PARAM
+          value: $(params.my-param)
+---
+apiVersion: v1beta1
+kind: Task
+metadata:
+  name: my-task-with-steptemplate
+spec:
+  params:
+    - name: my-param
+  steps: []
+  stepTemplate:
+    env:
+      - name: MY_PARAM
+        value: $(params.my-param)

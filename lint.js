@@ -85,7 +85,7 @@ function walk(node, path, visitor) {
 const unused = (resource, params, prefix) => (node, path) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
   const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-  const m = node.match(r1);
+  const m = node.toString().match(r1);
   if (!m) return;
   for (const item of m) {
     const m2 = item.match(r2);
@@ -274,8 +274,12 @@ for (const task of Object.values(tekton.tasks)) {
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'inputs.params'));
   walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'inputs.params'));
+  walk(task.spec.stepTemplate, 'spec.stepTemplate', unused(task.metadata.name, occurences, 'inputs.params'));
+  walk(task.spec.sidecars, 'spec.sidecars', unused(task.metadata.name, occurences, 'inputs.params'));
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'params'));
   walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'params'));
+  walk(task.spec.stepTemplate, 'spec.stepTemplate', unused(task.metadata.name, occurences, 'params'));
+  walk(task.spec.sidecars, 'spec.sidecars', unused(task.metadata.name, occurences, 'params'));
 
   for (const param of Object.keys(occurences)) {
     if (occurences[param]) continue;
