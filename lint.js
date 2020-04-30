@@ -32,6 +32,10 @@ if (process.argv[2]) {
   return console.log(usageMessage);
 }
 
+if (+process.version.slice(1).split('.')[0] < 12) {
+  return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
+}
+
 const docs = collector(process.argv.slice(2)).map(doc => doc.content);
 
 const tekton = {
