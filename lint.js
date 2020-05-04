@@ -410,6 +410,12 @@ for (const template of Object.values(tekton.triggerTemplates)) {
     } else {
       error(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`);
     }
+  }
+}
+
+for (const template of Object.values(tekton.triggerTemplates)) {
+  if (!template.spec.params) continue;
+  for (const { name } of template.spec.params) {
     if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
       error(`TriggerTemplate '${template.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
     }
