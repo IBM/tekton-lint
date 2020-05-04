@@ -264,7 +264,9 @@ for (const task of Object.values(tekton.tasks)) {
       warning(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
     }
   }
+}
 
+for (const task of Object.values(tekton.tasks)) {
   const params = getTaskParams(task.spec);
   if (!params) continue;
 
