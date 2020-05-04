@@ -362,7 +362,9 @@ for (const listener of Object.values(tekton.listeners)) {
       error(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`);
     }
   }
+}
 
+for (const listener of Object.values(tekton.listeners)) {
   for (const trigger of listener.spec.triggers) {
     if (!trigger.binding) continue;
     const name = trigger.binding.name;
