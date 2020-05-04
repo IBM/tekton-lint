@@ -275,7 +275,11 @@ for (const task of Object.values(tekton.tasks)) {
       error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
     }
   }
+}
 
+for (const task of Object.values(tekton.tasks)) {
+  const params = getTaskParams(task.spec);
+  if (!params) continue;
   const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
 
   walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'inputs.params'));
