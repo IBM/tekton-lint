@@ -425,20 +425,28 @@ for (const template of Object.values(tekton.triggerTemplates)) {
 }
 
 for (const pipeline of Object.values(tekton.pipelines)) {
-  if (pipeline.spec.params) {
-    const paramNames = new Set();
-    for (const { name } of pipeline.spec.params) {
-      if (!paramNames.has(name)) {
-        paramNames.add(name);
-      } else {
-        error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
-      }
-      if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
-        error(`Pipeline '${pipeline.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
-      }
+  if (!pipeline.spec.params) continue;
+  const paramNames = new Set();
+  for (const { name } of pipeline.spec.params) {
+    if (!paramNames.has(name)) {
+      paramNames.add(name);
+    } else {
+      error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
     }
   }
+}
 
+for (const pipeline of Object.values(tekton.pipelines)) {
+  if (!pipeline.spec.params) continue;
+  for (const { name } of pipeline.spec.params) {
+    if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
+      error(`Pipeline '${pipeline.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+    }
+  }
+}
+
+for (const pipeline of Object.values(tekton.pipelines)) {
+  if (!pipeline.spec.params) continue;
   for (const task of Object.values(pipeline.spec.tasks)) {
     if (task.params) {
       for (const param of Object.values(task.params)) {
