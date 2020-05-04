@@ -298,22 +298,24 @@ for (const task of Object.values(tekton.tasks)) {
 }
 
 for (const task of Object.values(tekton.tasks)) {
+  const params = getTaskParams(task.spec);
+  if (!params) continue;
+  const paramNames = new Set();
+  for (const { name } of params) {
+    if (!paramNames.has(name)) {
+      paramNames.add(name);
+    } else {
+      error(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
+    }
+  }
+}
+
+for (const task of Object.values(tekton.tasks)) {
   let volumes = [];
   if (typeof task.spec.volumes !== 'undefined') {
     volumes = Object.values(task.spec.volumes).map(volume => volume.name);
   }
 
-  const params = getTaskParams(task.spec);
-  if (params) {
-    const paramNames = new Set();
-    for (const { name } of params) {
-      if (!paramNames.has(name)) {
-        paramNames.add(name);
-      } else {
-        error(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
-      }
-    }
-  }
   for (const step of Object.values(task.spec.steps)) {
     if (typeof step.volumeMounts === 'undefined') continue;
 
