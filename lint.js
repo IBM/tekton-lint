@@ -102,17 +102,6 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
-function checkEmptyKey(path, toCheck) {
-  if (!toCheck && toCheck !== '') {
-    warning(`The following key${path} is empty please consider removing it`);
-  } else if (typeof toCheck === 'object') {
-    for (const [key, value] of Object.entries(toCheck)) {
-      checkEmptyKey(`${path}${Array.isArray(toCheck) ? ` at position: ${key}` : `.${key}`}`, value);
-    }
-  }
-}
-
-checkEmptyKey('', tekton);
 
 const checkMissingPipelines = (triggerTemplates, pipelines) => {
   for (const template of Object.values(triggerTemplates)) {
