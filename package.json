@@ -12,7 +12,7 @@
     "lint": "eslint './*.js'",
     "sanity-check": "NODE_ENV=test node lint.js 'regression-tests/**/*.yaml'"
   },
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Linter for Tekton definitions",
   "main": "lint.js",
   "repository": {
