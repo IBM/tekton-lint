@@ -164,7 +164,7 @@ const naming = (resource, prefix) => (node, path) => {
   }
 
   const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-  const m = node.match(parameterPlacementRx);
+  const m = node && node.toString().match(parameterPlacementRx);
 
   if (m) {
     name = m[1];

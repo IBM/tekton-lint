@@ -1,0 +1,12 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-with-retries
+spec:
+  params: []
+  tasks:
+    - name: my-task
+      taskRef:
+        name: my-task
+      retries: 1
