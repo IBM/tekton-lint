@@ -1,0 +1,11 @@
+.git/
+.github/
+.gitignore
+.dockerignore
+.nvmrc
+.tekton/
+.editorconfig
+.eslintrc.yml
+regression-tests/
+Dockerfile
+node_modules

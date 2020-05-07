@@ -51,6 +51,14 @@ Verify that `tekton-lint` is available by running:
 which tekton-lint
 ```
 
+### Install with Docker
+
+```sh
+git clone <this repository>
+docker build -t tekton-lint .
+docker run -v /some/host/path:/some/guest/path --rm -it tekton-lint '/some/guest/path/*.yaml'
+```
+
 ## Usage
 
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
