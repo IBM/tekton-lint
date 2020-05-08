@@ -33,6 +33,7 @@ if (process.argv[2]) {
 }
 
 if (+process.version.slice(1).split('.')[0] < 12) {
+  process.exitCode = 1;
   return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
 }
 
