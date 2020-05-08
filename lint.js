@@ -462,7 +462,9 @@ for (const pipeline of Object.values(tekton.pipelines)) {
       warning(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
     }
   }
+}
 
+for (const pipeline of Object.values(tekton.pipelines)) {
   for (const task of pipeline.spec.tasks) {
     if (task.taskRef) {
       const name = task.taskRef.name;
