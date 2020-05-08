@@ -438,15 +438,17 @@ for (const pipeline of Object.values(tekton.pipelines)) {
 for (const pipeline of Object.values(tekton.pipelines)) {
   if (!pipeline.spec.params) continue;
   for (const task of Object.values(pipeline.spec.tasks)) {
-    if (task.params) {
-      for (const param of Object.values(task.params)) {
-        if (typeof param.value == 'undefined') {
-          error(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`);
-        }
+    if (!task.params) continue;
+    for (const param of Object.values(task.params)) {
+      if (typeof param.value == 'undefined') {
+        error(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`);
       }
     }
   }
+}
 
+for (const pipeline of Object.values(tekton.pipelines)) {
+  if (!pipeline.spec.params) continue;
   const params = pipeline.spec.params && Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
   validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
