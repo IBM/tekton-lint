@@ -103,19 +103,6 @@ const unused = (resource, params, prefix) => (node, path) => {
   }
 };
 
-
-const checkMissingPipelines = (triggerTemplates, pipelines) => {
-  for (const template of Object.values(triggerTemplates)) {
-    for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (resourceTemplate.kind !== 'PipelineRun') continue;
-
-      if (!pipelines[resourceTemplate.spec.pipelineRef.name]) {
-        error(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
-      }
-    }
-  }
-};
-
 const checkParameterValues = (resourceName, resourceKind, params) => {
   for (const param of params) {
     const value = param.default || param.value;
@@ -126,8 +113,6 @@ const checkParameterValues = (resourceName, resourceKind, params) => {
     }
   }
 };
-
-checkMissingPipelines(tekton.triggerTemplates, tekton.pipelines);
 
 const checkInvalidResourceKey = (invalidKey, resources) => {
   Object.entries(resources).forEach(([type, resourceList]) => {
@@ -204,6 +189,15 @@ for (const pipeline of Object.values(tekton.pipelines)) {
       case 'tekton.dev/v1beta1':
         if (task.taskSpec.inputs && task.taskSpec.inputs.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (${task.name}) with spec.inputs.params. Use spec.params instead.`);
         break;
+    }
+  }
+}
+
+for (const template of Object.values(tekton.triggerTemplates)) {
+  for (const resourceTemplate of template.spec.resourcetemplates) {
+    if (resourceTemplate.kind !== 'PipelineRun') continue;
+    if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
+      error(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
     }
   }
 }
