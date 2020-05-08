@@ -129,19 +129,6 @@ const checkParameterValues = (resourceName, resourceKind, params) => {
 
 checkMissingPipelines(tekton.triggerTemplates, tekton.pipelines);
 
-const validateRunAfterTaskSteps = (pipelineName, pipelineTasks) => {
-  const isTaskExists = step => pipelineTasks.map(task => task.name).includes(step);
-
-  pipelineTasks.forEach(({ runAfter, name, taskRef }) => {
-    if (!runAfter) return;
-
-    runAfter.forEach((step) => {
-      if (step === name) error(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' cannot be itself.`);
-      if (!isTaskExists(step)) error(`Pipeline '${pipelineName}' defines task '${taskRef.name}' (as '${name}'), but it's runAfter step '${step}' not exist.`);
-    });
-  });
-};
-
 const checkInvalidResourceKey = (invalidKey, resources) => {
   Object.entries(resources).forEach(([type, resourceList]) => {
     Object.entries(resourceList).forEach(([name, resource]) => {
@@ -436,6 +423,17 @@ for (const pipeline of Object.values(tekton.pipelines)) {
 }
 
 for (const pipeline of Object.values(tekton.pipelines)) {
+  for (const task of pipeline.spec.tasks) {
+    if (!task.runAfter) continue;
+    for (const dependency of task.runAfter) {
+      const exists = pipeline.spec.tasks.some(task => task.name === dependency);
+      if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' references task '${task.taskRef.name}' (as '${task.name}'), and it depends on itself (declared in runAfter)`);
+      if (!exists) error(`Pipeline '${pipeline.metadata.name}' references task '${task.taskRef.name}' (as '${task.name}'), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`);
+    }
+  }
+}
+
+for (const pipeline of Object.values(tekton.pipelines)) {
   if (!pipeline.spec.params) continue;
   for (const task of Object.values(pipeline.spec.tasks)) {
     if (!task.params) continue;
@@ -450,8 +448,6 @@ for (const pipeline of Object.values(tekton.pipelines)) {
 for (const pipeline of Object.values(tekton.pipelines)) {
   if (!pipeline.spec.params) continue;
   const params = pipeline.spec.params && Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
-
-  validateRunAfterTaskSteps(pipeline.metadata.name, pipeline.spec.tasks);
 
   if (params) {
     walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
