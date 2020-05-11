@@ -61,6 +61,8 @@ docker run -v /some/host/path:/some/guest/path --rm -it tekton-lint '/some/guest
 
 ## Usage
 
+### CLI
+
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
 on the resulting document set. [More details on the pattern syntax.][pattern]
 
@@ -77,6 +79,20 @@ $ tekton-lint '**/*.yaml'
 
 # multiple glob patterns
 $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
+```
+
+### API
+
+#### `linter(globs: string[]): Promise<{message: string, level: 'error' | 'warning'}[]>`
+
+```js
+const linter = require('@cocoa/tekton-lint');
+
+const problems = await linter(['path/to/defs/**/*.yaml']);
+
+for (const problem of problems) {
+  console.log(problem.level, problem.message)
+}
 ```
 
 ## Rules
