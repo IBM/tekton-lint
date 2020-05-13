@@ -3,7 +3,10 @@ const collectResources = require('./collect-resources');
 
 module.exports = async function run(globs) {
   const docs = (await collector(globs)).map(doc => doc.content);
+  return module.exports.lint(docs);
+};
 
+module.exports.lint = function lint(docs) {
   const tekton = {
     tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
       item.metadata.name,

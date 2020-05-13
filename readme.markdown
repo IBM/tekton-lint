@@ -83,12 +83,49 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 
 ### API
 
-#### `linter(globs: string[]): Promise<{message: string, level: 'error' | 'warning'}[]>`
+#### `linter(globs: string[]): Promise<Problem[]>`
+
+Runs the linter on the provided `globs`, and resolves to the list of found problems.
+Each problem has a `level` and a `message` property.
+
+```ts
+interface Problem {
+  level: 'warning' | 'error';
+  message: string;
+}
+```
+
+##### Example
 
 ```js
 const linter = require('@cocoa/tekton-lint');
 
 const problems = await linter(['path/to/defs/**/*.yaml']);
+
+for (const problem of problems) {
+  console.log(problem.level, problem.message)
+}
+```
+
+#### `linter.lint(docs: any[]): Problem[]`
+
+Runs the linter on the provided parsed documents. Returns the list of found problems.
+
+##### Example
+
+```js
+const linter = require('@cocoa/tekton-lint');
+
+const problems = linter.lint([{
+  apiVersion: 'tekton.dev/v1beta1',
+  kind: 'Task',
+  metadata: {
+    name: 'my-task',
+  },
+  spec: {
+    steps: [],
+  },
+}]);
 
 for (const problem of problems) {
   console.log(problem.level, problem.message)
