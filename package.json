@@ -4,6 +4,8 @@
     "registry": "https://eu.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/"
   },
   "files": [
+    "utils.js",
+    "watch.js",
     "lint.js",
     "rules.js",
     "collect-resources.js",
@@ -26,6 +28,7 @@
   "author": "Bence Dányi <bence.danyi@ibm.com>",
   "license": "MIT",
   "dependencies": {
+    "chokidar": "^3.4.0",
     "fast-glob": "^3.2.2",
     "yaml": "^1.8.2"
   },
