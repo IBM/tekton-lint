@@ -509,9 +509,8 @@ module.exports.lint = function lint(docs) {
     for (const template of Object.values(tekton.triggerTemplates)) {
       const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
       if (!matchingResource) continue;
-      if (pipeline.spec.params == null || matchingResource.spec.params == null) continue;
-      const pipelineParams = pipeline.spec.params;
-      const templateParams = matchingResource.spec.params;
+      const pipelineParams = pipeline.spec.params || [];
+      const templateParams = matchingResource.spec.params || [];
 
       const missing = pipelineParams.filter(pipelineParam => !templateParams.some(templateParam => templateParam.name === pipelineParam.name) && typeof pipelineParam.default === 'undefined');
       const extra = templateParams.filter(templateParam => !pipelineParams.some(pipelineParam => pipelineParam.name === templateParam.name));
