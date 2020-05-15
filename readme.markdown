@@ -66,8 +66,11 @@ docker run -v /some/host/path:/some/guest/path --rm -it tekton-lint '/some/guest
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
 on the resulting document set. [More details on the pattern syntax.][pattern]
 
+Using `tekton-lint` in watch mode will monitor for any changes in the provided paths and automatically run the linter again. 
+
 ```sh
 Options:
+$ tekton-lint --watch   # Run tekton-lint in watch mode
 $ tekton-lint --version # Show version number
 $ tekton-lint --help    # Show help
 
@@ -79,6 +82,9 @@ $ tekton-lint '**/*.yaml'
 
 # multiple glob patterns
 $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
+
+# Watch mode
+$ tekton-lint --watch '**/*.yaml'
 ```
 
 ### API
