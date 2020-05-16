@@ -428,14 +428,21 @@ module.exports.lint = function lint(docs) {
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     for (const task of pipeline.spec.tasks) {
+      if (!task.taskRef) continue;
+      const name = task.taskRef.name;
+
+      if (!tekton.tasks[name]) {
+        error(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
+        continue;
+      }
+    }
+  }
+
+  for (const pipeline of Object.values(tekton.pipelines)) {
+    for (const task of pipeline.spec.tasks) {
       if (task.taskRef) {
         const name = task.taskRef.name;
-
-        if (!tekton.tasks[name]) {
-          error(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
-          continue;
-        }
-
+        if (!tekton.tasks[name]) continue;
         if (task.params) {
           const taskParamNames = new Set();
           for (const param of task.params) {
