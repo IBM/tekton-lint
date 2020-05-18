@@ -58,3 +58,16 @@ spec:
           value: foo
         - name: my-extra-param
           value: bar
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-pipeline-with-workspace
+spec:
+  tasks:
+    - name: my-task
+      taskRef:
+        name: my-task-with-workspace
+      workspaces:
+        - name: my-workspace
+          workspace: my-workspace
