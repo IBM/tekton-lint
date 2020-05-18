@@ -531,5 +531,18 @@ module.exports.lint = function lint(docs) {
     }
   }
 
+  for (const pipeline of Object.values(tekton.pipelines)) {
+    const pipelineWorkspaces = pipeline.spec.workspaces || [];
+    for (const task of pipeline.spec.tasks) {
+      if (!task.workspaces) continue;
+      for (const workspace of task.workspaces) {
+        const matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.workspace);
+        if (!matchingWorkspace) {
+          error(`Pipeline '${pipeline.metadata.name}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${pipeline.metadata.name}'`);
+        }
+      }
+    }
+  }
+
   return problems;
 };
