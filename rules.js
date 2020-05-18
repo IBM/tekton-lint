@@ -544,5 +544,25 @@ module.exports.lint = function lint(docs) {
     }
   }
 
+  for (const task of Object.values(tekton.tasks)) {
+    if (!task.spec.workspaces) continue;
+    const taskName = task.metadata.name;
+    const requiredWorkspaces = task.spec.workspaces.map(ws => ws.name);
+
+    for (const pipeline of Object.values(tekton.pipelines)) {
+      const matchingTaskRefs = pipeline.spec.tasks.filter(task => task.taskRef && task.taskRef.name === taskName);
+
+      for (const taskRef of matchingTaskRefs) {
+        const usedWorkspaces = taskRef.workspaces || [];
+
+        for (const required of requiredWorkspaces) {
+          if (!usedWorkspaces.find(ws => ws.workspace === required)) {
+            error(`Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`);
+          }
+        }
+      }
+    }
+  }
+
   return problems;
 };

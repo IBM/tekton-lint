@@ -60,6 +60,15 @@ spec:
           value: bar
 ---
 apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: my-task-with-workspace
+spec:
+  workspaces:
+    - name: missing-task-workspace
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: my-pipeline-with-workspace
