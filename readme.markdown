@@ -198,3 +198,9 @@ We track our issues in [this github repository](https://github.ibm.com/cocoa/boa
 Please use the following issue templates to:
 - [Report a Bug](https://github.ibm.com/cocoa/board/issues/new?template=bug.md)
 - [Request a Feature](https://github.ibm.com/cocoa/board/issues/new?template=feature.md)
+
+## Contributing
+
+Make sure that you pass sanity checks (`npm run sanity-check`). In case you
+add/remove/change rules, or add/remove/change regression tests you have to
+manually update the reference output (`ref.log`).

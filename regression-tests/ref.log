@@ -1,0 +1,159 @@
+Error: Resource ServiceAccount 'tutorial-service' has an invalid 'resourceVersion' key in its resource definition.
+Warning: Task 'task-with-params-and-inputs' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'task-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'task-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'task-without-volumes' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'task-with-undefined-volume' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Task 'my-alpha-task' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-taskref-without-name' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-taskref-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-missing-and-extra-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-with-taskspec' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-task-missing-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'pipeline-task-with-null-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Warning: Pipeline 'my-alpha-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
+Error: Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.
+Error: Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.
+Error: Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.
+Error: Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.
+Error: TriggerTemplate 'template-without-params' references pipeline 'pr-pipeline', but the referenced pipeline cannot be found.
+Error: TriggerTemplate 'template-pipelineref-null' references pipeline 'pipelineref-missing', but the referenced pipeline cannot be found.
+Error: TriggerTemplate 'template-without-pipelineref' references pipeline 'null', but the referenced pipeline cannot be found.
+Error: TriggerTemplate 'template-with-null-pipelinerun-params' references pipeline 'null', but the referenced pipeline cannot be found.
+Error: Invalid name for TriggerTemplate 'template-with-serviceAccount'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-params-and-inputs'. Specify the base image version, so Tasks can be consistent, and preferably immutable
+Warning: Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-without-params'. Specify the base image version, so Tasks can be consistent, and preferably immutable
+Warning: Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-null-params'. Specify the base image version, so Tasks can be consistent, and preferably immutable
+Warning: Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-without-volumes'. Specify the base image version, so Tasks can be consistent, and preferably immutable
+Warning: Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-undefined-volume'. Specify the base image version, so Tasks can be consistent, and preferably immutable
+Warning: Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec
+Warning: Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec
+Error: Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-params'
+Error: Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-params'
+Error: Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-params'
+Error: Undefined param 'credentials-pvc' at spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'
+Error: Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-params'
+Error: Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-volumes'
+Error: Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-volumes'
+Error: Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-volumes'
+Error: Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-volumes'
+Error: Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-with-undefined-volume'
+Error: Undefined param 'repository' at spec.steps[0].env[2].value in 'task-with-undefined-volume'
+Error: Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-with-undefined-volume'
+Error: Undefined param 'credentials-pvc' at spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'
+Error: Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-with-undefined-volume'
+Warning: Task 'tekton-alpha-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec
+Warning: Task 'tekton-beta-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec
+Error: Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-alpha-task'
+Warning: Task 'my-alpha-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec
+Error: Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-beta-task'
+Warning: Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec
+Error: Task 'task-without-volumes' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.
+Error: Task 'task-without-volumes' wants to mount volume 'task-volume' in step 'fetch-git-token', but this volume is not defined.
+Error: Task 'task-with-undefined-volume' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.
+Error: Undefined param 'target-branch' at resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'
+Warning: TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs
+Warning: TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs
+Warning: TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs
+Warning: TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs
+Warning: TriggerTemplate 'template-with-serviceAccount' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs
+Error: EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.
+Error: EventListener 'listener-3' defines trigger template 'template-null-params', but the trigger template is missing.
+Error: EventListener 'listener-5' defines trigger template 'template-with-null-resource-templates', but the trigger template is missing.
+Error: EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.
+Error: EventListener 'listener-4' defines trigger binding 'binding-params-without-value', but the trigger binding is missing.
+Error: EventListener 'listener-5' defines trigger binding 'binding-params-duplicate', but the trigger binding is missing.
+Error: Pipeline 'pipeline-without-params' references task 'git-clone' (as 'clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' (as 'bar'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' (as 'bar'), and it depends on 'null', which doesn't exists (declared in runAfter)
+Warning: Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec
+Error: Undefined param 'pipeline-pvc' at spec.steps[0].params[0].value in 'pipeline-without-params'
+Error: Undefined param 'ibm-cloud-api-key' at spec.steps[0].params[1].value in 'pipeline-without-params'
+Error: Undefined param 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-without-params'
+Error: Undefined param 'pipeline-pvc' at spec.steps[1].params[0].value in 'pipeline-without-params'
+Error: Undefined param 'repository' at spec.steps[1].params[1].value in 'pipeline-without-params'
+Error: Undefined param 'branch' at spec.steps[1].params[2].value in 'pipeline-without-params'
+Error: Undefined param 'revision' at spec.steps[1].params[4].value in 'pipeline-without-params'
+Error: Undefined param 'statuses_url' at spec.steps[2].params[2].value in 'pipeline-without-params'
+Error: Undefined param 'pipeline-pvc' at spec.steps[2].params[3].value in 'pipeline-without-params'
+Warning: Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Invalid name for 'fail_task' at spec.steps[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Invalid name for 'statuses_url' at spec.steps[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Invalid name for 'statuses_url' at spec.steps[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.
+Warning: Pipeline 'pipeline-with-taskref-without-name' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-name' defines parameter 'repository', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-name' defines parameter 'branch', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-name' defines parameter 'origin', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-name' defines parameter 'revision', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'statuses_base_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'pipeline-pvc', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'ibm-cloud-api-key', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-without-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'statuses_base_url', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'pipeline-pvc', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'ibm-cloud-api-key', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'ok-param', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'missing-param', but it's not used anywhere in the pipeline spec
+Warning: Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'default-param', but it's not used anywhere in the pipeline spec
+Error: Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.
+Error: Pipeline 'tekton-alpha-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')
+Error: Pipeline 'tekton-beta-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')
+Error: Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter
+Error: Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-alpha-task')
+Error: Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter
+Error: Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')
+Error: Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter
+Error: Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-beta-task')
+Error: Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter
+Error: Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')
+Warning: TriggerTemplate 'template-with-params' references pipeline 'pipeline-with-params', and supplies 'target-branch', but it's not a valid parameter.
+Error: Pipeline 'pipeline-with-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'repository', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'branch', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'origin', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-params' references param 'revision', but it is not supplied in triggerTemplate 'template-with-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'repository', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'branch', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'origin', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Error: Pipeline 'pipeline-with-taskref-without-params' references param 'revision', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'
+Warning: TriggerTemplate 'template-for-pipeline-params-tests' references pipeline 'pipeline-with-missing-and-extra-params', and supplies 'extra-param', but it's not a valid parameter.
+Error: Pipeline 'pipeline-with-missing-and-extra-params' references param 'missing-param', but it is not supplied in triggerTemplate 'template-for-pipeline-params-tests'
+Error: TriggerTemplate 'my-trigger-template-with-workspace' references Pipeline 'my-pipeline-with-workspace', but provides no workspace for 'missing-pipeline-workspace' (it's a required workspace in 'my-pipeline-with-workspace')
