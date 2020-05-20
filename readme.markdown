@@ -155,7 +155,8 @@ for (const problem of problems) {
 - Missing volume definitions in `Task`s
 - Missing required `Pipeline` parameters in `TriggerTemplate`s
 - Missing required `Task` parameters in `Pipeline`s
-- Missing required `Workspaces` of `Task`s referenced in `Pipeline`s
+- Missing required workspaces of `Task`s referenced in `Pipeline`s
+- Missing required workspaces of `Pipeline`s referenced in `TriggerTemplate`s
 - Extra parameters passed to `Pipeline`s
 - Extra parameters passed to `Task`s
 - Invalid `runAfter` conditions

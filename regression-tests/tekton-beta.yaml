@@ -80,3 +80,25 @@ spec:
       workspaces:
         - name: my-workspace
           workspace: my-workspace
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-pipeline-with-workspace
+spec:
+  workspaces:
+    - name: missing-pipeline-workspace
+  tasks: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: my-trigger-template-with-workspace
+spec:
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: my-pipeline-run
+      spec:
+        pipelineRef:
+          name: my-pipeline-with-workspace
