@@ -575,7 +575,7 @@ module.exports.lint = function lint(docs) {
         const provided = pipelineRun.workspaces || [];
 
         for (const workspace of required) {
-          if (!provided.find(ws => ws.workspace === workspace)) {
+          if (!provided.find(ws => ws.name === workspace)) {
             error(`TriggerTemplate '${template.metadata.name}' references Pipeline '${pipeline.metadata.name}', but provides no workspace for '${workspace}' (it's a required workspace in '${pipeline.metadata.name}')`);
           }
         }
