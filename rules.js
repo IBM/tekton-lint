@@ -556,7 +556,7 @@ module.exports.lint = function lint(docs) {
         const usedWorkspaces = taskRef.workspaces || [];
 
         for (const required of requiredWorkspaces) {
-          if (!usedWorkspaces.find(ws => ws.workspace === required)) {
+          if (!usedWorkspaces.find(ws => ws.name === required)) {
             error(`Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`);
           }
         }
