@@ -15,7 +15,7 @@
     "lint": "eslint './*.js'",
     "sanity-check": "./regression-tests/run.sh"
   },
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Linter for Tekton definitions",
   "main": "rules.js",
   "repository": {
