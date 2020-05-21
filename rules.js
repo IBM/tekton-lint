@@ -572,7 +572,7 @@ module.exports.lint = function lint(docs) {
       const pipelineRuns = template.spec.resourcetemplates.filter(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
 
       for (const pipelineRun of pipelineRuns) {
-        const provided = pipelineRun.workspaces || [];
+        const provided = pipelineRun.spec.workspaces || [];
 
         for (const workspace of required) {
           if (!provided.find(ws => ws.name === workspace)) {
