@@ -257,7 +257,7 @@ module.exports.lint = function lint(docs) {
 
   for (const task of Object.values(tekton.tasks)) {
     let volumes = [];
-    if (typeof task.spec.volumes !== 'undefined') {
+    if (task.spec.volumes) {
       volumes = Object.values(task.spec.volumes).map(volume => volume.name);
     }
 
