@@ -88,13 +88,13 @@ spec:
 #   - name: revision
 #   - name: branch
 #     value: "master"
-# ---
-# apiVersion: tekton.dev/v1alpha1
-# kind: TriggerBinding
-# metadata:
-#   name: binding-params-duplicate
-# spec:
-#   params:
-#   - name: revision
-#   - name: branch
-#   - name: revision
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-params-duplicate
+spec:
+  params:
+  - name: revision
+  - name: branch
+  - name: revision
