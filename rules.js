@@ -586,7 +586,7 @@ module.exports.lint = function lint(docs) {
   for (const triggerBinding of Object.values(tekton.triggerBindings)) {
     if (!triggerBinding.spec.params) continue;
     for (const param of triggerBinding.spec.params) {
-      if (param.value === undefined) error(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`);
+      if (param.value === undefined) warning(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`);
     }
   }
 

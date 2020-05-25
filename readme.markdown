@@ -149,7 +149,6 @@ for (const problem of problems) {
 - Missing `Pipeline` definitions
 - Missing `TriggerTemplate` definitions
 - Missing `TriggerBinding` definitions
-- Missing `TriggerBinding` parameter values
 - Missing parameter declarations within `Task`s
 - Missing parameter declarations within `Pipeline`s
 - Missing parameter declarations within `TriggerTemplate`s
@@ -186,6 +185,7 @@ for (const problem of problems) {
 - Unpinned images in `Task` steps
 - _kebab-case_ naming violations
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
+- Missing `TriggerBinding` parameter values
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
