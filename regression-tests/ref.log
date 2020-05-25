@@ -67,7 +67,6 @@ Error: EventListener 'listener-test' defines trigger template 'template-missing'
 Error: EventListener 'listener-3' defines trigger template 'template-null-params', but the trigger template is missing.
 Error: EventListener 'listener-5' defines trigger template 'template-with-null-resource-templates', but the trigger template is missing.
 Error: EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.
-Error: EventListener 'listener-4' defines trigger binding 'binding-params-without-value', but the trigger binding is missing.
 Error: TriggerBinding 'binding-params-duplicate' has param 'revision' duplicated.
 Error: Pipeline 'pipeline-without-params' references task 'git-clone' (as 'clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)
 Error: Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' (as 'bar'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)
@@ -157,3 +156,4 @@ Error: Pipeline 'pipeline-with-taskref-without-params' references param 'revisio
 Warning: TriggerTemplate 'template-for-pipeline-params-tests' references pipeline 'pipeline-with-missing-and-extra-params', and supplies 'extra-param', but it's not a valid parameter.
 Error: Pipeline 'pipeline-with-missing-and-extra-params' references param 'missing-param', but it is not supplied in triggerTemplate 'template-for-pipeline-params-tests'
 Error: TriggerTemplate 'my-trigger-template-with-workspace' references Pipeline 'my-pipeline-with-workspace', but provides no workspace for 'missing-pipeline-workspace' (it's a required workspace in 'my-pipeline-with-workspace')
+Error: TriggerBinding 'binding-params-without-value' defines parameter 'revision' with missing value

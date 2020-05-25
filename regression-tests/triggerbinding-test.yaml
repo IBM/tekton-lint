@@ -77,17 +77,16 @@ metadata:
   name: binding-null-params
 spec:
   params:
-# Report missing params value
-# ---
-# apiVersion: tekton.dev/v1alpha1
-# kind: TriggerBinding
-# metadata:
-#   name: binding-params-without-value
-# spec:
-#   params:
-#   - name: revision
-#   - name: branch
-#     value: "master"
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding-params-without-value
+spec:
+  params:
+  - name: revision
+  - name: branch
+    value: "master"
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
@@ -96,5 +95,8 @@ metadata:
 spec:
   params:
   - name: revision
+    value: ""
   - name: branch
+    value: "master"
   - name: revision
+    value: "master"

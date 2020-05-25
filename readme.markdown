@@ -149,6 +149,7 @@ for (const problem of problems) {
 - Missing `Pipeline` definitions
 - Missing `TriggerTemplate` definitions
 - Missing `TriggerBinding` definitions
+- Missing `TriggerBinding` parameter values
 - Missing parameter declarations within `Task`s
 - Missing parameter declarations within `Pipeline`s
 - Missing parameter declarations within `TriggerTemplate`s
