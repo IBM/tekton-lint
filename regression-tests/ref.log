@@ -1,3 +1,14 @@
+Error: 'my-duplicated-task' is already defined (as a 'Task'), it can't be redefined (as a 'Task')
+Error: 'my-duplicated-pipeline' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')
+Error: 'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding'), it can't be redefined (as a 'TriggerBinding')
+Error: 'my-duplicated-eventlistener' is already defined (as a 'EventListener'), it can't be redefined (as a 'EventListener')
+Error: 'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')
+Error: 'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')
+Error: 'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')
+Error: 'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')
+Error: 'task-without-volumes' is already defined (as a 'Task'), it can't be redefined (as a 'Task')
+Error: 'my-pipeline-with-workspace' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')
+Error: 'template-pipelineref-null' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')
 Error: Resource ServiceAccount 'tutorial-service' has an invalid 'resourceVersion' key in its resource definition.
 Warning: Task 'task-with-params-and-inputs' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1
 Warning: Task 'task-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1

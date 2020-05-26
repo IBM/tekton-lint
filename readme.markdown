@@ -161,6 +161,7 @@ for (const problem of problems) {
 - Extra parameters passed to `Task`s
 - Invalid `runAfter` conditions
 - Invalid `resourceVersion` key
+- Duplicate resources (of all supported resource kinds)
 - Duplicate parameters name in `Task`s
 - Duplicate environment variables in `Step`s
 - Duplicate `PipelineRun`'s parameters name in `TriggerTemplate`s

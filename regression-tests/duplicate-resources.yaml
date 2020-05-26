@@ -1,0 +1,100 @@
+---
+kind: Task
+metadata:
+  name: my-duplicated-task
+spec:
+  steps: []
+---
+kind: Task
+metadata:
+  name: my-duplicated-task
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-duplicated-pipeline
+spec:
+  tasks:
+    - name: my-pipeline-task
+      taskRef:
+        name: my-beta-task
+    - name: my-other-pipeline-task
+      taskRef:
+        name: my-beta-task
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-duplicated-pipeline
+spec:
+  tasks:
+    - name: my-pipeline-task
+      taskRef:
+        name: my-beta-task
+    - name: my-other-pipeline-task
+      taskRef:
+        name: my-beta-task
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: my-duplicated-triggerbinding
+spec:
+  params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: my-duplicated-triggerbinding
+spec:
+  params: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: my-duplicated-eventlistener
+spec:
+  triggers:
+    - binding:
+        name: my-duplicated-triggerbinding
+      template:
+        name: my-duplicated-triggertemplate
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: my-duplicated-eventlistener
+spec:
+  triggers:
+    - binding:
+        name: my-duplicated-triggerbinding
+      template:
+        name: my-duplicated-triggertemplate
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: my-duplicated-triggertemplate
+spec:
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: my-pipeline-run
+      spec:
+        pipelineRef:
+          name: my-duplicated-pipeline
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: my-duplicated-triggertemplate
+spec:
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: my-pipeline-run
+      spec:
+        pipelineRef:
+          name: my-duplicated-pipeline

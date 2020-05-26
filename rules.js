@@ -46,6 +46,15 @@ module.exports.lint = function lint(docs) {
     });
   }
 
+  const resourceSet = {};
+  for (const resource of docs) {
+    if (resourceSet[resource.metadata.name]) {
+      error(`'${resource.metadata.name}' is already defined (as a '${resourceSet[resource.metadata.name].kind}'), it can't be redefined (as a '${resource.kind}')`);
+    } else {
+      resourceSet[resource.metadata.name] = resource;
+    }
+  }
+
   function walk(node, path, visitor) {
     if (typeof node === 'string' || typeof node === 'number') {
       visitor(node, path);
