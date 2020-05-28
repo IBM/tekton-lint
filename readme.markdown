@@ -66,7 +66,7 @@ docker run -v /some/host/path:/some/guest/path --rm -it tekton-lint '/some/guest
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
 on the resulting document set. [More details on the pattern syntax.][pattern]
 
-Using `tekton-lint` in watch mode will monitor for any changes in the provided paths and automatically run the linter again. 
+Using `tekton-lint` in watch mode will monitor for any changes in the provided paths and automatically run the linter again.
 
 ```sh
 Options:
@@ -222,6 +222,7 @@ for (const problem of problems) {
 - Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter value types (must be `string`, `multiline string` or `array of strings`)
 - Invalid `Task` parameter syntax (using `v1beta1` syntax in `v1alpha1` defintions, and vice versa)
 - Invalid (undefined) `Workspace` references in `Task`s of `Pipeline`s
+- Missing referenced `Task` in another `Task`'s parameter in `Pipeline`s
 
 ### Best practices
 

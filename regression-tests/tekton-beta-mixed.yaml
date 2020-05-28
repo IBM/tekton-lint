@@ -40,3 +40,18 @@ spec:
         inputs:
           params:
             - name: my-param
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: tekton-task-with-4-params
+spec:
+  params:
+    - name: my-param1
+    - name: my-param2
+    - name: my-param3
+  steps:
+    - name: script
+      image: ibmcom/pipeline-base-image:2.6
+      script: |
+        echo $(params.my-param1) $(params.my-param2) $(params.my-param3)

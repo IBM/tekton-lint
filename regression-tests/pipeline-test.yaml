@@ -390,3 +390,23 @@ spec:
     - name: my-step
       image: node:14
       script: 'echo $(params.my-param) $(params.my-param-2)'
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-with-missing-task-in-param
+spec:
+  tasks:
+    - name: tekton-task-with-4-params
+      taskRef:
+        name: tekton-task-with-4-params
+      params:
+        - name: my-param1
+          value: $(tasks.missing.results.foo)
+        - name: my-param2
+          value: "$(tasks.another.results.foo)"
+        - name: my-param3
+          value: >
+            [
+              "$(tasks.incident-issues-of-va-scan.results.issue-url)"
+            ]

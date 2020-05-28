@@ -3590,6 +3590,51 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 46,
+      "endLine": 405,
+      "range": Array [
+        9575,
+        9603,
+      ],
+      "startColumn": 18,
+      "startLine": 405,
+    },
+    "message": "Task 'tekton-task-with-4-params' refers to task 'missing' at value of param 'my-param1' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 48,
+      "endLine": 407,
+      "range": Array [
+        9647,
+        9677,
+      ],
+      "startColumn": 18,
+      "startLine": 407,
+    },
+    "message": "Task 'tekton-task-with-4-params' refers to task 'another' at value of param 'my-param2' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 413,
+      "range": Array [
+        9721,
+        9821,
+      ],
+      "startColumn": 18,
+      "startLine": 409,
+    },
+    "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 1,
       "endLine": 51,
       "range": Array [
@@ -4682,6 +4727,18 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'workspaces-test-4' provides workspace 'ws2' for 'ws2' for Task 'my-task', but 'ws2' doesn't exists in 'workspaces-test-4'",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'tekton-task-with-4-params' refers to task 'missing' at value of param 'my-param1' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'tekton-task-with-4-params' refers to task 'another' at value of param 'my-param2' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
   },
   Object {
     "level": "error",
