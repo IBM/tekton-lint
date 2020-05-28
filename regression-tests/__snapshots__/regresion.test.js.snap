@@ -3707,6 +3707,21 @@ Array [
     "message": "TriggerBinding 'binding-params-without-value' defines parameter 'revision' with missing value",
     "path": "./regression-tests/triggerbinding-test.yaml",
   },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 379,
+      "range": Array [
+        9023,
+        9054,
+      ],
+      "startColumn": 18,
+      "startLine": 379,
+    },
+    "message": "In Pipeline 'my-pipeline-with-undefined-result-reference' the value on path '.spec.tasks[1].params[1].value' refers to an undefined output result (as '$(tasks.first-task.results.bar)' - 'bar' is not a result in Task 'first-task')",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
 ]
 `;
 
@@ -4699,6 +4714,10 @@ Array [
   Object {
     "level": "warning",
     "message": "TriggerBinding 'binding-params-without-value' defines parameter 'revision' with missing value",
+  },
+  Object {
+    "level": "error",
+    "message": "In Pipeline 'my-pipeline-with-undefined-result-reference' the value on path '.spec.tasks[1].params[1].value' refers to an undefined output result (as '$(tasks.first-task.results.bar)' - 'bar' is not a result in Task 'first-task')",
   },
 ]
 `;

@@ -201,6 +201,7 @@ for (const problem of problems) {
 - Missing parameter declarations within `Pipeline`s
 - Missing parameter declarations within `TriggerTemplate`s
 - Missing volume definitions in `Task`s
+- Missing `Task` output `result`s
 - Missing required `Pipeline` parameters in `TriggerTemplate`s
 - Missing required `Task` parameters in `Pipeline`s
 - Missing required workspaces of `Task`s referenced in `Pipeline`s

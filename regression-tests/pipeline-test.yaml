@@ -357,3 +357,36 @@ spec:
             image: ibmcom/pipeline-base-image:2.6
             script: |
                 echo "Hello World!"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-pipeline-with-undefined-result-reference
+spec:
+  tasks:
+    - name: first-task
+      taskSpec:
+        results:
+          - name: foo
+        steps: []
+    - name: my-task-run
+      taskRef:
+        name: bar-task-result
+      params:
+        - name: my-param
+          value: $(tasks.first-task.results.foo)
+        - name: my-param-2
+          value: $(tasks.first-task.results.bar)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: bar-task-result
+spec:
+  params:
+    - name: my-param
+    - name: my-param-2
+  steps:
+    - name: my-step
+      image: node:14
+      script: 'echo $(params.my-param) $(params.my-param-2)'
