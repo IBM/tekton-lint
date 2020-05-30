@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "lint": "eslint './*.js'",
-    "sanity-check": "./regression-tests/run.sh"
+    "test": "jest"
   },
   "version": "0.0.19",
   "description": "Linter for Tekton definitions",
@@ -36,14 +36,15 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "eslint": "^6.8.0",
-    "husky": "^4.2.3"
+    "husky": "^4.2.3",
+    "jest": "^26.0.1"
   },
   "engines": {
     "node": ">= 12.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run sanity-check",
+      "pre-commit": "npm run lint && npm test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
