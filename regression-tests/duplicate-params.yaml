@@ -1,0 +1,84 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: duplicate-params-task-alpha
+spec:
+  inputs:
+    params:
+      - name: foo
+      - name: foo
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: duplicate-params-task
+spec:
+  params:
+    - name: foo
+    - name: foo
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: duplicate-params-pipeline
+spec:
+  params:
+    - name: foo
+    - name: foo
+  tasks:
+    - name: my-task
+      taskRef:
+        name: duplicate-params-task
+      params:
+        - name: foo
+          value: foo
+        - name: foo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: duplicate-params-pipeline-alpha-embedded
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        inputs:
+          params:
+            - name: foo
+            - name: foo
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: duplicate-params-pipeline-embedded
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        params:
+          - name: foo
+          - name: foo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: duplicate-params-trigger
+spec:
+  params:
+    - name: foo
+    - name: foo
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: duplicate-params-run
+      spec:
+        pipelineRef:
+          name: duplicate-params-pipeline
+        params:
+          - name: foo
+            value: foo
+          - name: foo
+            value: foo

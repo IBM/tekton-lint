@@ -1,0 +1,19 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: array-params
+spec:
+  params:
+    - name: foo
+      default:
+        - foo
+        - bar
+    - name: bar
+      default:
+        - 1
+        - bar
+    - name: baz
+      default:
+        foo: bar
+  steps: []

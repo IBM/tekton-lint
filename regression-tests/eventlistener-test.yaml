@@ -8,6 +8,10 @@ spec:
         name: binding-missing
       template:
         name: template-missing
+    - binding:
+        name: binding-missing
+    - template:
+        name: template-missing
 # Tekton linter should handle EventListener bindings
 # ---
 # apiVersion: tekton.dev/v1alpha1

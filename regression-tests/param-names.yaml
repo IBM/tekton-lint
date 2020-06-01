@@ -1,0 +1,30 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: param-names-task
+spec:
+  params:
+    - name: 1foo
+    - name: fo o
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: param-names-pipeline
+spec:
+  params:
+    - name: 1foo
+    - name: fo o
+  tasks: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: param-names-trigger
+spec:
+  params:
+    - name: 1foo
+    - name: fo o
+  resourcetemplates: []

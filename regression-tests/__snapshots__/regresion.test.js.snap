@@ -52,6 +52,14 @@ Array [
   },
   Object {
     "level": "warning",
+    "message": "Task 'duplicate-params-task-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-duplicate-params-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
     "message": "Task 'task-with-params-and-inputs' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
   },
   Object {
@@ -77,6 +85,10 @@ Array [
   Object {
     "level": "warning",
     "message": "Task 'my-alpha-task' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
   },
   Object {
     "level": "warning",
@@ -112,11 +124,23 @@ Array [
   },
   Object {
     "level": "warning",
+    "message": "Pipeline 'pipeline-with-taskspec-2' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
     "message": "Pipeline 'pipeline-task-missing-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
   },
   Object {
     "level": "warning",
     "message": "Pipeline 'pipeline-task-with-null-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
   },
   Object {
     "level": "warning",
@@ -133,6 +157,10 @@ Array [
   Object {
     "level": "error",
     "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
   },
   Object {
     "level": "error",
@@ -163,6 +191,22 @@ Array [
     "message": "Invalid name for TriggerTemplate 'template-with-serviceAccount'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
+    "level": "error",
+    "message": "Task 'array-params' defines parameter 'bar' with wrong value type (values should be of type 'string', 'array of strings')",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'array-params' defines parameter 'baz' with wrong value type (values should be of type 'string', 'array of strings')",
+  },
+  Object {
+    "level": "warning",
+    "message": "Missing base image version 'node' for step 'not-ok' in Task 'image-versions'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid base image version 'node:latest' for step 'also-not-ok' in Task 'image-versions'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable",
+  },
+  Object {
     "level": "warning",
     "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-params-and-inputs'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
   },
@@ -181,6 +225,50 @@ Array [
   Object {
     "level": "warning",
     "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-undefined-volume'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'param-names-task' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'param-names-task' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
   },
   Object {
     "level": "warning",
@@ -272,6 +360,22 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Task 'duplicate-params-task-alpha' has a duplicated param: 'foo'.",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'duplicate-params-task' has a duplicated param: 'foo'.",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'task-duplicate-params-alpha' has a duplicated param: 'foo'.",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'task-duplicate-params-beta' has a duplicated param: 'foo'.",
+  },
+  Object {
+    "level": "error",
     "message": "Task 'task-without-volumes' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
   },
   Object {
@@ -281,6 +385,22 @@ Array [
   Object {
     "level": "error",
     "message": "Task 'task-with-undefined-volume' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
+  },
+  Object {
+    "level": "error",
+    "message": "Step 'my-step' has env variable 'FOO' duplicated in task 'env'.",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
   },
   Object {
     "level": "error",
@@ -312,6 +432,10 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.",
+  },
+  Object {
+    "level": "error",
     "message": "EventListener 'listener-3' defines trigger template 'template-null-params', but the trigger template is missing.",
   },
   Object {
@@ -324,7 +448,39 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.",
+  },
+  Object {
+    "level": "error",
+    "message": "PipelineRun 'duplicate-params-run' in TriggerTemplate 'duplicate-params-trigger' has a duplicate param name: 'foo'.",
+  },
+  Object {
+    "level": "error",
     "message": "TriggerBinding 'binding-params-duplicate' has param 'revision' duplicated.",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'duplicate-params-trigger' has param 'foo' duplicated.",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline' has a duplicated parameter 'foo'.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
   Object {
     "level": "error",
@@ -345,6 +501,42 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on itself (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' uses task 'task-1' (referenced as 'my-task'), and it depends on itself (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-2' (referenced as 'my-task'), and it depends on 'task-4', which doesn't exists (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-3' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-missing', which doesn't exists (declared in runAfter)",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'my-task' has a parameter 'foo' that doesn't have a value in pipeline 'duplicate-params-pipeline'.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
   },
   Object {
     "level": "warning",
@@ -568,6 +760,70 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline' invokes task 'my-task' which references 'duplicate-params-task' with a duplicate param name: 'foo'.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-taskspec-2' references task 'taskspec-with-extra-and-missing-params', and supplies parameter 'foo' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
     "message": "Pipeline 'tekton-alpha-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')",
   },
   Object {
@@ -684,7 +940,51 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Pipeline 'workspaces-test-1' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-1'",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-2' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-2'",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-2' provides workspace 'w2' for 'ws' for Task 'my-task', but 'w2' doesn't exists in 'workspaces-test-2'",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3b' provides workspace 'ws1' for 'ws1' for Task 'my-task', but 'ws1' doesn't exists in 'workspaces-test-3b'",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-4' provides workspace 'ws2' for 'ws2' for Task 'my-task', but 'ws2' doesn't exists in 'workspaces-test-4'",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
     "message": "TriggerTemplate 'my-trigger-template-with-workspace' references Pipeline 'my-pipeline-with-workspace', but provides no workspace for 'missing-pipeline-workspace' (it's a required workspace in 'my-pipeline-with-workspace')",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'workspaces-trigger-1' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws' (it's a required workspace in 'workspaces-test-4')",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
   },
   Object {
     "level": "warning",

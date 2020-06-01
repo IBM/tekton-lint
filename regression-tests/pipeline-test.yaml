@@ -250,6 +250,20 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
+  name: pipeline-with-taskspec-2
+spec:
+  params: []
+  tasks:
+    - name: taskspec-with-extra-and-missing-params
+      taskSpec:
+        steps: []
+      params:
+        - name: foo
+          value: some-value
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
   name: pipeline-with-taskspec
 spec:
   params: []

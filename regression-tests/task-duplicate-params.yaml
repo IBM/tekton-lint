@@ -1,0 +1,46 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: task-duplicate-params-alpha
+spec:
+  inputs:
+    params:
+      - name: foo
+      - name: foo
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task-duplicate-params-beta
+spec:
+  params:
+    - name: foo
+    - name: foo
+  steps: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: task-duplicate-params-alpha-embedded
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        inputs:
+          params:
+            - name: foo
+            - name: foo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: task-duplicate-params-embedded
+spec:
+  tasks:
+    - name: my-task
+      taskSpec:
+        params:
+          - name: foo
+          - name: foo

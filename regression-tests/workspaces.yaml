@@ -1,0 +1,128 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-1
+spec:
+  tasks:
+    - name: my-task
+      taskRef:
+        name: my-task
+      workspaces:
+        - name: ws
+          workspace: ws
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-2
+spec:
+  workspaces:
+    - name: ws2
+  tasks:
+    - name: my-task
+      taskRef:
+        name: my-task
+      workspaces:
+        - name: ws
+          workspace: ws
+        - name: ws
+          workspace: w2
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: workspace-test
+spec:
+  workspaces:
+    - name: ws1
+    - name: ws2
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-3a
+spec:
+  tasks:
+    - name: my-task
+      taskRef:
+        name: workspace-test
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-3b
+spec:
+  tasks:
+    - name: my-task
+      taskRef:
+        name: workspace-test
+      workspaces:
+        - name: ws1
+          workspace: ws1
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-4
+spec:
+  workspaces:
+    - name: ws
+    - name: ws-missing
+  tasks:
+    - name: my-task
+      taskSpec:
+        workspaces:
+          - name: ws
+        steps: []
+      workspaces:
+        - name: ws2
+          workspace: ws2
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: workspaces-test-4a
+spec:
+  workspaces:
+    - name: ws
+  tasks:
+    - name: my-task
+      taskSpec:
+        workspaces:
+          - name: ws
+        steps: []
+      workspaces:
+        - name: ws
+          workspace: ws
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: workspaces-trigger-1
+spec:
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: workspaces-test-5
+      spec:
+        pipelineRef:
+          name: workspaces-test-4
+        workspaces:
+          - name: ws
+            persistentVolumeClaim:
+              claimName: foo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: workspaces-trigger-2
+spec:
+  resourcetemplates:
+    - kind: PipelineRun
+      metadata:
+        name: workspaces-test-6
+      spec:
+        pipelineRef:
+          name: workspaces-test-4
