@@ -327,3 +327,19 @@ spec:
      taskRef:
        name: bar-task
      params: []
+---
+kind: Pipeline
+metadata:
+  name: pipeline-taskspec-invalid-runafters
+spec:
+  tasks:
+    - name: my-task-1
+      runAfter:
+        - this-task-is-not-present
+        - my-task-1
+      taskSpec:
+        steps:
+          - name: step-1
+            image: ibmcom/pipeline-base-image:2.6
+            script: |
+                echo "Hello World!"

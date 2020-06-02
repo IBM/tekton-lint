@@ -79,9 +79,11 @@ Error: EventListener 'listener-3' defines trigger template 'template-null-params
 Error: EventListener 'listener-5' defines trigger template 'template-with-null-resource-templates', but the trigger template is missing.
 Error: EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.
 Error: TriggerBinding 'binding-params-duplicate' has param 'revision' duplicated.
-Error: Pipeline 'pipeline-without-params' references task 'git-clone' (as 'clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)
-Error: Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' (as 'bar'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)
-Error: Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' (as 'bar'), and it depends on 'null', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-without-params' uses task 'clone' (referenced as 'git-clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-task-missing-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-task-with-null-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'null', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on 'this-task-is-not-present', which doesn't exists (declared in runAfter)
+Error: Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on itself (declared in runAfter)
 Warning: Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.
 Warning: Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec
 Warning: Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec

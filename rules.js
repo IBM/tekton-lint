@@ -404,8 +404,9 @@ module.exports.lint = function lint(docs) {
       if (!task.runAfter) continue;
       for (const dependency of task.runAfter) {
         const exists = pipeline.spec.tasks.some(task => task.name === dependency);
-        if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' references task '${task.taskRef.name}' (as '${task.name}'), and it depends on itself (declared in runAfter)`);
-        if (!exists) error(`Pipeline '${pipeline.metadata.name}' references task '${task.taskRef.name}' (as '${task.name}'), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`);
+        const details = task.taskSpec ? 'defined in-line' : `referenced as '${task.taskRef.name}'`;
+        if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on itself (declared in runAfter)`);
+        if (!exists) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`);
       }
     }
   }
