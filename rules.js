@@ -1,12 +1,16 @@
 const collector = require('./Collector');
 const collectResources = require('./collect-resources');
+const Reporter = require('./reporter');
 
 module.exports = async function run(globs) {
   const docs = (await collector(globs)).map(doc => doc.content);
   return module.exports.lint(docs);
 };
 
-module.exports.lint = function lint(docs) {
+module.exports.lint = function lint(docs, reporter) {
+  reporter = reporter || new Reporter();
+  const warning = reporter.warning.bind(reporter);
+  const error = reporter.error.bind(reporter);
   const tekton = {
     tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
       item.metadata.name,
@@ -29,22 +33,6 @@ module.exports.lint = function lint(docs) {
       item,
     ])),
   };
-
-  const problems = [];
-
-  function error(message) {
-    problems.push({
-      message,
-      level: 'error',
-    });
-  }
-
-  function warning(message) {
-    problems.push({
-      message,
-      level: 'warning',
-    });
-  }
 
   const resourceSet = {};
   for (const resource of docs) {
@@ -600,5 +588,5 @@ module.exports.lint = function lint(docs) {
     }
   }
 
-  return problems;
+  return reporter.problems;
 };
