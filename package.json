@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "lint": "eslint './*.js'",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "version": "0.0.21",
   "description": "Linter for Tekton definitions",
