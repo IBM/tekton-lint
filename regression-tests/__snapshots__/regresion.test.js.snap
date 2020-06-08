@@ -1,6 +1,3683 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`regression tests 1`] = `
+exports[`regression tests with location 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 27,
+      "endLine": 10,
+      "range": Array [
+        103,
+        121,
+      ],
+      "startColumn": 9,
+      "startLine": 10,
+    },
+    "message": "'my-duplicated-task' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "path": "./regression-tests/duplicate-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 30,
+      "range": Array [
+        462,
+        484,
+      ],
+      "startColumn": 9,
+      "startLine": 30,
+    },
+    "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "path": "./regression-tests/duplicate-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 37,
+      "endLine": 50,
+      "range": Array [
+        846,
+        874,
+      ],
+      "startColumn": 9,
+      "startLine": 50,
+    },
+    "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding'), it can't be redefined (as a 'TriggerBinding')",
+    "path": "./regression-tests/duplicate-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 36,
+      "endLine": 68,
+      "range": Array [
+        1206,
+        1233,
+      ],
+      "startColumn": 9,
+      "startLine": 68,
+    },
+    "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener'), it can't be redefined (as a 'EventListener')",
+    "path": "./regression-tests/duplicate-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 38,
+      "endLine": 92,
+      "range": Array [
+        1721,
+        1750,
+      ],
+      "startColumn": 9,
+      "startLine": 92,
+    },
+    "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "path": "./regression-tests/duplicate-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 267,
+      "range": Array [
+        6938,
+        6960,
+      ],
+      "startColumn": 9,
+      "startLine": 267,
+    },
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 283,
+      "range": Array [
+        7236,
+        7258,
+      ],
+      "startColumn": 9,
+      "startLine": 283,
+    },
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 298,
+      "range": Array [
+        7501,
+        7523,
+      ],
+      "startColumn": 9,
+      "startLine": 298,
+    },
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 29,
+      "endLine": 173,
+      "range": Array [
+        4767,
+        4787,
+      ],
+      "startColumn": 9,
+      "startLine": 173,
+    },
+    "message": "'task-without-volumes' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 87,
+      "range": Array [
+        1966,
+        1992,
+      ],
+      "startColumn": 9,
+      "startLine": 87,
+    },
+    "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 164,
+      "range": Array [
+        3716,
+        3741,
+      ],
+      "startColumn": 9,
+      "startLine": 164,
+    },
+    "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 431,
+      "range": Array [
+        10207,
+        10215,
+      ],
+      "startColumn": 26,
+      "startLine": 431,
+    },
+    "message": "Resource ServiceAccount 'tutorial-service' has an invalid 'resourceVersion' key in its resource definition.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 2,
+      "range": Array [
+        16,
+        35,
+      ],
+      "startColumn": 13,
+      "startLine": 2,
+    },
+    "message": "Task 'duplicate-params-task-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 2,
+      "range": Array [
+        16,
+        35,
+      ],
+      "startColumn": 13,
+      "startLine": 2,
+    },
+    "message": "Task 'task-duplicate-params-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 2,
+      "range": Array [
+        16,
+        35,
+      ],
+      "startColumn": 13,
+      "startLine": 2,
+    },
+    "message": "Task 'task-with-params-and-inputs' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 59,
+      "range": Array [
+        1799,
+        1818,
+      ],
+      "startColumn": 13,
+      "startLine": 59,
+    },
+    "message": "Task 'task-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 98,
+      "range": Array [
+        2830,
+        2849,
+      ],
+      "startColumn": 13,
+      "startLine": 98,
+    },
+    "message": "Task 'task-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 170,
+      "range": Array [
+        4718,
+        4737,
+      ],
+      "startColumn": 13,
+      "startLine": 170,
+    },
+    "message": "Task 'task-without-volumes' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 203,
+      "range": Array [
+        5578,
+        5597,
+      ],
+      "startColumn": 13,
+      "startLine": 203,
+    },
+    "message": "Task 'task-with-undefined-volume' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 2,
+      "range": Array [
+        16,
+        35,
+      ],
+      "startColumn": 13,
+      "startLine": 2,
+    },
+    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 2,
+      "range": Array [
+        16,
+        35,
+      ],
+      "startColumn": 13,
+      "startLine": 2,
+    },
+    "message": "Task 'my-alpha-task' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 40,
+      "range": Array [
+        628,
+        647,
+      ],
+      "startColumn": 13,
+      "startLine": 40,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 1,
+      "range": Array [
+        12,
+        31,
+      ],
+      "startColumn": 13,
+      "startLine": 1,
+    },
+    "message": "Pipeline 'pipeline-with-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 37,
+      "range": Array [
+        1068,
+        1087,
+      ],
+      "startColumn": 13,
+      "startLine": 37,
+    },
+    "message": "Pipeline 'pipeline-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 85,
+      "range": Array [
+        2264,
+        2283,
+      ],
+      "startColumn": 13,
+      "startLine": 85,
+    },
+    "message": "Pipeline 'pipeline-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 103,
+      "range": Array [
+        2701,
+        2720,
+      ],
+      "startColumn": 13,
+      "startLine": 103,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 139,
+      "range": Array [
+        3757,
+        3776,
+      ],
+      "startColumn": 13,
+      "startLine": 139,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 169,
+      "range": Array [
+        4616,
+        4635,
+      ],
+      "startColumn": 13,
+      "startLine": 169,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 218,
+      "range": Array [
+        5926,
+        5945,
+      ],
+      "startColumn": 13,
+      "startLine": 218,
+    },
+    "message": "Pipeline 'pipeline-with-missing-and-extra-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 295,
+      "range": Array [
+        7448,
+        7467,
+      ],
+      "startColumn": 13,
+      "startLine": 295,
+    },
+    "message": "Pipeline 'pipeline-with-taskspec' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 250,
+      "range": Array [
+        6616,
+        6635,
+      ],
+      "startColumn": 13,
+      "startLine": 250,
+    },
+    "message": "Pipeline 'pipeline-with-taskspec-2' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 309,
+      "range": Array [
+        7683,
+        7702,
+      ],
+      "startColumn": 13,
+      "startLine": 309,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 327,
+      "range": Array [
+        7982,
+        8001,
+      ],
+      "startColumn": 13,
+      "startLine": 327,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 23,
+      "range": Array [
+        336,
+        355,
+      ],
+      "startColumn": 13,
+      "startLine": 23,
+    },
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 36,
+      "range": Array [
+        575,
+        594,
+      ],
+      "startColumn": 13,
+      "startLine": 36,
+    },
+    "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 11,
+      "range": Array [
+        149,
+        168,
+      ],
+      "startColumn": 13,
+      "startLine": 11,
+    },
+    "message": "Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 23,
+      "range": Array [
+        521,
+        540,
+      ],
+      "startColumn": 13,
+      "startLine": 23,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 3,
+      "endLine": 9,
+      "range": Array [
+        104,
+        123,
+      ],
+      "startColumn": 5,
+      "startLine": 8,
+    },
+    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 3,
+      "endLine": 30,
+      "range": Array [
+        440,
+        459,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 47,
+      "range": Array [
+        736,
+        770,
+      ],
+      "startColumn": 11,
+      "startLine": 45,
+    },
+    "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        307,
+        324,
+      ],
+      "startColumn": 11,
+      "startLine": 20,
+    },
+    "message": "Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 43,
+      "range": Array [
+        661,
+        678,
+      ],
+      "startColumn": 13,
+      "startLine": 42,
+    },
+    "message": "Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 28,
+      "endLine": 70,
+      "range": Array [
+        1591,
+        1602,
+      ],
+      "startColumn": 17,
+      "startLine": 70,
+    },
+    "message": "TriggerTemplate 'template-without-params' references pipeline 'pr-pipeline', but the referenced pipeline cannot be found.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 38,
+      "endLine": 194,
+      "range": Array [
+        4415,
+        4434,
+      ],
+      "startColumn": 19,
+      "startLine": 194,
+    },
+    "message": "TriggerTemplate 'template-pipelineref-null' references pipeline 'pipelineref-missing', but the referenced pipeline cannot be found.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 156,
+      "range": Array [
+        3543,
+        3547,
+      ],
+      "startColumn": 13,
+      "startLine": 156,
+    },
+    "message": "TriggerTemplate 'template-without-pipelineref' references pipeline 'null', but the referenced pipeline cannot be found.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 268,
+      "range": Array [
+        6148,
+        6152,
+      ],
+      "startColumn": 13,
+      "startLine": 268,
+    },
+    "message": "TriggerTemplate 'template-with-null-pipelinerun-params' references pipeline 'null', but the referenced pipeline cannot be found.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 37,
+      "endLine": 411,
+      "range": Array [
+        9653,
+        9681,
+      ],
+      "startColumn": 9,
+      "startLine": 411,
+    },
+    "message": "Invalid name for TriggerTemplate 'template-with-serviceAccount'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 16,
+      "range": Array [
+        158,
+        209,
+      ],
+      "startColumn": 7,
+      "startLine": 12,
+    },
+    "message": "Task 'array-params' defines parameter 'bar' with wrong value type (values should be of type 'string', 'array of strings')",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        215,
+        257,
+      ],
+      "startColumn": 7,
+      "startLine": 16,
+    },
+    "message": "Task 'array-params' defines parameter 'baz' with wrong value type (values should be of type 'string', 'array of strings')",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 18,
+      "endLine": 10,
+      "range": Array [
+        158,
+        162,
+      ],
+      "startColumn": 14,
+      "startLine": 10,
+    },
+    "message": "Missing base image version 'node' for step 'not-ok' in Task 'image-versions'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/image-version.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 25,
+      "endLine": 12,
+      "range": Array [
+        200,
+        211,
+      ],
+      "startColumn": 14,
+      "startLine": 12,
+    },
+    "message": "Invalid base image version 'node:latest' for step 'also-not-ok' in Task 'image-versions'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/image-version.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 34,
+      "range": Array [
+        1101,
+        1127,
+      ],
+      "startColumn": 14,
+      "startLine": 34,
+    },
+    "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-params-and-inputs'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 73,
+      "range": Array [
+        2132,
+        2158,
+      ],
+      "startColumn": 14,
+      "startLine": 73,
+    },
+    "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-without-params'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 112,
+      "range": Array [
+        3157,
+        3183,
+      ],
+      "startColumn": 14,
+      "startLine": 112,
+    },
+    "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-null-params'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 184,
+      "range": Array [
+        5052,
+        5078,
+      ],
+      "startColumn": 14,
+      "startLine": 184,
+    },
+    "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-without-volumes'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 217,
+      "range": Array [
+        5918,
+        5944,
+      ],
+      "startColumn": 14,
+      "startLine": 217,
+    },
+    "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-undefined-volume'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 8,
+      "range": Array [
+        109,
+        113,
+      ],
+      "startColumn": 13,
+      "startLine": 8,
+    },
+    "message": "Task 'param-names-task' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 9,
+      "range": Array [
+        126,
+        130,
+      ],
+      "startColumn": 13,
+      "startLine": 9,
+    },
+    "message": "Task 'param-names-task' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 12,
+      "range": Array [
+        99,
+        152,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 16,
+      "range": Array [
+        158,
+        209,
+      ],
+      "startColumn": 7,
+      "startLine": 12,
+    },
+    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        215,
+        257,
+      ],
+      "startColumn": 7,
+      "startLine": 16,
+    },
+    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        129,
+        139,
+      ],
+      "startColumn": 9,
+      "startLine": 9,
+    },
+    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        277,
+        287,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 9,
+      "range": Array [
+        103,
+        114,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        120,
+        131,
+      ],
+      "startColumn": 7,
+      "startLine": 9,
+    },
+    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        129,
+        139,
+      ],
+      "startColumn": 9,
+      "startLine": 9,
+    },
+    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        282,
+        292,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 22,
+      "range": Array [
+        551,
+        722,
+      ],
+      "startColumn": 9,
+      "startLine": 19,
+    },
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 28,
+      "range": Array [
+        859,
+        955,
+      ],
+      "startColumn": 9,
+      "startLine": 25,
+    },
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 47,
+      "endLine": 78,
+      "range": Array [
+        2262,
+        2291,
+      ],
+      "startColumn": 18,
+      "startLine": 78,
+    },
+    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 80,
+      "range": Array [
+        2336,
+        2363,
+      ],
+      "startColumn": 18,
+      "startLine": 80,
+    },
+    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 82,
+      "range": Array [
+        2413,
+        2444,
+      ],
+      "startColumn": 18,
+      "startLine": 82,
+    },
+    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 52,
+      "endLine": 96,
+      "range": Array [
+        2781,
+        2813,
+      ],
+      "startColumn": 20,
+      "startLine": 96,
+    },
+    "message": "Undefined param 'credentials-pvc' at spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 70,
+      "range": Array [
+        2048,
+        2081,
+      ],
+      "startColumn": 16,
+      "startLine": 70,
+    },
+    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 47,
+      "endLine": 189,
+      "range": Array [
+        5182,
+        5211,
+      ],
+      "startColumn": 18,
+      "startLine": 189,
+    },
+    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-volumes'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 191,
+      "range": Array [
+        5256,
+        5283,
+      ],
+      "startColumn": 18,
+      "startLine": 191,
+    },
+    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-volumes'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 193,
+      "range": Array [
+        5333,
+        5364,
+      ],
+      "startColumn": 18,
+      "startLine": 193,
+    },
+    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-volumes'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 181,
+      "range": Array [
+        4968,
+        5001,
+      ],
+      "startColumn": 16,
+      "startLine": 181,
+    },
+    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-volumes'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 47,
+      "endLine": 222,
+      "range": Array [
+        6048,
+        6077,
+      ],
+      "startColumn": 18,
+      "startLine": 222,
+    },
+    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-with-undefined-volume'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 224,
+      "range": Array [
+        6122,
+        6149,
+      ],
+      "startColumn": 18,
+      "startLine": 224,
+    },
+    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-with-undefined-volume'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 226,
+      "range": Array [
+        6199,
+        6230,
+      ],
+      "startColumn": 18,
+      "startLine": 226,
+    },
+    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-with-undefined-volume'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 52,
+      "endLine": 237,
+      "range": Array [
+        6500,
+        6532,
+      ],
+      "startColumn": 20,
+      "startLine": 237,
+    },
+    "message": "Undefined param 'credentials-pvc' at spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 214,
+      "range": Array [
+        5834,
+        5867,
+      ],
+      "startColumn": 16,
+      "startLine": 214,
+    },
+    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 9,
+      "range": Array [
+        106,
+        121,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'tekton-alpha-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 30,
+      "range": Array [
+        442,
+        457,
+      ],
+      "startColumn": 9,
+      "startLine": 29,
+    },
+    "message": "Task 'tekton-beta-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 51,
+      "endLine": 19,
+      "range": Array [
+        375,
+        408,
+      ],
+      "startColumn": 18,
+      "startLine": 19,
+    },
+    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-alpha-task'",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 11,
+      "range": Array [
+        138,
+        160,
+      ],
+      "startColumn": 9,
+      "startLine": 10,
+    },
+    "message": "Task 'my-alpha-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 44,
+      "endLine": 18,
+      "range": Array [
+        348,
+        374,
+      ],
+      "startColumn": 18,
+      "startLine": 18,
+    },
+    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-beta-task'",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        120,
+        142,
+      ],
+      "startColumn": 7,
+      "startLine": 9,
+    },
+    "message": "Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 18,
+      "endLine": 10,
+      "range": Array [
+        153,
+        156,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Task 'duplicate-params-task-alpha' has a duplicated param: 'foo'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 20,
+      "range": Array [
+        299,
+        302,
+      ],
+      "startColumn": 13,
+      "startLine": 20,
+    },
+    "message": "Task 'duplicate-params-task' has a duplicated param: 'foo'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 18,
+      "endLine": 10,
+      "range": Array [
+        153,
+        156,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Task 'task-duplicate-params-alpha' has a duplicated param: 'foo'.",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 20,
+      "range": Array [
+        304,
+        307,
+      ],
+      "startColumn": 13,
+      "startLine": 20,
+    },
+    "message": "Task 'task-duplicate-params-beta' has a duplicated param: 'foo'.",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 198,
+      "range": Array [
+        5477,
+        5490,
+      ],
+      "startColumn": 17,
+      "startLine": 198,
+    },
+    "message": "Task 'task-without-volumes' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 28,
+      "endLine": 200,
+      "range": Array [
+        5539,
+        5550,
+      ],
+      "startColumn": 17,
+      "startLine": 200,
+    },
+    "message": "Task 'task-without-volumes' wants to mount volume 'task-volume' in step 'fetch-git-token', but this volume is not defined.",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 231,
+      "range": Array [
+        6343,
+        6356,
+      ],
+      "startColumn": 17,
+      "startLine": 231,
+    },
+    "message": "Task 'task-with-undefined-volume' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 13,
+      "range": Array [
+        192,
+        195,
+      ],
+      "startColumn": 17,
+      "startLine": 13,
+    },
+    "message": "Step 'my-step' has env variable 'FOO' duplicated in task 'env'.",
+    "path": "./regression-tests/env.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 72,
+      "range": Array [
+        1192,
+        1202,
+      ],
+      "startColumn": 7,
+      "startLine": 71,
+    },
+    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 29,
+      "range": Array [
+        412,
+        423,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 30,
+      "range": Array [
+        429,
+        440,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 43,
+      "endLine": 73,
+      "range": Array [
+        1670,
+        1693,
+      ],
+      "startColumn": 20,
+      "startLine": 73,
+    },
+    "message": "Undefined param 'target-branch' at resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 83,
+      "range": Array [
+        1828,
+        1881,
+      ],
+      "startColumn": 7,
+      "startLine": 81,
+    },
+    "message": "TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 207,
+      "range": Array [
+        4660,
+        4713,
+      ],
+      "startColumn": 7,
+      "startLine": 205,
+    },
+    "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 243,
+      "range": Array [
+        5503,
+        5556,
+      ],
+      "startColumn": 7,
+      "startLine": 241,
+    },
+    "message": "TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 399,
+      "range": Array [
+        9351,
+        9404,
+      ],
+      "startColumn": 7,
+      "startLine": 397,
+    },
+    "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 416,
+      "range": Array [
+        9704,
+        9757,
+      ],
+      "startColumn": 7,
+      "startLine": 414,
+    },
+    "message": "TriggerTemplate 'template-with-serviceAccount' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 10,
+      "range": Array [
+        177,
+        193,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 14,
+      "range": Array [
+        269,
+        285,
+      ],
+      "startColumn": 15,
+      "startLine": 14,
+    },
+    "message": "EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 32,
+      "range": Array [
+        590,
+        610,
+      ],
+      "startColumn": 15,
+      "startLine": 32,
+    },
+    "message": "EventListener 'listener-3' defines trigger template 'template-null-params', but the trigger template is missing.",
+    "path": "./regression-tests/triggerbinding-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 52,
+      "endLine": 54,
+      "range": Array [
+        1025,
+        1062,
+      ],
+      "startColumn": 15,
+      "startLine": 54,
+    },
+    "message": "EventListener 'listener-5' defines trigger template 'template-with-null-resource-templates', but the trigger template is missing.",
+    "path": "./regression-tests/triggerbinding-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 8,
+      "range": Array [
+        131,
+        146,
+      ],
+      "startColumn": 15,
+      "startLine": 8,
+    },
+    "message": "EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 12,
+      "range": Array [
+        223,
+        238,
+      ],
+      "startColumn": 15,
+      "startLine": 12,
+    },
+    "message": "EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 83,
+      "range": Array [
+        1468,
+        1471,
+      ],
+      "startColumn": 19,
+      "startLine": 83,
+    },
+    "message": "PipelineRun 'duplicate-params-run' in TriggerTemplate 'duplicate-params-trigger' has a duplicate param name: 'foo'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 101,
+      "range": Array [
+        1848,
+        1856,
+      ],
+      "startColumn": 11,
+      "startLine": 101,
+    },
+    "message": "TriggerBinding 'binding-params-duplicate' has param 'revision' duplicated.",
+    "path": "./regression-tests/triggerbinding-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 72,
+      "range": Array [
+        1214,
+        1217,
+      ],
+      "startColumn": 13,
+      "startLine": 72,
+    },
+    "message": "TriggerTemplate 'duplicate-params-trigger' has param 'foo' duplicated.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 28,
+      "range": Array [
+        418,
+        422,
+      ],
+      "startColumn": 13,
+      "startLine": 28,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 29,
+      "range": Array [
+        435,
+        439,
+      ],
+      "startColumn": 13,
+      "startLine": 29,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 30,
+      "range": Array [
+        453,
+        456,
+      ],
+      "startColumn": 13,
+      "startLine": 30,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline' has a duplicated parameter 'foo'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 18,
+      "range": Array [
+        260,
+        264,
+      ],
+      "startColumn": 13,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 19,
+      "range": Array [
+        277,
+        281,
+      ],
+      "startColumn": 13,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 59,
+      "range": Array [
+        1565,
+        1587,
+      ],
+      "startColumn": 9,
+      "startLine": 58,
+    },
+    "message": "Pipeline 'pipeline-without-params' uses task 'clone' (referenced as 'git-clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 323,
+      "range": Array [
+        7898,
+        7914,
+      ],
+      "startColumn": 7,
+      "startLine": 322,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 341,
+      "range": Array [
+        8199,
+        8202,
+      ],
+      "startColumn": 7,
+      "startLine": 340,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'null', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 354,
+      "range": Array [
+        8388,
+        8435,
+      ],
+      "startColumn": 9,
+      "startLine": 352,
+    },
+    "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on 'this-task-is-not-present', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 353,
+      "range": Array [
+        8425,
+        8434,
+      ],
+      "startColumn": 11,
+      "startLine": 353,
+    },
+    "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on itself (declared in runAfter)",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 25,
+      "endLine": 11,
+      "range": Array [
+        173,
+        181,
+      ],
+      "startColumn": 17,
+      "startLine": 11,
+    },
+    "message": "Pipeline 'runafter-pipeline' uses task 'task-1' (referenced as 'my-task'), and it depends on itself (declared in runAfter)",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 15,
+      "range": Array [
+        263,
+        269,
+      ],
+      "startColumn": 26,
+      "startLine": 15,
+    },
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-2' (referenced as 'my-task'), and it depends on 'task-4', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 25,
+      "endLine": 19,
+      "range": Array [
+        343,
+        351,
+      ],
+      "startColumn": 17,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-3' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 39,
+      "endLine": 23,
+      "range": Array [
+        424,
+        446,
+      ],
+      "startColumn": 17,
+      "startLine": 23,
+    },
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 38,
+      "endLine": 23,
+      "range": Array [
+        433,
+        445,
+      ],
+      "startColumn": 26,
+      "startLine": 23,
+    },
+    "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-missing', which doesn't exists (declared in runAfter)",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 38,
+      "range": Array [
+        608,
+        611,
+      ],
+      "startColumn": 17,
+      "startLine": 38,
+    },
+    "message": "Task 'my-task' has a parameter 'foo' that doesn't have a value in pipeline 'duplicate-params-pipeline'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 30,
+      "range": Array [
+        431,
+        441,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        254,
+        265,
+      ],
+      "startColumn": 7,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        271,
+        282,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 35,
+      "range": Array [
+        1024,
+        1051,
+      ],
+      "startColumn": 18,
+      "startLine": 35,
+    },
+    "message": "Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 9,
+      "range": Array [
+        108,
+        171,
+      ],
+      "startColumn": 7,
+      "startLine": 7,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 17,
+      "range": Array [
+        401,
+        450,
+      ],
+      "startColumn": 7,
+      "startLine": 15,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        456,
+        516,
+      ],
+      "startColumn": 7,
+      "startLine": 17,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        522,
+        584,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 25,
+      "range": Array [
+        590,
+        732,
+      ],
+      "startColumn": 7,
+      "startLine": 21,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 49,
+      "range": Array [
+        1311,
+        1333,
+      ],
+      "startColumn": 18,
+      "startLine": 49,
+    },
+    "message": "Undefined param 'pipeline-pvc' at spec.steps[0].params[0].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 51,
+      "range": Array [
+        1384,
+        1411,
+      ],
+      "startColumn": 18,
+      "startLine": 51,
+    },
+    "message": "Undefined param 'ibm-cloud-api-key' at spec.steps[0].params[1].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 53,
+      "range": Array [
+        1456,
+        1483,
+      ],
+      "startColumn": 18,
+      "startLine": 53,
+    },
+    "message": "Undefined param 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 61,
+      "range": Array [
+        1643,
+        1665,
+      ],
+      "startColumn": 18,
+      "startLine": 61,
+    },
+    "message": "Undefined param 'pipeline-pvc' at spec.steps[1].params[0].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 38,
+      "endLine": 63,
+      "range": Array [
+        1710,
+        1730,
+      ],
+      "startColumn": 18,
+      "startLine": 63,
+    },
+    "message": "Undefined param 'repository' at spec.steps[1].params[1].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 65,
+      "range": Array [
+        1771,
+        1787,
+      ],
+      "startColumn": 18,
+      "startLine": 65,
+    },
+    "message": "Undefined param 'branch' at spec.steps[1].params[2].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 36,
+      "endLine": 69,
+      "range": Array [
+        1879,
+        1897,
+      ],
+      "startColumn": 18,
+      "startLine": 69,
+    },
+    "message": "Undefined param 'revision' at spec.steps[1].params[4].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 81,
+      "range": Array [
+        2160,
+        2182,
+      ],
+      "startColumn": 18,
+      "startLine": 81,
+    },
+    "message": "Undefined param 'statuses_url' at spec.steps[2].params[2].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 83,
+      "range": Array [
+        2225,
+        2247,
+      ],
+      "startColumn": 18,
+      "startLine": 83,
+    },
+    "message": "Undefined param 'pipeline-pvc' at spec.steps[2].params[3].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 53,
+      "range": Array [
+        1456,
+        1483,
+      ],
+      "startColumn": 18,
+      "startLine": 53,
+    },
+    "message": "Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 26,
+      "endLine": 78,
+      "range": Array [
+        2080,
+        2089,
+      ],
+      "startColumn": 17,
+      "startLine": 78,
+    },
+    "message": "Invalid name for 'fail_task' at spec.steps[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 29,
+      "endLine": 80,
+      "range": Array [
+        2130,
+        2142,
+      ],
+      "startColumn": 17,
+      "startLine": 80,
+    },
+    "message": "Invalid name for 'statuses_url' at spec.steps[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 81,
+      "range": Array [
+        2160,
+        2182,
+      ],
+      "startColumn": 18,
+      "startLine": 81,
+    },
+    "message": "Invalid name for 'statuses_url' at spec.steps[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 137,
+      "range": Array [
+        3713,
+        3740,
+      ],
+      "startColumn": 18,
+      "startLine": 137,
+    },
+    "message": "Invalid name for 'statuses_base_url' at spec.steps[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 111,
+      "range": Array [
+        2811,
+        2874,
+      ],
+      "startColumn": 7,
+      "startLine": 109,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 119,
+      "range": Array [
+        3104,
+        3153,
+      ],
+      "startColumn": 7,
+      "startLine": 117,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 121,
+      "range": Array [
+        3159,
+        3219,
+      ],
+      "startColumn": 7,
+      "startLine": 119,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 123,
+      "range": Array [
+        3225,
+        3287,
+      ],
+      "startColumn": 7,
+      "startLine": 121,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 127,
+      "range": Array [
+        3293,
+        3435,
+      ],
+      "startColumn": 7,
+      "startLine": 123,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 147,
+      "range": Array [
+        3869,
+        3932,
+      ],
+      "startColumn": 7,
+      "startLine": 145,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 149,
+      "range": Array [
+        3938,
+        4023,
+      ],
+      "startColumn": 7,
+      "startLine": 147,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'statuses_base_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 151,
+      "range": Array [
+        4029,
+        4089,
+      ],
+      "startColumn": 7,
+      "startLine": 149,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'pipeline-pvc', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 153,
+      "range": Array [
+        4095,
+        4156,
+      ],
+      "startColumn": 7,
+      "startLine": 151,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'ibm-cloud-api-key', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 155,
+      "range": Array [
+        4162,
+        4211,
+      ],
+      "startColumn": 7,
+      "startLine": 153,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 157,
+      "range": Array [
+        4217,
+        4277,
+      ],
+      "startColumn": 7,
+      "startLine": 155,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 159,
+      "range": Array [
+        4283,
+        4345,
+      ],
+      "startColumn": 7,
+      "startLine": 157,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 163,
+      "range": Array [
+        4351,
+        4493,
+      ],
+      "startColumn": 7,
+      "startLine": 159,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 177,
+      "range": Array [
+        4730,
+        4793,
+      ],
+      "startColumn": 7,
+      "startLine": 175,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 179,
+      "range": Array [
+        4799,
+        4884,
+      ],
+      "startColumn": 7,
+      "startLine": 177,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'statuses_base_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 181,
+      "range": Array [
+        4890,
+        4950,
+      ],
+      "startColumn": 7,
+      "startLine": 179,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'pipeline-pvc', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 183,
+      "range": Array [
+        4956,
+        5017,
+      ],
+      "startColumn": 7,
+      "startLine": 181,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'ibm-cloud-api-key', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 185,
+      "range": Array [
+        5023,
+        5072,
+      ],
+      "startColumn": 7,
+      "startLine": 183,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 187,
+      "range": Array [
+        5078,
+        5138,
+      ],
+      "startColumn": 7,
+      "startLine": 185,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 189,
+      "range": Array [
+        5144,
+        5206,
+      ],
+      "startColumn": 7,
+      "startLine": 187,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 193,
+      "range": Array [
+        5212,
+        5354,
+      ],
+      "startColumn": 7,
+      "startLine": 189,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-with-null-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 226,
+      "range": Array [
+        6040,
+        6094,
+      ],
+      "startColumn": 7,
+      "startLine": 224,
+    },
+    "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'ok-param', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 228,
+      "range": Array [
+        6100,
+        6166,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'missing-param', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 231,
+      "range": Array [
+        6172,
+        6263,
+      ],
+      "startColumn": 7,
+      "startLine": 228,
+    },
+    "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'default-param', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 28,
+      "range": Array [
+        799,
+        815,
+      ],
+      "startColumn": 15,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 46,
+      "range": Array [
+        1231,
+        1247,
+      ],
+      "startColumn": 15,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 56,
+      "range": Array [
+        1531,
+        1540,
+      ],
+      "startColumn": 15,
+      "startLine": 56,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 72,
+      "range": Array [
+        1947,
+        1956,
+      ],
+      "startColumn": 15,
+      "startLine": 72,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 94,
+      "range": Array [
+        2429,
+        2448,
+      ],
+      "startColumn": 15,
+      "startLine": 94,
+    },
+    "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 13,
+      "endLine": 130,
+      "range": Array [
+        3499,
+        3503,
+      ],
+      "startColumn": 9,
+      "startLine": 130,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 318,
+      "range": Array [
+        7837,
+        7845,
+      ],
+      "startColumn": 14,
+      "startLine": 318,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 324,
+      "range": Array [
+        7941,
+        7949,
+      ],
+      "startColumn": 14,
+      "startLine": 324,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 336,
+      "range": Array [
+        8138,
+        8146,
+      ],
+      "startColumn": 14,
+      "startLine": 336,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 342,
+      "range": Array [
+        8229,
+        8237,
+      ],
+      "startColumn": 14,
+      "startLine": 342,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 11,
+      "range": Array [
+        167,
+        174,
+      ],
+      "startColumn": 15,
+      "startLine": 11,
+    },
+    "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/retries.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        149,
+        156,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 14,
+      "range": Array [
+        230,
+        237,
+      ],
+      "startColumn": 15,
+      "startLine": 14,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 18,
+      "range": Array [
+        319,
+        326,
+      ],
+      "startColumn": 15,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 22,
+      "range": Array [
+        400,
+        407,
+      ],
+      "startColumn": 15,
+      "startLine": 22,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        150,
+        157,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 25,
+      "range": Array [
+        399,
+        406,
+      ],
+      "startColumn": 15,
+      "startLine": 25,
+    },
+    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 38,
+      "range": Array [
+        608,
+        611,
+      ],
+      "startColumn": 17,
+      "startLine": 38,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline' invokes task 'my-task' which references 'duplicate-params-task' with a duplicate param name: 'foo'.",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 52,
+      "range": Array [
+        743,
+        855,
+      ],
+      "startColumn": 7,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 52,
+      "range": Array [
+        743,
+        855,
+      ],
+      "startColumn": 7,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        979,
+        1069,
+      ],
+      "startColumn": 7,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        979,
+        1069,
+      ],
+      "startColumn": 7,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-taskspec-2' references task 'taskspec-with-extra-and-missing-params', and supplies parameter 'foo' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 35,
+      "range": Array [
+        447,
+        559,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 35,
+      "range": Array [
+        447,
+        559,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 47,
+      "range": Array [
+        680,
+        770,
+      ],
+      "startColumn": 7,
+      "startLine": 42,
+    },
+    "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 47,
+      "range": Array [
+        680,
+        770,
+      ],
+      "startColumn": 7,
+      "startLine": 42,
+    },
+    "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        251,
+        324,
+      ],
+      "startColumn": 7,
+      "startLine": 17,
+    },
+    "message": "Pipeline 'tekton-alpha-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 43,
+      "range": Array [
+        585,
+        678,
+      ],
+      "startColumn": 7,
+      "startLine": 38,
+    },
+    "message": "Pipeline 'tekton-beta-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 39,
+      "range": Array [
+        802,
+        844,
+      ],
+      "startColumn": 11,
+      "startLine": 37,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 39,
+      "range": Array [
+        701,
+        844,
+      ],
+      "startColumn": 9,
+      "startLine": 33,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-alpha-task')",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 63,
+      "range": Array [
+        1528,
+        1570,
+      ],
+      "startColumn": 11,
+      "startLine": 61,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 63,
+      "range": Array [
+        1427,
+        1570,
+      ],
+      "startColumn": 9,
+      "startLine": 57,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        758,
+        800,
+      ],
+      "startColumn": 11,
+      "startLine": 36,
+    },
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        657,
+        800,
+      ],
+      "startColumn": 9,
+      "startLine": 32,
+    },
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-beta-task')",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 61,
+      "range": Array [
+        1439,
+        1481,
+      ],
+      "startColumn": 11,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 61,
+      "range": Array [
+        1338,
+        1481,
+      ],
+      "startColumn": 9,
+      "startLine": 55,
+    },
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'template-with-params' references pipeline 'pipeline-with-params', and supplies 'target-branch', but it's not a valid parameter.",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'repository', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'branch', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'origin', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 38,
+      "range": Array [
+        610,
+        876,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references param 'revision', but it is not supplied in triggerTemplate 'template-with-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'repository', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'branch', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'origin', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 234,
+      "range": Array [
+        5155,
+        5367,
+      ],
+      "startColumn": 7,
+      "startLine": 226,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'revision', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'template-for-pipeline-params-tests' references pipeline 'pipeline-with-missing-and-extra-params', and supplies 'extra-param', but it's not a valid parameter.",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 217,
+      "range": Array [
+        5602,
+        5910,
+      ],
+      "startColumn": 7,
+      "startLine": 205,
+    },
+    "message": "Pipeline 'pipeline-with-missing-and-extra-params' references param 'missing-param', but it is not supplied in triggerTemplate 'template-for-pipeline-params-tests'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 13,
+      "range": Array [
+        216,
+        218,
+      ],
+      "startColumn": 22,
+      "startLine": 13,
+    },
+    "message": "Pipeline 'workspaces-test-1' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-1'",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 28,
+      "range": Array [
+        465,
+        467,
+      ],
+      "startColumn": 22,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'workspaces-test-2' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-2'",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 30,
+      "range": Array [
+        508,
+        510,
+      ],
+      "startColumn": 22,
+      "startLine": 30,
+    },
+    "message": "Pipeline 'workspaces-test-2' provides workspace 'w2' for 'ws' for Task 'my-task', but 'w2' doesn't exists in 'workspaces-test-2'",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 25,
+      "endLine": 63,
+      "range": Array [
+        1045,
+        1048,
+      ],
+      "startColumn": 22,
+      "startLine": 63,
+    },
+    "message": "Pipeline 'workspaces-test-3b' provides workspace 'ws1' for 'ws1' for Task 'my-task', but 'ws1' doesn't exists in 'workspaces-test-3b'",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 25,
+      "endLine": 81,
+      "range": Array [
+        1356,
+        1359,
+      ],
+      "startColumn": 22,
+      "startLine": 81,
+    },
+    "message": "Pipeline 'workspaces-test-4' provides workspace 'ws2' for 'ws2' for Task 'my-task', but 'ws2' doesn't exists in 'workspaces-test-4'",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 51,
+      "range": Array [
+        762,
+        820,
+      ],
+      "startColumn": 7,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 51,
+      "range": Array [
+        762,
+        820,
+      ],
+      "startColumn": 7,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        1012,
+        1049,
+      ],
+      "startColumn": 9,
+      "startLine": 62,
+    },
+    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 105,
+      "range": Array [
+        2292,
+        2348,
+      ],
+      "startColumn": 9,
+      "startLine": 103,
+    },
+    "message": "TriggerTemplate 'my-trigger-template-with-workspace' references Pipeline 'my-pipeline-with-workspace', but provides no workspace for 'missing-pipeline-workspace' (it's a required workspace in 'my-pipeline-with-workspace')",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 116,
+      "range": Array [
+        1940,
+        2015,
+      ],
+      "startColumn": 11,
+      "startLine": 113,
+    },
+    "message": "TriggerTemplate 'workspaces-trigger-1' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 129,
+      "range": Array [
+        2231,
+        2278,
+      ],
+      "startColumn": 9,
+      "startLine": 127,
+    },
+    "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws' (it's a required workspace in 'workspaces-test-4')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 129,
+      "range": Array [
+        2231,
+        2278,
+      ],
+      "startColumn": 9,
+      "startLine": 127,
+    },
+    "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 88,
+      "range": Array [
+        1600,
+        1615,
+      ],
+      "startColumn": 5,
+      "startLine": 87,
+    },
+    "message": "TriggerBinding 'binding-params-without-value' defines parameter 'revision' with missing value",
+    "path": "./regression-tests/triggerbinding-test.yaml",
+  },
+]
+`;
+
+exports[`regression tests without location 1`] = `
 Array [
   Object {
     "level": "error",

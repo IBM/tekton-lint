@@ -13,6 +13,7 @@ const collector = async (paths) => {
         content: doc.toJSON(),
         doc,
         path: file,
+        raw: content,
       });
     }
   }

@@ -3,8 +3,9 @@ const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
 
 module.exports = async function run(globs) {
-  const docs = (await collector(globs)).map(doc => doc.content);
-  return module.exports.lint(docs);
+  const docs = await collector(globs);
+  const reporter = new Reporter(docs);
+  return module.exports.lint(docs.map(doc => doc.content), reporter);
 };
 
 module.exports.lint = function lint(docs, reporter) {
@@ -37,28 +38,28 @@ module.exports.lint = function lint(docs, reporter) {
   const resourceSet = {};
   for (const resource of docs) {
     if (resourceSet[resource.metadata.name]) {
-      error(`'${resource.metadata.name}' is already defined (as a '${resourceSet[resource.metadata.name].kind}'), it can't be redefined (as a '${resource.kind}')`);
+      error(`'${resource.metadata.name}' is already defined (as a '${resourceSet[resource.metadata.name].kind}'), it can't be redefined (as a '${resource.kind}')`, resource.metadata, 'name');
     } else {
       resourceSet[resource.metadata.name] = resource;
     }
   }
 
-  function walk(node, path, visitor) {
+  function walk(node, path, visitor, parent) {
     if (typeof node === 'string' || typeof node === 'number') {
-      visitor(node, path);
+      visitor(node, path, parent);
     } else if (Array.isArray(node)) {
       for (const [index, child] of Object.entries(node)) {
-        walk(child, path + `[${index}]`, visitor);
+        walk(child, path + `[${index}]`, visitor, node);
       }
     } else {
       if (!node) return;
       for (const [key, value] of Object.entries(node)) {
-        walk(value, path + `.${key}`, visitor);
+        walk(value, path + `.${key}`, visitor, node);
       }
     }
   }
 
-  const unused = (resource, params, prefix) => (node, path) => {
+  const unused = (resource, params, prefix) => (node, path, parent) => {
     const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
     const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
     const m = node.toString().match(r1);
@@ -67,7 +68,7 @@ module.exports.lint = function lint(docs, reporter) {
       const m2 = item.match(r2);
       const param = m2[1];
       if (typeof params[param] === 'undefined') {
-        error(`Undefined param '${param}' at ${path} in '${resource}'`);
+        error(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split('.').slice(-1)[0]);
       } else {
         params[param]++;
       }
@@ -80,7 +81,7 @@ module.exports.lint = function lint(docs, reporter) {
       if (value) {
         if (typeof value === 'string') continue;
         if (Array.isArray(value) && value.every(element => typeof element === 'string')) continue;
-        error(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong value type (values should be of type 'string', 'array of strings')`);
+        error(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong value type (values should be of type 'string', 'array of strings')`, param);
       }
     }
   };
@@ -88,7 +89,7 @@ module.exports.lint = function lint(docs, reporter) {
   const checkInvalidResourceKey = (invalidKey, resources) => {
     Object.entries(resources).forEach(([type, resourceList]) => {
       Object.entries(resourceList).forEach(([name, resource]) => {
-        if (resource.metadata[invalidKey]) error(`Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`);
+        if (resource.metadata[invalidKey]) error(`Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`, resource.metadata, invalidKey);
       });
     });
   };
@@ -98,12 +99,12 @@ module.exports.lint = function lint(docs, reporter) {
     return valid.test(name);
   };
 
-  const naming = (resource, prefix) => (node, path) => {
+  const naming = (resource, prefix) => (node, path, parent) => {
     let name = node;
     const isNameDefinition = /.name$/.test(path);
 
     if (isNameDefinition && !isValidName(name)) {
-      warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+      warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
       return;
     }
 
@@ -113,7 +114,7 @@ module.exports.lint = function lint(docs, reporter) {
     if (m) {
       name = m[1];
       if (!isValidName(name)) {
-        warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+        warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path.split('.').slice(-1)[0]);
       }
     }
   };
@@ -129,23 +130,23 @@ module.exports.lint = function lint(docs, reporter) {
 
   for (const task of Object.values(tekton.tasks)) {
     if (task.apiVersion === 'tekton.dev/v1alpha1') {
-      warning(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`);
+      warning(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`, task, 'apiVersion');
     }
   }
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (pipeline.apiVersion === 'tekton.dev/v1alpha1') {
-      warning(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`);
+      warning(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`, pipeline, 'apiVersion');
     }
   }
 
   for (const task of Object.values(tekton.tasks)) {
     switch (task.apiVersion) {
       case 'tekton.dev/v1alpha1':
-        if (task.spec.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.`);
+        if (task.spec.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.`, task.spec.params);
         break;
       case 'tekton.dev/v1beta1':
-        if (task.spec.inputs && task.spec.inputs.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.`);
+        if (task.spec.inputs && task.spec.inputs.params) error(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.`, task.spec.inputs.params);
         break;
     }
   }
@@ -155,10 +156,10 @@ module.exports.lint = function lint(docs, reporter) {
       if (!task.taskSpec) continue;
       switch (pipeline.apiVersion) {
         case 'tekton.dev/v1alpha1':
-          if (task.taskSpec.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (${task.name}) with spec.params. Use spec.inputs.params instead.`);
+          if (task.taskSpec.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (${task.name}) with spec.params. Use spec.inputs.params instead.`, task.taskSpec.params);
           break;
         case 'tekton.dev/v1beta1':
-          if (task.taskSpec.inputs && task.taskSpec.inputs.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (${task.name}) with spec.inputs.params. Use spec.params instead.`);
+          if (task.taskSpec.inputs && task.taskSpec.inputs.params) error(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (${task.name}) with spec.inputs.params. Use spec.params instead.`, task.taskSpec.inputs.params);
           break;
       }
     }
@@ -168,7 +169,7 @@ module.exports.lint = function lint(docs, reporter) {
     for (const resourceTemplate of template.spec.resourcetemplates) {
       if (resourceTemplate.kind !== 'PipelineRun') continue;
       if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
-        error(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`);
+        error(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`, resourceTemplate.spec.pipelineRef, 'name');
       }
     }
   }
@@ -176,7 +177,7 @@ module.exports.lint = function lint(docs, reporter) {
   for (const [kind, resourceMap] of Object.entries(resources)) {
     for (const resource of Object.values(resourceMap)) {
       if (!isValidName(resource.metadata.name)) {
-        error(`Invalid name for ${kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`);
+        error(`Invalid name for ${kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`, resource.metadata, 'name');
       }
     }
   }
@@ -200,10 +201,10 @@ module.exports.lint = function lint(docs, reporter) {
   for (const task of Object.values(tekton.tasks)) {
     for (const step of Object.values(task.spec.steps)) {
       if (/:latest$/.test(step.image)) {
-        warning(`Invalid base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`);
+        warning(`Invalid base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`, step, 'image');
       }
       if (/^[^:$]*$/.test(step.image)) {
-        warning(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`);
+        warning(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`, step, 'image');
       }
     }
   }
@@ -214,7 +215,7 @@ module.exports.lint = function lint(docs, reporter) {
 
     for (const param of params) {
       if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
-        error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+        error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
       }
     }
   }
@@ -235,7 +236,7 @@ module.exports.lint = function lint(docs, reporter) {
 
     for (const param of Object.keys(occurences)) {
       if (occurences[param]) continue;
-      warning(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`);
+      warning(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`, params.find(p => p.name === param));
     }
   }
 
@@ -243,11 +244,11 @@ module.exports.lint = function lint(docs, reporter) {
     const params = getTaskParams(task.spec);
     if (!params) continue;
     const paramNames = new Set();
-    for (const { name } of params) {
-      if (!paramNames.has(name)) {
-        paramNames.add(name);
+    for (const param of params) {
+      if (!paramNames.has(param.name)) {
+        paramNames.add(param.name);
       } else {
-        error(`Task '${task.metadata.name}' has a duplicated param: '${name}'.`);
+        error(`Task '${task.metadata.name}' has a duplicated param: '${param.name}'.`, param, 'name');
       }
     }
   }
@@ -261,9 +262,9 @@ module.exports.lint = function lint(docs, reporter) {
     for (const step of Object.values(task.spec.steps)) {
       if (typeof step.volumeMounts === 'undefined') continue;
 
-      for (const { name } of Object.values(step.volumeMounts)) {
-        if (!volumes.includes(name)) {
-          error(`Task '${task.metadata.name}' wants to mount volume '${name}' in step '${step.name}', but this volume is not defined.`);
+      for (const mount of Object.values(step.volumeMounts)) {
+        if (!volumes.includes(mount.name)) {
+          error(`Task '${task.metadata.name}' wants to mount volume '${mount.name}' in step '${step.name}', but this volume is not defined.`, mount, 'name');
         }
       }
     }
@@ -273,11 +274,11 @@ module.exports.lint = function lint(docs, reporter) {
     for (const step of task.spec.steps) {
       if (!step.env) continue;
       const envVariables = new Set();
-      for (const { name } of step.env) {
-        if (!envVariables.has(name)) {
-          envVariables.add(name);
+      for (const env of step.env) {
+        if (!envVariables.has(env.name)) {
+          envVariables.add(env.name);
         } else {
-          error(`Step '${step.name}' has env variable '${name}' duplicated in task '${task.metadata.name}'.`);
+          error(`Step '${step.name}' has env variable '${env.name}' duplicated in task '${task.metadata.name}'.`, env, 'name');
         }
       }
     }
@@ -292,7 +293,7 @@ module.exports.lint = function lint(docs, reporter) {
     }
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
-      warning(`TriggerTemplate '${template.metadata.name}' defines parameter '${param}', but it's not used anywhere in the resourceTemplates specs`);
+      warning(`TriggerTemplate '${template.metadata.name}' defines parameter '${param}', but it's not used anywhere in the resourceTemplates specs`, template.spec.params.find(p => p.name === param));
     }
   }
 
@@ -301,7 +302,7 @@ module.exports.lint = function lint(docs, reporter) {
       if (!trigger.template) continue;
       const name = trigger.template.name;
       if (!tekton.triggerTemplates[name]) {
-        error(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`);
+        error(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`, trigger.template, 'name');
       }
     }
   }
@@ -311,7 +312,7 @@ module.exports.lint = function lint(docs, reporter) {
       if (!trigger.binding) continue;
       const name = trigger.binding.name;
       if (!tekton.triggerBindings[name]) {
-        error(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`);
+        error(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`, trigger.binding, 'name');
       }
     }
   }
@@ -322,11 +323,11 @@ module.exports.lint = function lint(docs, reporter) {
     for (const resourceTemplate of resourceTemplates) {
       if (resourceTemplate.spec && resourceTemplate.spec.params && resourceTemplate.kind === 'PipelineRun') {
         const paramNames = new Set();
-        for (const { name } of resourceTemplate.spec.params) {
-          if (!paramNames.has(name)) {
-            paramNames.add(name);
+        for (const param of resourceTemplate.spec.params) {
+          if (!paramNames.has(param.name)) {
+            paramNames.add(param.name);
           } else {
-            error(`PipelineRun '${resourceTemplate.metadata.name}' in TriggerTemplate '${triggerTemplate.metadata.name}' has a duplicate param name: '${name}'.`);
+            error(`PipelineRun '${resourceTemplate.metadata.name}' in TriggerTemplate '${triggerTemplate.metadata.name}' has a duplicate param name: '${param.name}'.`, param, 'name');
           }
         }
       }
@@ -336,11 +337,11 @@ module.exports.lint = function lint(docs, reporter) {
   for (const binding of Object.values(tekton.triggerBindings)) {
     const params = new Set();
     if (!binding.spec.params) continue;
-    for (const { name } of binding.spec.params) {
-      if (!params.has(name)) {
-        params.add(name);
+    for (const param of binding.spec.params) {
+      if (!params.has(param.name)) {
+        params.add(param.name);
       } else {
-        error(`TriggerBinding '${binding.metadata.name}' has param '${name}' duplicated.`);
+        error(`TriggerBinding '${binding.metadata.name}' has param '${param.name}' duplicated.`, param, 'name');
       }
     }
   }
@@ -348,20 +349,20 @@ module.exports.lint = function lint(docs, reporter) {
   for (const template of Object.values(tekton.triggerTemplates)) {
     const params = new Set();
     if (!template.spec.params) continue;
-    for (const { name } of template.spec.params) {
-      if (!params.has(name)) {
-        params.add(name);
+    for (const param of template.spec.params) {
+      if (!params.has(param.name)) {
+        params.add(param.name);
       } else {
-        error(`TriggerTemplate '${template.metadata.name}' has param '${name}' duplicated.`);
+        error(`TriggerTemplate '${template.metadata.name}' has param '${param.name}' duplicated.`, param, 'name');
       }
     }
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
     if (!template.spec.params) continue;
-    for (const { name } of template.spec.params) {
-      if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
-        error(`TriggerTemplate '${template.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+    for (const param of template.spec.params) {
+      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
+        error(`TriggerTemplate '${template.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
       }
     }
   }
@@ -369,20 +370,20 @@ module.exports.lint = function lint(docs, reporter) {
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
     const paramNames = new Set();
-    for (const { name } of pipeline.spec.params) {
-      if (!paramNames.has(name)) {
-        paramNames.add(name);
+    for (const param of pipeline.spec.params) {
+      if (!paramNames.has(param.name)) {
+        paramNames.add(param.name);
       } else {
-        error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${name}'.`);
+        error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${param.name}'.`, param, 'name');
       }
     }
   }
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
-    for (const { name } of pipeline.spec.params) {
-      if (name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(name)) {
-        error(`Pipeline '${pipeline.metadata.name}' defines parameter '${name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`);
+    for (const param of pipeline.spec.params) {
+      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
+        error(`Pipeline '${pipeline.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
       }
     }
   }
@@ -393,8 +394,8 @@ module.exports.lint = function lint(docs, reporter) {
       for (const dependency of task.runAfter) {
         const exists = pipeline.spec.tasks.some(task => task.name === dependency);
         const details = task.taskSpec ? 'defined in-line' : `referenced as '${task.taskRef.name}'`;
-        if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on itself (declared in runAfter)`);
-        if (!exists) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`);
+        if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on itself (declared in runAfter)`, task.runAfter, task.runAfter.indexOf(dependency));
+        if (!exists) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`, task.runAfter, task.runAfter.indexOf(dependency));
       }
     }
   }
@@ -405,7 +406,7 @@ module.exports.lint = function lint(docs, reporter) {
       if (!task.params) continue;
       for (const param of Object.values(task.params)) {
         if (typeof param.value == 'undefined') {
-          error(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`);
+          error(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`, param, 'name');
         }
       }
     }
@@ -420,7 +421,7 @@ module.exports.lint = function lint(docs, reporter) {
 
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
-      warning(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`);
+      warning(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`, pipeline.spec.params.find(p => p.name === param));
     }
   }
 
@@ -430,7 +431,7 @@ module.exports.lint = function lint(docs, reporter) {
       const name = task.taskRef.name;
 
       if (!tekton.tasks[name]) {
-        error(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`);
+        error(`Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`, task.taskRef, 'name');
         continue;
       }
     }
@@ -447,7 +448,7 @@ module.exports.lint = function lint(docs, reporter) {
             if (!taskParamNames.has(param.name)) {
               taskParamNames.add(param.name);
             } else {
-              error(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`);
+              error(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`, param, 'name');
             }
           }
           const provided = task.params.map(param => param.name);
@@ -461,11 +462,11 @@ module.exports.lint = function lint(docs, reporter) {
           const missing = required.filter(param => !provided.includes(param));
 
           for (const param of extra) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
           }
 
           for (const param of missing) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`, task.params);
           }
         }
       }
@@ -480,13 +481,13 @@ module.exports.lint = function lint(docs, reporter) {
             .map(param => param.name);
 
           for (const param of required) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`, task);
           }
         } else if (params == null) {
             const provided = task.params.map(param => param.name);
 
             for (const param of provided) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param.name));
           }
         } else {
           const provided = task.params.map(param => param.name);
@@ -499,11 +500,11 @@ module.exports.lint = function lint(docs, reporter) {
           const missing = required.filter(param => !provided.includes(param));
 
           for (const param of extra) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
           }
 
           for (const param of missing) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`);
+            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`, task.params);
           }
         }
       }
@@ -520,11 +521,11 @@ module.exports.lint = function lint(docs, reporter) {
       const missing = pipelineParams.filter(pipelineParam => !templateParams.some(templateParam => templateParam.name === pipelineParam.name) && typeof pipelineParam.default === 'undefined');
       const extra = templateParams.filter(templateParam => !pipelineParams.some(pipelineParam => pipelineParam.name === templateParam.name));
       for (const param of extra) {
-        warning(`TriggerTemplate '${template.metadata.name}' references pipeline '${pipeline.metadata.name}', and supplies '${param.name}', but it's not a valid parameter.`);
+        warning(`TriggerTemplate '${template.metadata.name}' references pipeline '${pipeline.metadata.name}', and supplies '${param.name}', but it's not a valid parameter.`, templateParams.find(p => p.name === param));
       }
 
       for (const param of missing) {
-        error(`Pipeline '${pipeline.metadata.name}' references param '${param.name}', but it is not supplied in triggerTemplate '${template.metadata.name}'`);
+        error(`Pipeline '${pipeline.metadata.name}' references param '${param.name}', but it is not supplied in triggerTemplate '${template.metadata.name}'`, matchingResource);
       }
     }
   }
@@ -536,7 +537,7 @@ module.exports.lint = function lint(docs, reporter) {
       for (const workspace of task.workspaces) {
         const matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.workspace);
         if (!matchingWorkspace) {
-          error(`Pipeline '${pipeline.metadata.name}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${pipeline.metadata.name}'`);
+          error(`Pipeline '${pipeline.metadata.name}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${pipeline.metadata.name}'`, workspace, 'workspace');
         }
       }
     }
@@ -555,7 +556,7 @@ module.exports.lint = function lint(docs, reporter) {
 
         for (const required of requiredWorkspaces) {
           if (!usedWorkspaces.find(ws => ws.name === required)) {
-            error(`Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`);
+            error(`Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`, taskRef.workspaces || taskRef);
           }
         }
       }
@@ -574,7 +575,7 @@ module.exports.lint = function lint(docs, reporter) {
 
         for (const workspace of required) {
           if (!provided.find(ws => ws.name === workspace)) {
-            error(`TriggerTemplate '${template.metadata.name}' references Pipeline '${pipeline.metadata.name}', but provides no workspace for '${workspace}' (it's a required workspace in '${pipeline.metadata.name}')`);
+            error(`TriggerTemplate '${template.metadata.name}' references Pipeline '${pipeline.metadata.name}', but provides no workspace for '${workspace}' (it's a required workspace in '${pipeline.metadata.name}')`, pipelineRun.spec.workspaces || pipelineRun.spec);
           }
         }
       }
@@ -584,7 +585,7 @@ module.exports.lint = function lint(docs, reporter) {
   for (const triggerBinding of Object.values(tekton.triggerBindings)) {
     if (!triggerBinding.spec.params) continue;
     for (const param of triggerBinding.spec.params) {
-      if (param.value === undefined) warning(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`);
+      if (param.value === undefined) warning(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`, param);
     }
   }
 

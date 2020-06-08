@@ -92,12 +92,21 @@ $ tekton-lint --watch '**/*.yaml'
 #### `linter(globs: string[]): Promise<Problem[]>`
 
 Runs the linter on the provided `globs`, and resolves to the list of found problems.
-Each problem has a `level` and a `message` property.
+Each problem has a `level` and a `message` property. `path` is the path to the
+original file, `loc` is an object which describes the location of the problem.
 
 ```ts
 interface Problem {
   level: 'warning' | 'error';
   message: string;
+  path?: string;
+  loc?: {
+    range: [number, number];
+    startLine: number;
+    startColumn: number;
+    endLine: number;
+    endColumn: number;
+  };
 }
 ```
 
