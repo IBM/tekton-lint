@@ -16,7 +16,7 @@
     "lint": "eslint './*.js'",
     "test": "jest"
   },
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Linter for Tekton definitions",
   "main": "rules.js",
   "repository": {
