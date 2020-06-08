@@ -56,7 +56,7 @@ function instrument(docs) {
     walk(doc.content, [], (node, path) => {
       if (node != null && typeof node == 'object') {
         m.set(node, {
-          node: doc.doc.getIn(path, true),
+          node: path.length ? doc.doc.getIn(path, true) : doc.doc,
           path,
           doc,
         });
