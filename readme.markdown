@@ -87,6 +87,45 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 $ tekton-lint --watch '**/*.yaml'
 ```
 
+### IDE Integration
+
+`tekton-lint` can be added as a [Task][vscode-task]:
+
+```js
+// .vscode/tasks.json
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run tekton-lint",
+      "type": "shell",
+      "command": "tekton-lint --watch 'path/to/your/definitions/*.yaml'",
+      "isBackground": true,
+      "group": "test",
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*)\\((\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info):\\s*(.*)$",
+          "file": 1,
+          "location": 2,
+          "severity": 3,
+          "message": 4
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Linter",
+          "endsPattern": "Tekton-lint finished running!"
+        }
+      }
+    }
+  ]
+}
+```
+
+You can run this task from _Terminal_ > _Run Task..._ > _Run tekton-lint_:
+
+![vscode-screenshot]
+
 ### API
 
 #### `linter(globs: string[]): Promise<Problem[]>`
@@ -197,12 +236,6 @@ for (const problem of problems) {
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 - Missing `TriggerBinding` parameter values
 
-[tekton]: https://tekton.dev
-[node]: https://nodejs.org
-[pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
-[taas]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/home
-[taas-api]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/profile
-
 ## Report a Bug / Request a Feature
 
 We track our issues in [this github repository](https://github.ibm.com/cocoa/board).
@@ -215,3 +248,11 @@ Please use the following issue templates to:
 Make sure that you pass sanity checks (`npm run sanity-check`). In case you
 add/remove/change rules, or add/remove/change regression tests you have to
 manually update the reference output (`ref.log`).
+
+[tekton]: https://tekton.dev
+[node]: https://nodejs.org
+[pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
+[taas]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/home
+[taas-api]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/profile
+[vscode-task]: https://code.visualstudio.com/docs/editor/tasks
+[vscode-screenshot]: vscode.png
