@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const { version } = require('./package.json');
-const argv = require('minimist')(process.argv.slice(2));
+const argv = require('minimist')(process.argv.slice(2), {
+  boolean: ['watch'],
+});
 const watch = require('./watch');
 const run = require('./rules');
 const { logProblems } = require('./utils');
