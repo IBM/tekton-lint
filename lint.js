@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const { version } = require('./package.json');
+const argv = require('minimist')(process.argv.slice(2));
 const watch = require('./watch');
 const run = require('./rules');
 const { logProblems } = require('./utils');
-
 const usageMessage = `Usage:
 tekton-lint <path-to-yaml-files>
 
@@ -27,22 +27,15 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 $ tekton-lint --watch '**/*.yaml'
 `;
 
-let watchMode = false;
+if (argv.version) {
+  return console.log(`Version: ${version}`);
+}
 
-if (process.argv[2]) {
-  if (process.argv[2] === '--version') {
-    return console.log(`Version: ${version}`);
-  }
-  if (process.argv[2] === '--help') {
-    return console.log(usageMessage);
-  }
-  if (process.argv[2] === '--watch') {
-    if (process.argv.slice(3).length === 0) {
-      return console.log(usageMessage);
-    }
-    watchMode = true;
-  }
-} else {
+if (argv.help) {
+  return console.log(usageMessage);
+}
+
+if (argv._.length === 0) {
   return console.log(usageMessage);
 }
 
@@ -51,10 +44,10 @@ if (+process.version.slice(1).split('.')[0] < 12) {
   return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
 }
 
-if (watchMode) {
-  watch(process.argv.slice(3));
+if (argv.watch) {
+  watch(argv._);
 } else {
-  run(process.argv.slice(2))
+  run(argv._)
     .then((problems) => {
       logProblems(problems);
 
