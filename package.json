@@ -17,7 +17,7 @@
     "test": "jest",
     "coverage": "jest --coverage"
   },
-  "version": "0.0.21",
+  "version": "0.1.0",
   "description": "Linter for Tekton definitions",
   "main": "rules.js",
   "repository": {
