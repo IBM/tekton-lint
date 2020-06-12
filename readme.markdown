@@ -245,9 +245,9 @@ Please use the following issue templates to:
 
 ## Contributing
 
-Make sure that you pass sanity checks (`npm run sanity-check`). In case you
-add/remove/change rules, or add/remove/change regression tests you have to
-manually update the reference output (`ref.log`).
+Make sure that you pass the pre-commit checks (`npm run lint && npm test`). In case you
+add/remove/change rules, or add/remove/change regression tests you have to update
+the [`jest snapshot`](https://github.ibm.com/cocoa/tekton-lint/blob/master/regression-tests/__snapshots__/regresion.test.js.snap).
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
