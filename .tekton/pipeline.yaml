@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline
@@ -8,31 +8,64 @@ spec:
       description: the git repo
     - name: target-branch
       description: target branch
-    - name: pipeline-pvc
-      description: pipeline pvc name place holder
     - name: ibmcloud-api-key
       description: ibmcloud api key
-  tasks:
+    - name: pr-commit
+    - name: pr-number
+    - name: pipeline-debug
+      default: "0"
 
-    - name: get-git-credentials
+  workspaces:
+    - name: artifacts
+
+  tasks:
+    - name: git-get-credentials
       taskRef:
-        name: get-git-credentials
+        name: git-get-credentials
       params:
-        - name: credentials-pvc
-          value: $(params.pipeline-pvc)
         - name: ibmcloud-api-key
           value: $(params.ibmcloud-api-key)
         - name: repository
           value: $(params.repository)
+      workspaces:
+        - name: artifacts
+          workspace: artifacts
+
+    - name: save-git-token
+      runAfter:
+        - git-get-credentials
+      workspaces:
+        - name: artifacts
+          workspace: artifacts
+      taskSpec:
+        steps:
+          - name: save-git-token-to-file
+            image: ibmcom/pipeline-base-image:2.6
+            workingDir: "/artifacts"
+            command: ["/bin/bash", "-c"]
+            args:
+              - |
+                #!/bin/bash
+                set -e -o pipefail
+                pwd
+                env
+                trap env EXIT
+                set -x
+                source ./build.properties
+                echo -n $GIT_TOKEN > ./github-token
+        workspaces:
+          - name: artifacts
+            mountPath: /artifacts
 
     - name: clone-repo
       taskRef:
         name: git-clone
       runAfter:
-        - get-git-credentials
+        - git-get-credentials
+      workspaces:
+        - name: artifacts
+          workspace: artifacts
       params:
-        - name: task-pvc
-          value: $(params.pipeline-pvc)
         - name: repository
           value: $(params.repository)
         - name: branch
@@ -41,26 +74,89 @@ spec:
     - name: setup-repo
       taskRef:
         name: task-setup-repo
+      workspaces:
+        - name: artifacts
+          workspace: artifacts
       runAfter:
         - clone-repo
+
+    - name: unit-tests-status-pending
+      runAfter:
+        - save-git-token
+      taskRef:
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
       params:
-        - name: task-pvc
-          value: $(params.pipeline-pvc)
+        - name: secret-name
+          value: github-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: pending
+        - name: context
+          value: tekton/unit-tests
+        - name: description
+          value: "Running unit tests and regression tests"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: unit-tests
+      runAfter:
+        - setup-repo
+        - unit-tests-status-pending
+      taskRef:
+        name: util-run
+      workspaces:
+        - name: scripts
+          workspace: artifacts
+      params:
+        - name: script
+          value: . /root/.nvm/nvm.sh && cd /scripts/$(echo $(params.repository) | sed -E "s/(.*)(\/)//") && npm run test
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: unit-test-status-set
+      runAfter:
+        - unit-tests
+      taskRef:
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
+      params:
+        - name: secret-name
+          value: github-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: $(tasks.unit-tests.results.status)
+        - name: context
+          value: tekton/unit-tests
+        - name: description
+          value: "Unit tests and regression tests finished"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
 
     - name: lint
       taskRef:
         name: task-lint
       runAfter:
         - setup-repo
-      params:
-        - name: task-pvc
-          value: $(params.pipeline-pvc)
+      workspaces:
+        - name: artifacts
+          workspace: artifacts
 
     - name: tekton-test
       taskRef:
         name: task-tekton-test
       runAfter:
         - setup-repo
-      params:
-        - name: task-pvc
-          value: $(params.pipeline-pvc)
+      workspaces:
+        - name: artifacts
+          workspace: artifacts

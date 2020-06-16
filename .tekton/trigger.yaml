@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: template
@@ -19,6 +19,7 @@ spec:
       description: ibmcloud api key
     - name: dockerconfigjson
       description: dockerconfigjson from kube Secret to pull baseimage
+
   resourcetemplates:
     - apiVersion: v1
       kind: Secret
@@ -66,12 +67,18 @@ spec:
         pipelineRef:
           name: pipeline
         serviceAccountName: sa-pullsecret
+        workspaces:
+          - name: artifacts
+            persistentVolumeClaim:
+              claimName: pipelinerun-$(uid)-pvc
         params:
-          - name: pipeline-pvc
-            value: pipelinerun-$(uid)-pvc
           - name: repository
             value: $(params.repository)
           - name: target-branch
             value: $(params.target-branch)
           - name: ibmcloud-api-key
             value: $(params.ibmcloud-api-key)
+          - name: pr-commit
+            value: $(params.pr-commit)
+          - name: pr-number
+            value: $(params.pr-number)
