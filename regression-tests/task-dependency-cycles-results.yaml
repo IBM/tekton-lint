@@ -1,0 +1,115 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: my-task-with-results
+spec:
+  params:
+    - name: reflectiveparam
+      description: some reflective param
+  results:
+    - name: my-result
+  steps: []
+  resources:
+      outputs:
+        - name: built-image
+          type: image
+          description: "(Optional) The image to build"
+          optional: true
+      inputs:
+        - name: cluster
+          type: cluster
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: single-task-results-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-reflective-result
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result.results.my-result)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-results-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-reflective-result-a
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-b.results.my-result)
+    - name: task-with-reflective-result-b
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-a.results.my-result)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-results-multiple-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-reflective-result-a
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-b.results.my-result)
+    - name: task-with-reflective-result-b
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-a.results.my-result)
+    - name: task-with-reflective-result-c
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-d.results.my-result)
+    - name: task-with-reflective-result-d
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-c.results.my-result)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-results-one-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-reflective-result-a
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-b.results.my-result)
+    - name: task-with-reflective-result-b
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-c.results.my-result)
+    - name: task-with-reflective-result-c
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-d.results.my-result)
+    - name: task-with-reflective-result-d
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-reflective-result-a.results.my-result)

@@ -1,0 +1,72 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: single-task-runafter-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-1
+      taskRef:
+        name: my-task
+      runAfter: [task-1]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-runafter-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-1
+      taskRef:
+        name: my-task
+      runAfter: [task-2]
+    - name: task-2
+      taskRef:
+        name: my-task
+      runAfter: [task-1]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-runafter-multiple-cycle-pipeline
+spec:
+  tasks:
+    - name: task-1
+      taskRef:
+        name: my-task
+      runAfter: [task-2]
+    - name: task-2
+      taskRef:
+        name: my-task
+      runAfter: [task-1]
+    - name: task-3
+      taskRef:
+        name: my-task
+      runAfter: [task-4]
+    - name: task-4
+      taskRef:
+        name: my-task
+      runAfter: [task-3]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-runafter-longer-cycle-pipeline
+spec:
+  tasks:
+    - name: task-1
+      taskRef:
+        name: my-task
+      runAfter: [task-2]
+    - name: task-2
+      taskRef:
+        name: my-task
+      runAfter: [task-3]
+    - name: task-3
+      taskRef:
+        name: my-task
+      runAfter: [task-4]
+    - name: task-4
+      taskRef:
+        name: my-task
+      runAfter: [task-1]

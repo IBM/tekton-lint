@@ -223,6 +223,7 @@ for (const problem of problems) {
 - Invalid `Task` parameter syntax (using `v1beta1` syntax in `v1alpha1` defintions, and vice versa)
 - Invalid (undefined) `Workspace` references in `Task`s of `Pipeline`s
 - Missing referenced `Task` in another `Task`'s parameter in `Pipeline`s
+- Cycle detection in each pipelines task dependency graph (based on `runAfter`s, `results` and `resource -> inputs`)
 
 ### Best practices
 

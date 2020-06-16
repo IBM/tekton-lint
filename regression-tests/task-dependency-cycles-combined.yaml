@@ -1,0 +1,22 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: combined-task-with-union-edge
+spec:
+  tasks:
+    - name: task-with-resources-union
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-result
+    - name: task-with-result
+      taskRef:
+        name: my-task-with-results
+      params:
+        - name: reflectiveparam
+          value: $(tasks.task-with-resources-union.results.my-result)

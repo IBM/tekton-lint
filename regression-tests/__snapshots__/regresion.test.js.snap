@@ -635,6 +635,501 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 22,
+      "endLine": 350,
+      "range": Array [
+        8354,
+        8363,
+      ],
+      "startColumn": 13,
+      "startLine": 350,
+    },
+    "message": "Cycle found in tasks (dependency graph): my-task-1 -> my-task-1",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 8,
+      "range": Array [
+        113,
+        119,
+      ],
+      "startColumn": 13,
+      "startLine": 8,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 29,
+      "endLine": 17,
+      "range": Array [
+        355,
+        371,
+      ],
+      "startColumn": 13,
+      "startLine": 17,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
+    "path": "./regression-tests/task-dependency-cycles-combined.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 38,
+      "endLine": 8,
+      "range": Array [
+        125,
+        150,
+      ],
+      "startColumn": 13,
+      "startLine": 8,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
+    "path": "./regression-tests/task-dependency-cycles-combined.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 43,
+      "endLine": 26,
+      "range": Array [
+        481,
+        511,
+      ],
+      "startColumn": 13,
+      "startLine": 26,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-resources -> task-with-reflective-resources",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 51,
+      "range": Array [
+        1090,
+        1111,
+      ],
+      "startColumn": 13,
+      "startLine": 51,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 42,
+      "range": Array [
+        859,
+        880,
+      ],
+      "startColumn": 13,
+      "startLine": 42,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 76,
+      "range": Array [
+        1683,
+        1704,
+      ],
+      "startColumn": 13,
+      "startLine": 76,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 67,
+      "range": Array [
+        1452,
+        1473,
+      ],
+      "startColumn": 13,
+      "startLine": 67,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 94,
+      "range": Array [
+        2145,
+        2166,
+      ],
+      "startColumn": 13,
+      "startLine": 94,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 85,
+      "range": Array [
+        1914,
+        1935,
+      ],
+      "startColumn": 13,
+      "startLine": 85,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
+    "path": "./regression-tests/task-dependency-cycles-resources.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 29,
+      "range": Array [
+        572,
+        599,
+      ],
+      "startColumn": 13,
+      "startLine": 29,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result -> task-with-reflective-result",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 48,
+      "range": Array [
+        1119,
+        1148,
+      ],
+      "startColumn": 13,
+      "startLine": 48,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 42,
+      "range": Array [
+        907,
+        936,
+      ],
+      "startColumn": 13,
+      "startLine": 42,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 67,
+      "range": Array [
+        1672,
+        1701,
+      ],
+      "startColumn": 13,
+      "startLine": 67,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 61,
+      "range": Array [
+        1460,
+        1489,
+      ],
+      "startColumn": 13,
+      "startLine": 61,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 79,
+      "range": Array [
+        2096,
+        2125,
+      ],
+      "startColumn": 13,
+      "startLine": 79,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 73,
+      "range": Array [
+        1884,
+        1913,
+      ],
+      "startColumn": 13,
+      "startLine": 73,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 98,
+      "range": Array [
+        2644,
+        2673,
+      ],
+      "startColumn": 13,
+      "startLine": 98,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 104,
+      "range": Array [
+        2856,
+        2885,
+      ],
+      "startColumn": 13,
+      "startLine": 104,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 110,
+      "range": Array [
+        3068,
+        3097,
+      ],
+      "startColumn": 13,
+      "startLine": 110,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 92,
+      "range": Array [
+        2432,
+        2461,
+      ],
+      "startColumn": 13,
+      "startLine": 92,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 8,
+      "range": Array [
+        138,
+        144,
+      ],
+      "startColumn": 13,
+      "startLine": 8,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 23,
+      "range": Array [
+        428,
+        434,
+      ],
+      "startColumn": 13,
+      "startLine": 23,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 19,
+      "range": Array [
+        347,
+        353,
+      ],
+      "startColumn": 13,
+      "startLine": 19,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 38,
+      "range": Array [
+        720,
+        726,
+      ],
+      "startColumn": 13,
+      "startLine": 38,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 34,
+      "range": Array [
+        639,
+        645,
+      ],
+      "startColumn": 13,
+      "startLine": 34,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 46,
+      "range": Array [
+        882,
+        888,
+      ],
+      "startColumn": 13,
+      "startLine": 46,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 42,
+      "range": Array [
+        801,
+        807,
+      ],
+      "startColumn": 13,
+      "startLine": 42,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 61,
+      "range": Array [
+        1172,
+        1178,
+      ],
+      "startColumn": 13,
+      "startLine": 61,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 65,
+      "range": Array [
+        1253,
+        1259,
+      ],
+      "startColumn": 13,
+      "startLine": 65,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 69,
+      "range": Array [
+        1334,
+        1340,
+      ],
+      "startColumn": 13,
+      "startLine": 69,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 57,
+      "range": Array [
+        1091,
+        1097,
+      ],
+      "startColumn": 13,
+      "startLine": 57,
+    },
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 28,
       "endLine": 70,
       "range": Array [
@@ -976,6 +1471,21 @@ Array [
     },
     "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
     "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        107,
+        170,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
   },
   Object {
     "level": "warning",
@@ -1861,36 +2371,6 @@ Array [
     },
     "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on 'this-task-is-not-present', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 20,
-      "endLine": 353,
-      "range": Array [
-        8425,
-        8434,
-      ],
-      "startColumn": 11,
-      "startLine": 353,
-    },
-    "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on itself (declared in runAfter)",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 25,
-      "endLine": 11,
-      "range": Array [
-        173,
-        181,
-      ],
-      "startColumn": 17,
-      "startLine": 11,
-    },
-    "message": "Pipeline 'runafter-pipeline' uses task 'task-1' (referenced as 'my-task'), and it depends on itself (declared in runAfter)",
-    "path": "./regression-tests/run-after.yaml",
   },
   Object {
     "level": "error",
@@ -2896,6 +3376,171 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        174,
+        181,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 21,
+      "range": Array [
+        383,
+        390,
+      ],
+      "startColumn": 15,
+      "startLine": 21,
+    },
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 25,
+      "range": Array [
+        464,
+        471,
+      ],
+      "startColumn": 15,
+      "startLine": 25,
+    },
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 36,
+      "range": Array [
+        675,
+        682,
+      ],
+      "startColumn": 15,
+      "startLine": 36,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 40,
+      "range": Array [
+        756,
+        763,
+      ],
+      "startColumn": 15,
+      "startLine": 40,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 44,
+      "range": Array [
+        837,
+        844,
+      ],
+      "startColumn": 15,
+      "startLine": 44,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 48,
+      "range": Array [
+        918,
+        925,
+      ],
+      "startColumn": 15,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 59,
+      "range": Array [
+        1127,
+        1134,
+      ],
+      "startColumn": 15,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 63,
+      "range": Array [
+        1208,
+        1215,
+      ],
+      "startColumn": 15,
+      "startLine": 63,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 67,
+      "range": Array [
+        1289,
+        1296,
+      ],
+      "startColumn": 15,
+      "startLine": 67,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 71,
+      "range": Array [
+        1370,
+        1377,
+      ],
+      "startColumn": 15,
+      "startLine": 71,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
   },
   Object {
     "level": "error",
@@ -3942,6 +4587,138 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Cycle found in tasks (dependency graph): my-task-1 -> my-task-1",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-resources -> task-with-reflective-resources",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result -> task-with-reflective-result",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
+    "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
+  },
+  Object {
+    "level": "error",
     "message": "TriggerTemplate 'template-without-params' references pipeline 'pr-pipeline', but the referenced pipeline cannot be found.",
   },
   Object {
@@ -4031,6 +4808,10 @@ Array [
   Object {
     "level": "warning",
     "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
   },
   Object {
     "level": "warning",
@@ -4267,14 +5048,6 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on 'this-task-is-not-present', which doesn't exists (declared in runAfter)",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on itself (declared in runAfter)",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'runafter-pipeline' uses task 'task-1' (referenced as 'my-task'), and it depends on itself (declared in runAfter)",
   },
   Object {
     "level": "error",
@@ -4543,6 +5316,50 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
   },
   Object {
     "level": "error",

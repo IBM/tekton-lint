@@ -1,0 +1,102 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: my-task-with-resources
+spec:
+  results:
+    - name: my-result
+  resources:
+    outputs:
+      - name: built-image
+        type: image
+        description: "(Optional) The image to build"
+        optional: true
+    inputs:
+      - name: cluster
+        type: cluster
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: single-task-resources-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-reflective-resources
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-reflective-resources
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-resources-single-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-resources-a
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-b
+    - name: task-with-resources-b
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-a
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: multiple-task-resources-multiple-cycle-pipeline
+spec:
+  tasks:
+    - name: task-with-resources-a
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-b
+    - name: task-with-resources-b
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-a
+    - name: task-with-resources-c
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-d
+    - name: task-with-resources-d
+      taskRef:
+        name: my-task-with-resources
+      resources:
+        inputs:
+          - name: image
+            resource: app-image
+            from:
+              - task-with-resources-c

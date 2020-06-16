@@ -1,3 +1,4 @@
+const { alg, Graph } = require('graphlib');
 const collector = require('./Collector');
 const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
@@ -140,6 +141,79 @@ module.exports.lint = function lint(docs, reporter) {
     }
   }
 
+  function readParamReference({ value }) {
+    const taskResultReferenceRegexp = /\$\(tasks\.[a-z|-]*\.results\.[a-z|-]*\)/;
+    if (!value) return;
+    if (!value.match(taskResultReferenceRegexp)) return;
+    const referencedTaskname = value.split('$(tasks.')[1].split('.')[0];
+
+    return {
+      ref: referencedTaskname,
+    };
+  };
+
+  function paramsReferences({ params }) {
+    if (params === undefined || params === null) return [];
+
+    return params.map(param => ({
+      ...readParamReference(param),
+      type: 'paramRef',
+    }))
+      .filter(({ ref }) => ref !== undefined);
+  };
+
+  function runAfterReferences({ runAfter }) {
+    if (runAfter === undefined || runAfter === null) return [];
+
+    return runAfter.map(after => ({
+      ref: after,
+      type: 'runAfterRef',
+    }));
+  };
+
+
+  function resourceInputReferences(task) {
+    const { resources } = task;
+    if (resources === undefined || resources === null) return [];
+    const { inputs } = resources;
+    if (inputs === undefined || inputs === null) return [];
+    const inputsFromTasks = inputs.filter(input => input.from !== undefined);
+    return inputsFromTasks.map(input => ({
+      ref: input.from,
+      type: 'resourceRef',
+    }));
+  };
+
+  function buildTaskGraph(pipeline, referenceCreators) {
+    const pipelineGraph = new Graph({ directed: true, multigraph: true });
+    pipelineGraph.setGraph(pipeline.metadata.name);
+    if (!pipeline.spec.tasks || pipeline.spec.tasks === []) {
+      return pipelineGraph;
+    }
+    for (const task of pipeline.spec.tasks) {
+      pipelineGraph.setNode(task.name, task);
+      for (const referenceCreator of referenceCreators) {
+        for (const { ref, type } of referenceCreator(task)) {
+          if (!pipelineGraph.node(ref)) {
+            pipelineGraph.setNode(task, undefined);
+          }
+          pipelineGraph.setEdge(ref, task.name, type);
+        }
+      }
+    }
+    return pipelineGraph;
+  }
+
+  function errorCyclesInPipeline(pipeline, referenceCreators, errorFn) {
+    const pipelineTaskGraph = buildTaskGraph(pipeline, referenceCreators);
+    for (const cycle of alg.findCycles(pipelineTaskGraph)) {
+      for (const taskNameInCycle of cycle) {
+        const taskInCycle = Object.values(pipeline.spec.tasks).find(task => task.name === taskNameInCycle);
+        errorFn(`Cycle found in tasks (dependency graph): ${[...cycle, cycle[0]].join(' -> ')}`, taskInCycle, 'name');
+      }
+    }
+  }
+
   for (const task of Object.values(tekton.tasks)) {
     switch (task.apiVersion) {
       case 'tekton.dev/v1alpha1':
@@ -163,6 +237,10 @@ module.exports.lint = function lint(docs, reporter) {
           break;
       }
     }
+  }
+
+  for (const pipeline of Object.values(tekton.pipelines)) {
+    errorCyclesInPipeline(pipeline, [runAfterReferences, paramsReferences, resourceInputReferences], error);
   }
 
   for (const template of Object.values(tekton.triggerTemplates)) {
@@ -394,7 +472,6 @@ module.exports.lint = function lint(docs, reporter) {
       for (const dependency of task.runAfter) {
         const exists = pipeline.spec.tasks.some(task => task.name === dependency);
         const details = task.taskSpec ? 'defined in-line' : `referenced as '${task.taskRef.name}'`;
-        if (dependency === task.name) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on itself (declared in runAfter)`, task.runAfter, task.runAfter.indexOf(dependency));
         if (!exists) error(`Pipeline '${pipeline.metadata.name}' uses task '${task.name}' (${details}), and it depends on '${dependency}', which doesn't exists (declared in runAfter)`, task.runAfter, task.runAfter.indexOf(dependency));
       }
     }
@@ -484,9 +561,9 @@ module.exports.lint = function lint(docs, reporter) {
             error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`, task);
           }
         } else if (params == null) {
-            const provided = task.params.map(param => param.name);
+          const provided = task.params.map(param => param.name);
 
-            for (const param of provided) {
+          for (const param of provided) {
             error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
           }
         } else {
