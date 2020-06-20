@@ -79,11 +79,11 @@ module.exports.lint = function lint(docs, reporter) {
 
   const checkParameterValues = (resourceName, resourceKind, params) => {
     for (const param of params) {
-      const value = param.default || param.value;
-      if (value) {
+      const value = typeof param.default !== 'undefined' ? param.default : param.value;
+      if (value != null) {
         if (typeof value === 'string') continue;
         if (Array.isArray(value) && value.every(element => typeof element === 'string')) continue;
-        error(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong value type (values should be of type 'string', 'array of strings')`, param);
+        error(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong type (only strings and arrays of strings are allowed)`, param);
       }
     }
   };

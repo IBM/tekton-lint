@@ -16,4 +16,6 @@ spec:
     - name: baz
       default:
         foo: bar
+    - name: qux
+      default: false
   steps: []

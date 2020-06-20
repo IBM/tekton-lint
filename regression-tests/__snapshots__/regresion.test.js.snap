@@ -1214,7 +1214,7 @@ Array [
       "startColumn": 7,
       "startLine": 12,
     },
-    "message": "Task 'array-params' defines parameter 'bar' with wrong value type (values should be of type 'string', 'array of strings')",
+    "message": "Task 'array-params' defines parameter 'bar' with wrong type (only strings and arrays of strings are allowed)",
     "path": "./regression-tests/array-params.yaml",
   },
   Object {
@@ -1229,7 +1229,22 @@ Array [
       "startColumn": 7,
       "startLine": 16,
     },
-    "message": "Task 'array-params' defines parameter 'baz' with wrong value type (values should be of type 'string', 'array of strings')",
+    "message": "Task 'array-params' defines parameter 'baz' with wrong type (only strings and arrays of strings are allowed)",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        263,
+        294,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'array-params' defines parameter 'qux' with wrong type (only strings and arrays of strings are allowed)",
     "path": "./regression-tests/array-params.yaml",
   },
   Object {
@@ -1410,6 +1425,21 @@ Array [
       "startLine": 16,
     },
     "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        263,
+        294,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
     "path": "./regression-tests/array-params.yaml",
   },
   Object {
@@ -4739,11 +4769,15 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Task 'array-params' defines parameter 'bar' with wrong value type (values should be of type 'string', 'array of strings')",
+    "message": "Task 'array-params' defines parameter 'bar' with wrong type (only strings and arrays of strings are allowed)",
   },
   Object {
     "level": "error",
-    "message": "Task 'array-params' defines parameter 'baz' with wrong value type (values should be of type 'string', 'array of strings')",
+    "message": "Task 'array-params' defines parameter 'baz' with wrong type (only strings and arrays of strings are allowed)",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'array-params' defines parameter 'qux' with wrong type (only strings and arrays of strings are allowed)",
   },
   Object {
     "level": "warning",
@@ -4792,6 +4826,10 @@ Array [
   Object {
     "level": "warning",
     "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
   },
   Object {
     "level": "warning",
