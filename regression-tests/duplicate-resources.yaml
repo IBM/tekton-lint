@@ -52,6 +52,13 @@ spec:
   params: []
 ---
 apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: my-duplicated-triggerbinding
+spec:
+  resourcetemplates: []
+---
+apiVersion: tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: my-duplicated-eventlistener

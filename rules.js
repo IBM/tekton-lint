@@ -36,13 +36,14 @@ module.exports.lint = function lint(docs, reporter) {
     ])),
   };
 
-  const resourceSet = {};
+  const resourceNames = new Map();
   for (const resource of docs) {
-    if (resourceSet[resource.metadata.name]) {
-      error(`'${resource.metadata.name}' is already defined (as a '${resourceSet[resource.metadata.name].kind}'), it can't be redefined (as a '${resource.kind}')`, resource.metadata, 'name');
-    } else {
-      resourceSet[resource.metadata.name] = resource;
+    if (!resourceNames.has(resource.kind)) resourceNames.set(resource.kind, new Set());
+    const names = resourceNames.get(resource.kind);
+    if (names.has(resource.metadata.name)) {
+      error(`'${resource.metadata.name}' is already defined (as a '${resource.kind}')`, resource.metadata, 'name');
     }
+    names.add(resource.metadata.name);
   }
 
   function walk(node, path, visitor, parent) {

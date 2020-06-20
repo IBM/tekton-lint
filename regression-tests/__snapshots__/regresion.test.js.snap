@@ -14,7 +14,7 @@ Array [
       "startColumn": 9,
       "startLine": 10,
     },
-    "message": "'my-duplicated-task' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "message": "'my-duplicated-task' is already defined (as a 'Task')",
     "path": "./regression-tests/duplicate-resources.yaml",
   },
   Object {
@@ -29,7 +29,7 @@ Array [
       "startColumn": 9,
       "startLine": 30,
     },
-    "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/duplicate-resources.yaml",
   },
   Object {
@@ -44,37 +44,37 @@ Array [
       "startColumn": 9,
       "startLine": 50,
     },
-    "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding'), it can't be redefined (as a 'TriggerBinding')",
+    "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding')",
     "path": "./regression-tests/duplicate-resources.yaml",
   },
   Object {
     "level": "error",
     "loc": Object {
       "endColumn": 36,
-      "endLine": 68,
+      "endLine": 75,
       "range": Array [
-        1206,
-        1233,
+        1341,
+        1368,
       ],
       "startColumn": 9,
-      "startLine": 68,
+      "startLine": 75,
     },
-    "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener'), it can't be redefined (as a 'EventListener')",
+    "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener')",
     "path": "./regression-tests/duplicate-resources.yaml",
   },
   Object {
     "level": "error",
     "loc": Object {
       "endColumn": 38,
-      "endLine": 92,
+      "endLine": 99,
       "range": Array [
-        1721,
-        1750,
+        1856,
+        1885,
       ],
       "startColumn": 9,
-      "startLine": 92,
+      "startLine": 99,
     },
-    "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate')",
     "path": "./regression-tests/duplicate-resources.yaml",
   },
   Object {
@@ -89,7 +89,7 @@ Array [
       "startColumn": 9,
       "startLine": 267,
     },
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -104,7 +104,7 @@ Array [
       "startColumn": 9,
       "startLine": 283,
     },
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -119,7 +119,7 @@ Array [
       "startColumn": 9,
       "startLine": 298,
     },
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -134,7 +134,7 @@ Array [
       "startColumn": 9,
       "startLine": 173,
     },
-    "message": "'task-without-volumes' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "message": "'task-without-volumes' is already defined (as a 'Task')",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -149,7 +149,7 @@ Array [
       "startColumn": 9,
       "startLine": 87,
     },
-    "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
@@ -164,7 +164,7 @@ Array [
       "startColumn": 9,
       "startLine": 164,
     },
-    "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate')",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -4419,47 +4419,47 @@ exports[`regression tests without location 1`] = `
 Array [
   Object {
     "level": "error",
-    "message": "'my-duplicated-task' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "message": "'my-duplicated-task' is already defined (as a 'Task')",
   },
   Object {
     "level": "error",
-    "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline')",
   },
   Object {
     "level": "error",
-    "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding'), it can't be redefined (as a 'TriggerBinding')",
+    "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding')",
   },
   Object {
     "level": "error",
-    "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener'), it can't be redefined (as a 'EventListener')",
+    "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener')",
   },
   Object {
     "level": "error",
-    "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate')",
   },
   Object {
     "level": "error",
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
   },
   Object {
     "level": "error",
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
   },
   Object {
     "level": "error",
-    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
   },
   Object {
     "level": "error",
-    "message": "'task-without-volumes' is already defined (as a 'Task'), it can't be redefined (as a 'Task')",
+    "message": "'task-without-volumes' is already defined (as a 'Task')",
   },
   Object {
     "level": "error",
-    "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline'), it can't be redefined (as a 'Pipeline')",
+    "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline')",
   },
   Object {
     "level": "error",
-    "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate'), it can't be redefined (as a 'TriggerTemplate')",
+    "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate')",
   },
   Object {
     "level": "error",
