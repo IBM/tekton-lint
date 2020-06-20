@@ -81,6 +81,11 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
+  name: binding-no-spec
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
   name: binding-params-without-value
 spec:
   params:
