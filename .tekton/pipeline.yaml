@@ -6,6 +6,8 @@ spec:
   params:
     - name: repository
       description: the git repo
+    - name: branch
+      description: pr source branch
     - name: target-branch
       description: target branch
     - name: ibmcloud-api-key
@@ -68,6 +70,8 @@ spec:
       params:
         - name: repository
           value: $(params.repository)
+        - name: origin
+          value: $(params.branch)
         - name: branch
           value: $(params.target-branch)
 
