@@ -73,17 +73,17 @@ class Reporter {
   }
 
   error(message, node, prop) {
-    this.problems.push({
-      message,
-      level: 'error',
-      ...getLocation(this.m, node, prop),
-    });
+    this.report(message, node, prop, true);
   }
 
   warning(message, node, prop) {
+    this.report(message, node, prop, false);
+  }
+
+  report(message, node, prop, isError) {
     this.problems.push({
       message,
-      level: 'warning',
+      level: isError ? 'error' : 'warning',
       ...getLocation(this.m, node, prop),
     });
   }

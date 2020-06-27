@@ -5,7 +5,7 @@ const argv = require('minimist')(process.argv.slice(2), {
   boolean: ['watch'],
 });
 const watch = require('./watch');
-const run = require('./rules');
+const run = require('./runner');
 const { logProblems } = require('./utils');
 const usageMessage = `Usage:
 tekton-lint <path-to-yaml-files>

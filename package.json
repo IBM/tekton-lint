@@ -10,16 +10,18 @@
     "reporter.js",
     "rules.js",
     "collect-resources.js",
-    "Collector.js"
+    "Collector.js",
+    "runner.js",
+    "rules/*.js"
   ],
   "scripts": {
-    "lint": "eslint './*.js'",
+    "lint": "eslint './*.js' './rules/*.js'",
     "test": "jest",
     "coverage": "jest --coverage"
   },
   "version": "0.1.3",
   "description": "Linter for Tekton definitions",
-  "main": "rules.js",
+  "main": "runner.js",
   "repository": {
     "type": "git",
     "url": "git@github.ibm.com:cocoa/tekton-lint.git"

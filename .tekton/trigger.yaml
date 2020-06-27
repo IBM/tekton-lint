@@ -74,8 +74,6 @@ spec:
         params:
           - name: repository
             value: $(params.repository)
-          - name: branch
-            value: $(params.branch)
           - name: target-branch
             value: $(params.target-branch)
           - name: ibmcloud-api-key
