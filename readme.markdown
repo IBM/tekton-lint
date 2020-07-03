@@ -98,25 +98,36 @@ $ tekton-lint --watch '**/*.yaml'
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run tekton-lint",
+      "label": "Run tekton-lint in the workspace",
       "type": "shell",
-      "command": "tekton-lint --watch 'path/to/your/definitions/*.yaml'",
-      "isBackground": true,
-      "group": "test",
-      "problemMatcher": {
-        "pattern": {
-          "regexp": "^([^\\s].*)\\((\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info):\\s*(.*)$",
-          "file": 1,
-          "location": 2,
-          "severity": 3,
-          "message": 4
-        },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "Linter",
-          "endsPattern": "Tekton-lint finished running!"
+      "command": "tekton-lint",
+      "args": [
+        "--watch",
+        "${workspaceFolder}/**/*.yaml" // Change this path to the path of your yaml files (this will watch for every yaml file in your currently open workspace)
+      ],
+      "problemMatcher": [
+        {
+          "fileLocation": "absolute",
+          "pattern": [
+            {
+              "regexp": "^([^\\s].*):$",
+              "file": 1
+            },
+            {
+              "regexp": "^(error|warning|info)\\s+\\((\\d+,\\d+,\\d+,\\d+)\\):(.*)$",
+              "severity": 1,
+              "location": 2,
+              "message": 3,
+              "loop": true
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^File (.*) has been changed! Running Linter again!",
+            "endsPattern": "^Tekton-lint finished running!"
+          }
         }
-      }
+      ]
     }
   ]
 }
