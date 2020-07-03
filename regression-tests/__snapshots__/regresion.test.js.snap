@@ -1353,6 +1353,21 @@ Array [
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 9,
+      "range": Array [
+        113,
+        119,
+      ],
+      "startColumn": 16,
+      "startLine": 9,
+    },
+    "message": "Missing base image version 'alpine' for step 'foo' in Task 'foo'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+    "path": "./regression-tests/value-of-undefined.yaml",
+  },
+  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 17,
@@ -1876,6 +1891,21 @@ Array [
     },
     "message": "Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
     "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 26,
+      "endLine": 12,
+      "range": Array [
+        146,
+        173,
+      ],
+      "startColumn": 13,
+      "startLine": 11,
+    },
+    "message": "Undefined param 'foo' at spec.steps[0].args[0] in 'foo'",
+    "path": "./regression-tests/value-of-undefined.yaml",
   },
   Object {
     "level": "error",
@@ -4808,6 +4838,10 @@ Array [
     "message": "Missing base image version 'ibmcom/pipeline-base-image' for step 'fetch-git-token' in Task 'task-with-undefined-volume'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
   },
   Object {
+    "level": "warning",
+    "message": "Missing base image version 'alpine' for step 'foo' in Task 'foo'. Specify the base image version, so Tasks can be consistent, and preferably immutable",
+  },
+  Object {
     "level": "error",
     "message": "Task 'param-names-task' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
@@ -4946,6 +4980,10 @@ Array [
   Object {
     "level": "warning",
     "message": "Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'foo' at spec.steps[0].args[0] in 'foo'",
   },
   Object {
     "level": "error",

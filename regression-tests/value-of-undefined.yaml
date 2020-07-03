@@ -1,0 +1,12 @@
+---
+  kind: Task
+  metadata: 
+    name: foo
+  spec: 
+    params: []
+    steps: 
+      - name: foo
+        image: alpine
+        args:
+          - |
+            $(params.foo)

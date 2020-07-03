@@ -70,7 +70,7 @@ module.exports.lint = function lint(docs, reporter) {
       const m2 = item.match(r2);
       const param = m2[1];
       if (typeof params[param] === 'undefined') {
-        error(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split('.').slice(-1)[0]);
+        error(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split(/\.|\]|\[/).filter(Boolean).slice(-1)[0]);
       } else {
         params[param]++;
       }
