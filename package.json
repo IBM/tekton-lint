@@ -15,7 +15,7 @@
     "rules/*.js"
   ],
   "scripts": {
-    "lint": "eslint './*.js' './rules/*.js'",
+    "lint": "eslint './*.js' './rules/*.js' './regression-tests/*.js'",
     "test": "jest",
     "coverage": "jest --coverage"
   },

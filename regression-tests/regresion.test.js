@@ -1,7 +1,7 @@
 const collect = require('../Collector');
 const rules = require('../rules');
 const Reporter = require('../reporter');
-const runner = require('../runner')
+const runner = require('../runner');
 const { formatLine } = require('../utils');
 
 it('regression tests with location', async () => {
@@ -35,18 +35,18 @@ it('regression tests to test rule splitting into files', async () => {
     receivedLines.push(formatLine(problem));
   }
 
-  const missing = []
-  const additions = []
+  const missing = [];
+  const additions = [];
 
   for (const expectedLine of expectedLines) {
     if (!receivedLines.includes(expectedLine)) {
-      missing.push(expectedLine)
+      missing.push(expectedLine);
     }
   }
 
   for (const receivedLine of receivedLines) {
     if (!expectedLines.includes(receivedLine)) {
-      additions.push(receivedLine)
+      additions.push(receivedLine);
     }
   }
 
