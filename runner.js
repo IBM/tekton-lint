@@ -38,6 +38,10 @@ const parse = docs => ({
     item.metadata.name,
     item,
   ])),
+  conditions: Object.fromEntries(docs.filter(item => item.kind === 'Condition').map(item => [
+    item.metadata.name,
+    item,
+  ])),
 });
 
 module.exports = async function runner(globs) {

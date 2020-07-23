@@ -1,0 +1,30 @@
+---
+  apiVersion: tekton.dev/v1alpha1
+  kind: Condition
+  metadata:
+    name: condition-with-unused-params
+  spec:
+    params:
+      - name: left
+        type: string
+      - name: right
+        type: string
+    check:
+      image: alpine
+      script: |
+        #!/bin/sh
+        echo "condition-with-unused-params"
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Condition
+metadata:
+  name: condition-with-invalid-param-name
+spec:
+  params:
+    - name: left!!
+      type: string
+  check:
+    image: alpine
+    script: |
+      #!/bin/sh
+      echo "condition-with-invalid-param-name"

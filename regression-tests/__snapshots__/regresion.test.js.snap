@@ -1398,6 +1398,21 @@ Array [
     "path": "./regression-tests/param-names.yaml",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 24,
+      "range": Array [
+        449,
+        455,
+      ],
+      "startColumn": 13,
+      "startLine": 24,
+    },
+    "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/conditions.yaml",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -4848,6 +4863,10 @@ Array [
   Object {
     "level": "error",
     "message": "Task 'param-names-task' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
   Object {
     "level": "warning",

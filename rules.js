@@ -34,6 +34,10 @@ module.exports.lint = function lint(docs, reporter) {
       item.metadata.name,
       item,
     ])),
+    conditions: Object.fromEntries(docs.filter(item => item.kind === 'Condition').map(item => [
+      item.metadata.name,
+      item,
+    ])),
   };
 
   const resourceNames = new Map();
@@ -295,6 +299,15 @@ module.exports.lint = function lint(docs, reporter) {
     for (const param of params) {
       if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
         error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
+      }
+    }
+  }
+
+  for (const condition of Object.values(tekton.conditions)) {
+    if (!condition.spec.params) continue;
+    for (const param of condition.spec.params) {
+      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
+        error(`Condition '${condition.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
       }
     }
   }
