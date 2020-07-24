@@ -206,6 +206,7 @@ for (const problem of problems) {
 > chance that you won't be able to run your `Pipeline`
 
 - Missing `Task` definitions
+- Missing `Condition` definitions
 - Missing `Pipeline` definitions
 - Missing `TriggerTemplate` definitions
 - Missing `TriggerBinding` definitions
@@ -230,7 +231,7 @@ for (const problem of problems) {
 - Duplicate parameters name in `TriggerTemplate`s
 - Duplicate parameters name in `Pipeline`s
 - Missing `Task` parameter value in `Pipeline`s
-- Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter names (alpha-numeric characters, `-` and `_` and can only start with alpha characters and `_`)
+- Invalid `Task`, `Pipeline`, `TriggerTemplate`, `Condition` parameter names (alpha-numeric characters, `-` and `_` and can only start with alpha characters and `_`)
 - Invalid `Task`, `Pipeline`, `TriggerTemplate` parameter value types (must be `string`, `multiline string` or `array of strings`)
 - Invalid `Task` parameter syntax (using `v1beta1` syntax in `v1alpha1` defintions, and vice versa)
 - Invalid (undefined) `Workspace` references in `Task`s of `Pipeline`s

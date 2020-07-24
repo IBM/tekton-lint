@@ -40,3 +40,4 @@ rules: # error | warning | off
   prefer-baseimage-version: warning
   prefer-beta-version: warning
   prefer-kebab-naming: warning
+  no-pipeline-missing-condition: error

@@ -1,19 +1,19 @@
 ---
-  apiVersion: tekton.dev/v1alpha1
-  kind: Condition
-  metadata:
-    name: condition-with-unused-params
-  spec:
-    params:
-      - name: left
-        type: string
-      - name: right
-        type: string
-    check:
-      image: alpine
-      script: |
-        #!/bin/sh
-        echo "condition-with-unused-params"
+apiVersion: tekton.dev/v1alpha1
+kind: Condition
+metadata:
+  name: condition-with-unused-params
+spec:
+  params:
+    - name: left
+      type: string
+    - name: right
+      type: string
+  check:
+    image: alpine
+    script: |
+      #!/bin/sh
+      echo "condition-with-unused-params"
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Condition
@@ -28,3 +28,15 @@ spec:
     script: |
       #!/bin/sh
       echo "condition-with-invalid-param-name"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-with-missing-condition
+spec:
+  tasks:
+    - name: tekton-without-params
+      taskRef:
+        name: task-without-params
+      conditions:
+        - conditionRef: missing-condition

@@ -1403,8 +1403,8 @@ Array [
       "endColumn": 19,
       "endLine": 24,
       "range": Array [
-        449,
-        455,
+        419,
+        425,
       ],
       "startColumn": 13,
       "startLine": 24,
@@ -3650,6 +3650,21 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 1,
+      "endLine": 43,
+      "range": Array [
+        775,
+        807,
+      ],
+      "startColumn": 11,
+      "startLine": 42,
+    },
+    "message": "Pipeline 'pipeline-with-missing-condition' references Condition 'missing-condition' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/conditions.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 20,
       "endLine": 38,
       "range": Array [
@@ -5463,6 +5478,10 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-missing-condition' references Condition 'missing-condition' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.",
   },
   Object {
     "level": "error",

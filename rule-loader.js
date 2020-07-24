@@ -40,6 +40,7 @@ const rules = {
   'prefer-baseimage-version': require('./rules/prefer-baseimage-version.js'),
   'prefer-beta-version': require('./rules/prefer-beta-version.js'),
   'prefer-kebab-naming': require('./rules/prefer-kebab-naming.js'),
+  'no-pipeline-missing-condition': require('./rules/no-pipeline-missing-condition.js'),
 };
 
 module.exports = rules;
