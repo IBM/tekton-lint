@@ -332,6 +332,18 @@ module.exports.lint = function lint(docs, reporter) {
     }
   }
 
+  for (const condition of Object.values(tekton.conditions)) {
+    if (!condition.spec.params) continue;
+
+    const occurences = Object.fromEntries(condition.spec.params.map(param => [param.name, 0]));
+    walk(condition.spec.check, 'spec.check', unused(condition.metadata.name, occurences, 'params'));
+
+    for (const param of Object.keys(occurences)) {
+      if (occurences[param]) continue;
+      warning(`Condition '${condition.metadata.name}' defines parameter '${param}', but it's not used anywhere in the Condition check`, condition.spec.params.find(p => p.name === param));
+    }
+  }
+
   for (const task of Object.values(tekton.tasks)) {
     const params = getTaskParams(task.spec);
     if (!params) continue;

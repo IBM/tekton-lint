@@ -1923,6 +1923,51 @@ Array [
     "path": "./regression-tests/value-of-undefined.yaml",
   },
   Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        121,
+        151,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Condition 'condition-with-unused-params' defines parameter 'left', but it's not used anywhere in the Condition check",
+    "path": "./regression-tests/conditions.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 12,
+      "range": Array [
+        157,
+        188,
+      ],
+      "startColumn": 7,
+      "startLine": 10,
+    },
+    "message": "Condition 'condition-with-unused-params' defines parameter 'right', but it's not used anywhere in the Condition check",
+    "path": "./regression-tests/conditions.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 26,
+      "range": Array [
+        413,
+        445,
+      ],
+      "startColumn": 7,
+      "startLine": 24,
+    },
+    "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!', but it's not used anywhere in the Condition check",
+    "path": "./regression-tests/conditions.yaml",
+  },
+  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 18,
@@ -5018,6 +5063,18 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'foo' at spec.steps[0].args[0] in 'foo'",
+  },
+  Object {
+    "level": "warning",
+    "message": "Condition 'condition-with-unused-params' defines parameter 'left', but it's not used anywhere in the Condition check",
+  },
+  Object {
+    "level": "warning",
+    "message": "Condition 'condition-with-unused-params' defines parameter 'right', but it's not used anywhere in the Condition check",
+  },
+  Object {
+    "level": "warning",
+    "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!', but it's not used anywhere in the Condition check",
   },
   Object {
     "level": "error",

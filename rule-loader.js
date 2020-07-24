@@ -41,6 +41,7 @@ const rules = {
   'prefer-beta-version': require('./rules/prefer-beta-version.js'),
   'prefer-kebab-naming': require('./rules/prefer-kebab-naming.js'),
   'no-pipeline-missing-condition': require('./rules/no-pipeline-missing-condition.js'),
+  'no-condition-unused-params': require('./rules/no-condition-unused-params.js'),
 };
 
 module.exports = rules;

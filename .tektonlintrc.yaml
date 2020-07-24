@@ -41,3 +41,4 @@ rules: # error | warning | off
   prefer-beta-version: warning
   prefer-kebab-naming: warning
   no-pipeline-missing-condition: error
+  no-condition-unused-params: warning

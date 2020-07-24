@@ -245,6 +245,7 @@ for (const problem of problems) {
 > while we were working with tekton.
 
 - Unused `Task` parameters
+- Unused `Condition` parameters
 - Unused `Pipeline` parameters
 - Unused `TriggerTemplate` parameters
 - Unpinned images in `Task` steps
