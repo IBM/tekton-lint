@@ -5,7 +5,12 @@ const Reporter = require('./reporter');
 const rules = require('./rule-loader');
 
 const getRulesConfig = () => {
-  const rcFile = fs.readFileSync('./.tektonlintrc.yaml', 'utf8');
+  let rcFile;
+  if (fs.existsSync('./.tektonlintrc.yaml')) {
+    rcFile = fs.readFileSync('./.tektonlintrc.yaml', 'utf8');
+  } else {
+    rcFile = fs.readFileSync(path.resolve(__dirname, '.tektonlintrc.yaml'), 'utf8');
+  }
   return yaml.parse(rcFile);
 };
 

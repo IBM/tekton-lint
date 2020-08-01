@@ -12,7 +12,8 @@
     "collect-resources.js",
     "Collector.js",
     "runner.js",
-    "rules/*.js"
+    "rules/*.js",
+    ".tektonlintrc.yaml"
   ],
   "scripts": {
     "lint": "eslint './*.js' './rules/*.js' './regression-tests/*.js'",
