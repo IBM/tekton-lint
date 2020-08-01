@@ -519,8 +519,8 @@ module.exports.lint = function lint(docs, reporter) {
     if (!pipeline.spec.params) continue;
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
-    walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
-    walk(pipeline.spec.tasks, 'spec.steps', naming(pipeline.metadata.name, 'params'));
+    walk(pipeline.spec.tasks, 'spec.tasks', unused(pipeline.metadata.name, params, 'params'));
+    walk(pipeline.spec.tasks, 'spec.tasks', naming(pipeline.metadata.name, 'params'));
 
     for (const param of Object.keys(params)) {
       if (params[param]) continue;

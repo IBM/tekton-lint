@@ -19,6 +19,6 @@ module.exports = (docs, tekton, report) => {
     if (!pipeline.spec.params) continue;
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
-    walk(pipeline.spec.tasks, 'spec.steps', check_defined_params(pipeline.metadata.name, params, 'params', report));
+    walk(pipeline.spec.tasks, 'spec.tasks', check_defined_params(pipeline.metadata.name, params, 'params', report));
   }
 };
