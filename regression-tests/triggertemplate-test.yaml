@@ -436,3 +436,18 @@ spec:
       secrets:
         - name: regcred
         - name: tutorial-service-token-rqkp4
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: report-unused-params-outside-of-resourcetemplate-spec
+spec:
+  params:
+    - name: used-param
+  resourcetemplates:
+    - kind: Secret
+      metadata:
+        name: container-registry-secret
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: $(params.used-param)

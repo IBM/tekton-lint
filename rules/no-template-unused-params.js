@@ -21,7 +21,6 @@ module.exports = (docs, tekton, report) => {
     const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
 
     for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (!resourceTemplate.spec) continue;
       walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
     }
 

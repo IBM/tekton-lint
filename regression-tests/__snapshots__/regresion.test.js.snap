@@ -2135,6 +2135,36 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 35,
+      "endLine": 27,
+      "range": Array [
+        586,
+        603,
+      ],
+      "startColumn": 18,
+      "startLine": 27,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 63,
+      "range": Array [
+        1413,
+        1430,
+      ],
+      "startColumn": 18,
+      "startLine": 63,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 43,
       "endLine": 73,
       "range": Array [
@@ -2163,6 +2193,51 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 187,
+      "range": Array [
+        4235,
+        4252,
+      ],
+      "startColumn": 18,
+      "startLine": 187,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 149,
+      "range": Array [
+        3369,
+        3386,
+      ],
+      "startColumn": 18,
+      "startLine": 149,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 225,
+      "range": Array [
+        5131,
+        5148,
+      ],
+      "startColumn": 18,
+      "startLine": 225,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -2175,6 +2250,21 @@ Array [
       "startLine": 205,
     },
     "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 261,
+      "range": Array [
+        5974,
+        5991,
+      ],
+      "startColumn": 18,
+      "startLine": 261,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2193,6 +2283,21 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 406,
+      "range": Array [
+        9559,
+        9576,
+      ],
+      "startColumn": 18,
+      "startLine": 406,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -2205,6 +2310,21 @@ Array [
       "startLine": 397,
     },
     "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 35,
+      "endLine": 423,
+      "range": Array [
+        9912,
+        9929,
+      ],
+      "startColumn": 18,
+      "startLine": 423,
+    },
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -5122,6 +5242,14 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
     "message": "Undefined param 'target-branch' at resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
   },
   Object {
@@ -5129,16 +5257,40 @@ Array [
     "message": "TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
   },
   Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
   },
   Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",

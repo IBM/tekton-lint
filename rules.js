@@ -392,7 +392,6 @@ module.exports.lint = function lint(docs, reporter) {
     if (!template.spec.params) continue;
     const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
     for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (!resourceTemplate.spec) continue;
       walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
     }
     for (const param of Object.keys(params)) {
