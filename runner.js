@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const yaml = require('yaml');
 const collector = require('./Collector');
 const Reporter = require('./reporter');
