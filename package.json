@@ -13,6 +13,7 @@
     "Collector.js",
     "runner.js",
     "rules/*.js",
+    "rule-loader.js",
     ".tektonlintrc.yaml"
   ],
   "scripts": {
