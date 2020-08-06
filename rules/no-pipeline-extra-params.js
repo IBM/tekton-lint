@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk } = require('../walk');
 
 const unused = (resource, params, prefix) => (node) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
@@ -19,7 +19,7 @@ module.exports = (docs, tekton, report) => {
     if (!pipeline.spec.params) continue;
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
-    walk(pipeline.spec.tasks, 'spec.steps', unused(pipeline.metadata.name, params, 'params'));
+    walk(pipeline.spec.tasks, ['spec', 'steps'], unused(pipeline.metadata.name, params, 'params'));
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
       report(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`, pipeline.spec.params.find(p => p.name === param));

@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk, pathToString } = require('../walk');
 
 const isValidName = (name) => {
   const valid = new RegExp('^[a-z0-9-()$.]*$');
@@ -10,7 +10,7 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
   const isNameDefinition = /.name$/.test(path);
 
   if (isNameDefinition && !isValidName(name)) {
-    report(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
+    report(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
     return;
   }
 
@@ -20,7 +20,7 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
   if (m) {
     name = m[1];
     if (!isValidName(name)) {
-      report(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path.split('.').slice(-1)[0]);
+      report(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path[path.length - 1]);
     }
   }
 };
@@ -28,6 +28,6 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
 module.exports = (docs, tekton, report) => {
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
-    walk(pipeline.spec.tasks, 'spec.tasks', naming(pipeline.metadata.name, 'params', report));
+    walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
   }
 };

@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk } = require('../walk');
 
 const unused = (resource, params, prefix) => (node) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
@@ -21,7 +21,7 @@ module.exports = (docs, tekton, report) => {
     const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
 
     for (const resourceTemplate of template.spec.resourcetemplates) {
-      walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
+      walk(resourceTemplate, ['resourceTemplate'], unused(resourceTemplate.metadata.name, params, 'params'));
     }
 
     for (const param of Object.keys(params)) {

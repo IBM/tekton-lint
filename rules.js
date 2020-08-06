@@ -2,6 +2,7 @@ const { alg, Graph } = require('graphlib');
 const collector = require('./Collector');
 const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
+const { walk, pathToString } = require('./walk');
 
 module.exports = async function run(globs) {
   const docs = await collector(globs);
@@ -50,21 +51,6 @@ module.exports.lint = function lint(docs, reporter) {
     names.add(resource.metadata.name);
   }
 
-  function walk(node, path, visitor, parent) {
-    if (typeof node === 'string' || typeof node === 'number') {
-      visitor(node, path, parent);
-    } else if (Array.isArray(node)) {
-      for (const [index, child] of Object.entries(node)) {
-        walk(child, path + `[${index}]`, visitor, node);
-      }
-    } else {
-      if (!node) return;
-      for (const [key, value] of Object.entries(node)) {
-        walk(value, path + `.${key}`, visitor, node);
-      }
-    }
-  }
-
   const unused = (resource, params, prefix) => (node, path, parent) => {
     const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
     const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
@@ -74,7 +60,7 @@ module.exports.lint = function lint(docs, reporter) {
       const m2 = item.match(r2);
       const param = m2[1];
       if (typeof params[param] === 'undefined') {
-        error(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split(/\.|\]|\[/).filter(Boolean).slice(-1)[0]);
+        error(`Undefined param '${param}' at ${pathToString(path)} in '${resource}'`, parent, path[path.length - 1]);
       } else {
         params[param]++;
       }
@@ -110,7 +96,7 @@ module.exports.lint = function lint(docs, reporter) {
     const isNameDefinition = /.name$/.test(path);
 
     if (isNameDefinition && !isValidName(name)) {
-      warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
+      warning(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
       return;
     }
 
@@ -120,7 +106,7 @@ module.exports.lint = function lint(docs, reporter) {
     if (m) {
       name = m[1];
       if (!isValidName(name)) {
-        warning(`Invalid name for '${name}' at ${path} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path.split('.').slice(-1)[0]);
+        warning(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path[path.length - 1]);
       }
     }
   };
@@ -317,14 +303,14 @@ module.exports.lint = function lint(docs, reporter) {
     if (!params) continue;
     const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
 
-    walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.stepTemplate, 'spec.stepTemplate', unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.sidecars, 'spec.sidecars', unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.steps, 'spec.steps', unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.volumes, 'spec.volumes', unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.stepTemplate, 'spec.stepTemplate', unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.sidecars, 'spec.sidecars', unused(task.metadata.name, occurences, 'params'));
+    walk(task.spec.steps, ['spec', 'steps'], unused(task.metadata.name, occurences, 'inputs.params'));
+    walk(task.spec.volumes, ['spec', 'volumes'], unused(task.metadata.name, occurences, 'inputs.params'));
+    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], unused(task.metadata.name, occurences, 'inputs.params'));
+    walk(task.spec.sidecars, ['spec', 'sidecars'], unused(task.metadata.name, occurences, 'inputs.params'));
+    walk(task.spec.steps, ['spec', 'steps'], unused(task.metadata.name, occurences, 'params'));
+    walk(task.spec.volumes, ['spec', 'volumes'], unused(task.metadata.name, occurences, 'params'));
+    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], unused(task.metadata.name, occurences, 'params'));
+    walk(task.spec.sidecars, ['spec', 'sidecars'], unused(task.metadata.name, occurences, 'params'));
 
     for (const param of Object.keys(occurences)) {
       if (occurences[param]) continue;
@@ -336,7 +322,7 @@ module.exports.lint = function lint(docs, reporter) {
     if (!condition.spec.params) continue;
 
     const occurences = Object.fromEntries(condition.spec.params.map(param => [param.name, 0]));
-    walk(condition.spec.check, 'spec.check', unused(condition.metadata.name, occurences, 'params'));
+    walk(condition.spec.check, ['spec', 'check'], unused(condition.metadata.name, occurences, 'params'));
 
     for (const param of Object.keys(occurences)) {
       if (occurences[param]) continue;
@@ -392,7 +378,7 @@ module.exports.lint = function lint(docs, reporter) {
     if (!template.spec.params) continue;
     const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
     for (const resourceTemplate of template.spec.resourcetemplates) {
-      walk(resourceTemplate, 'resourceTemplate', unused(resourceTemplate.metadata.name, params, 'params'));
+      walk(resourceTemplate, ['resourceTemplate'], unused(resourceTemplate.metadata.name, params, 'params'));
     }
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
@@ -518,8 +504,8 @@ module.exports.lint = function lint(docs, reporter) {
     if (!pipeline.spec.params) continue;
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
-    walk(pipeline.spec.tasks, 'spec.tasks', unused(pipeline.metadata.name, params, 'params'));
-    walk(pipeline.spec.tasks, 'spec.tasks', naming(pipeline.metadata.name, 'params'));
+    walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(pipeline.metadata.name, params, 'params'));
+    walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));
 
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
@@ -743,12 +729,12 @@ module.exports.lint = function lint(docs, reporter) {
 
     const matchingResult = taskSpec.results.find(result => result.name === resultName);
     if (!matchingResult) {
-      error(`In Pipeline '${pipeline.metadata.name}' the value on path '${path}' refers to an undefined output result (as '${value}' - '${resultName}' is not a result in Task '${resultTask}')`, parent, path.split('.').slice(-1)[0]);
+      error(`In Pipeline '${pipeline.metadata.name}' the value on path '${pathToString(path)}' refers to an undefined output result (as '${value}' - '${resultName}' is not a result in Task '${resultTask}')`, parent, path[path.length - 1]);
     }
   };
 
   for (const pipeline of Object.values(tekton.pipelines)) {
-    walk(pipeline, '', checkUndefinedResult(pipeline));
+    walk(pipeline, [], checkUndefinedResult(pipeline));
   }
 
   return reporter.problems;

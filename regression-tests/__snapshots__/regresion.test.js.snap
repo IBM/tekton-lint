@@ -1619,7 +1619,7 @@ Array [
       "startColumn": 18,
       "startLine": 78,
     },
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-params'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1634,7 +1634,7 @@ Array [
       "startColumn": 18,
       "startLine": 80,
     },
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-params'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1649,7 +1649,7 @@ Array [
       "startColumn": 18,
       "startLine": 82,
     },
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-params'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1664,7 +1664,7 @@ Array [
       "startColumn": 20,
       "startLine": 96,
     },
-    "message": "Undefined param 'credentials-pvc' at spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1679,7 +1679,7 @@ Array [
       "startColumn": 16,
       "startLine": 70,
     },
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-params'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1694,7 +1694,7 @@ Array [
       "startColumn": 18,
       "startLine": 189,
     },
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-volumes'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1709,7 +1709,7 @@ Array [
       "startColumn": 18,
       "startLine": 191,
     },
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-volumes'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1724,7 +1724,7 @@ Array [
       "startColumn": 18,
       "startLine": 193,
     },
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-volumes'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1739,7 +1739,7 @@ Array [
       "startColumn": 16,
       "startLine": 181,
     },
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-volumes'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1754,7 +1754,7 @@ Array [
       "startColumn": 18,
       "startLine": 222,
     },
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1769,7 +1769,7 @@ Array [
       "startColumn": 18,
       "startLine": 224,
     },
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1784,7 +1784,7 @@ Array [
       "startColumn": 18,
       "startLine": 226,
     },
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1799,7 +1799,7 @@ Array [
       "startColumn": 20,
       "startLine": 237,
     },
-    "message": "Undefined param 'credentials-pvc' at spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1814,7 +1814,7 @@ Array [
       "startColumn": 16,
       "startLine": 214,
     },
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
@@ -1859,7 +1859,7 @@ Array [
       "startColumn": 18,
       "startLine": 19,
     },
-    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-alpha-task'",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
     "path": "./regression-tests/tekton-beta-ref.yaml",
   },
   Object {
@@ -1889,7 +1889,7 @@ Array [
       "startColumn": 18,
       "startLine": 18,
     },
-    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-beta-task'",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
     "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
@@ -1913,13 +1913,13 @@ Array [
       "endColumn": 26,
       "endLine": 12,
       "range": Array [
-        146,
+        144,
         173,
       ],
-      "startColumn": 13,
+      "startColumn": 11,
       "startLine": 11,
     },
-    "message": "Undefined param 'foo' at spec.steps[0].args[0] in 'foo'",
+    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
     "path": "./regression-tests/value-of-undefined.yaml",
   },
   Object {
@@ -2144,7 +2144,7 @@ Array [
       "startColumn": 18,
       "startLine": 27,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2159,7 +2159,7 @@ Array [
       "startColumn": 18,
       "startLine": 63,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2174,7 +2174,7 @@ Array [
       "startColumn": 20,
       "startLine": 73,
     },
-    "message": "Undefined param 'target-branch' at resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
+    "message": "Undefined param 'target-branch' at .resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2204,7 +2204,7 @@ Array [
       "startColumn": 18,
       "startLine": 187,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2219,7 +2219,7 @@ Array [
       "startColumn": 18,
       "startLine": 149,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2234,7 +2234,7 @@ Array [
       "startColumn": 18,
       "startLine": 225,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2264,7 +2264,7 @@ Array [
       "startColumn": 18,
       "startLine": 261,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2294,7 +2294,7 @@ Array [
       "startColumn": 18,
       "startLine": 406,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2324,7 +2324,7 @@ Array [
       "startColumn": 18,
       "startLine": 423,
     },
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2744,7 +2744,7 @@ Array [
       "startColumn": 18,
       "startLine": 35,
     },
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2834,7 +2834,7 @@ Array [
       "startColumn": 18,
       "startLine": 49,
     },
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[0].params[0].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2849,7 +2849,7 @@ Array [
       "startColumn": 18,
       "startLine": 51,
     },
-    "message": "Undefined param 'ibm-cloud-api-key' at spec.tasks[0].params[1].value in 'pipeline-without-params'",
+    "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2864,7 +2864,7 @@ Array [
       "startColumn": 18,
       "startLine": 53,
     },
-    "message": "Undefined param 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2879,7 +2879,7 @@ Array [
       "startColumn": 18,
       "startLine": 61,
     },
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[1].params[0].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[1].params[0].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2894,7 +2894,7 @@ Array [
       "startColumn": 18,
       "startLine": 63,
     },
-    "message": "Undefined param 'repository' at spec.tasks[1].params[1].value in 'pipeline-without-params'",
+    "message": "Undefined param 'repository' at .spec.tasks[1].params[1].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2909,7 +2909,7 @@ Array [
       "startColumn": 18,
       "startLine": 65,
     },
-    "message": "Undefined param 'branch' at spec.tasks[1].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'branch' at .spec.tasks[1].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2924,7 +2924,7 @@ Array [
       "startColumn": 18,
       "startLine": 69,
     },
-    "message": "Undefined param 'revision' at spec.tasks[1].params[4].value in 'pipeline-without-params'",
+    "message": "Undefined param 'revision' at .spec.tasks[1].params[4].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2939,7 +2939,7 @@ Array [
       "startColumn": 18,
       "startLine": 81,
     },
-    "message": "Undefined param 'statuses_url' at spec.tasks[2].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2954,7 +2954,7 @@ Array [
       "startColumn": 18,
       "startLine": 83,
     },
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[2].params[3].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2969,7 +2969,7 @@ Array [
       "startColumn": 18,
       "startLine": 53,
     },
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2984,7 +2984,7 @@ Array [
       "startColumn": 17,
       "startLine": 78,
     },
-    "message": "Invalid name for 'fail_task' at spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -2999,7 +2999,7 @@ Array [
       "startColumn": 17,
       "startLine": 80,
     },
-    "message": "Invalid name for 'statuses_url' at spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -3014,7 +3014,7 @@ Array [
       "startColumn": 18,
       "startLine": 81,
     },
-    "message": "Invalid name for 'statuses_url' at spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -3029,7 +3029,7 @@ Array [
       "startColumn": 18,
       "startLine": 137,
     },
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -5102,59 +5102,59 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-params'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-params'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-params'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'credentials-pvc' at spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-params'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-without-volumes'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-volumes'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-without-volumes'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-volumes'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-without-volumes'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-volumes'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-without-volumes'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-volumes'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api' at spec.steps[0].env[1].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-with-undefined-volume'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'repository' at spec.steps[0].env[2].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-with-undefined-volume'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'propertiesFile' at spec.steps[0].env[3].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-with-undefined-volume'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'credentials-pvc' at spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibmcloud-api-key' at spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
   },
   Object {
     "level": "warning",
@@ -5166,7 +5166,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-alpha-task'",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
   },
   Object {
     "level": "warning",
@@ -5174,7 +5174,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'my-missing-param' at spec.steps[0].env[1].value in 'my-beta-task'",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
   },
   Object {
     "level": "warning",
@@ -5182,7 +5182,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'foo' at spec.steps[0].args[0] in 'foo'",
+    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
   },
   Object {
     "level": "warning",
@@ -5242,15 +5242,15 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'target-branch' at resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
+    "message": "Undefined param 'target-branch' at .resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
   },
   Object {
     "level": "warning",
@@ -5258,15 +5258,15 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
@@ -5274,7 +5274,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
@@ -5282,7 +5282,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
@@ -5290,7 +5290,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'api-key' at resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
@@ -5402,7 +5402,7 @@ Array [
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
@@ -5426,59 +5426,59 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[0].params[0].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'ibm-cloud-api-key' at spec.tasks[0].params[1].value in 'pipeline-without-params'",
+    "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[1].params[0].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[1].params[0].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'repository' at spec.tasks[1].params[1].value in 'pipeline-without-params'",
+    "message": "Undefined param 'repository' at .spec.tasks[1].params[1].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'branch' at spec.tasks[1].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'branch' at .spec.tasks[1].params[2].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'revision' at spec.tasks[1].params[4].value in 'pipeline-without-params'",
+    "message": "Undefined param 'revision' at .spec.tasks[1].params[4].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'statuses_url' at spec.tasks[2].params[2].value in 'pipeline-without-params'",
+    "message": "Undefined param 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'",
   },
   Object {
     "level": "error",
-    "message": "Undefined param 'pipeline-pvc' at spec.tasks[2].params[3].value in 'pipeline-without-params'",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'fail_task' at spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_url' at spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_url' at spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",

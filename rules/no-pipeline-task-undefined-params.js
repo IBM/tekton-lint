@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk, pathToString } = require('../walk');
 
 const check_defined_params = (resource, params, prefix, report) => (node, path, parent) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
@@ -9,7 +9,7 @@ const check_defined_params = (resource, params, prefix, report) => (node, path, 
     const m2 = item.match(r2);
     const param = m2[1];
     if (typeof params[param] === 'undefined') {
-      report(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split('.').slice(-1)[0]);
+      report(`Undefined param '${param}' at ${pathToString(path)} in '${resource}'`, parent, path[path.length - 1]);
     }
   }
 };
@@ -19,6 +19,6 @@ module.exports = (docs, tekton, report) => {
     if (!pipeline.spec.params) continue;
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
-    walk(pipeline.spec.tasks, 'spec.tasks', check_defined_params(pipeline.metadata.name, params, 'params', report));
+    walk(pipeline.spec.tasks, ['spec', 'tasks'], check_defined_params(pipeline.metadata.name, params, 'params', report));
   }
 };

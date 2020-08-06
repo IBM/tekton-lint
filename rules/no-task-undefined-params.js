@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk, pathToString } = require('../walk');
 
 function getTaskParams(spec) {
   if (spec.inputs) return spec.inputs.params;
@@ -14,7 +14,7 @@ const check_defined_params = (resource, params, prefix, report) => (node, path, 
     const m2 = item.match(r2);
     const param = m2[1];
     if (typeof params[param] === 'undefined') {
-      report(`Undefined param '${param}' at ${path} in '${resource}'`, parent, path.split(/\.|\]|\[/).filter(Boolean).slice(-1)[0]);
+      report(`Undefined param '${param}' at ${pathToString(path)} in '${resource}'`, parent, path[path.length - 1]);
     }
   }
 };
@@ -27,13 +27,13 @@ module.exports = (docs, tekton, report) => {
 
     const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
 
-    walk(task.spec.steps, 'spec.steps', check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
-    walk(task.spec.volumes, 'spec.volumes', check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
-    walk(task.spec.stepTemplate, 'spec.stepTemplate', check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
-    walk(task.spec.sidecars, 'spec.sidecars', check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
-    walk(task.spec.steps, 'spec.steps', check_defined_params(task.metadata.name, occurences, 'params', report));
-    walk(task.spec.volumes, 'spec.volumes', check_defined_params(task.metadata.name, occurences, 'params', report));
-    walk(task.spec.stepTemplate, 'spec.stepTemplate', check_defined_params(task.metadata.name, occurences, 'params', report));
-    walk(task.spec.sidecars, 'spec.sidecars', check_defined_params(task.metadata.name, occurences, 'params', report));
+    walk(task.spec.steps, ['spec', 'steps'], check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
+    walk(task.spec.volumes, ['spec', 'volumes'], check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
+    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
+    walk(task.spec.sidecars, ['spec', 'sidecars'], check_defined_params(task.metadata.name, occurences, 'inputs.params', report));
+    walk(task.spec.steps, ['spec', 'steps'], check_defined_params(task.metadata.name, occurences, 'params', report));
+    walk(task.spec.volumes, ['spec', 'volumes'], check_defined_params(task.metadata.name, occurences, 'params', report));
+    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], check_defined_params(task.metadata.name, occurences, 'params', report));
+    walk(task.spec.sidecars, ['spec', 'sidecars'], check_defined_params(task.metadata.name, occurences, 'params', report));
   }
 };

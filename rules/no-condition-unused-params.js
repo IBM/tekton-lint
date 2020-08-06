@@ -1,4 +1,4 @@
-const walk = require('../walk');
+const { walk } = require('../walk');
 
 const unused = (resource, params, prefix) => (node) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
@@ -21,7 +21,7 @@ module.exports = (docs, tekton, report) => {
     if (!condition.spec.params) continue;
 
     const occurences = Object.fromEntries(condition.spec.params.map(param => [param.name, 0]));
-    walk(condition.spec.check, 'spec.check', unused(condition.metadata.name, occurences, 'params'));
+    walk(condition.spec.check, ['spec', 'check'], unused(condition.metadata.name, occurences, 'params'));
 
     for (const param of Object.keys(occurences)) {
       if (occurences[param]) continue;
