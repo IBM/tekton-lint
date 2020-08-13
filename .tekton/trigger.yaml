@@ -19,6 +19,7 @@ spec:
       description: ibmcloud api key
     - name: dockerconfigjson
       description: dockerconfigjson from kube Secret to pull baseimage
+    - name: pipeline-debug
 
   resourcetemplates:
     - apiVersion: v1
@@ -76,9 +77,13 @@ spec:
             value: $(params.repository)
           - name: target-branch
             value: $(params.target-branch)
+          - name: branch
+            value: $(params.branch)
           - name: ibmcloud-api-key
             value: $(params.ibmcloud-api-key)
           - name: pr-commit
             value: $(params.pr-commit)
           - name: pr-number
             value: $(params.pr-number)
+          - name: pipeline-debug
+            value: $(params.pipeline-debug)

@@ -8,10 +8,8 @@ spec:
       description: the git repo
     - name: target-branch
       description: target branch
-    - name: ibmcloud-api-key
-      description: ibmcloud api key
     - name: pr-commit
-    - name: pr-number
+    - name: branch
     - name: pipeline-debug
       default: "0"
 
@@ -23,39 +21,13 @@ spec:
       taskRef:
         name: git-get-credentials
       params:
-        - name: ibmcloud-api-key
-          value: $(params.ibmcloud-api-key)
         - name: repository
           value: $(params.repository)
       workspaces:
         - name: artifacts
           workspace: artifacts
-
-    - name: save-git-token
-      runAfter:
-        - git-get-credentials
-      workspaces:
-        - name: artifacts
+        - name: secrets
           workspace: artifacts
-      taskSpec:
-        steps:
-          - name: save-git-token-to-file
-            image: ibmcom/pipeline-base-image:2.6
-            workingDir: "/artifacts"
-            command: ["/bin/bash", "-c"]
-            args:
-              - |
-                #!/bin/bash
-                set -e -o pipefail
-                pwd
-                env
-                trap env EXIT
-                set -x
-                source ./build.properties
-                echo -n $GIT_TOKEN > ./github-token
-        workspaces:
-          - name: artifacts
-            mountPath: /artifacts
 
     - name: clone-repo
       taskRef:
@@ -65,24 +37,41 @@ spec:
       workspaces:
         - name: artifacts
           workspace: artifacts
+        - name: secrets
+          workspace: artifacts
       params:
         - name: repository
           value: $(params.repository)
+        - name: git-user
+          value: $(tasks.git-get-credentials.results.git-auth-user)
         - name: branch
           value: $(params.target-branch)
 
     - name: setup-repo
-      taskRef:
-        name: task-setup-repo
-      workspaces:
-        - name: artifacts
-          workspace: artifacts
       runAfter:
         - clone-repo
+      taskRef:
+        name: util-run
+      params:
+        - name: script
+          value:
+            |
+            . /root/.nvm/nvm.sh && cd /scripts/tekton-lint
+
+            export NODE_ENV=development
+
+            git config --global user.email "tekton@pipeline.com"
+            git config --global user.name "Tekton"
+            git merge origin/$(params.branch) --no-ff
+
+            npm i
+      workspaces:
+        - name: scripts
+          workspace: artifacts
 
     - name: unit-tests-status-pending
       runAfter:
-        - save-git-token
+        - git-get-credentials
       taskRef:
         name: github-set-status
       workspaces:
@@ -90,7 +79,7 @@ spec:
           workspace: artifacts
       params:
         - name: secret-name
-          value: github-token
+          value: git-token
         - name: repo-url
           value: $(params.repository)
         - name: commit-sha
@@ -101,6 +90,54 @@ spec:
           value: tekton/unit-tests
         - name: description
           value: "Running unit tests and regression tests"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: lint-status-pending
+      runAfter:
+        - git-get-credentials
+      taskRef:
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
+      params:
+        - name: secret-name
+          value: git-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: pending
+        - name: context
+          value: tekton/lint
+        - name: description
+          value: "Running linter"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: tekton-lint-status-pending
+      runAfter:
+        - git-get-credentials
+      taskRef:
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
+      params:
+        - name: secret-name
+          value: git-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: pending
+        - name: context
+          value: tekton/tekton-test
+        - name: description
+          value: "Running tekton tests"
         - name: pipeline-debug
           value: $(params.pipeline-debug)
 
@@ -129,7 +166,7 @@ spec:
           workspace: artifacts
       params:
         - name: secret-name
-          value: github-token
+          value: git-token
         - name: repo-url
           value: $(params.repository)
         - name: commit-sha
@@ -144,19 +181,101 @@ spec:
           value: $(params.pipeline-debug)
 
     - name: lint
-      taskRef:
-        name: task-lint
       runAfter:
         - setup-repo
+      taskRef:
+        name: util-run
+      params:
+        - name: script
+          value: . /root/.nvm/nvm.sh && cd /scripts/$(echo $(params.repository) | sed -E "s/(.*)(\/)//") && npm run lint
       workspaces:
-        - name: artifacts
+        - name: scripts
           workspace: artifacts
 
-    - name: tekton-test
+    - name: lint-status-set
+      runAfter:
+        - lint
       taskRef:
-        name: task-tekton-test
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
+      params:
+        - name: secret-name
+          value: git-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: $(tasks.lint.results.status)
+        - name: context
+          value: tekton/lint
+        - name: description
+          value: "Linter finished"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: tekton-test
       runAfter:
         - setup-repo
+      taskRef:
+        name: task-tekton-test
+      params:
+        - name: git-auth-user
+          value: $(tasks.git-get-credentials.results.git-auth-user)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
       workspaces:
         - name: artifacts
           workspace: artifacts
+        - name: secrets
+          workspace: artifacts
+
+    - name: tekton-test-status-set
+      runAfter:
+        - tekton-test
+      taskRef:
+        name: github-set-status
+      workspaces:
+        - name: secrets
+          workspace: artifacts
+      params:
+        - name: secret-name
+          value: git-token
+        - name: repo-url
+          value: $(params.repository)
+        - name: commit-sha
+          value: $(params.pr-commit)
+        - name: state
+          value: $(tasks.tekton-test.results.status)
+        - name: context
+          value: tekton/tekton-test
+        - name: description
+          value: "Tekton tests finished"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: code-pipeline-evaluator
+      taskRef:
+        name: util-evaluate-pipeline-results
+      params:
+        - name: results
+          value: |
+            [
+              {
+                "name": "unit-tests",
+                "expected": "success",
+                "actual": "$(tasks.unit-tests.results.status)"
+              },
+              {
+                "name": "lint",
+                "expected": "success",
+                "actual": "$(tasks.lint.results.status)"
+              },
+              {
+                "name": "tekton-test",
+                "expected": "success",
+                "actual": "$(tasks.tekton-test.results.status)"
+              }
+            ]

@@ -4,65 +4,82 @@ metadata:
   name: task-tekton-test
 spec:
   params:
+    - name: git-auth-user
+      description: Git Authentication (it can be different for github, gitlab etc)
+    - name: pipeline-debug
+      description: Jesus walked this way
+    - name: git-api-token-key
+      description: github enterprise api token secret name
+      default: "git-token"
 
-  workspaces:
-    - name: artifacts
-      mountPath: /artifacts
+  results:
+    - name: exit-code
+      description: The exit-code of the linting on pipelines and common-tekton-tasks together
+    - name: status
+      description: The status {"failure"|"success"} of the linting on pipelines and common-tekton-tasks together
+
+  stepTemplate:
+    env:
+      - name: PIPELINE_DEBUG
+        value: $(params.pipeline-debug)
 
   steps:
     - name: setup-test-repositories
       image: ibmcom/pipeline-base-image:2.6
+      params:
+        - name: GIT_AUTH_USER
+          value: $(params.git-auth-user)
       command: ["/bin/bash", "-c"]
       workingDir: "/artifacts"
       args:
         - |
           set -e -o pipefail;
-          source build.properties
+
+          if [ $PIPELINE_DEBUG == 1 ]; then
+              pwd
+              env
+              trap env EXIT
+              set -x
+          fi
 
           echo "Cloning repositories..."
-          git clone https://$GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/common-tekton-tasks.git
-          git clone https://$GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/compliance-cd-toolchain.git
-          git clone https://$GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/compliance-ci-toolchain.git
+          GIT_TOKEN=$(cat "/secrets/$(params.git-api-token-key)")
+
+          git clone https://GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/common-tekton-tasks.git
+          git clone https://GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/compliance-cd-toolchain.git
+          git clone https://GIT_AUTH_USER:$GIT_TOKEN@github.ibm.com/one-pipeline/compliance-ci-toolchain.git
 
     - name: tekton-test
-      image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:0.2
-      env:
-        - name: PIPELINE_RUN_URL
-          valueFrom:
-            configMapKeyRef:
-              name: context
-              key: PIPELINE_RUN_URL
-        - name: PR_COMMIT
-          valueFrom:
-            configMapKeyRef:
-              name: context
-              key: PR_COMMIT
-
+      image: ibmcom/pipeline-base-image:2.6
       command: ["/bin/bash", "-c"]
       workingDir: "/artifacts"
       args:
         - |
-          source build.properties
-
+          . /root/.nvm/nvm.sh
           cd ./tekton-lint
           npm link
 
-          GHE_ORG=${REPOSITORY%/*}
-          export GHE_ORG=${GHE_ORG##*/}
-          export GIT_COMMIT=$PR_COMMIT
-          export GHE_TOKEN
-          export GHE_REPO=$REPO
 
-          cocoa set-status --state="pending" --targetURL=$PIPELINE_RUN_URL --context="tekton/tekton-test" --description="Testing on Tekton definitions check is running."
+          if [ $PIPELINE_DEBUG == 1 ]; then
+              pwd
+              env
+              trap env EXIT
+              set -x
+          fi
 
           echo "Running tekton-lint on 'compliance-ci-toolchain', 'compliance-cd-toolchain', 'common-tekton-tasks'..."
-          NODE_ENV=test tekton-lint '../common-tekton-tasks/preview/**/*.(yaml|yml)' '../compliance-ci-toolchain/.pipeline/*.(yaml|yml)' '../compliance-cd-toolchain/.tekton/*.(yaml|yml)'
+          tekton-lint '../common-tekton-tasks/preview/*/*.(yaml|yml)' '../compliance-ci-toolchain/.pipeline/*.(yaml|yml)' '../compliance-cd-toolchain/.tekton/*.(yaml|yml)'
 
           if [ $? -eq 0 ]; then
-            echo "tekton-lint ran successfully!"
-            cocoa set-status --state="success" --targetURL=$PIPELINE_RUN_URL --context="tekton/tekton-test" --description="Testing on Tekton definitions check was successful."
+            echo -n success | tee $(results.status.path)
+            echo -n 0 | tee $(results.exit-code.path)
           else
-            echo "tekton-lint has thrown an error, please fix this issue before merging!"
-            cocoa set-status --state="failure" --targetURL=$PIPELINE_RUN_URL --context="tekton/tekton-test" --description="Testing on Tekton definitions check has failed."
-            exit 1
+            echo -n failure | tee $(results.status.path)
+            echo -n 1 | tee $(results.exit-code.path)
           fi
+
+  workspaces:
+    - name: artifacts
+      mountPath: /artifacts
+    - name: secrets
+      mountPath: /secrets
