@@ -60,6 +60,7 @@ module.exports.lint = function lint(docs, reporter) {
       const m2 = item.match(r2);
       const param = m2[1];
       if (typeof params[param] === 'undefined') {
+        if (path.includes('taskSpec')) return;
         error(`Undefined param '${param}' at ${pathToString(path)} in '${resource}'`, parent, path[path.length - 1]);
       } else {
         params[param]++;

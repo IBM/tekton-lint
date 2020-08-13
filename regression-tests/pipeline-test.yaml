@@ -410,3 +410,46 @@ spec:
             [
               "$(tasks.incident-issues-of-va-scan.results.issue-url)"
             ]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: my-pipeline
+spec:
+  params: []
+  tasks:
+    - name: my-task
+      taskSpec:
+        params:
+          - name: my-param
+        steps:
+          - name: my-step
+            image: alpine
+            script: |
+              echo $(params.my-param)
+      params:
+        - name: my-param
+          value: $(params.my-param)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: undefined-inline-task-params
+spec:
+  params:
+    - name: test-pipeline-param
+  tasks:
+    - name: test-task
+      params:
+        - name: defined-param
+          value: $(params.test-pipeline-param)
+      taskSpec:
+        params:
+          - name: defined-param
+        steps:
+          - name: test-step
+            image: ibmcom/pipeline-base-image:2.6
+            script: |
+              #!/usr/bin/env python3
+              "$(params.defined-param)"
+              "$(params.undefined-param)"

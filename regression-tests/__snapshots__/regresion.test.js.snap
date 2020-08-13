@@ -3395,6 +3395,21 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 36,
+      "endLine": 432,
+      "range": Array [
+        10191,
+        10209,
+      ],
+      "startColumn": 18,
+      "startLine": 432,
+    },
+    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 31,
       "endLine": 28,
       "range": Array [
@@ -5575,6 +5590,10 @@ Array [
   Object {
     "level": "warning",
     "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'default-param', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
   },
   Object {
     "level": "error",
