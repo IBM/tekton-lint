@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: template
@@ -60,7 +60,7 @@ spec:
         TARGET_BRANCH: $(params.target-branch)
         BRANCH: $(params.branch)
 
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: pipelinerun-$(uid)
