@@ -22,8 +22,8 @@ function checkInvalidParameterName(resources, report) {
 }
 
 module.exports = (docs, tekton, report) => {
-  checkInvalidParameterName(tekton.triggerTemplates, report);
-  checkInvalidParameterName(tekton.pipelines, report);
   checkInvalidParameterName(tekton.tasks, report);
   checkInvalidParameterName(tekton.conditions, report);
+  checkInvalidParameterName(tekton.triggerTemplates, report);
+  checkInvalidParameterName(tekton.pipelines, report);
 };

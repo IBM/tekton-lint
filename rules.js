@@ -89,26 +89,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-invalid-resource-name');
   runRule('no-wrong-param-type');
   runRule('prefer-baseimage-version');
-
-  for (const task of Object.values(tekton.tasks)) {
-    const params = getTaskParams(task.spec);
-    if (!params) continue;
-
-    for (const param of params) {
-      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
-        error(`Task '${task.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
-      }
-    }
-  }
-
-  for (const condition of Object.values(tekton.conditions)) {
-    if (!condition.spec.params) continue;
-    for (const param of condition.spec.params) {
-      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
-        error(`Condition '${condition.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
-      }
-    }
-  }
+  runRule('no-invalid-parameter-name');
 
   for (const task of Object.values(tekton.tasks)) {
     const params = getTaskParams(task.spec);
@@ -259,15 +240,6 @@ module.exports.lint = function lint(docs, reporter) {
     }
   }
 
-  for (const template of Object.values(tekton.triggerTemplates)) {
-    if (!template.spec.params) continue;
-    for (const param of template.spec.params) {
-      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
-        error(`TriggerTemplate '${template.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
-      }
-    }
-  }
-
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
     const paramNames = new Set();
@@ -276,15 +248,6 @@ module.exports.lint = function lint(docs, reporter) {
         paramNames.add(param.name);
       } else {
         error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${param.name}'.`, param, 'name');
-      }
-    }
-  }
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    for (const param of pipeline.spec.params) {
-      if (param.name && !/^[a-zA-Z_][a-zA-Z_\-0-9]*$/.test(param.name)) {
-        error(`Pipeline '${pipeline.metadata.name}' defines parameter '${param.name}' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')`, param, 'name');
       }
     }
   }

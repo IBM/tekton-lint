@@ -1413,6 +1413,66 @@ Array [
     "path": "./regression-tests/conditions.yaml",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 28,
+      "range": Array [
+        418,
+        422,
+      ],
+      "startColumn": 13,
+      "startLine": 28,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 29,
+      "range": Array [
+        435,
+        439,
+      ],
+      "startColumn": 13,
+      "startLine": 29,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 18,
+      "range": Array [
+        260,
+        264,
+      ],
+      "startColumn": 13,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 17,
+      "endLine": 19,
+      "range": Array [
+        277,
+        281,
+      ],
+      "startColumn": 13,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -2480,36 +2540,6 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
-      "endColumn": 17,
-      "endLine": 28,
-      "range": Array [
-        418,
-        422,
-      ],
-      "startColumn": 13,
-      "startLine": 28,
-    },
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 17,
-      "endLine": 29,
-      "range": Array [
-        435,
-        439,
-      ],
-      "startColumn": 13,
-      "startLine": 29,
-    },
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
       "endColumn": 16,
       "endLine": 30,
       "range": Array [
@@ -2521,36 +2551,6 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline' has a duplicated parameter 'foo'.",
     "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 17,
-      "endLine": 18,
-      "range": Array [
-        260,
-        264,
-      ],
-      "startColumn": 13,
-      "startLine": 18,
-    },
-    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 17,
-      "endLine": 19,
-      "range": Array [
-        277,
-        281,
-      ],
-      "startColumn": 13,
-      "startLine": 19,
-    },
-    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-    "path": "./regression-tests/param-names.yaml",
   },
   Object {
     "level": "error",
@@ -5169,6 +5169,22 @@ Array [
     "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
   Object {
+    "level": "error",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
+  },
+  Object {
     "level": "warning",
     "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
   },
@@ -5454,23 +5470,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-  },
-  Object {
-    "level": "error",
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-  },
-  Object {
-    "level": "error",
     "message": "Pipeline 'duplicate-params-pipeline' has a duplicated parameter 'foo'.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
   Object {
     "level": "error",
