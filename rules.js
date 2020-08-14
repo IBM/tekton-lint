@@ -68,25 +68,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-template-pipeline-extra-parameters');
   runRule('no-template-pipeline-missing-parameters');
   runRule('no-pipeline-task-missing-workspace');
-
-  const taskNameRegexp = /\$\(tasks\.(.*?)\..*?\)/;
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    for (const task of pipeline.spec.tasks) {
-      if (!task.params) continue;
-      for (const param of task.params) {
-        if (typeof param.value !== 'string') continue;
-        const taskReference = param.value.match(taskNameRegexp);
-        if (taskReference) {
-          const taskName = taskReference[1];
-          const matchingTask = pipeline.spec.tasks.find(task => task.name === taskName);
-          if (!matchingTask) {
-            error(`Task '${task.name}' refers to task '${taskName}' at value of param '${param.name}' but there is no task with that name in pipeline '${pipeline.metadata.name}'`, param, 'value');
-          }
-        }
-      }
-    }
-  }
+  runRule('no-pipeline-task-missing-reference');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.workspaces) continue;
