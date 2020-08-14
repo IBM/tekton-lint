@@ -103,18 +103,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipelinerun-duplicate-params');
   runRule('no-binding-duplicate-params');
   runRule('no-template-duplicate-params');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    const paramNames = new Set();
-    for (const param of pipeline.spec.params) {
-      if (!paramNames.has(param.name)) {
-        paramNames.add(param.name);
-      } else {
-        error(`Pipeline '${pipeline.metadata.name}' has a duplicated parameter '${param.name}'.`, param, 'name');
-      }
-    }
-  }
+  runRule('no-pipeline-duplicate-params');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     for (const task of pipeline.spec.tasks) {
