@@ -560,36 +560,6 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
-      "endColumn": 3,
-      "endLine": 9,
-      "range": Array [
-        104,
-        123,
-      ],
-      "startColumn": 5,
-      "startLine": 8,
-    },
-    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
-    "path": "./regression-tests/tekton-beta-mixed.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 3,
-      "endLine": 30,
-      "range": Array [
-        440,
-        459,
-      ],
-      "startColumn": 7,
-      "startLine": 29,
-    },
-    "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
-    "path": "./regression-tests/tekton-beta-mixed.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
       "endColumn": 1,
       "endLine": 47,
       "range": Array [
@@ -630,6 +600,36 @@ Array [
       "startLine": 42,
     },
     "message": "Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 3,
+      "endLine": 9,
+      "range": Array [
+        104,
+        123,
+      ],
+      "startColumn": 5,
+      "startLine": 8,
+    },
+    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 3,
+      "endLine": 30,
+      "range": Array [
+        440,
+        459,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
   },
   Object {
@@ -4942,14 +4942,6 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
-  },
-  Object {
-    "level": "error",
-    "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
-  },
-  Object {
-    "level": "error",
     "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
   },
   Object {
@@ -4959,6 +4951,14 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
+  },
+  Object {
+    "level": "error",
+    "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
   },
   Object {
     "level": "error",
