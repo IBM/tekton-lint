@@ -32,33 +32,6 @@ module.exports.lint = function lint(docs, reporter) {
     names.add(resource.metadata.name);
   }
 
-  const isValidName = (name) => {
-    const valid = new RegExp('^[a-z0-9-()$.]*$');
-    return valid.test(name);
-  };
-
-  const naming = (resource, prefix) => (node, path, parent) => {
-    let name = node;
-    const isNameDefinition = /.name$/.test(path);
-
-    if (path.includes('env') && path.includes('name')) return;
-
-    if (isNameDefinition && !isValidName(name)) {
-      warning(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
-      return;
-    }
-
-    const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-    const m = node && node.toString().match(parameterPlacementRx);
-
-    if (m) {
-      name = m[1];
-      if (!isValidName(name)) {
-        warning(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, path[path.length - 1]);
-      }
-    }
-  };
-
   function getTaskParams(spec) {
     if (spec.inputs) return spec.inputs.params;
     return spec.params;
@@ -91,10 +64,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-missing-params');
   runRule('no-pipeline-task-undefined-params');
   runRule('no-pipeline-extra-params');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));
-  }
+  runRule('prefer-kebab-naming');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     for (const task of pipeline.spec.tasks) {
