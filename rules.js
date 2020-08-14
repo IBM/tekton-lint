@@ -65,18 +65,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-undefined-params');
   runRule('no-pipeline-extra-params');
   runRule('prefer-kebab-naming');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    for (const task of pipeline.spec.tasks) {
-      if (!task.conditions) continue;
-      for (const condition of task.conditions) {
-        const exists = Object.values(tekton.conditions).find(cond => cond.metadata.name === condition.conditionRef);
-        if (!exists) {
-          error(`Pipeline '${pipeline.metadata.name}' references Condition '${condition.conditionRef}' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.`, condition);
-        }
-      }
-    }
-  }
+  runRule('no-pipeline-missing-condition');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     for (const task of pipeline.spec.tasks) {
