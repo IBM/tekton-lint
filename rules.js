@@ -99,16 +99,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-template-undefined-params');
   runRule('no-template-unused-params');
   runRule('no-listener-missing-template');
-
-  for (const listener of Object.values(tekton.listeners)) {
-    for (const trigger of listener.spec.triggers) {
-      if (!trigger.binding) continue;
-      const name = trigger.binding.name;
-      if (!tekton.triggerBindings[name]) {
-        error(`EventListener '${listener.metadata.name}' defines trigger binding '${name}', but the trigger binding is missing.`, trigger.binding, 'name');
-      }
-    }
-  }
+  runRule('no-listener-missing-binding');
 
   for (const triggerTemplate of Object.values(tekton.triggerTemplates)) {
     const resourceTemplates = triggerTemplate.spec.resourcetemplates;
