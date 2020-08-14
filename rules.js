@@ -32,23 +32,6 @@ module.exports.lint = function lint(docs, reporter) {
     names.add(resource.metadata.name);
   }
 
-  const unused = (resource, params, prefix) => (node, path, parent) => {
-    const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
-    const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
-    const m = node.toString().match(r1);
-    if (!m) return;
-    for (const item of m) {
-      const m2 = item.match(r2);
-      const param = m2[1];
-      if (typeof params[param] === 'undefined') {
-        if (path.includes('taskSpec')) return;
-        error(`Undefined param '${param}' at ${pathToString(path)} in '${resource}'`, parent, path[path.length - 1]);
-      } else {
-        params[param]++;
-      }
-    }
-  };
-
   const isValidName = (name) => {
     const valid = new RegExp('^[a-z0-9-()$.]*$');
     return valid.test(name);
@@ -106,18 +89,8 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-duplicate-params');
   runRule('no-pipeline-missing-task');
   runRule('no-pipeline-task-missing-params');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
-
-    walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(pipeline.metadata.name, params, 'params'));
-
-    for (const param of Object.keys(params)) {
-      if (params[param]) continue;
-      warning(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`, pipeline.spec.params.find(p => p.name === param));
-    }
-  }
+  runRule('no-pipeline-task-undefined-params');
+  runRule('no-pipeline-extra-params');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));

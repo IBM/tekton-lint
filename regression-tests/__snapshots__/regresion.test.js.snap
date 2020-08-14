@@ -3138,126 +3138,6 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 30,
-      "range": Array [
-        431,
-        441,
-      ],
-      "startColumn": 7,
-      "startLine": 29,
-    },
-    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 19,
-      "range": Array [
-        254,
-        265,
-      ],
-      "startColumn": 7,
-      "startLine": 18,
-    },
-    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 20,
-      "range": Array [
-        271,
-        282,
-      ],
-      "startColumn": 7,
-      "startLine": 19,
-    },
-    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 9,
-      "range": Array [
-        108,
-        171,
-      ],
-      "startColumn": 7,
-      "startLine": 7,
-    },
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 17,
-      "range": Array [
-        401,
-        450,
-      ],
-      "startColumn": 7,
-      "startLine": 15,
-    },
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 19,
-      "range": Array [
-        456,
-        516,
-      ],
-      "startColumn": 7,
-      "startLine": 17,
-    },
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 21,
-      "range": Array [
-        522,
-        584,
-      ],
-      "startColumn": 7,
-      "startLine": 19,
-    },
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 25,
-      "range": Array [
-        590,
-        732,
-      ],
-      "startColumn": 7,
-      "startLine": 21,
-    },
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 40,
@@ -3390,6 +3270,141 @@ Array [
       "startLine": 83,
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 36,
+      "endLine": 432,
+      "range": Array [
+        10191,
+        10209,
+      ],
+      "startColumn": 18,
+      "startLine": 432,
+    },
+    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 30,
+      "range": Array [
+        431,
+        441,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        254,
+        265,
+      ],
+      "startColumn": 7,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        271,
+        282,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 9,
+      "range": Array [
+        108,
+        171,
+      ],
+      "startColumn": 7,
+      "startLine": 7,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 17,
+      "range": Array [
+        401,
+        450,
+      ],
+      "startColumn": 7,
+      "startLine": 15,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        456,
+        516,
+      ],
+      "startColumn": 7,
+      "startLine": 17,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        522,
+        584,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 25,
+      "range": Array [
+        590,
+        732,
+      ],
+      "startColumn": 7,
+      "startLine": 21,
+    },
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -3750,21 +3765,6 @@ Array [
       "startLine": 228,
     },
     "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'default-param', but it's not used anywhere in the pipeline spec",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 36,
-      "endLine": 432,
-      "range": Array [
-        10191,
-        10209,
-      ],
-      "startColumn": 18,
-      "startLine": 432,
-    },
-    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -5629,38 +5629,6 @@ Array [
     "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-beta-task')",
   },
   Object {
-    "level": "warning",
-    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
     "level": "error",
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-without-params'",
   },
@@ -5695,6 +5663,42 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'duplicate-params-pipeline' defines parameter 'foo', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'param-names-pipeline' defines parameter '1foo', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'repository', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'branch', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'origin', but it's not used anywhere in the pipeline spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Pipeline 'pipeline-with-params' defines parameter 'revision', but it's not used anywhere in the pipeline spec",
   },
   Object {
     "level": "warning",
@@ -5791,10 +5795,6 @@ Array [
   Object {
     "level": "warning",
     "message": "Pipeline 'pipeline-with-missing-and-extra-params' defines parameter 'default-param', but it's not used anywhere in the pipeline spec",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
   },
   Object {
     "level": "warning",
