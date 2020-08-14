@@ -105,18 +105,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-template-duplicate-params');
   runRule('no-pipeline-duplicate-params');
   runRule('no-pipeline-missing-task');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    for (const task of Object.values(pipeline.spec.tasks)) {
-      if (!task.params) continue;
-      for (const param of Object.values(task.params)) {
-        if (typeof param.value == 'undefined') {
-          error(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`, param, 'name');
-        }
-      }
-    }
-  }
+  runRule('no-pipeline-task-missing-params');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
@@ -163,19 +152,10 @@ module.exports.lint = function lint(docs, reporter) {
           const provided = task.params.map(param => param.name);
           const params = getTaskParams(tekton.tasks[name].spec);
           const all = params.map(param => param.name);
-          const required = params
-            .filter(param => typeof param.default == 'undefined')
-            .map(param => param.name);
-
           const extra = provided.filter(param => !all.includes(param));
-          const missing = required.filter(param => !provided.includes(param));
 
           for (const param of extra) {
             error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
-          }
-
-          for (const param of missing) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`, task.params);
           }
         }
       }
