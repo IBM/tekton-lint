@@ -65,25 +65,8 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-extra-params');
   runRule('no-pipeline-taskspec-extra-params');
   runRule('no-pipeline-taskspec-missing-params');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    for (const template of Object.values(tekton.triggerTemplates)) {
-      const matchingResource = template.spec.resourcetemplates.find(item => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name);
-      if (!matchingResource) continue;
-      const pipelineParams = pipeline.spec.params || [];
-      const templateParams = matchingResource.spec.params || [];
-
-      const missing = pipelineParams.filter(pipelineParam => !templateParams.some(templateParam => templateParam.name === pipelineParam.name) && typeof pipelineParam.default === 'undefined');
-      const extra = templateParams.filter(templateParam => !pipelineParams.some(pipelineParam => pipelineParam.name === templateParam.name));
-      for (const param of extra) {
-        warning(`TriggerTemplate '${template.metadata.name}' references pipeline '${pipeline.metadata.name}', and supplies '${param.name}', but it's not a valid parameter.`, templateParams.find(p => p.name === param.name));
-      }
-
-      for (const param of missing) {
-        error(`Pipeline '${pipeline.metadata.name}' references param '${param.name}', but it is not supplied in triggerTemplate '${template.metadata.name}'`, matchingResource);
-      }
-    }
-  }
+  runRule('no-template-pipeline-extra-parameters');
+  runRule('no-template-pipeline-missing-parameters');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     const pipelineWorkspaces = pipeline.spec.workspaces || [];
