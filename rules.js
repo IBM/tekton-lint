@@ -88,17 +88,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-template-missing-pipeline');
   runRule('no-invalid-resource-name');
   runRule('no-wrong-param-type');
-
-  for (const task of Object.values(tekton.tasks)) {
-    for (const step of Object.values(task.spec.steps)) {
-      if (/:latest$/.test(step.image)) {
-        warning(`Invalid base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version instead of ':latest', so Tasks can be consistent, and preferably immutable`, step, 'image');
-      }
-      if (/^[^:$]*$/.test(step.image)) {
-        warning(`Missing base image version '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the base image version, so Tasks can be consistent, and preferably immutable`, step, 'image');
-      }
-    }
-  }
+  runRule('prefer-baseimage-version');
 
   for (const task of Object.values(tekton.tasks)) {
     const params = getTaskParams(task.spec);
