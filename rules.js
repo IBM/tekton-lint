@@ -49,17 +49,6 @@ module.exports.lint = function lint(docs, reporter) {
     }
   };
 
-  const checkParameterValues = (resourceName, resourceKind, params) => {
-    for (const param of params) {
-      const value = typeof param.default !== 'undefined' ? param.default : param.value;
-      if (value != null) {
-        if (typeof value === 'string') continue;
-        if (Array.isArray(value) && value.every(element => typeof element === 'string')) continue;
-        error(`${resourceKind} '${resourceName}' defines parameter '${param.name}' with wrong type (only strings and arrays of strings are allowed)`, param);
-      }
-    }
-  };
-
   const isValidName = (name) => {
     const valid = new RegExp('^[a-z0-9-()$.]*$');
     return valid.test(name);
@@ -98,22 +87,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-cycle');
   runRule('no-template-missing-pipeline');
   runRule('no-invalid-resource-name');
-
-  for (const task of Object.values(tekton.tasks)) {
-    const params = getTaskParams(task.spec);
-    if (!params) continue;
-    checkParameterValues(task.metadata.name, task.kind, params);
-  }
-
-  for (const template of Object.values(tekton.triggerTemplates)) {
-    if (!template.spec.params) continue;
-    checkParameterValues(template.metadata.name, template.kind, template.spec.params);
-  }
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params);
-  }
+  runRule('no-wrong-param-type');
 
   for (const task of Object.values(tekton.tasks)) {
     for (const step of Object.values(task.spec.steps)) {
