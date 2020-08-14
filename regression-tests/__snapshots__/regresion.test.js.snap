@@ -3425,92 +3425,62 @@ Array [
   Object {
     "level": "warning",
     "loc": Object {
-      "endColumn": 30,
-      "endLine": 50,
+      "endColumn": 26,
+      "endLine": 463,
       "range": Array [
-        1147,
-        1154,
+        10922,
+        10935,
       ],
-      "startColumn": 23,
-      "startLine": 50,
+      "startColumn": 13,
+      "startLine": 463,
     },
-    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
+    "message": "Invalid name for 'BAD_TASK_NAME' at .spec.tasks[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
     "level": "warning",
     "loc": Object {
-      "endColumn": 36,
-      "endLine": 52,
+      "endColumn": 31,
+      "endLine": 465,
       "range": Array [
-        1226,
-        1239,
+        10966,
+        10980,
       ],
-      "startColumn": 23,
-      "startLine": 52,
+      "startColumn": 17,
+      "startLine": 465,
     },
-    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 42,
-      "endLine": 54,
-      "range": Array [
-        1319,
-        1338,
-      ],
-      "startColumn": 23,
-      "startLine": 54,
-    },
-    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 30,
-      "endLine": 48,
-      "range": Array [
-        1079,
-        1086,
-      ],
-      "startColumn": 23,
-      "startLine": 48,
-    },
-    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 36,
-      "endLine": 50,
-      "range": Array [
-        1151,
-        1164,
-      ],
-      "startColumn": 23,
-      "startLine": 50,
-    },
-    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta.yaml",
+    "message": "Invalid name for 'BAD_PARAM_NAME' at .spec.tasks[0].params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 42,
-      "endLine": 52,
+      "endLine": 469,
       "range": Array [
-        1237,
-        1256,
+        11056,
+        11079,
       ],
-      "startColumn": 23,
-      "startLine": 52,
+      "startColumn": 19,
+      "startLine": 469,
     },
-    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/tekton-beta.yaml",
+    "message": "Invalid name for 'BAD_TASK_PARAM_NAME_123' at .spec.tasks[0].taskSpec.params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 475,
+      "range": Array [
+        11213,
+        11226,
+      ],
+      "startColumn": 19,
+      "startLine": 475,
+    },
+    "message": "Invalid name for 'BAD_STEP_NAME' at .spec.tasks[0].taskSpec.steps[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
     "level": "error",
@@ -4035,6 +4005,36 @@ Array [
       "startLine": 261,
     },
     "message": "Pipeline 'pipeline-with-taskspec-2' references task 'taskspec-with-extra-and-missing-params', and supplies parameter 'foo' to it, but it's not a valid parameter",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 467,
+      "range": Array [
+        10960,
+        11006,
+      ],
+      "startColumn": 11,
+      "startLine": 465,
+    },
+    "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', and supplies parameter 'BAD_PARAM_NAME' to it, but it's not a valid parameter",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 7,
+      "endLine": 467,
+      "range": Array [
+        10958,
+        11012,
+      ],
+      "startColumn": 9,
+      "startLine": 465,
+    },
+    "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', but parameter 'BAD_TASK_PARAM_NAME_123' is not supplied (it's a required param in 'BAD_TASK_NAME')",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -5706,27 +5706,19 @@ Array [
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'BAD_TASK_NAME' at .spec.tasks[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'BAD_PARAM_NAME' at .spec.tasks[0].params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'BAD_TASK_PARAM_NAME_123' at .spec.tasks[0].taskSpec.params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "message": "Invalid name for 'BAD_STEP_NAME' at .spec.tasks[0].taskSpec.steps[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "error",
@@ -5867,6 +5859,14 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'pipeline-with-taskspec-2' references task 'taskspec-with-extra-and-missing-params', and supplies parameter 'foo' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', and supplies parameter 'BAD_PARAM_NAME' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', but parameter 'BAD_TASK_PARAM_NAME_123' is not supplied (it's a required param in 'BAD_TASK_NAME')",
   },
   Object {
     "level": "error",

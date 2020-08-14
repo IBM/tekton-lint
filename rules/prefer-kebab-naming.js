@@ -9,6 +9,8 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
   let name = node;
   const isNameDefinition = /.name$/.test(path);
 
+  if (path.includes('env') && path.includes('name')) return;
+
   if (isNameDefinition && !isValidName(name)) {
     report(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
     return;

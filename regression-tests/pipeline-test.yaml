@@ -453,3 +453,26 @@ spec:
               #!/usr/bin/env python3
               "$(params.defined-param)"
               "$(params.undefined-param)"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: check-kebab-names-when-there-are-no-pipeline-params
+spec:
+  tasks:
+    - name: BAD_TASK_NAME
+      params:
+        - name: BAD_PARAM_NAME
+          value: "jozsi"
+      taskSpec:
+        params:
+          - name: BAD_TASK_PARAM_NAME_123
+        stepTemplate:
+          env:
+            - name: ACCEPTABLE_ENV_NAME
+              value: 1
+        steps:
+          - name: BAD_STEP_NAME
+            image: ibmcom/pipeline-base-image:2.6
+            script: |
+              #!/usr/bin/env python3

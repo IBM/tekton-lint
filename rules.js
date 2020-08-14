@@ -96,6 +96,8 @@ module.exports.lint = function lint(docs, reporter) {
     let name = node;
     const isNameDefinition = /.name$/.test(path);
 
+    if (path.includes('env') && path.includes('name')) return;
+
     if (isNameDefinition && !isValidName(name)) {
       warning(`Invalid name for '${name}' at ${pathToString(path)} in '${resource}'. Names should be in lowercase, alphanumeric, kebab-case format.`, parent, 'name');
       return;
