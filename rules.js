@@ -3,7 +3,8 @@ const collector = require('./Collector');
 const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
 const { walk, pathToString } = require('./walk');
-const { parse } = require('./runner');
+const { parse, getRulesConfig, createReporter } = require('./runner');
+const rules = require('./rule-loader');
 
 module.exports = async function run(globs) {
   const docs = await collector(globs);
@@ -13,9 +14,15 @@ module.exports = async function run(globs) {
 
 module.exports.lint = function lint(docs, reporter) {
   reporter = reporter || new Reporter();
+  const config = getRulesConfig();
   const warning = reporter.warning.bind(reporter);
   const error = reporter.error.bind(reporter);
   const tekton = parse(docs);
+
+  function runRule(name) {
+    const ruleReporter = createReporter(name, config, reporter);
+    rules[name](docs, tekton, ruleReporter);
+  }
 
   const resourceNames = new Map();
   for (const resource of docs) {
@@ -55,14 +62,6 @@ module.exports.lint = function lint(docs, reporter) {
     }
   };
 
-  const checkInvalidResourceKey = (invalidKey, resources) => {
-    Object.entries(resources).forEach(([type, resourceList]) => {
-      Object.entries(resourceList).forEach(([name, resource]) => {
-        if (resource.metadata[invalidKey]) error(`Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`, resource.metadata, invalidKey);
-      });
-    });
-  };
-
   const isValidName = (name) => {
     const valid = new RegExp('^[a-z0-9-()$.]*$');
     return valid.test(name);
@@ -97,7 +96,7 @@ module.exports.lint = function lint(docs, reporter) {
 
   const resources = collectResources(docs);
 
-  checkInvalidResourceKey('resourceVersion', resources);
+  runRule('no-resourceversion');
 
   for (const task of Object.values(tekton.tasks)) {
     if (task.apiVersion === 'tekton.dev/v1alpha1') {
