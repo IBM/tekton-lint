@@ -11,8 +11,6 @@ spec:
       description: branch
     - name: target-branch
       description: target branch
-    - name: pr-number
-      description: the PR number
     - name: pr-commit
       description: the latest commit in the PR
     - name: ibmcloud-api-key
@@ -56,7 +54,6 @@ spec:
       data:
         PIPELINE_RUN_URL: https://cloud.ibm.com/devops/pipelines/tekton/$(params.pipeline-id)/runs/$(uid)?env_id=ibm:yp:us-south
         PR_COMMIT: $(params.pr-commit)
-        PR_NUMBER: $(params.pr-number)
         TARGET_BRANCH: $(params.target-branch)
         BRANCH: $(params.branch)
 
@@ -83,7 +80,5 @@ spec:
             value: $(params.ibmcloud-api-key)
           - name: pr-commit
             value: $(params.pr-commit)
-          - name: pr-number
-            value: $(params.pr-number)
           - name: pipeline-debug
             value: $(params.pipeline-debug)

@@ -10,5 +10,3 @@ spec:
     value: $(event.pull_request.base.ref)
   - name: pr-commit
     value: $(event.pull_request.head.sha)
-  - name: pr-number
-    value: $(event.pull_request.number)
