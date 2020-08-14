@@ -2555,6 +2555,426 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 31,
+      "endLine": 28,
+      "range": Array [
+        799,
+        815,
+      ],
+      "startColumn": 15,
+      "startLine": 28,
+    },
+    "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 46,
+      "range": Array [
+        1231,
+        1247,
+      ],
+      "startColumn": 15,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 56,
+      "range": Array [
+        1531,
+        1540,
+      ],
+      "startColumn": 15,
+      "startLine": 56,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 72,
+      "range": Array [
+        1947,
+        1956,
+      ],
+      "startColumn": 15,
+      "startLine": 72,
+    },
+    "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 34,
+      "endLine": 94,
+      "range": Array [
+        2429,
+        2448,
+      ],
+      "startColumn": 15,
+      "startLine": 94,
+    },
+    "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 13,
+      "endLine": 130,
+      "range": Array [
+        3499,
+        3503,
+      ],
+      "startColumn": 9,
+      "startLine": 130,
+    },
+    "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 318,
+      "range": Array [
+        7837,
+        7845,
+      ],
+      "startColumn": 14,
+      "startLine": 318,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 324,
+      "range": Array [
+        7941,
+        7949,
+      ],
+      "startColumn": 14,
+      "startLine": 324,
+    },
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 336,
+      "range": Array [
+        8138,
+        8146,
+      ],
+      "startColumn": 14,
+      "startLine": 336,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 342,
+      "range": Array [
+        8229,
+        8237,
+      ],
+      "startColumn": 14,
+      "startLine": 342,
+    },
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 11,
+      "range": Array [
+        167,
+        174,
+      ],
+      "startColumn": 15,
+      "startLine": 11,
+    },
+    "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/retries.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        149,
+        156,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 14,
+      "range": Array [
+        230,
+        237,
+      ],
+      "startColumn": 15,
+      "startLine": 14,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 18,
+      "range": Array [
+        319,
+        326,
+      ],
+      "startColumn": 15,
+      "startLine": 18,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 22,
+      "range": Array [
+        400,
+        407,
+      ],
+      "startColumn": 15,
+      "startLine": 22,
+    },
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/run-after.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        174,
+        181,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 21,
+      "range": Array [
+        383,
+        390,
+      ],
+      "startColumn": 15,
+      "startLine": 21,
+    },
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 25,
+      "range": Array [
+        464,
+        471,
+      ],
+      "startColumn": 15,
+      "startLine": 25,
+    },
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 36,
+      "range": Array [
+        675,
+        682,
+      ],
+      "startColumn": 15,
+      "startLine": 36,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 40,
+      "range": Array [
+        756,
+        763,
+      ],
+      "startColumn": 15,
+      "startLine": 40,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 44,
+      "range": Array [
+        837,
+        844,
+      ],
+      "startColumn": 15,
+      "startLine": 44,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 48,
+      "range": Array [
+        918,
+        925,
+      ],
+      "startColumn": 15,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 59,
+      "range": Array [
+        1127,
+        1134,
+      ],
+      "startColumn": 15,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 63,
+      "range": Array [
+        1208,
+        1215,
+      ],
+      "startColumn": 15,
+      "startLine": 63,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 67,
+      "range": Array [
+        1289,
+        1296,
+      ],
+      "startColumn": 15,
+      "startLine": 67,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 71,
+      "range": Array [
+        1370,
+        1377,
+      ],
+      "startColumn": 15,
+      "startLine": 71,
+    },
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 10,
+      "range": Array [
+        150,
+        157,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 25,
+      "range": Array [
+        399,
+        406,
+      ],
+      "startColumn": 15,
+      "startLine": 25,
+    },
+    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 1,
       "endLine": 59,
       "range": Array [
@@ -3481,426 +3901,6 @@ Array [
     },
     "message": "Invalid name for 'BAD_STEP_NAME' at .spec.tasks[0].taskSpec.steps[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 31,
-      "endLine": 28,
-      "range": Array [
-        799,
-        815,
-      ],
-      "startColumn": 15,
-      "startLine": 28,
-    },
-    "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 31,
-      "endLine": 46,
-      "range": Array [
-        1231,
-        1247,
-      ],
-      "startColumn": 15,
-      "startLine": 46,
-    },
-    "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 24,
-      "endLine": 56,
-      "range": Array [
-        1531,
-        1540,
-      ],
-      "startColumn": 15,
-      "startLine": 56,
-    },
-    "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 24,
-      "endLine": 72,
-      "range": Array [
-        1947,
-        1956,
-      ],
-      "startColumn": 15,
-      "startLine": 72,
-    },
-    "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 34,
-      "endLine": 94,
-      "range": Array [
-        2429,
-        2448,
-      ],
-      "startColumn": 15,
-      "startLine": 94,
-    },
-    "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 13,
-      "endLine": 130,
-      "range": Array [
-        3499,
-        3503,
-      ],
-      "startColumn": 9,
-      "startLine": 130,
-    },
-    "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 318,
-      "range": Array [
-        7837,
-        7845,
-      ],
-      "startColumn": 14,
-      "startLine": 318,
-    },
-    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 324,
-      "range": Array [
-        7941,
-        7949,
-      ],
-      "startColumn": 14,
-      "startLine": 324,
-    },
-    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 336,
-      "range": Array [
-        8138,
-        8146,
-      ],
-      "startColumn": 14,
-      "startLine": 336,
-    },
-    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 342,
-      "range": Array [
-        8229,
-        8237,
-      ],
-      "startColumn": 14,
-      "startLine": 342,
-    },
-    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 11,
-      "range": Array [
-        167,
-        174,
-      ],
-      "startColumn": 15,
-      "startLine": 11,
-    },
-    "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/retries.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 10,
-      "range": Array [
-        149,
-        156,
-      ],
-      "startColumn": 15,
-      "startLine": 10,
-    },
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/run-after.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 14,
-      "range": Array [
-        230,
-        237,
-      ],
-      "startColumn": 15,
-      "startLine": 14,
-    },
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/run-after.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 18,
-      "range": Array [
-        319,
-        326,
-      ],
-      "startColumn": 15,
-      "startLine": 18,
-    },
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/run-after.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 22,
-      "range": Array [
-        400,
-        407,
-      ],
-      "startColumn": 15,
-      "startLine": 22,
-    },
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/run-after.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 10,
-      "range": Array [
-        174,
-        181,
-      ],
-      "startColumn": 15,
-      "startLine": 10,
-    },
-    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 21,
-      "range": Array [
-        383,
-        390,
-      ],
-      "startColumn": 15,
-      "startLine": 21,
-    },
-    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 25,
-      "range": Array [
-        464,
-        471,
-      ],
-      "startColumn": 15,
-      "startLine": 25,
-    },
-    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 36,
-      "range": Array [
-        675,
-        682,
-      ],
-      "startColumn": 15,
-      "startLine": 36,
-    },
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 40,
-      "range": Array [
-        756,
-        763,
-      ],
-      "startColumn": 15,
-      "startLine": 40,
-    },
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 44,
-      "range": Array [
-        837,
-        844,
-      ],
-      "startColumn": 15,
-      "startLine": 44,
-    },
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 48,
-      "range": Array [
-        918,
-        925,
-      ],
-      "startColumn": 15,
-      "startLine": 48,
-    },
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 59,
-      "range": Array [
-        1127,
-        1134,
-      ],
-      "startColumn": 15,
-      "startLine": 59,
-    },
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 63,
-      "range": Array [
-        1208,
-        1215,
-      ],
-      "startColumn": 15,
-      "startLine": 63,
-    },
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 67,
-      "range": Array [
-        1289,
-        1296,
-      ],
-      "startColumn": 15,
-      "startLine": 67,
-    },
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 71,
-      "range": Array [
-        1370,
-        1377,
-      ],
-      "startColumn": 15,
-      "startLine": 71,
-    },
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 10,
-      "range": Array [
-        150,
-        157,
-      ],
-      "startColumn": 15,
-      "startLine": 10,
-    },
-    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/workspaces.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 22,
-      "endLine": 25,
-      "range": Array [
-        399,
-        406,
-      ],
-      "startColumn": 15,
-      "startLine": 25,
-    },
-    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-    "path": "./regression-tests/workspaces.yaml",
   },
   Object {
     "level": "error",
@@ -5474,6 +5474,118 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+  },
+  Object {
+    "level": "error",
     "message": "Pipeline 'pipeline-without-params' uses task 'clone' (referenced as 'git-clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)",
   },
   Object {
@@ -5719,118 +5831,6 @@ Array [
   Object {
     "level": "warning",
     "message": "Invalid name for 'BAD_STEP_NAME' at .spec.tasks[0].taskSpec.steps[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
   },
   Object {
     "level": "error",
