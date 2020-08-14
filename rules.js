@@ -13,7 +13,6 @@ module.exports = async function run(globs) {
 module.exports.lint = function lint(docs, reporter) {
   reporter = reporter || new Reporter();
   const config = getRulesConfig();
-  const warning = reporter.warning.bind(reporter);
   const error = reporter.error.bind(reporter);
   const tekton = parse(docs);
 
@@ -70,13 +69,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-missing-workspace');
   runRule('no-pipeline-task-missing-reference');
   runRule('no-template-pipeline-missing-workspace');
-
-  for (const triggerBinding of Object.values(tekton.triggerBindings)) {
-    if (!triggerBinding.spec || !triggerBinding.spec.params) continue;
-    for (const param of triggerBinding.spec.params) {
-      if (param.value === undefined) warning(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`, param);
-    }
-  }
+  runRule('no-binding-missing-params');
 
   const checkUndefinedResult = pipeline => (value, path, parent) => {
     const resultReference = value.toString().match(/\$\(tasks\.(.*?)\.results\.(.*?)\)/);
