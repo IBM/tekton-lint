@@ -514,7 +514,6 @@ module.exports.lint = function lint(docs, reporter) {
   }
 
   for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
     walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));
   }
 

@@ -27,7 +27,6 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
 
 module.exports = (docs, tekton, report) => {
   for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
     walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
   }
 };

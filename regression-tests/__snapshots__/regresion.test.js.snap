@@ -3396,6 +3396,21 @@ Array [
     "level": "warning",
     "loc": Object {
       "endColumn": 45,
+      "endLine": 101,
+      "range": Array [
+        2657,
+        2684,
+      ],
+      "startColumn": 18,
+      "startLine": 101,
+    },
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
       "endLine": 137,
       "range": Array [
         3713,
@@ -3406,6 +3421,96 @@ Array [
     },
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 50,
+      "range": Array [
+        1147,
+        1154,
+      ],
+      "startColumn": 23,
+      "startLine": 50,
+    },
+    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 36,
+      "endLine": 52,
+      "range": Array [
+        1226,
+        1239,
+      ],
+      "startColumn": 23,
+      "startLine": 52,
+    },
+    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 54,
+      "range": Array [
+        1319,
+        1338,
+      ],
+      "startColumn": 23,
+      "startLine": 54,
+    },
+    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 30,
+      "endLine": 48,
+      "range": Array [
+        1079,
+        1086,
+      ],
+      "startColumn": 23,
+      "startLine": 48,
+    },
+    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 36,
+      "endLine": 50,
+      "range": Array [
+        1151,
+        1164,
+      ],
+      "startColumn": 23,
+      "startLine": 50,
+    },
+    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 42,
+      "endLine": 52,
+      "range": Array [
+        1237,
+        1256,
+      ],
+      "startColumn": 23,
+      "startLine": 52,
+    },
+    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
     "level": "error",
@@ -5593,7 +5698,35 @@ Array [
   },
   Object {
     "level": "warning",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-alpha-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[0].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'OTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[1].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'YET_ANOTHER_ENV_KEY' at .spec.tasks[1].taskSpec.steps[0].env[2].name in 'my-beta-pipeline'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "error",
