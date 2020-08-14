@@ -97,18 +97,7 @@ module.exports.lint = function lint(docs, reporter) {
   const resources = collectResources(docs);
 
   runRule('no-resourceversion');
-
-  for (const task of Object.values(tekton.tasks)) {
-    if (task.apiVersion === 'tekton.dev/v1alpha1') {
-      warning(`Task '${task.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`, task, 'apiVersion');
-    }
-  }
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    if (pipeline.apiVersion === 'tekton.dev/v1alpha1') {
-      warning(`Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1`, pipeline, 'apiVersion');
-    }
-  }
+  runRule('prefer-beta-version');
 
   function readParamReference({ value }) {
     const taskResultReferenceRegexp = /\$\(tasks\.[a-z|-]*\.results\.[a-z|-]*\)/;
