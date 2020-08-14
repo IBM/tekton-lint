@@ -90,26 +90,8 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-wrong-param-type');
   runRule('prefer-baseimage-version');
   runRule('no-invalid-parameter-name');
-
-  for (const task of Object.values(tekton.tasks)) {
-    const params = getTaskParams(task.spec);
-    if (!params) continue;
-    const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
-
-    walk(task.spec.steps, ['spec', 'steps'], unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.volumes, ['spec', 'volumes'], unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.sidecars, ['spec', 'sidecars'], unused(task.metadata.name, occurences, 'inputs.params'));
-    walk(task.spec.steps, ['spec', 'steps'], unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.volumes, ['spec', 'volumes'], unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.stepTemplate, ['spec', 'stepTemplate'], unused(task.metadata.name, occurences, 'params'));
-    walk(task.spec.sidecars, ['spec', 'sidecars'], unused(task.metadata.name, occurences, 'params'));
-
-    for (const param of Object.keys(occurences)) {
-      if (occurences[param]) continue;
-      warning(`Task '${task.metadata.name}' defines parameter '${param}', but it's not used anywhere in the task spec`, params.find(p => p.name === param));
-    }
-  }
+  runRule('no-task-undefined-params');
+  runRule('no-task-unused-params');
 
   for (const condition of Object.values(tekton.conditions)) {
     if (!condition.spec.params) continue;

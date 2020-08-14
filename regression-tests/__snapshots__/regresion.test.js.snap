@@ -1473,201 +1473,6 @@ Array [
     "path": "./regression-tests/param-names.yaml",
   },
   Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 12,
-      "range": Array [
-        99,
-        152,
-      ],
-      "startColumn": 7,
-      "startLine": 8,
-    },
-    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/array-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 16,
-      "range": Array [
-        158,
-        209,
-      ],
-      "startColumn": 7,
-      "startLine": 12,
-    },
-    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/array-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 19,
-      "range": Array [
-        215,
-        257,
-      ],
-      "startColumn": 7,
-      "startLine": 16,
-    },
-    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/array-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 21,
-      "range": Array [
-        263,
-        294,
-      ],
-      "startColumn": 7,
-      "startLine": 19,
-    },
-    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/array-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 10,
-      "range": Array [
-        129,
-        139,
-      ],
-      "startColumn": 9,
-      "startLine": 9,
-    },
-    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 20,
-      "range": Array [
-        277,
-        287,
-      ],
-      "startColumn": 7,
-      "startLine": 19,
-    },
-    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 9,
-      "range": Array [
-        103,
-        114,
-      ],
-      "startColumn": 7,
-      "startLine": 8,
-    },
-    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 10,
-      "range": Array [
-        120,
-        131,
-      ],
-      "startColumn": 7,
-      "startLine": 9,
-    },
-    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 10,
-      "range": Array [
-        107,
-        170,
-      ],
-      "startColumn": 7,
-      "startLine": 8,
-    },
-    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/task-dependency-cycles-results.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 10,
-      "range": Array [
-        129,
-        139,
-      ],
-      "startColumn": 9,
-      "startLine": 9,
-    },
-    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/task-duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 20,
-      "range": Array [
-        282,
-        292,
-      ],
-      "startColumn": 7,
-      "startLine": 19,
-    },
-    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/task-duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 22,
-      "range": Array [
-        551,
-        722,
-      ],
-      "startColumn": 9,
-      "startLine": 19,
-    },
-    "message": "Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/task-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 28,
-      "range": Array [
-        859,
-        955,
-      ],
-      "startColumn": 9,
-      "startLine": 25,
-    },
-    "message": "Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec",
-    "path": "./regression-tests/task-test.yaml",
-  },
-  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 47,
@@ -1878,6 +1683,246 @@ Array [
     "path": "./regression-tests/task-test.yaml",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 51,
+      "endLine": 19,
+      "range": Array [
+        375,
+        408,
+      ],
+      "startColumn": 18,
+      "startLine": 19,
+    },
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 44,
+      "endLine": 18,
+      "range": Array [
+        348,
+        374,
+      ],
+      "startColumn": 18,
+      "startLine": 18,
+    },
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 26,
+      "endLine": 12,
+      "range": Array [
+        144,
+        173,
+      ],
+      "startColumn": 11,
+      "startLine": 11,
+    },
+    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
+    "path": "./regression-tests/value-of-undefined.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 12,
+      "range": Array [
+        99,
+        152,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 16,
+      "range": Array [
+        158,
+        209,
+      ],
+      "startColumn": 7,
+      "startLine": 12,
+    },
+    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 19,
+      "range": Array [
+        215,
+        257,
+      ],
+      "startColumn": 7,
+      "startLine": 16,
+    },
+    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        263,
+        294,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/array-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        129,
+        139,
+      ],
+      "startColumn": 9,
+      "startLine": 9,
+    },
+    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        277,
+        287,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 9,
+      "range": Array [
+        103,
+        114,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        120,
+        131,
+      ],
+      "startColumn": 7,
+      "startLine": 9,
+    },
+    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        107,
+        170,
+      ],
+      "startColumn": 7,
+      "startLine": 8,
+    },
+    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-dependency-cycles-results.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 10,
+      "range": Array [
+        129,
+        139,
+      ],
+      "startColumn": 9,
+      "startLine": 9,
+    },
+    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 20,
+      "range": Array [
+        282,
+        292,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 22,
+      "range": Array [
+        551,
+        722,
+      ],
+      "startColumn": 9,
+      "startLine": 19,
+    },
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 28,
+      "range": Array [
+        859,
+        955,
+      ],
+      "startColumn": 9,
+      "startLine": 25,
+    },
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -1908,21 +1953,6 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
   },
   Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 51,
-      "endLine": 19,
-      "range": Array [
-        375,
-        408,
-      ],
-      "startColumn": 18,
-      "startLine": 19,
-    },
-    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -1938,21 +1968,6 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
   },
   Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 44,
-      "endLine": 18,
-      "range": Array [
-        348,
-        374,
-      ],
-      "startColumn": 18,
-      "startLine": 18,
-    },
-    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
-    "path": "./regression-tests/tekton-beta.yaml",
-  },
-  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
@@ -1966,21 +1981,6 @@ Array [
     },
     "message": "Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
     "path": "./regression-tests/tekton-beta.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 26,
-      "endLine": 12,
-      "range": Array [
-        144,
-        173,
-      ],
-      "startColumn": 11,
-      "startLine": 11,
-    },
-    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
-    "path": "./regression-tests/value-of-undefined.yaml",
   },
   Object {
     "level": "warning",
@@ -5185,58 +5185,6 @@ Array [
     "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
   },
   Object {
-    "level": "warning",
-    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "warning",
-    "message": "Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec",
-  },
-  Object {
     "level": "error",
     "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-params'",
   },
@@ -5293,6 +5241,70 @@ Array [
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
   },
   Object {
+    "level": "error",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'bar', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'baz', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'array-params' defines parameter 'qux', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'duplicate-params-task-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'duplicate-params-task' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'param-names-task' defines parameter '1foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'param-names-task' defines parameter 'fo o', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'my-task-with-results' defines parameter 'reflectiveparam', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-duplicate-params-alpha' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-duplicate-params-beta' defines parameter 'foo', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'continuous-delivery-context-secret', but it's not used anywhere in the task spec",
+  },
+  Object {
+    "level": "warning",
+    "message": "Task 'task-with-params-and-inputs' defines parameter 'repository-integration', but it's not used anywhere in the task spec",
+  },
+  Object {
     "level": "warning",
     "message": "Task 'tekton-alpha-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec",
   },
@@ -5301,24 +5313,12 @@ Array [
     "message": "Task 'tekton-beta-mixed' defines parameter 'my-param', but it's not used anywhere in the task spec",
   },
   Object {
-    "level": "error",
-    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
-  },
-  Object {
     "level": "warning",
     "message": "Task 'my-alpha-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
   },
   Object {
-    "level": "error",
-    "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
-  },
-  Object {
     "level": "warning",
     "message": "Task 'my-beta-task' defines parameter 'my-unused-param', but it's not used anywhere in the task spec",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
   },
   Object {
     "level": "warning",
