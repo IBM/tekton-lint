@@ -1,5 +1,4 @@
 const collector = require('./Collector');
-const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
 const { walk, pathToString } = require('./walk');
 const { parse, getRulesConfig, createReporter } = require('./runner');
@@ -93,21 +92,12 @@ module.exports.lint = function lint(docs, reporter) {
     return spec.params;
   }
 
-  const resources = collectResources(docs);
-
   runRule('no-resourceversion');
   runRule('prefer-beta-version');
   runRule('no-params-api-mix');
   runRule('no-pipeline-task-cycle');
   runRule('no-template-missing-pipeline');
-
-  for (const [kind, resourceMap] of Object.entries(resources)) {
-    for (const resource of Object.values(resourceMap)) {
-      if (!isValidName(resource.metadata.name)) {
-        error(`Invalid name for ${kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`, resource.metadata, 'name');
-      }
-    }
-  }
+  runRule('no-invalid-resource-name');
 
   for (const task of Object.values(tekton.tasks)) {
     const params = getTaskParams(task.spec);
