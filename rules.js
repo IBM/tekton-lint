@@ -101,18 +101,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-listener-missing-template');
   runRule('no-listener-missing-binding');
   runRule('no-pipelinerun-duplicate-params');
-
-  for (const binding of Object.values(tekton.triggerBindings)) {
-    const params = new Set();
-    if (!binding.spec || !binding.spec.params) continue;
-    for (const param of binding.spec.params) {
-      if (!params.has(param.name)) {
-        params.add(param.name);
-      } else {
-        error(`TriggerBinding '${binding.metadata.name}' has param '${param.name}' duplicated.`, param, 'name');
-      }
-    }
-  }
+  runRule('no-binding-duplicate-params');
 
   for (const template of Object.values(tekton.triggerTemplates)) {
     const params = new Set();
