@@ -4535,6 +4535,51 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 1,
+      "endLine": 51,
+      "range": Array [
+        762,
+        820,
+      ],
+      "startColumn": 7,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 51,
+      "range": Array [
+        762,
+        820,
+      ],
+      "startColumn": 7,
+      "startLine": 48,
+    },
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        1012,
+        1049,
+      ],
+      "startColumn": 9,
+      "startLine": 62,
+    },
+    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+    "path": "./regression-tests/workspaces.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 24,
       "endLine": 13,
       "range": Array [
@@ -4651,51 +4696,6 @@ Array [
     },
     "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
     "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 51,
-      "range": Array [
-        762,
-        820,
-      ],
-      "startColumn": 7,
-      "startLine": 48,
-    },
-    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
-    "path": "./regression-tests/workspaces.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 51,
-      "range": Array [
-        762,
-        820,
-      ],
-      "startColumn": 7,
-      "startLine": 48,
-    },
-    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
-    "path": "./regression-tests/workspaces.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 64,
-      "range": Array [
-        1012,
-        1049,
-      ],
-      "startColumn": 9,
-      "startLine": 62,
-    },
-    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
-    "path": "./regression-tests/workspaces.yaml",
   },
   Object {
     "level": "error",
@@ -6002,6 +6002,18 @@ Array [
   },
   Object {
     "level": "error",
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
+  },
+  Object {
+    "level": "error",
     "message": "Pipeline 'workspaces-test-1' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-1'",
   },
   Object {
@@ -6031,18 +6043,6 @@ Array [
   Object {
     "level": "error",
     "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
   },
   Object {
     "level": "error",

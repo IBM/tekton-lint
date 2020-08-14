@@ -67,19 +67,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-taskspec-missing-params');
   runRule('no-template-pipeline-extra-parameters');
   runRule('no-template-pipeline-missing-parameters');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    const pipelineWorkspaces = pipeline.spec.workspaces || [];
-    for (const task of pipeline.spec.tasks) {
-      if (!task.workspaces) continue;
-      for (const workspace of task.workspaces) {
-        const matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.workspace);
-        if (!matchingWorkspace) {
-          error(`Pipeline '${pipeline.metadata.name}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${pipeline.metadata.name}'`, workspace, 'workspace');
-        }
-      }
-    }
-  }
+  runRule('no-pipeline-task-missing-workspace');
 
   const taskNameRegexp = /\$\(tasks\.(.*?)\..*?\)/;
 
@@ -94,26 +82,6 @@ module.exports.lint = function lint(docs, reporter) {
           const matchingTask = pipeline.spec.tasks.find(task => task.name === taskName);
           if (!matchingTask) {
             error(`Task '${task.name}' refers to task '${taskName}' at value of param '${param.name}' but there is no task with that name in pipeline '${pipeline.metadata.name}'`, param, 'value');
-          }
-        }
-      }
-    }
-  }
-
-  for (const task of Object.values(tekton.tasks)) {
-    if (!task.spec.workspaces) continue;
-    const taskName = task.metadata.name;
-    const requiredWorkspaces = task.spec.workspaces.map(ws => ws.name);
-
-    for (const pipeline of Object.values(tekton.pipelines)) {
-      const matchingTaskRefs = pipeline.spec.tasks.filter(task => task.taskRef && task.taskRef.name === taskName);
-
-      for (const taskRef of matchingTaskRefs) {
-        const usedWorkspaces = taskRef.workspaces || [];
-
-        for (const required of requiredWorkspaces) {
-          if (!usedWorkspaces.find(ws => ws.name === required)) {
-            error(`Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`, taskRef.workspaces || taskRef);
           }
         }
       }
