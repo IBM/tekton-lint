@@ -4,7 +4,6 @@ metadata:
   name: template
 spec:
   params:
-    - name: pipeline-id
     - name: repository
       description: The git repo
     - name: branch
@@ -44,16 +43,6 @@ spec:
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOnce
-
-    - apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: context
-      data:
-        PIPELINE_RUN_URL: https://cloud.ibm.com/devops/pipelines/tekton/$(params.pipeline-id)/runs/$(uid)?env_id=ibm:yp:us-south
-        PR_COMMIT: $(params.pr-commit)
-        TARGET_BRANCH: $(params.target-branch)
-        BRANCH: $(params.branch)
 
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
