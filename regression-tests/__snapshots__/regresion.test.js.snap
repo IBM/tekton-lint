@@ -3966,61 +3966,31 @@ Array [
     "level": "error",
     "loc": Object {
       "endColumn": 1,
-      "endLine": 52,
+      "endLine": 39,
       "range": Array [
-        743,
-        855,
+        802,
+        844,
       ],
-      "startColumn": 7,
-      "startLine": 46,
+      "startColumn": 11,
+      "startLine": 37,
     },
-    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-    "path": "./regression-tests/duplicate-params.yaml",
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
   },
   Object {
     "level": "error",
     "loc": Object {
       "endColumn": 1,
-      "endLine": 52,
+      "endLine": 38,
       "range": Array [
-        743,
-        855,
+        758,
+        800,
       ],
-      "startColumn": 7,
-      "startLine": 46,
+      "startColumn": 11,
+      "startLine": 36,
     },
-    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 64,
-      "range": Array [
-        979,
-        1069,
-      ],
-      "startColumn": 7,
-      "startLine": 59,
-    },
-    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 64,
-      "range": Array [
-        979,
-        1069,
-      ],
-      "startColumn": 7,
-      "startLine": 59,
-    },
-    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-    "path": "./regression-tests/duplicate-params.yaml",
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
     "level": "error",
@@ -4051,6 +4021,96 @@ Array [
     },
     "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', and supplies parameter 'BAD_PARAM_NAME' to it, but it's not a valid parameter",
     "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 63,
+      "range": Array [
+        1528,
+        1570,
+      ],
+      "startColumn": 11,
+      "startLine": 61,
+    },
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta-ref.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 61,
+      "range": Array [
+        1439,
+        1481,
+      ],
+      "startColumn": 11,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+    "path": "./regression-tests/tekton-beta.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 52,
+      "range": Array [
+        743,
+        855,
+      ],
+      "startColumn": 7,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 52,
+      "range": Array [
+        743,
+        855,
+      ],
+      "startColumn": 7,
+      "startLine": 46,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        979,
+        1069,
+      ],
+      "startColumn": 7,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 64,
+      "range": Array [
+        979,
+        1069,
+      ],
+      "startColumn": 7,
+      "startLine": 59,
+    },
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "path": "./regression-tests/duplicate-params.yaml",
   },
   Object {
     "level": "error",
@@ -4161,36 +4221,6 @@ Array [
     "level": "error",
     "loc": Object {
       "endColumn": 1,
-      "endLine": 39,
-      "range": Array [
-        802,
-        844,
-      ],
-      "startColumn": 11,
-      "startLine": 37,
-    },
-    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 63,
-      "range": Array [
-        1528,
-        1570,
-      ],
-      "startColumn": 11,
-      "startLine": 61,
-    },
-    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-    "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
       "endLine": 63,
       "range": Array [
         1427,
@@ -4201,36 +4231,6 @@ Array [
     },
     "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 38,
-      "range": Array [
-        758,
-        800,
-      ],
-      "startColumn": 11,
-      "startLine": 36,
-    },
-    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-    "path": "./regression-tests/tekton-beta.yaml",
-  },
-  Object {
-    "level": "error",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 61,
-      "range": Array [
-        1439,
-        1481,
-      ],
-      "startColumn": 11,
-      "startLine": 59,
-    },
-    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-    "path": "./regression-tests/tekton-beta.yaml",
   },
   Object {
     "level": "error",
@@ -5850,19 +5850,11 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
   },
   Object {
     "level": "error",
-    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
   },
   Object {
     "level": "error",
@@ -5871,6 +5863,30 @@ Array [
   Object {
     "level": "error",
     "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', and supplies parameter 'BAD_PARAM_NAME' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
+  },
+  Object {
+    "level": "error",
+    "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
   },
   Object {
     "level": "error",
@@ -5902,23 +5918,7 @@ Array [
   },
   Object {
     "level": "error",
-    "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-  },
-  Object {
-    "level": "error",
     "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
-  },
-  Object {
-    "level": "error",
-    "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', and supplies parameter 'my-extra-param' to it, but it's not a valid parameter",
   },
   Object {
     "level": "error",

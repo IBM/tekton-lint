@@ -32,11 +32,6 @@ module.exports.lint = function lint(docs, reporter) {
     names.add(resource.metadata.name);
   }
 
-  function getTaskParams(spec) {
-    if (spec.inputs) return spec.inputs.params;
-    return spec.params;
-  }
-
   runRule('no-resourceversion');
   runRule('prefer-beta-version');
   runRule('no-params-api-mix');
@@ -66,71 +61,10 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-extra-params');
   runRule('prefer-kebab-naming');
   runRule('no-pipeline-missing-condition');
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    for (const task of pipeline.spec.tasks) {
-      if (task.taskRef) {
-        const name = task.taskRef.name;
-        if (!tekton.tasks[name]) continue;
-        if (task.params) {
-          const taskParamNames = new Set();
-          for (const param of task.params) {
-            if (!taskParamNames.has(param.name)) {
-              taskParamNames.add(param.name);
-            } else {
-              error(`Pipeline '${pipeline.metadata.name}' invokes task '${task.name}' which references '${name}' with a duplicate param name: '${param.name}'.`, param, 'name');
-            }
-          }
-          const provided = task.params.map(param => param.name);
-          const params = getTaskParams(tekton.tasks[name].spec);
-          const all = params.map(param => param.name);
-          const extra = provided.filter(param => !all.includes(param));
-
-          for (const param of extra) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
-          }
-        }
-      }
-
-      if (task.taskSpec) {
-        const params = getTaskParams(task.taskSpec);
-        if (task.params == null && params == null) continue;
-
-        if (task.params == null) {
-          const required = params
-            .filter(param => typeof param.default == 'undefined')
-            .map(param => param.name);
-
-          for (const param of required) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`, task);
-          }
-        } else if (params == null) {
-          const provided = task.params.map(param => param.name);
-
-          for (const param of provided) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
-          }
-        } else {
-          const provided = task.params.map(param => param.name);
-          const all = params.map(param => param.name);
-          const required = params
-            .filter(param => typeof param.default == 'undefined')
-            .map(param => param.name);
-
-          const extra = provided.filter(param => !all.includes(param));
-          const missing = required.filter(param => !provided.includes(param));
-
-          for (const param of extra) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`, task.params.find(p => p.name === param));
-          }
-
-          for (const param of missing) {
-            error(`Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`, task.params);
-          }
-        }
-      }
-    }
-  }
+  runRule('no-pipeline-task-duplicate-params');
+  runRule('no-pipeline-task-extra-params');
+  runRule('no-pipeline-taskspec-extra-params');
+  runRule('no-pipeline-taskspec-missing-params');
 
   for (const pipeline of Object.values(tekton.pipelines)) {
     for (const template of Object.values(tekton.triggerTemplates)) {
