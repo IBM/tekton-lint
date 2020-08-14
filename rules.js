@@ -98,16 +98,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-task-step-duplicate-env');
   runRule('no-template-undefined-params');
   runRule('no-template-unused-params');
-
-  for (const listener of Object.values(tekton.listeners)) {
-    for (const trigger of listener.spec.triggers) {
-      if (!trigger.template) continue;
-      const name = trigger.template.name;
-      if (!tekton.triggerTemplates[name]) {
-        error(`EventListener '${listener.metadata.name}' defines trigger template '${name}', but the trigger template is missing.`, trigger.template, 'name');
-      }
-    }
-  }
+  runRule('no-listener-missing-template');
 
   for (const listener of Object.values(tekton.listeners)) {
     for (const trigger of listener.spec.triggers) {
