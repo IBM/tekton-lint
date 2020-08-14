@@ -74,3 +74,5 @@ module.exports.lint = function lint(docs, reporter) {
 
   return reporterInstance.problems;
 };
+
+module.exports.parse = parse;

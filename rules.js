@@ -3,6 +3,7 @@ const collector = require('./Collector');
 const collectResources = require('./collect-resources');
 const Reporter = require('./reporter');
 const { walk, pathToString } = require('./walk');
+const { parse } = require('./runner');
 
 module.exports = async function run(globs) {
   const docs = await collector(globs);
@@ -14,32 +15,7 @@ module.exports.lint = function lint(docs, reporter) {
   reporter = reporter || new Reporter();
   const warning = reporter.warning.bind(reporter);
   const error = reporter.error.bind(reporter);
-  const tekton = {
-    tasks: Object.fromEntries(docs.filter(item => item.kind === 'Task').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-    pipelines: Object.fromEntries(docs.filter(item => item.kind === 'Pipeline').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-    listeners: Object.fromEntries(docs.filter(item => item.kind === 'EventListener').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-    triggerTemplates: Object.fromEntries(docs.filter(item => item.kind === 'TriggerTemplate').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-    triggerBindings: Object.fromEntries(docs.filter(item => item.kind === 'TriggerBinding').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-    conditions: Object.fromEntries(docs.filter(item => item.kind === 'Condition').map(item => [
-      item.metadata.name,
-      item,
-    ])),
-  };
+  const tekton = parse(docs);
 
   const resourceNames = new Map();
   for (const resource of docs) {
