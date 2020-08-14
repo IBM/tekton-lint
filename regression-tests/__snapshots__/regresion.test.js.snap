@@ -2148,51 +2148,6 @@ Array [
     "path": "./regression-tests/env.yaml",
   },
   Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 72,
-      "range": Array [
-        1192,
-        1202,
-      ],
-      "startColumn": 7,
-      "startLine": 71,
-    },
-    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
-    "path": "./regression-tests/duplicate-params.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 29,
-      "range": Array [
-        412,
-        423,
-      ],
-      "startColumn": 7,
-      "startLine": 28,
-    },
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 30,
-      "range": Array [
-        429,
-        440,
-      ],
-      "startColumn": 7,
-      "startLine": 29,
-    },
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
-    "path": "./regression-tests/param-names.yaml",
-  },
-  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 35,
@@ -2235,21 +2190,6 @@ Array [
       "startLine": 73,
     },
     "message": "Undefined param 'target-branch' at .resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
-    "path": "./regression-tests/triggertemplate-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 83,
-      "range": Array [
-        1828,
-        1881,
-      ],
-      "startColumn": 7,
-      "startLine": 81,
-    },
-    "message": "TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2298,21 +2238,6 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 207,
-      "range": Array [
-        4660,
-        4713,
-      ],
-      "startColumn": 7,
-      "startLine": 205,
-    },
-    "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
-    "path": "./regression-tests/triggertemplate-test.yaml",
-  },
-  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 35,
@@ -2325,21 +2250,6 @@ Array [
       "startLine": 261,
     },
     "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
-    "path": "./regression-tests/triggertemplate-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 243,
-      "range": Array [
-        5503,
-        5556,
-      ],
-      "startColumn": 7,
-      "startLine": 241,
-    },
-    "message": "TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -2358,21 +2268,6 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 1,
-      "endLine": 399,
-      "range": Array [
-        9351,
-        9404,
-      ],
-      "startColumn": 7,
-      "startLine": 397,
-    },
-    "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
-    "path": "./regression-tests/triggertemplate-test.yaml",
-  },
-  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 35,
@@ -2385,6 +2280,111 @@ Array [
       "startLine": 423,
     },
     "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 72,
+      "range": Array [
+        1192,
+        1202,
+      ],
+      "startColumn": 7,
+      "startLine": 71,
+    },
+    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/duplicate-params.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 29,
+      "range": Array [
+        412,
+        423,
+      ],
+      "startColumn": 7,
+      "startLine": 28,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 30,
+      "range": Array [
+        429,
+        440,
+      ],
+      "startColumn": 7,
+      "startLine": 29,
+    },
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/param-names.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 83,
+      "range": Array [
+        1828,
+        1881,
+      ],
+      "startColumn": 7,
+      "startLine": 81,
+    },
+    "message": "TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 207,
+      "range": Array [
+        4660,
+        4713,
+      ],
+      "startColumn": 7,
+      "startLine": 205,
+    },
+    "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 243,
+      "range": Array [
+        5503,
+        5556,
+      ],
+      "startColumn": 7,
+      "startLine": 241,
+    },
+    "message": "TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
+    "path": "./regression-tests/triggertemplate-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 399,
+      "range": Array [
+        9351,
+        9404,
+      ],
+      "startColumn": 7,
+      "startLine": 397,
+    },
+    "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
     "path": "./regression-tests/triggertemplate-test.yaml",
   },
   Object {
@@ -5365,18 +5365,6 @@ Array [
     "message": "Step 'my-step' has env variable 'FOO' duplicated in task 'env'.",
   },
   Object {
-    "level": "warning",
-    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
-  },
-  Object {
-    "level": "warning",
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
-  },
-  Object {
-    "level": "warning",
-    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
-  },
-  Object {
     "level": "error",
     "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
@@ -5389,44 +5377,56 @@ Array [
     "message": "Undefined param 'target-branch' at .resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
   },
   Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'duplicate-params-trigger' defines parameter 'foo', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
+    "level": "warning",
+    "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o', but it's not used anywhere in the resourceTemplates specs",
+  },
+  Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-without-resource-templates' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-without-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
   },
   Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
-  },
-  Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-with-null-pipelinerun-params' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
   },
   Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
-  },
-  Object {
     "level": "warning",
     "message": "TriggerTemplate 'template-with-secret' defines parameter 'target-branch', but it's not used anywhere in the resourceTemplates specs",
-  },
-  Object {
-    "level": "error",
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
   },
   Object {
     "level": "warning",

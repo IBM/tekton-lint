@@ -96,18 +96,8 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-task-duplicated-params');
   runRule('no-task-undefined-volume');
   runRule('no-task-step-duplicate-env');
-
-  for (const template of Object.values(tekton.triggerTemplates)) {
-    if (!template.spec.params) continue;
-    const params = Object.fromEntries(template.spec.params.map(param => [param.name, 0]));
-    for (const resourceTemplate of template.spec.resourcetemplates) {
-      walk(resourceTemplate, ['resourceTemplate'], unused(resourceTemplate.metadata.name, params, 'params'));
-    }
-    for (const param of Object.keys(params)) {
-      if (params[param]) continue;
-      warning(`TriggerTemplate '${template.metadata.name}' defines parameter '${param}', but it's not used anywhere in the resourceTemplates specs`, template.spec.params.find(p => p.name === param));
-    }
-  }
+  runRule('no-template-undefined-params');
+  runRule('no-template-unused-params');
 
   for (const listener of Object.values(tekton.listeners)) {
     for (const trigger of listener.spec.triggers) {
