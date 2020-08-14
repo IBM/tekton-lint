@@ -99,15 +99,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('prefer-beta-version');
   runRule('no-params-api-mix');
   runRule('no-pipeline-task-cycle');
-
-  for (const template of Object.values(tekton.triggerTemplates)) {
-    for (const resourceTemplate of template.spec.resourcetemplates) {
-      if (resourceTemplate.kind !== 'PipelineRun') continue;
-      if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
-        error(`TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`, resourceTemplate.spec.pipelineRef, 'name');
-      }
-    }
-  }
+  runRule('no-template-missing-pipeline');
 
   for (const [kind, resourceMap] of Object.entries(resources)) {
     for (const resource of Object.values(resourceMap)) {
