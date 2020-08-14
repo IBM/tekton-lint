@@ -506,12 +506,16 @@ module.exports.lint = function lint(docs, reporter) {
     const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
 
     walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(pipeline.metadata.name, params, 'params'));
-    walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));
 
     for (const param of Object.keys(params)) {
       if (params[param]) continue;
       warning(`Pipeline '${pipeline.metadata.name}' defines parameter '${param}', but it's not used anywhere in the pipeline spec`, pipeline.spec.params.find(p => p.name === param));
     }
+  }
+
+  for (const pipeline of Object.values(tekton.pipelines)) {
+    if (!pipeline.spec.params) continue;
+    walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params'));
   }
 
   for (const pipeline of Object.values(tekton.pipelines)) {

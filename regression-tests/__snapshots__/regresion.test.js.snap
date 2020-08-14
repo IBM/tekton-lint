@@ -2735,21 +2735,6 @@ Array [
   Object {
     "level": "warning",
     "loc": Object {
-      "endColumn": 45,
-      "endLine": 35,
-      "range": Array [
-        1024,
-        1051,
-      ],
-      "startColumn": 18,
-      "startLine": 35,
-    },
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
       "endColumn": 1,
       "endLine": 9,
       "range": Array [
@@ -2955,81 +2940,6 @@ Array [
       "startLine": 83,
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 45,
-      "endLine": 53,
-      "range": Array [
-        1456,
-        1483,
-      ],
-      "startColumn": 18,
-      "startLine": 53,
-    },
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 26,
-      "endLine": 78,
-      "range": Array [
-        2080,
-        2089,
-      ],
-      "startColumn": 17,
-      "startLine": 78,
-    },
-    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 29,
-      "endLine": 80,
-      "range": Array [
-        2130,
-        2142,
-      ],
-      "startColumn": 17,
-      "startLine": 80,
-    },
-    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 40,
-      "endLine": 81,
-      "range": Array [
-        2160,
-        2182,
-      ],
-      "startColumn": 18,
-      "startLine": 81,
-    },
-    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-    "path": "./regression-tests/pipeline-test.yaml",
-  },
-  Object {
-    "level": "warning",
-    "loc": Object {
-      "endColumn": 45,
-      "endLine": 137,
-      "range": Array [
-        3713,
-        3740,
-      ],
-      "startColumn": 18,
-      "startLine": 137,
-    },
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -3405,6 +3315,96 @@ Array [
       "startLine": 432,
     },
     "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 35,
+      "range": Array [
+        1024,
+        1051,
+      ],
+      "startColumn": 18,
+      "startLine": 35,
+    },
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 53,
+      "range": Array [
+        1456,
+        1483,
+      ],
+      "startColumn": 18,
+      "startLine": 53,
+    },
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 26,
+      "endLine": 78,
+      "range": Array [
+        2080,
+        2089,
+      ],
+      "startColumn": 17,
+      "startLine": 78,
+    },
+    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 29,
+      "endLine": 80,
+      "range": Array [
+        2130,
+        2142,
+      ],
+      "startColumn": 17,
+      "startLine": 80,
+    },
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 40,
+      "endLine": 81,
+      "range": Array [
+        2160,
+        2182,
+      ],
+      "startColumn": 18,
+      "startLine": 81,
+    },
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 137,
+      "range": Array [
+        3713,
+        3740,
+      ],
+      "startColumn": 18,
+      "startLine": 137,
+    },
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
   },
   Object {
@@ -5417,10 +5417,6 @@ Array [
   },
   Object {
     "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
     "message": "Pipeline 'pipeline-with-params' defines parameter 'statuses_url', but it's not used anywhere in the pipeline spec",
   },
   Object {
@@ -5474,26 +5470,6 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
-  },
-  Object {
-    "level": "warning",
-    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "warning",
@@ -5594,6 +5570,30 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
+  },
+  Object {
+    "level": "warning",
+    "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
   },
   Object {
     "level": "error",
