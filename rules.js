@@ -1,6 +1,5 @@
 const collector = require('./Collector');
 const Reporter = require('./reporter');
-const { walk, pathToString } = require('./walk');
 const { parse, getRulesConfig, createReporter } = require('./runner');
 const rules = require('./rule-loader');
 
@@ -70,35 +69,7 @@ module.exports.lint = function lint(docs, reporter) {
   runRule('no-pipeline-task-missing-reference');
   runRule('no-template-pipeline-missing-workspace');
   runRule('no-binding-missing-params');
-
-  const checkUndefinedResult = pipeline => (value, path, parent) => {
-    const resultReference = value.toString().match(/\$\(tasks\.(.*?)\.results\.(.*?)\)/);
-    if (!resultReference) return;
-
-    const resultTask = resultReference[1];
-    const resultName = resultReference[2];
-    const matchingTask = pipeline.spec.tasks.find(task => task.name === resultTask);
-    if (!matchingTask) return;
-
-    let taskSpec;
-    if (matchingTask.taskRef) {
-      const matchingTaskSpec = Object.values(tekton.tasks).find(task => task.metadata.name === matchingTask.taskRef.name);
-      if (!matchingTaskSpec) return;
-      taskSpec = matchingTaskSpec.spec;
-    } else {
-      if (!matchingTask.taskSpec) return;
-      taskSpec = matchingTask.taskSpec;
-    }
-
-    const matchingResult = taskSpec.results.find(result => result.name === resultName);
-    if (!matchingResult) {
-      error(`In Pipeline '${pipeline.metadata.name}' the value on path '${pathToString(path)}' refers to an undefined output result (as '${value}' - '${resultName}' is not a result in Task '${resultTask}')`, parent, path[path.length - 1]);
-    }
-  };
-
-  for (const pipeline of Object.values(tekton.pipelines)) {
-    walk(pipeline, [], checkUndefinedResult(pipeline));
-  }
+  runRule('no-pipeline-task-undefined-result');
 
   return reporter.problems;
 };
