@@ -12,7 +12,6 @@ module.exports = async function run(globs) {
 module.exports.lint = function lint(docs, reporter) {
   reporter = reporter || new Reporter();
   const config = getRulesConfig();
-  const error = reporter.error.bind(reporter);
   const tekton = parse(docs);
 
   function runRule(name) {
@@ -20,16 +19,7 @@ module.exports.lint = function lint(docs, reporter) {
     rules[name](docs, tekton, ruleReporter);
   }
 
-  const resourceNames = new Map();
-  for (const resource of docs) {
-    if (!resourceNames.has(resource.kind)) resourceNames.set(resource.kind, new Set());
-    const names = resourceNames.get(resource.kind);
-    if (names.has(resource.metadata.name)) {
-      error(`'${resource.metadata.name}' is already defined (as a '${resource.kind}')`, resource.metadata, 'name');
-    }
-    names.add(resource.metadata.name);
-  }
-
+  runRule('no-resource-redefine');
   runRule('no-resourceversion');
   runRule('prefer-beta-version');
   runRule('no-params-api-mix');
