@@ -9,7 +9,6 @@ const rules = {
   'no-params-api-mix': require('./rules/no-params-api-mix.js'),
   'no-pipeline-duplicate-params': require('./rules/no-pipeline-duplicate-params.js'),
   'no-pipeline-extra-params': require('./rules/no-pipeline-extra-params.js'),
-  'no-pipeline-missing-parameters': require('./rules/no-pipeline-missing-parameters.js'),
   'no-pipeline-missing-task': require('./rules/no-pipeline-missing-task.js'),
   'no-pipeline-task-cycle': require('./rules/no-pipeline-task-cycle.js'),
   'no-pipeline-task-duplicate-params': require('./rules/no-pipeline-task-duplicate-params.js'),
