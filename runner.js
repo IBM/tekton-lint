@@ -74,7 +74,3 @@ module.exports.lint = function lint(docs, reporter) {
 
   return reporterInstance.problems;
 };
-
-module.exports.parse = parse;
-module.exports.getRulesConfig = getRulesConfig;
-module.exports.createReporter = createReporter;
