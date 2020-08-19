@@ -164,7 +164,7 @@ interface Problem {
 ##### Example
 
 ```js
-const linter = require('@cocoa/tekton-lint');
+const linter = require('@cocoa/tekton-lint/runner');
 
 const problems = await linter(['path/to/defs/**/*.yaml']);
 

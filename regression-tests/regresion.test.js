@@ -1,13 +1,13 @@
 const collect = require('../Collector');
-const rules = require('../rules');
+const runner = require('../runner');
 
 it('regression tests with location', async () => {
-  const result = await rules(['./regression-tests/*.yaml']);
+  const result = await runner(['./regression-tests/*.yaml']);
   expect(result).toMatchSnapshot();
 });
 
 it('regression tests without location', async () => {
   const docs = await collect(['./regression-tests/*.yaml']);
-  const result = await rules.lint(docs.map(d => d.content));
+  const result = await runner.lint(docs.map(d => d.content));
   expect(result).toMatchSnapshot();
 });
