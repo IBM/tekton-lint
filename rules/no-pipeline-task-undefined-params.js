@@ -17,8 +17,7 @@ const check_defined_params = (resource, params, prefix, report) => (node, path, 
 
 module.exports = (docs, tekton, report) => {
   for (const pipeline of Object.values(tekton.pipelines)) {
-    if (!pipeline.spec.params) continue;
-    const params = Object.fromEntries(pipeline.spec.params.map(param => [param.name, 0]));
+    const params = Object.fromEntries((pipeline.spec.params || []).map(param => [param.name, 0]));
 
     walk(pipeline.spec.tasks, ['spec', 'tasks'], check_defined_params(pipeline.metadata.name, params, 'params', report));
   }

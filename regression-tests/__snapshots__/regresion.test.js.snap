@@ -2240,6 +2240,51 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 40,
+      "endLine": 97,
+      "range": Array [
+        2512,
+        2534,
+      ],
+      "startColumn": 18,
+      "startLine": 97,
+    },
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-with-null-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 99,
+      "range": Array [
+        2585,
+        2612,
+      ],
+      "startColumn": 18,
+      "startLine": 99,
+    },
+    "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-with-null-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 101,
+      "range": Array [
+        2657,
+        2684,
+      ],
+      "startColumn": 18,
+      "startLine": 101,
+    },
+    "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'",
+    "path": "./regression-tests/pipeline-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 36,
       "endLine": 432,
       "range": Array [
@@ -5462,6 +5507,18 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-with-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-with-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'",
   },
   Object {
     "level": "error",
