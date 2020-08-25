@@ -1,8 +1,8 @@
 const { walk, pathToString } = require('../walk');
 
 function getTaskParams(spec) {
-  if (spec.inputs) return spec.inputs.params;
-  return spec.params;
+  if (spec.inputs) return spec.inputs.params || [];
+  return spec.params || [];
 }
 
 const check_defined_params = (resource, params, prefix, report) => (node, path, parent) => {
@@ -22,9 +22,6 @@ const check_defined_params = (resource, params, prefix, report) => (node, path, 
 module.exports = (docs, tekton, report) => {
   for (const task of Object.values(tekton.tasks)) {
     const params = getTaskParams(task.spec);
-
-    if (!params) continue;
-
     const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
 
     walk(task.spec.steps, ['spec', 'steps'], check_defined_params(task.metadata.name, occurences, 'inputs.params', report));

@@ -2871,6 +2871,81 @@ Array [
     "level": "error",
     "loc": Object {
       "endColumn": 47,
+      "endLine": 117,
+      "range": Array [
+        3287,
+        3316,
+      ],
+      "startColumn": 18,
+      "startLine": 117,
+    },
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-null-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 45,
+      "endLine": 119,
+      "range": Array [
+        3361,
+        3388,
+      ],
+      "startColumn": 18,
+      "startLine": 119,
+    },
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-null-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 121,
+      "range": Array [
+        3438,
+        3469,
+      ],
+      "startColumn": 18,
+      "startLine": 121,
+    },
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-null-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 52,
+      "endLine": 135,
+      "range": Array [
+        3806,
+        3838,
+      ],
+      "startColumn": 20,
+      "startLine": 135,
+    },
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-null-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 49,
+      "endLine": 109,
+      "range": Array [
+        3073,
+        3106,
+      ],
+      "startColumn": 16,
+      "startLine": 109,
+    },
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-null-params'",
+    "path": "./regression-tests/task-test.yaml",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 47,
       "endLine": 189,
       "range": Array [
         5182,
@@ -5555,6 +5630,26 @@ Array [
   Object {
     "level": "error",
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-null-params'",
+  },
+  Object {
+    "level": "error",
+    "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-null-params'",
   },
   Object {
     "level": "error",
