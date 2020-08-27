@@ -80,9 +80,10 @@ class Reporter {
     this.report(message, node, prop, false);
   }
 
-  report(message, node, prop, isError) {
+  report(message, node, prop, isError, rule) {
     this.problems.push({
       message,
+      rule,
       level: isError ? 'error' : 'warning',
       ...getLocation(this.m, node, prop),
     });

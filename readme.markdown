@@ -74,6 +74,7 @@ $ tekton-lint --watch   # Run tekton-lint in watch mode
 $ tekton-lint --version # Show version number
 $ tekton-lint --help    # Show help
 $ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
+$ tekton-lint --format  # Format output. Available formatters: vscode (default) | stylish | json
 
 # exact file path
 $ tekton-lint my-pipeline.yaml my-task.yaml

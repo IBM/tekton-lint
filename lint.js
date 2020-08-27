@@ -3,10 +3,13 @@
 const { version } = require('./package.json');
 const argv = require('minimist')(process.argv.slice(2), {
   boolean: ['watch'],
+  default: {
+    format: 'vscode',
+  },
 });
 const watch = require('./watch');
 const run = require('./runner');
-const { logProblems } = require('./utils');
+const logProblems = require('./log-problems');
 const usageMessage = `Usage:
 tekton-lint <path-to-yaml-files>
 
@@ -15,6 +18,7 @@ $ tekton-lint --watch   # Run tekton-lint in watch mode
 $ tekton-lint --version # Show version number
 $ tekton-lint --help    # Show help
 $ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
+$ tekton-lint --format  # Format output. Available formatters: vscode (default) | stylish | json
 
 Examples:
 # Globstar matching
@@ -52,7 +56,7 @@ if (argv.watch) {
 } else {
   run(argv._)
     .then((problems) => {
-      logProblems(problems);
+      logProblems(argv, problems);
 
       // eslint-disable-next-line no-process-env
       if (problems.some(p => p.level === 'error') && process.env.NODE_ENV !== 'test') {
