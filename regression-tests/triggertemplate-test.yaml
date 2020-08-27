@@ -199,6 +199,39 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
+  name: template-with-runtime-named-pipeline
+spec:
+  params:
+    - name: mode
+      description: pick a run mode
+    - name: target-branch
+      description: target branch
+  resourcetemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: pipelinerun-$(uid)-pvc
+      spec:
+        resources:
+          requests:
+            storage:  5Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        name: pipelinerun-$(uid)
+      spec:
+        pipelineRef:
+          name: pipeline-$(params.mode)
+        params:
+          - name: target-branch
+            value: $(params.target-branch)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
   name: template-without-pipelinerun-params
 spec:
   params:
