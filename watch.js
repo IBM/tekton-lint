@@ -1,5 +1,5 @@
 const chokidar = require('chokidar');
-const run = require('./rules');
+const run = require('./runner');
 const { logProblems } = require('./utils');
 
 const runLinter = async (cause, paths) => {
