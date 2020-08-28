@@ -15,7 +15,9 @@
     "rules/*.js",
     "rule-loader.js",
     "walk.js",
-    ".tektonlintrc.yaml"
+    ".tektonlintrc.yaml",
+    "log-problems.js",
+    "formatters/*.js"
   ],
   "scripts": {
     "lint": "eslint './*.js' './rules/*.js' './regression-tests/*.js'",
