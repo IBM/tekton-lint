@@ -58,7 +58,7 @@ module.exports = (results) => {
   let summaryColor = 'yellow';
 
   results.forEach((result) => {
-    if (result.error) {
+    if (result.level === 'error') {
       errorCount += 1;
     } else {
       warningCount += 1;
