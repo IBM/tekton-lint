@@ -3760,7 +3760,7 @@ Array [
     },
     "message": "Task 'task-without-volumes' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-volume",
+    "rule": "no-undefined-volume",
   },
   Object {
     "level": "error",
@@ -3776,7 +3776,7 @@ Array [
     },
     "message": "Task 'task-without-volumes' wants to mount volume 'task-volume' in step 'fetch-git-token', but this volume is not defined.",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-volume",
+    "rule": "no-undefined-volume",
   },
   Object {
     "level": "warning",
@@ -3888,7 +3888,7 @@ Array [
     },
     "message": "Task 'task-with-undefined-volume' wants to mount volume 'config-volume' in step 'fetch-git-token', but this volume is not defined.",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-volume",
+    "rule": "no-undefined-volume",
   },
   Object {
     "level": "error",

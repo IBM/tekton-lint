@@ -62,7 +62,7 @@ const rules = {
   'no-pipeline-task-missing-reference': require('./rules/no-pipeline-task-missing-reference.js'),
 
   // no-undefined-volume
-  'no-task-undefined-volume': require('./rules/no-task-undefined-volume.js'),
+  'no-undefined-volume': require('./rules/no-undefined-volume.js'),
 
   // no-unused-param
   'no-task-unused-params': require('./rules/no-task-unused-params.js'),

@@ -27,7 +27,7 @@ rules: # error | warning | off
   no-task-duplicated-params: error
   no-task-step-duplicate-env: error
   no-task-undefined-params: error
-  no-task-undefined-volume: error
+  no-undefined-volume: error
   no-task-unused-params: warning
   no-template-duplicate-params: error
   no-template-missing-pipeline: error
