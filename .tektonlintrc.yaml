@@ -37,7 +37,7 @@ rules: # error | warning | off
   no-template-undefined-params: error
   no-template-unused-params: warning
   no-wrong-param-type: error
-  prefer-baseimage-version: warning
+  no-latest-image: warning
   prefer-beta-version: warning
   prefer-kebab-naming: warning
   no-pipeline-missing-condition: error

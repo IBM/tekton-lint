@@ -34,7 +34,7 @@ const rules = {
   'no-wrong-param-type': require('./rules/no-wrong-param-type.js'),
 
   // no-latest-image
-  'prefer-baseimage-version': require('./rules/prefer-baseimage-version.js'),
+  'no-latest-image': require('./rules/no-latest-image.js'),
 
   // no-missing-param
   'no-pipeline-task-missing-params': require('./rules/no-pipeline-task-missing-params.js'), // TODO: split -> no-invalid-param-type
