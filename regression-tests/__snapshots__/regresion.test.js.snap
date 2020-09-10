@@ -2144,7 +2144,7 @@ Array [
     },
     "message": "In Pipeline 'my-pipeline-with-undefined-result-reference' the value on path '.spec.tasks[1].params[1].value' refers to an undefined output result (as '$(tasks.first-task.results.bar)' - 'bar' is not a result in Task 'first-task')",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-result",
+    "rule": "no-undefined-result",
   },
   Object {
     "level": "error",
@@ -2160,7 +2160,7 @@ Array [
     },
     "message": "Task 'tekton-task-with-4-params' refers to task 'missing' at value of param 'my-param1' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-missing-reference",
+    "rule": "no-undefined-result",
   },
   Object {
     "level": "error",
@@ -2176,7 +2176,7 @@ Array [
     },
     "message": "Task 'tekton-task-with-4-params' refers to task 'another' at value of param 'my-param2' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-missing-reference",
+    "rule": "no-undefined-result",
   },
   Object {
     "level": "error",
@@ -2192,7 +2192,7 @@ Array [
     },
     "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-missing-reference",
+    "rule": "no-undefined-result",
   },
   Object {
     "level": "error",

@@ -52,8 +52,7 @@ const rules = {
   'no-template-undefined-params': require('./rules/no-template-undefined-params.js'),
 
   // no-undefined-result
-  'no-pipeline-task-undefined-result': require('./rules/no-pipeline-task-undefined-result.js'),
-  'no-pipeline-task-missing-reference': require('./rules/no-pipeline-task-missing-reference.js'),
+  'no-undefined-result': require('./rules/no-undefined-result.js'),
 
   // no-undefined-volume
   'no-undefined-volume': require('./rules/no-undefined-volume.js'),

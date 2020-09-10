@@ -12,10 +12,9 @@ rules: # error | warning | off
   no-pipeline-task-cycle: error
   no-pipeline-task-extra-params: error
   no-pipeline-task-missing-params: error
-  no-pipeline-task-missing-reference: error
   no-pipeline-task-missing-workspace: error
   no-pipeline-task-undefined-params: error
-  no-pipeline-task-undefined-result: error
+  no-undefined-result: error
   no-pipeline-taskspec-extra-params: error
   no-pipeline-taskspec-missing-params: error
   no-resource-redefine: error
