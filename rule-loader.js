@@ -59,10 +59,7 @@ const rules = {
   'no-undefined-volume': require('./rules/no-undefined-volume.js'),
 
   // no-unused-param
-  'no-task-unused-params': require('./rules/no-task-unused-params.js'),
-  'no-condition-unused-params': require('./rules/no-condition-unused-params.js'),
-  'no-template-unused-params': require('./rules/no-template-unused-params.js'),
-  'no-pipeline-extra-params': require('./rules/no-pipeline-extra-params.js'),
+  'no-unused-param': require('./rules/no-unused-param.js'),
 
   // prefer-beta
   'no-params-api-mix': require('./rules/no-params-api-mix.js'),

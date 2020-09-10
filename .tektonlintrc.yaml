@@ -7,7 +7,6 @@ rules: # error | warning | off
   no-listener-missing-binding: error
   no-listener-missing-template: error
   no-params-api-mix: error
-  no-pipeline-extra-params: warning
   no-pipeline-missing-parameters: error
   no-pipeline-missing-task: error
   no-pipeline-task-cycle: error
@@ -24,16 +23,14 @@ rules: # error | warning | off
   no-task-step-duplicate-env: error
   no-task-undefined-params: error
   no-undefined-volume: error
-  no-task-unused-params: warning
   no-template-missing-pipeline: error
   no-template-pipeline-extra-parameters: warning
   no-template-pipeline-missing-parameters: error
   no-template-pipeline-missing-workspace: error
   no-template-undefined-params: error
-  no-template-unused-params: warning
   no-wrong-param-type: error
   no-latest-image: warning
   prefer-beta-version: warning
   prefer-kebab-naming: warning
   no-pipeline-missing-condition: error
-  no-condition-unused-params: warning
+  no-unused-param: warning
