@@ -1,18 +1,16 @@
 ---
 rules: # error | warning | off
-  no-binding-duplicate-params: error
+  no-duplicate-param: error
   no-binding-missing-params: warning
   no-invalid-parameter-name: error
   no-invalid-resource-name: error
   no-listener-missing-binding: error
   no-listener-missing-template: error
   no-params-api-mix: error
-  no-pipeline-duplicate-params: error
   no-pipeline-extra-params: warning
   no-pipeline-missing-parameters: error
   no-pipeline-missing-task: error
   no-pipeline-task-cycle: error
-  no-pipeline-task-duplicate-params: error
   no-pipeline-task-extra-params: error
   no-pipeline-task-missing-params: error
   no-pipeline-task-missing-reference: error
@@ -21,15 +19,12 @@ rules: # error | warning | off
   no-pipeline-task-undefined-result: error
   no-pipeline-taskspec-extra-params: error
   no-pipeline-taskspec-missing-params: error
-  no-pipelinerun-duplicate-params: error
   no-resource-redefine: error
   no-resourceversion: error
-  no-task-duplicated-params: error
   no-task-step-duplicate-env: error
   no-task-undefined-params: error
   no-undefined-volume: error
   no-task-unused-params: warning
-  no-template-duplicate-params: error
   no-template-missing-pipeline: error
   no-template-pipeline-extra-parameters: warning
   no-template-pipeline-missing-parameters: error

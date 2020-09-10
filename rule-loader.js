@@ -6,13 +6,7 @@ const rules = {
   'no-task-step-duplicate-env': require('./rules/no-task-step-duplicate-env.js'),
 
   // no-duplicate-param
-  'no-pipeline-extra-params': require('./rules/no-pipeline-extra-params.js'),
-  'no-binding-duplicate-params': require('./rules/no-binding-duplicate-params.js'),
-  'no-pipeline-duplicate-params': require('./rules/no-pipeline-duplicate-params.js'),
-  'no-task-duplicated-params': require('./rules/no-task-duplicated-params.js'),
-  'no-template-duplicate-params': require('./rules/no-template-duplicate-params.js'),
-  'no-pipelinerun-duplicate-params': require('./rules/no-pipelinerun-duplicate-params.js'),
-  'no-pipeline-task-duplicate-params': require('./rules/no-pipeline-task-duplicate-params.js'),
+  'no-duplicate-param': require('./rules/no-duplicate-param.js'),
 
   // no-duplicate-resource
   'no-resource-redefine': require('./rules/no-resource-redefine.js'),
@@ -68,6 +62,7 @@ const rules = {
   'no-task-unused-params': require('./rules/no-task-unused-params.js'),
   'no-condition-unused-params': require('./rules/no-condition-unused-params.js'),
   'no-template-unused-params': require('./rules/no-template-unused-params.js'),
+  'no-pipeline-extra-params': require('./rules/no-pipeline-extra-params.js'),
 
   // prefer-beta
   'no-params-api-mix': require('./rules/no-params-api-mix.js'),
