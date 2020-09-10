@@ -36,10 +36,7 @@ const rules = {
   'no-template-pipeline-missing-parameters': require('./rules/no-template-pipeline-missing-parameters.js'),
 
   // no-missing-resource
-  'no-listener-missing-binding': require('./rules/no-listener-missing-binding.js'),
-  'no-listener-missing-template': require('./rules/no-listener-missing-template.js'),
-  'no-template-missing-pipeline': require('./rules/no-template-missing-pipeline.js'),
-  'no-pipeline-missing-condition': require('./rules/no-pipeline-missing-condition.js'),
+  'no-missing-resource': require('./rules/no-missing-resource.js'),
   'no-pipeline-missing-task': require('./rules/no-pipeline-missing-task.js'), // TODO: split -> no-invalid-dag
 
   // no-missing-workspace

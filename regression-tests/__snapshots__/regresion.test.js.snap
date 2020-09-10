@@ -192,7 +192,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-missing-condition' references Condition 'missing-condition' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.",
     "path": "./regression-tests/conditions.yaml",
-    "rule": "no-pipeline-missing-condition",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -576,7 +576,7 @@ Array [
     },
     "message": "EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.",
     "path": "./regression-tests/eventlistener-test.yaml",
-    "rule": "no-listener-missing-binding",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -592,7 +592,7 @@ Array [
     },
     "message": "EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.",
     "path": "./regression-tests/eventlistener-test.yaml",
-    "rule": "no-listener-missing-template",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -608,7 +608,7 @@ Array [
     },
     "message": "EventListener 'listener-test' defines trigger binding 'binding-missing', but the trigger binding is missing.",
     "path": "./regression-tests/eventlistener-test.yaml",
-    "rule": "no-listener-missing-binding",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -624,7 +624,7 @@ Array [
     },
     "message": "EventListener 'listener-test' defines trigger template 'template-missing', but the trigger template is missing.",
     "path": "./regression-tests/eventlistener-test.yaml",
-    "rule": "no-listener-missing-template",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -960,7 +960,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -1008,7 +1008,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-without-params' references task 'task-with-params' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -1088,7 +1088,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-without-params' references task 'git-clone' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -1184,7 +1184,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-without-params' references task 'yaml-lint' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -1296,7 +1296,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-null-params' references task 'get-git-credentials' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -1472,7 +1472,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-name' references task 'null' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -2000,7 +2000,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-missing-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2032,7 +2032,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-missing-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -2064,7 +2064,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'foo-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2096,7 +2096,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-with-null-runafter' references task 'bar-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2320,7 +2320,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/retries.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2352,7 +2352,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2368,7 +2368,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2400,7 +2400,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2432,7 +2432,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2832,7 +2832,7 @@ Array [
     },
     "message": "Pipeline 'single-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2864,7 +2864,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2896,7 +2896,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-single-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2928,7 +2928,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2960,7 +2960,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -2992,7 +2992,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -3024,7 +3024,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-multiple-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -3056,7 +3056,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -3088,7 +3088,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -3120,7 +3120,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -3152,7 +3152,7 @@ Array [
     },
     "message": "Pipeline 'multiple-task-runafter-longer-cycle-pipeline' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -4336,7 +4336,7 @@ Array [
     },
     "message": "EventListener 'listener-3' defines trigger template 'template-null-params', but the trigger template is missing.",
     "path": "./regression-tests/triggerbinding-test.yaml",
-    "rule": "no-listener-missing-template",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -4352,7 +4352,7 @@ Array [
     },
     "message": "EventListener 'listener-5' defines trigger template 'template-with-null-resource-templates', but the trigger template is missing.",
     "path": "./regression-tests/triggerbinding-test.yaml",
-    "rule": "no-listener-missing-template",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -4576,7 +4576,7 @@ Array [
     },
     "message": "TriggerTemplate 'template-without-params' references pipeline 'pr-pipeline', but the referenced pipeline cannot be found.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-missing-pipeline",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -4640,7 +4640,7 @@ Array [
     },
     "message": "TriggerTemplate 'template-without-pipelineref' references pipeline 'null', but the referenced pipeline cannot be found.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-missing-pipeline",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -4688,7 +4688,7 @@ Array [
     },
     "message": "TriggerTemplate 'template-pipelineref-null' references pipeline 'pipelineref-missing', but the referenced pipeline cannot be found.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-missing-pipeline",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "warning",
@@ -4896,7 +4896,7 @@ Array [
     },
     "message": "TriggerTemplate 'template-with-null-pipelinerun-params' references pipeline 'null', but the referenced pipeline cannot be found.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-missing-pipeline",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -5152,7 +5152,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-1' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",
@@ -5184,7 +5184,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-2' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-missing-resource",
   },
   Object {
     "level": "error",

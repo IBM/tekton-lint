@@ -4,8 +4,6 @@ rules: # error | warning | off
   no-binding-missing-params: warning
   no-invalid-parameter-name: error
   no-invalid-resource-name: error
-  no-listener-missing-binding: error
-  no-listener-missing-template: error
   no-params-api-mix: error
   no-pipeline-missing-parameters: error
   no-pipeline-missing-task: error
@@ -22,7 +20,6 @@ rules: # error | warning | off
   no-task-step-duplicate-env: error
   no-task-undefined-params: error
   no-undefined-volume: error
-  no-template-missing-pipeline: error
   no-template-pipeline-extra-parameters: warning
   no-template-pipeline-missing-parameters: error
   no-template-pipeline-missing-workspace: error
@@ -31,5 +28,5 @@ rules: # error | warning | off
   no-latest-image: warning
   prefer-beta-version: warning
   prefer-kebab-naming: warning
-  no-pipeline-missing-condition: error
   no-unused-param: warning
+  no-missing-resource: error
