@@ -9,7 +9,7 @@ const rules = {
   'no-duplicate-param': require('./rules/no-duplicate-param.js'),
 
   // no-duplicate-resource
-  'no-resource-redefine': require('./rules/no-resource-redefine.js'),
+  'no-duplicate-resource': require('./rules/no-duplicate-resource.js'),
 
   // no-extra-param
   'no-pipeline-task-extra-params': require('./rules/no-pipeline-task-extra-params.js'),

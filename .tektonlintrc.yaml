@@ -14,7 +14,7 @@ rules: # error | warning | off
   no-undefined-result: error
   no-pipeline-taskspec-extra-params: error
   no-pipeline-taskspec-missing-params: error
-  no-resource-redefine: error
+  no-duplicate-resource: error
   no-resourceversion: error
   no-task-step-duplicate-env: error
   no-undefined-volume: error

@@ -480,7 +480,7 @@ Array [
     },
     "message": "'my-duplicated-task' is already defined (as a 'Task')",
     "path": "./regression-tests/duplicate-resources.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -496,7 +496,7 @@ Array [
     },
     "message": "'my-duplicated-pipeline' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/duplicate-resources.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -512,7 +512,7 @@ Array [
     },
     "message": "'my-duplicated-triggerbinding' is already defined (as a 'TriggerBinding')",
     "path": "./regression-tests/duplicate-resources.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -528,7 +528,7 @@ Array [
     },
     "message": "'my-duplicated-eventlistener' is already defined (as a 'EventListener')",
     "path": "./regression-tests/duplicate-resources.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -544,7 +544,7 @@ Array [
     },
     "message": "'my-duplicated-triggertemplate' is already defined (as a 'TriggerTemplate')",
     "path": "./regression-tests/duplicate-resources.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -1920,7 +1920,7 @@ Array [
     },
     "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -1936,7 +1936,7 @@ Array [
     },
     "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "warning",
@@ -1968,7 +1968,7 @@ Array [
     },
     "message": "'pipeline-with-taskspec' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "warning",
@@ -3664,7 +3664,7 @@ Array [
     },
     "message": "'task-without-volumes' is already defined (as a 'Task')",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -4304,7 +4304,7 @@ Array [
     },
     "message": "'my-pipeline-with-workspace' is already defined (as a 'Pipeline')",
     "path": "./regression-tests/tekton-beta.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
@@ -4656,7 +4656,7 @@ Array [
     },
     "message": "'template-pipelineref-null' is already defined (as a 'TriggerTemplate')",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-resource-redefine",
+    "rule": "no-duplicate-resource",
   },
   Object {
     "level": "error",
