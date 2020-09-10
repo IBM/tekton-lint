@@ -44,9 +44,7 @@ const rules = {
   'no-template-pipeline-missing-workspace': require('./rules/no-template-pipeline-missing-workspace.js'),
 
   // no-undefined-param
-  'no-pipeline-task-undefined-params': require('./rules/no-pipeline-task-undefined-params.js'),
-  'no-task-undefined-params': require('./rules/no-task-undefined-params.js'),
-  'no-template-undefined-params': require('./rules/no-template-undefined-params.js'),
+  'no-undefined-param': require('./rules/no-undefined-param.js'),
 
   // no-undefined-result
   'no-undefined-result': require('./rules/no-undefined-result.js'),

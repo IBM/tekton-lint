@@ -11,22 +11,20 @@ rules: # error | warning | off
   no-pipeline-task-extra-params: error
   no-pipeline-task-missing-params: error
   no-pipeline-task-missing-workspace: error
-  no-pipeline-task-undefined-params: error
   no-undefined-result: error
   no-pipeline-taskspec-extra-params: error
   no-pipeline-taskspec-missing-params: error
   no-resource-redefine: error
   no-resourceversion: error
   no-task-step-duplicate-env: error
-  no-task-undefined-params: error
   no-undefined-volume: error
   no-template-pipeline-extra-parameters: warning
   no-template-pipeline-missing-parameters: error
   no-template-pipeline-missing-workspace: error
-  no-template-undefined-params: error
   no-wrong-param-type: error
   no-latest-image: warning
   prefer-beta-version: warning
   prefer-kebab-naming: warning
   no-unused-param: warning
   no-missing-resource: error
+  no-undefined-param: error

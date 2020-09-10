@@ -1024,7 +1024,7 @@ Array [
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1040,7 +1040,7 @@ Array [
     },
     "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -1072,7 +1072,7 @@ Array [
     },
     "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1120,7 +1120,7 @@ Array [
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[1].params[0].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1136,7 +1136,7 @@ Array [
     },
     "message": "Undefined param 'repository' at .spec.tasks[1].params[1].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1152,7 +1152,7 @@ Array [
     },
     "message": "Undefined param 'branch' at .spec.tasks[1].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1168,7 +1168,7 @@ Array [
     },
     "message": "Undefined param 'revision' at .spec.tasks[1].params[4].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1248,7 +1248,7 @@ Array [
     },
     "message": "Undefined param 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1264,7 +1264,7 @@ Array [
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[2].params[3].value in 'pipeline-without-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -1312,7 +1312,7 @@ Array [
     },
     "message": "Undefined param 'pipeline-pvc' at .spec.tasks[0].params[0].value in 'pipeline-with-null-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -1328,7 +1328,7 @@ Array [
     },
     "message": "Undefined param 'ibm-cloud-api-key' at .spec.tasks[0].params[1].value in 'pipeline-with-null-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -1360,7 +1360,7 @@ Array [
     },
     "message": "Undefined param 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -2208,7 +2208,7 @@ Array [
     },
     "message": "Undefined param 'my-param' at .spec.tasks[0].params[0].value in 'my-pipeline'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3440,7 +3440,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3472,7 +3472,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3488,7 +3488,7 @@ Array [
     },
     "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3504,7 +3504,7 @@ Array [
     },
     "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3520,7 +3520,7 @@ Array [
     },
     "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-without-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3552,7 +3552,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-null-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3584,7 +3584,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-null-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3600,7 +3600,7 @@ Array [
     },
     "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-null-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3616,7 +3616,7 @@ Array [
     },
     "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-null-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3632,7 +3632,7 @@ Array [
     },
     "message": "Undefined param 'credentials-pvc' at .spec.volumes[1].persistentVolumeClaim.claimName in 'task-null-params'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3680,7 +3680,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3712,7 +3712,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3728,7 +3728,7 @@ Array [
     },
     "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3744,7 +3744,7 @@ Array [
     },
     "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-without-volumes'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3808,7 +3808,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api-key' at .spec.stepTemplate.env[0].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -3840,7 +3840,7 @@ Array [
     },
     "message": "Undefined param 'ibmcloud-api' at .spec.steps[0].env[1].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3856,7 +3856,7 @@ Array [
     },
     "message": "Undefined param 'repository' at .spec.steps[0].env[2].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3872,7 +3872,7 @@ Array [
     },
     "message": "Undefined param 'propertiesFile' at .spec.steps[0].env[3].value in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -3904,7 +3904,7 @@ Array [
     },
     "message": "Undefined param 'credentials-pvc' at .spec.volumes[0].persistentVolumeClaim.claimName in 'task-with-undefined-volume'",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -4112,7 +4112,7 @@ Array [
     },
     "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-alpha-task'",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -4224,7 +4224,7 @@ Array [
     },
     "message": "Undefined param 'my-missing-param' at .spec.steps[0].env[1].value in 'my-beta-task'",
     "path": "./regression-tests/tekton-beta.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4398,9 +4398,9 @@ Array [
       "startColumn": 18,
       "startLine": 27,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4558,9 +4558,9 @@ Array [
       "startColumn": 18,
       "startLine": 63,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-without-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4590,9 +4590,9 @@ Array [
       "startColumn": 20,
       "startLine": 73,
     },
-    "message": "Undefined param 'target-branch' at .resourceTemplate.spec.params[0].value in 'pipelinerun-$(uid)'",
+    "message": "Undefined param 'target-branch' at .spec.resourcetemplates[2].spec.params[0].value in 'template-without-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -4622,9 +4622,9 @@ Array [
       "startColumn": 18,
       "startLine": 149,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-without-pipelineref'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4670,9 +4670,9 @@ Array [
       "startColumn": 18,
       "startLine": 187,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-pipelineref-null'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4718,9 +4718,9 @@ Array [
       "startColumn": 18,
       "startLine": 258,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4878,9 +4878,9 @@ Array [
       "startColumn": 18,
       "startLine": 294,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-with-null-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4926,9 +4926,9 @@ Array [
       "startColumn": 18,
       "startLine": 330,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-with-pipelineSpec'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -4958,9 +4958,9 @@ Array [
       "startColumn": 18,
       "startLine": 371,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-pipelineSpec-without-tasks'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -5006,9 +5006,9 @@ Array [
       "startColumn": 18,
       "startLine": 409,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[1].stringData.API_KEY in 'template-pipelineSpec-missing-and-extra-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "warning",
@@ -5038,9 +5038,9 @@ Array [
       "startColumn": 18,
       "startLine": 438,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[0].stringData.API_KEY in 'template-with-secret'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -5086,9 +5086,9 @@ Array [
       "startColumn": 18,
       "startLine": 455,
     },
-    "message": "Undefined param 'api-key' at .resourceTemplate.stringData.API_KEY in 'cd-secret'",
+    "message": "Undefined param 'api-key' at .spec.resourcetemplates[0].stringData.API_KEY in 'template-with-serviceAccount'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
@@ -5136,7 +5136,7 @@ Array [
     },
     "message": "Undefined param 'foo' at .spec.steps[0].args[0] in 'foo'",
     "path": "./regression-tests/value-of-undefined.yaml",
-    "rule": "no-task-undefined-params",
+    "rule": "no-undefined-param",
   },
   Object {
     "level": "error",
