@@ -18,8 +18,7 @@ const rules = {
   'no-pipeline-task-cycle': require('./rules/no-pipeline-task-cycle.js'),
 
   // no-invalid-name
-  'no-invalid-parameter-name': require('./rules/no-invalid-parameter-name.js'),
-  'no-invalid-resource-name': require('./rules/no-invalid-resource-name.js'),
+  'no-invalid-name': require('./rules/no-invalid-name.js'),
 
   // no-invalid-param-type
   'no-binding-missing-params': require('./rules/no-binding-missing-params.js'),

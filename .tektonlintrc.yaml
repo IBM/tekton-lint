@@ -2,8 +2,7 @@
 rules: # error | warning | off
   no-duplicate-param: error
   no-binding-missing-params: warning
-  no-invalid-parameter-name: error
-  no-invalid-resource-name: error
+  no-invalid-name: error
   no-params-api-mix: error
   no-pipeline-missing-parameters: error
   no-pipeline-missing-task: error

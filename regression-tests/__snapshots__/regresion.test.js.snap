@@ -176,7 +176,7 @@ Array [
     },
     "message": "Condition 'condition-with-invalid-param-name' defines parameter 'left!!' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/conditions.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "error",
@@ -688,7 +688,7 @@ Array [
     },
     "message": "Task 'param-names-task' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -720,7 +720,7 @@ Array [
     },
     "message": "Task 'param-names-task' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -752,7 +752,7 @@ Array [
     },
     "message": "Pipeline 'param-names-pipeline' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -784,7 +784,7 @@ Array [
     },
     "message": "Pipeline 'param-names-pipeline' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -816,7 +816,7 @@ Array [
     },
     "message": "TriggerTemplate 'param-names-trigger' defines parameter '1foo' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -848,7 +848,7 @@ Array [
     },
     "message": "TriggerTemplate 'param-names-trigger' defines parameter 'fo o' with invalid parameter name (names are limited to alpha-numeric characters, '-' and '_' and can only start with alpha characters and '_')",
     "path": "./regression-tests/param-names.yaml",
-    "rule": "no-invalid-parameter-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -4912,7 +4912,7 @@ Array [
     },
     "message": "Invalid name for TriggerTemplate 'template-with-pipelineSpec'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-invalid-resource-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "error",
@@ -4944,7 +4944,7 @@ Array [
     },
     "message": "Invalid name for TriggerTemplate 'template-pipelineSpec-without-tasks'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-invalid-resource-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "error",
@@ -4976,7 +4976,7 @@ Array [
     },
     "message": "Invalid name for TriggerTemplate 'template-pipelineSpec-missing-and-extra-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-invalid-resource-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
@@ -5056,7 +5056,7 @@ Array [
     },
     "message": "Invalid name for TriggerTemplate 'template-with-serviceAccount'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-invalid-resource-name",
+    "rule": "no-invalid-name",
   },
   Object {
     "level": "warning",
