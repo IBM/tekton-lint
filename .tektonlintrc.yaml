@@ -15,7 +15,7 @@ rules: # error | warning | off
   no-pipeline-taskspec-missing-params: error
   no-duplicate-resource: error
   no-resourceversion: error
-  no-task-step-duplicate-env: error
+  no-duplicate-env: error
   no-undefined-volume: error
   no-template-pipeline-missing-parameters: error
   no-template-pipeline-missing-workspace: error

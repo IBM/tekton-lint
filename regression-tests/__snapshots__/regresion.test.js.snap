@@ -560,7 +560,7 @@ Array [
     },
     "message": "Step 'my-step' has env variable 'FOO' duplicated in task 'env'.",
     "path": "./regression-tests/env.yaml",
-    "rule": "no-task-step-duplicate-env",
+    "rule": "no-duplicate-env",
   },
   Object {
     "level": "error",

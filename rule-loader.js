@@ -3,7 +3,7 @@ const rules = {
   'no-resourceversion': require('./rules/no-resourceversion.js'),
 
   // no-duplicate-env
-  'no-task-step-duplicate-env': require('./rules/no-task-step-duplicate-env.js'),
+  'no-duplicate-env': require('./rules/no-duplicate-env.js'),
 
   // no-duplicate-param
   'no-duplicate-param': require('./rules/no-duplicate-param.js'),
