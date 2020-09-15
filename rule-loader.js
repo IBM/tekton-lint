@@ -24,14 +24,13 @@ const rules = {
   // no-invalid-param-type
   'no-binding-missing-params': require('./rules/no-binding-missing-params.js'),
   'no-wrong-param-type': require('./rules/no-wrong-param-type.js'),
+  'no-pipeline-task-missing-params': require('./rules/no-pipeline-task-missing-params.js'),
 
   // no-latest-image
   'no-latest-image': require('./rules/no-latest-image.js'),
 
   // no-missing-param
-  'no-pipeline-task-missing-params': require('./rules/no-pipeline-task-missing-params.js'), // TODO: split -> no-invalid-param-type
-  'no-pipeline-taskspec-missing-params': require('./rules/no-pipeline-taskspec-missing-params.js'),
-  'no-template-pipeline-missing-parameters': require('./rules/no-template-pipeline-missing-parameters.js'),
+  'no-missing-param': require('./rules/no-missing-param.js'),
 
   // no-missing-resource
   'no-missing-resource': require('./rules/no-missing-resource.js'),

@@ -12,12 +12,11 @@ rules: # error | warning | off
   no-pipeline-task-missing-params: error
   no-pipeline-task-missing-workspace: error
   no-undefined-result: error
-  no-pipeline-taskspec-missing-params: error
+  no-missing-param: error
   no-duplicate-resource: error
   no-resourceversion: error
   no-duplicate-env: error
   no-undefined-volume: error
-  no-template-pipeline-missing-parameters: error
   no-template-pipeline-missing-workspace: error
   no-wrong-param-type: error
   no-latest-image: warning

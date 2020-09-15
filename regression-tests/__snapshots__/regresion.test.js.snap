@@ -368,7 +368,7 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -384,7 +384,7 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -400,7 +400,7 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -416,7 +416,7 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "warning",
@@ -1792,7 +1792,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-missing-and-extra-params' references param 'missing-param', but it is not supplied in triggerTemplate 'template-for-pipeline-params-tests'",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -2240,7 +2240,7 @@ Array [
     },
     "message": "Pipeline 'check-kebab-names-when-there-are-no-pipeline-params' references task 'BAD_TASK_NAME', but parameter 'BAD_TASK_PARAM_NAME_123' is not supplied (it's a required param in 'BAD_TASK_NAME')",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -3264,7 +3264,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -3280,7 +3280,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-alpha-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "warning",
@@ -3312,7 +3312,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -3328,7 +3328,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -3984,7 +3984,7 @@ Array [
     },
     "message": "Pipeline 'tekton-alpha-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4048,7 +4048,7 @@ Array [
     },
     "message": "Pipeline 'tekton-beta-mixed-pipeline' references task 'my-task', but parameter 'my-param' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4144,7 +4144,7 @@ Array [
     },
     "message": "Pipeline 'my-alpha-pipeline' references task 'my-alpha-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-alpha-task')",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-    "rule": "no-pipeline-task-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4176,7 +4176,7 @@ Array [
     },
     "message": "Pipeline 'my-alpha-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4240,7 +4240,7 @@ Array [
     },
     "message": "Pipeline 'my-beta-pipeline' references task 'my-beta-task' (as 'my-pipeline-task'), but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-beta-task')",
     "path": "./regression-tests/tekton-beta.yaml",
-    "rule": "no-pipeline-task-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4272,7 +4272,7 @@ Array [
     },
     "message": "Pipeline 'my-beta-pipeline' references task 'my-other-pipeline-task', but parameter 'my-missing-pipeline-param' is not supplied (it's a required param in 'my-other-pipeline-task')",
     "path": "./regression-tests/tekton-beta.yaml",
-    "rule": "no-pipeline-taskspec-missing-params",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4416,7 +4416,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'branch', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4432,7 +4432,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4448,7 +4448,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'origin', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4464,7 +4464,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4480,7 +4480,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'repository', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4496,7 +4496,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'revision', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4512,7 +4512,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4528,7 +4528,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-with-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4736,7 +4736,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'branch', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4752,7 +4752,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'ibm-cloud-api-key', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4768,7 +4768,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'origin', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4784,7 +4784,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'pipeline-pvc', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4800,7 +4800,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'repository', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4816,7 +4816,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'revision', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4832,7 +4832,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_base_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "error",
@@ -4848,7 +4848,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' references param 'statuses_url', but it is not supplied in triggerTemplate 'template-without-pipelinerun-params'",
     "path": "./regression-tests/triggertemplate-test.yaml",
-    "rule": "no-template-pipeline-missing-parameters",
+    "rule": "no-missing-param",
   },
   Object {
     "level": "warning",
