@@ -36,8 +36,7 @@ const rules = {
   'no-pipeline-missing-task': require('./rules/no-pipeline-missing-task.js'), // TODO: split -> no-invalid-dag
 
   // no-missing-workspace
-  'no-pipeline-task-missing-workspace': require('./rules/no-pipeline-task-missing-workspace.js'),
-  'no-template-pipeline-missing-workspace': require('./rules/no-template-pipeline-missing-workspace.js'),
+  'no-missing-workspace': require('./rules/no-missing-workspace.js'),
 
   // no-undefined-param
   'no-undefined-param': require('./rules/no-undefined-param.js'),

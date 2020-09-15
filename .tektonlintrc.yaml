@@ -9,14 +9,13 @@ rules: # error | warning | off
   no-pipeline-task-cycle: error
   no-extra-param: error
   no-pipeline-task-missing-params: error
-  no-pipeline-task-missing-workspace: error
+  no-missing-workspace: error
   no-undefined-result: error
   no-missing-param: error
   no-duplicate-resource: error
   no-resourceversion: error
   no-duplicate-env: error
   no-undefined-volume: error
-  no-template-pipeline-missing-workspace: error
   no-wrong-param-type: error
   no-latest-image: warning
   prefer-beta-version: warning

@@ -4320,7 +4320,7 @@ Array [
     },
     "message": "TriggerTemplate 'my-trigger-template-with-workspace' references Pipeline 'my-pipeline-with-workspace', but provides no workspace for 'missing-pipeline-workspace' (it's a required workspace in 'my-pipeline-with-workspace')",
     "path": "./regression-tests/tekton-beta.yaml",
-    "rule": "no-template-pipeline-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5168,7 +5168,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-1' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-1'",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5200,7 +5200,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-2' provides workspace 'ws' for 'ws' for Task 'my-task', but 'ws' doesn't exists in 'workspaces-test-2'",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5216,7 +5216,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-2' provides workspace 'w2' for 'ws' for Task 'my-task', but 'w2' doesn't exists in 'workspaces-test-2'",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5232,7 +5232,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws1' (it's a required workspace in 'workspace-test')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5248,7 +5248,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-3a' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5264,7 +5264,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-3b' references Task 'workspace-test' (as 'my-task'), but provides no workspace for 'ws2' (it's a required workspace in 'workspace-test')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5280,7 +5280,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-3b' provides workspace 'ws1' for 'ws1' for Task 'my-task', but 'ws1' doesn't exists in 'workspaces-test-3b'",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5296,7 +5296,7 @@ Array [
     },
     "message": "Pipeline 'workspaces-test-4' provides workspace 'ws2' for 'ws2' for Task 'my-task', but 'ws2' doesn't exists in 'workspaces-test-4'",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-pipeline-task-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5312,7 +5312,7 @@ Array [
     },
     "message": "TriggerTemplate 'workspaces-trigger-1' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-template-pipeline-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5328,7 +5328,7 @@ Array [
     },
     "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws-missing' (it's a required workspace in 'workspaces-test-4')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-template-pipeline-missing-workspace",
+    "rule": "no-missing-workspace",
   },
   Object {
     "level": "error",
@@ -5344,7 +5344,7 @@ Array [
     },
     "message": "TriggerTemplate 'workspaces-trigger-2' references Pipeline 'workspaces-test-4', but provides no workspace for 'ws' (it's a required workspace in 'workspaces-test-4')",
     "path": "./regression-tests/workspaces.yaml",
-    "rule": "no-template-pipeline-missing-workspace",
+    "rule": "no-missing-workspace",
   },
 ]
 `;
