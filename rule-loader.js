@@ -12,9 +12,7 @@ const rules = {
   'no-duplicate-resource': require('./rules/no-duplicate-resource.js'),
 
   // no-extra-param
-  'no-pipeline-task-extra-params': require('./rules/no-pipeline-task-extra-params.js'),
-  'no-pipeline-taskspec-extra-params': require('./rules/no-pipeline-taskspec-extra-params.js'),
-  'no-template-pipeline-extra-parameters': require('./rules/no-template-pipeline-extra-parameters.js'),
+  'no-extra-param': require('./rules/no-extra-param.js'),
 
   // no-invalid-dag
   'no-pipeline-task-cycle': require('./rules/no-pipeline-task-cycle.js'),
