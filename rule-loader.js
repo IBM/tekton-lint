@@ -55,7 +55,7 @@ const rules = {
   'prefer-beta-version': require('./rules/prefer-beta-version.js'),
 
   // prefer-kebab-case
-  'prefer-kebab-naming': require('./rules/prefer-kebab-naming.js'),
+  'prefer-kebab-case': require('./rules/prefer-kebab-case.js'),
 };
 
 module.exports = rules;

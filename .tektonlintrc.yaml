@@ -19,7 +19,7 @@ rules: # error | warning | off
   no-wrong-param-type: error
   no-latest-image: warning
   prefer-beta-version: warning
-  prefer-kebab-naming: warning
+  prefer-kebab-case: warning
   no-unused-param: warning
   no-missing-resource: error
   no-undefined-param: error

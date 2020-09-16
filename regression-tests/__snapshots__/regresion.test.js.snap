@@ -976,7 +976,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -1056,7 +1056,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "error",
@@ -1200,7 +1200,7 @@ Array [
     },
     "message": "Invalid name for 'fail_task' at .spec.tasks[2].params[1].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -1216,7 +1216,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].name in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -1232,7 +1232,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_url' at .spec.tasks[2].params[2].value in 'pipeline-without-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "error",
@@ -1344,7 +1344,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-null-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "error",
@@ -1488,7 +1488,7 @@ Array [
     },
     "message": "Invalid name for 'statuses_base_url' at .spec.tasks[0].params[2].value in 'pipeline-with-taskref-without-name'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -2224,7 +2224,7 @@ Array [
     },
     "message": "Invalid name for 'BAD_TASK_NAME' at .spec.tasks[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "error",
@@ -2272,7 +2272,7 @@ Array [
     },
     "message": "Invalid name for 'BAD_PARAM_NAME' at .spec.tasks[0].params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -2288,7 +2288,7 @@ Array [
     },
     "message": "Invalid name for 'BAD_TASK_PARAM_NAME_123' at .spec.tasks[0].taskSpec.params[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "warning",
@@ -2304,7 +2304,7 @@ Array [
     },
     "message": "Invalid name for 'BAD_STEP_NAME' at .spec.tasks[0].taskSpec.steps[0].name in 'check-kebab-names-when-there-are-no-pipeline-params'. Names should be in lowercase, alphanumeric, kebab-case format.",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-kebab-naming",
+    "rule": "prefer-kebab-case",
   },
   Object {
     "level": "error",
