@@ -51,8 +51,7 @@ const rules = {
   'no-unused-param': require('./rules/no-unused-param.js'),
 
   // prefer-beta
-  'no-params-api-mix': require('./rules/no-params-api-mix.js'),
-  'prefer-beta-version': require('./rules/prefer-beta-version.js'),
+  'prefer-beta': require('./rules/prefer-beta.js'),
 
   // prefer-kebab-case
   'prefer-kebab-case': require('./rules/prefer-kebab-case.js'),

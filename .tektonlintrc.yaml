@@ -3,7 +3,6 @@ rules: # error | warning | off
   no-duplicate-param: error
   no-binding-missing-params: warning
   no-invalid-name: error
-  no-params-api-mix: error
   no-pipeline-missing-parameters: error
   no-pipeline-missing-task: error
   no-pipeline-task-cycle: error
@@ -18,7 +17,7 @@ rules: # error | warning | off
   no-undefined-volume: error
   no-wrong-param-type: error
   no-latest-image: warning
-  prefer-beta-version: warning
+  prefer-beta: warning
   prefer-kebab-case: warning
   no-unused-param: warning
   no-missing-resource: error

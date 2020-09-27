@@ -208,7 +208,7 @@ Array [
     },
     "message": "Task 'duplicate-params-task-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -352,7 +352,7 @@ Array [
     },
     "message": "Pipeline 'duplicate-params-pipeline-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -864,7 +864,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -992,7 +992,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -1280,7 +1280,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -1376,7 +1376,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-name' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -1504,7 +1504,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -1648,7 +1648,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskref-with-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -1824,7 +1824,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-missing-and-extra-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -1888,7 +1888,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskspec-2' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -1952,7 +1952,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-with-taskspec' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -1984,7 +1984,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-missing-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -2048,7 +2048,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-with-null-runafter' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3168,7 +3168,7 @@ Array [
     },
     "message": "Task 'task-duplicate-params-alpha' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -3248,7 +3248,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-alpha-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3296,7 +3296,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3331,7 +3331,7 @@ Array [
     "rule": "no-missing-param",
   },
   Object {
-    "level": "error",
+    "level": "warning",
     "loc": Object {
       "endColumn": 1,
       "endLine": 47,
@@ -3344,7 +3344,7 @@ Array [
     },
     "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
     "path": "./regression-tests/task-duplicate-params.yaml",
-    "rule": "no-params-api-mix",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -3360,7 +3360,7 @@ Array [
     },
     "message": "Task 'task-with-params-and-inputs' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -3424,7 +3424,7 @@ Array [
     },
     "message": "Task 'task-without-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3536,7 +3536,7 @@ Array [
     },
     "message": "Task 'task-null-params' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3648,7 +3648,7 @@ Array [
     },
     "message": "Task 'task-without-volumes' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3792,7 +3792,7 @@ Array [
     },
     "message": "Task 'task-with-undefined-volume' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/task-test.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3920,10 +3920,10 @@ Array [
     },
     "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
-    "level": "error",
+    "level": "warning",
     "loc": Object {
       "endColumn": 3,
       "endLine": 9,
@@ -3936,7 +3936,7 @@ Array [
     },
     "message": "Task 'tekton-alpha-mixed' is defined with apiVersion tekton.dev/v1alpha1, but defines spec.params. Use spec.inputs.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-params-api-mix",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -3968,7 +3968,7 @@ Array [
     },
     "message": "Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
@@ -3987,7 +3987,7 @@ Array [
     "rule": "no-missing-param",
   },
   Object {
-    "level": "error",
+    "level": "warning",
     "loc": Object {
       "endColumn": 1,
       "endLine": 21,
@@ -4000,10 +4000,10 @@ Array [
     },
     "message": "Pipeline 'tekton-alpha-mixed-pipeline' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-params-api-mix",
+    "rule": "prefer-beta",
   },
   Object {
-    "level": "error",
+    "level": "warning",
     "loc": Object {
       "endColumn": 3,
       "endLine": 30,
@@ -4016,7 +4016,7 @@ Array [
     },
     "message": "Task 'tekton-beta-mixed' is defined with apiVersion tekton.dev/v1beta1, but defined spec.inputs.params. Use spec.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-params-api-mix",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -4051,7 +4051,7 @@ Array [
     "rule": "no-missing-param",
   },
   Object {
-    "level": "error",
+    "level": "warning",
     "loc": Object {
       "endColumn": 1,
       "endLine": 43,
@@ -4064,7 +4064,7 @@ Array [
     },
     "message": "Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
-    "rule": "no-params-api-mix",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -4080,7 +4080,7 @@ Array [
     },
     "message": "Task 'my-alpha-task' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "warning",
@@ -4128,7 +4128,7 @@ Array [
     },
     "message": "Pipeline 'my-alpha-pipeline' is defined with apiVersion tekton.dev/v1alpha1, consider migrating to tekton.dev/v1beta1",
     "path": "./regression-tests/tekton-beta-ref.yaml",
-    "rule": "prefer-beta-version",
+    "rule": "prefer-beta",
   },
   Object {
     "level": "error",
