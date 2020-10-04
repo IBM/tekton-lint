@@ -249,3 +249,16 @@ spec:
     - name: ws
       mountPath: /$(params.foo)
   steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task-with-param-in-volume
+spec:
+  params:
+    - name: foo
+  steps:
+    - image: alpine:some-version
+      volumeMounts:
+        - name: $(params.foo)
+          mountPath: /$(params.foo)-bar
