@@ -1,0 +1,9 @@
+---
+# an empty document
+---
+# missing `metadata.name`
+apiVersion: tekton.dev/v1beta1
+kind: Task
+spec:
+  params: []
+  steps: []

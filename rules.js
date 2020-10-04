@@ -40,6 +40,7 @@ module.exports.lint = function lint(docs, reporter, config) {
   config = config || {
     rules: {},
   };
+  docs = docs.filter(doc => doc && doc.metadata && doc.metadata.name);
   const tekton = parse(docs);
 
   for (const [name, rule] of Object.entries(rules)) {
