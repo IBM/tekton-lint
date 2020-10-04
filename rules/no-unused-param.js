@@ -2,7 +2,7 @@ const { walk } = require('../walk');
 
 const unused = (params, prefix) => (node) => {
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
-  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
+  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)(\\[\\*\\])?\\)`);
   const m = node.toString().match(r1);
 
   if (!m) return;

@@ -3,7 +3,7 @@ const { walk, pathToString } = require('../walk');
 const createVisitor = (resource, params, prefix, report) => (node, path, parent) => {
   if (path.includes('taskSpec')) return;
   const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');
-  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
+  const r2 = new RegExp(`\\$\\(${prefix}.(.*?)(\\[\\*\\])?\\)`);
   const m = node.toString().match(r1);
   if (!m) return;
   for (const item of m) {

@@ -25,6 +25,8 @@ spec:
       - name: repository-integration
         description: the repo integration name
         default: ""
+      - name: some-param
+        type: array
   stepTemplate:
     env:
       - name: API_KEY
@@ -42,7 +44,7 @@ spec:
         - name: PROPERTIES_FILE
           value: $(inputs.params.propertiesFile)
       command: ["/bin/bash", "-c"]
-      args:
+      args: ["$(inputs.params.some-param[*])"]
       volumeMounts:
         - mountPath: /config
           name: config-volume
