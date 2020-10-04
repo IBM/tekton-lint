@@ -1,8 +1,5 @@
 {
-  "name": "@cocoa/tekton-lint",
-  "publishConfig": {
-    "registry": "https://eu.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/"
-  },
+  "name": "tekton-lint",
   "files": [
     "utils.js",
     "watch.js",
@@ -29,13 +26,13 @@
   "main": "runner.js",
   "repository": {
     "type": "git",
-    "url": "git@github.ibm.com:cocoa/tekton-lint.git"
+    "url": "git@github.com:IBM/tekton-lint.git"
   },
   "bin": {
     "tekton-lint": "lint.js"
   },
   "author": "Bence Dányi <bence.danyi@ibm.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^4.1.0",
     "chokidar": "^3.4.0",

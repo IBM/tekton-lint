@@ -8,55 +8,8 @@ The only requirement is [node] (at least `12.0.0`).
 
 ## Install
 
-Make sure that `npm` is configured to be able to fetch code from [TaaS Artifactory][taas].
-
-Append the following configuration to your `~/.npmrc` to be able to fetch code from the `wcp-compliance-automation-team-npm-local` registry.
-
-```
-@cocoa:registry=https://na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/
-//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:_password=<BASE64_PASSWORD>
-//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:username=<USERNAME>
-//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:email=<USERNAME>
-//na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/:always-auth=true
-```
-
-`<BASE64_PASSWORD>` is your base64 encoded [API key][taas-api], `<USERNAME>` is your ibm email.
-
-The same configuration snippet can be acquired with the following `curl` command:
-
 ```sh
-$ curl -u <EMAIL> https://na.artifactory.swg-devops.com/artifactory/api/npm/wcp-compliance-automation-team-npm-local/auth/cocoa
-```
-
-In this case replace `<EMAIL>` with your IBM email address, and provide your [API key][taas-api] as password.
-
-Install the package from [TaaS Artifactory][taas]:
-
-```sh
-$ npm install -g @cocoa/tekton-lint
-```
-
-### Install without artifactory
-
-Make sure `node -v` indicates you are on at least 12.0.0
-
-```sh
-git clone <this repository>
-cd <repository dir>
-npm link
-```
-
-Verify that `tekton-lint` is available by running:
-```sh
-which tekton-lint
-```
-
-### Install with Docker
-
-```sh
-git clone <this repository>
-docker build -t tekton-lint .
-docker run -v /some/host/path:/some/guest/path --rm -it tekton-lint '/some/guest/path/*.yaml'
+$ npm install -g tekton-lint
 ```
 
 ## Usage
@@ -165,7 +118,7 @@ interface Problem {
 ##### Example
 
 ```js
-const linter = require('@cocoa/tekton-lint/runner');
+const linter = require('tekton-lint/runner');
 
 const problems = await linter(['path/to/defs/**/*.yaml']);
 
@@ -181,7 +134,7 @@ Runs the linter on the provided parsed documents. Returns the list of found prob
 ##### Example
 
 ```js
-const linter = require('@cocoa/tekton-lint');
+const linter = require('tekton-lint');
 
 const problems = linter.lint([{
   apiVersion: 'tekton.dev/v1beta1',
@@ -254,23 +207,8 @@ for (const problem of problems) {
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 - Missing `TriggerBinding` parameter values
 
-## Report a Bug / Request a Feature
-
-We track our issues in [this github repository](https://github.ibm.com/cocoa/board).
-Please use the following issue templates to:
-- [Report a Bug](https://github.ibm.com/cocoa/board/issues/new?template=bug.md)
-- [Request a Feature](https://github.ibm.com/cocoa/board/issues/new?template=feature.md)
-
-## Contributing
-
-Make sure that you pass the pre-commit checks (`npm run lint && npm test`). In case you
-add/remove/change rules, or add/remove/change regression tests you have to update
-the [`jest snapshot`](https://github.ibm.com/cocoa/tekton-lint/blob/master/regression-tests/__snapshots__/regresion.test.js.snap).
-
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
 [pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
-[taas]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/home
-[taas-api]: https://na.artifactory.swg-devops.com/artifactory/webapp/#/profile
 [vscode-task]: https://code.visualstudio.com/docs/editor/tasks
 [vscode-screenshot]: vscode.png
