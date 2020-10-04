@@ -237,3 +237,15 @@ spec:
     - name: task-volume
       persistentVolumeClaim:
         claimName: $(inputs.params.credentials-pvc)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task-with-params-in-workspaces
+spec:
+  params:
+    - name: foo
+  workspaces:
+    - name: ws
+      mountPath: /$(params.foo)
+  steps: []

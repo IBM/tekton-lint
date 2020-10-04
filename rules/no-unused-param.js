@@ -27,7 +27,7 @@ module.exports = (docs, tekton, report) => {
     const params = getParams(task.kind, task.spec);
     const occurences = Object.fromEntries(params.map(param => [param.name, 0]));
     for (const prefix of ['inputs.params', 'params']) {
-      for (const prop of ['steps', 'volumes', 'stepTemplate', 'sidecars']) {
+      for (const prop of ['steps', 'volumes', 'stepTemplate', 'sidecars', 'workspaces']) {
         walk(task.spec[prop], ['spec', prop], unused(occurences, prefix));
       }
     }
