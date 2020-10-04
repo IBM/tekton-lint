@@ -21,7 +21,7 @@
     "test": "jest",
     "coverage": "jest --coverage"
   },
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Linter for Tekton definitions",
   "main": "runner.js",
   "repository": {
