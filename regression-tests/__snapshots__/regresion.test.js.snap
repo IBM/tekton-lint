@@ -2309,6 +2309,22 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 29,
+      "endLine": 10,
+      "range": Array [
+        175,
+        189,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'pipeline-with-results-and-missing-tasks' references task 'a-missing-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/results-missing-tasks.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 22,
       "endLine": 11,
       "range": Array [

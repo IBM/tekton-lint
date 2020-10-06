@@ -1,0 +1,17 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-with-results-and-missing-tasks
+spec:
+  tasks:
+    - name: first-task
+      taskRef:
+        name: a-missing-task
+    - name: second-task
+      taskSpec:
+        steps:
+          - name: first-step
+            image: ubuntu
+            script: |
+              echo $(tasks.first-task.results.foo)
