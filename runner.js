@@ -6,13 +6,18 @@ const Reporter = require('./reporter');
 const rules = require('./rules');
 
 const getRulesConfig = () => {
-  let rcFile;
+  const defaultRcFile = fs.readFileSync(path.resolve(__dirname, '.tektonlintrc.yaml'), 'utf8');
+  const defaultConfig = yaml.parse(defaultRcFile);
+
   if (fs.existsSync('./.tektonlintrc.yaml')) {
-    rcFile = fs.readFileSync('./.tektonlintrc.yaml', 'utf8');
-  } else {
-    rcFile = fs.readFileSync(path.resolve(__dirname, '.tektonlintrc.yaml'), 'utf8');
+    const customRcFile = fs.readFileSync('./.tektonlintrc.yaml', 'utf8');
+    const customConfig = yaml.parse(customRcFile);
+    customConfig.rules = { ...defaultConfig.rules, ...customConfig.rules };
+
+    return customConfig;
   }
-  return yaml.parse(rcFile);
+
+  return defaultConfig;
 };
 
 module.exports = async function runner(globs) {
