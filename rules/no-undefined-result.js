@@ -10,7 +10,8 @@ const checkUndefinedResult = (pipeline, tekton, report) => (value, path, parent)
   const matchingTask = pipeline.spec.tasks.find(t => t.name === task);
   if (!matchingTask) return;
 
-  const taskSpec = matchingTask.taskRef ? tekton.tasks[matchingTask.taskRef.name].spec : matchingTask.taskSpec;
+  const hasTask = matchingTask.taskRef && tekton.tasks[matchingTask.taskRef.name];
+  const taskSpec = hasTask ? tekton.tasks[matchingTask.taskRef.name].spec : matchingTask.taskSpec;
 
   const matchingResult = taskSpec.results.find(result => result.name === name);
   if (!matchingResult) {
