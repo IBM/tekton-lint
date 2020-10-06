@@ -19,6 +19,7 @@ $ tekton-lint --version # Show version number
 $ tekton-lint --help    # Show help
 $ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
 $ tekton-lint --format  # Format output. Available formatters: vscode (default) | stylish | json
+$ tekton-lint --quiet   # Report errors only - default: false
 
 Examples:
 # Globstar matching

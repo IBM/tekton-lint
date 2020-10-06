@@ -5,11 +5,14 @@ const formatters = {
   json: require('./formatters/json'),
 };
 
-module.exports = ({ format }, problems) => {
+const onlyErrors = problems => problems.filter(problem => problem.level === 'error');
+
+module.exports = ({ format, quiet }, problems) => {
   if (!(format in formatters)) {
     process.exitCode = 1;
     return console.log(`Formatter "${format}" is not available!`);
   }
 
-  formatters[format](problems);
+  const validProblems = quiet ? onlyErrors(problems) : problems;
+  formatters[format](validProblems);
 };
