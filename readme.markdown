@@ -23,12 +23,13 @@ Using `tekton-lint` in watch mode will monitor for any changes in the provided p
 
 ```sh
 Options:
-$ tekton-lint --watch   # Run tekton-lint in watch mode
-$ tekton-lint --version # Show version number
-$ tekton-lint --help    # Show help
+$ tekton-lint --watch                # Run tekton-lint in watch mode
+$ tekton-lint --version              # Show version number
+$ tekton-lint --help                 # Show help
 $ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
-$ tekton-lint --format  # Format output. Available formatters: vscode (default) | stylish | json
-$ tekton-lint --quiet   # Report errors only - default: false
+$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
+$ tekton-lint --quiet                # Report errors only - default: false
+$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
 
 # exact file path
 $ tekton-lint my-pipeline.yaml my-task.yaml
