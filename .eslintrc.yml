@@ -8,6 +8,11 @@ globals:
   SharedArrayBuffer: readonly
 parserOptions:
   ecmaVersion: 2018
+overrides:
+  - files:
+      - 'regression-tests/*.js'
+    env:
+      jest: true
 rules:
 
   # possible errors
@@ -85,7 +90,7 @@ rules:
   no-labels: error
   no-lone-blocks: error
   no-loop-func: error
-  no-magic-numbers: ["warn", { "ignore": [1] }]
+  no-magic-numbers: off
   no-multi-spaces: error
   no-multi-str: error
   no-new: error
@@ -131,7 +136,7 @@ rules:
   no-restricted-globals: off
   no-shadow: off
   no-shadow-restricted-names: off
-  no-undef: off
+  no-undef: error
   no-undef-init: error
   no-undefined: off
   no-unused-vars: error
