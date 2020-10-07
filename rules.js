@@ -1,4 +1,5 @@
 const rules = require('./rule-loader');
+const Reporter = require('./reporter');
 
 const createReporter = (rule, config, reporter) => {
   const isError = config.rules[rule] && config.rules[rule] === 'error';
