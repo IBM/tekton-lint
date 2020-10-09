@@ -1,20 +1,22 @@
+plugins:
+- '@typescript-eslint'
+
+parser: '@typescript-eslint/parser'
+
+parserOptions:
+  sourceType: module
+
 env:
-  commonjs: true
   es6: true
   node: true
-extends: 'eslint:recommended'
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-parserOptions:
-  ecmaVersion: 2018
+
 overrides:
   - files:
       - 'regression-tests/*.js'
     env:
       jest: true
-rules:
 
+rules:
   # possible errors
   for-direction: error
   getter-return: error

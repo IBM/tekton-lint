@@ -120,7 +120,7 @@ interface Problem {
 ##### Example
 
 ```js
-const linter = require('tekton-lint/runner');
+const linter = require('tekton-lint');
 
 const problems = await linter(['path/to/defs/**/*.yaml']);
 

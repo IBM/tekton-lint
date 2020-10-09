@@ -1,5 +1,5 @@
-const collect = require('../Collector');
-const runner = require('../runner');
+const collect = require('../lib/Collector').default;
+const { default: runner, lint } = require('../lib/runner');
 
 it('regression tests with location', async () => {
   const result = await runner(['./regression-tests/*.yaml']);
@@ -19,6 +19,6 @@ it('regression tests with location', async () => {
 it('regression tests without location', async () => {
   const reference = await runner(['./regression-tests/*.yaml']);
   const docs = await collect(['./regression-tests/*.yaml']);
-  const result = await runner.lint(docs.map(d => d.content));
+  const result = await lint(docs.map(d => d.content));
   expect(result).toHaveLength(reference.length);
 });

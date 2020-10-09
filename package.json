@@ -1,35 +1,25 @@
 {
   "name": "tekton-lint",
   "files": [
-    "utils.js",
-    "watch.js",
-    "lint.js",
-    "reporter.js",
-    "rules.js",
-    "collect-resources.js",
-    "Collector.js",
-    "runner.js",
-    "rules/*.js",
-    "rule-loader.js",
-    "walk.js",
-    ".tektonlintrc.yaml",
-    "log-problems.js",
-    "formatters/*.js"
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    ".tektonlintrc.yaml"
   ],
   "scripts": {
-    "lint": "eslint './*.js' './rules/*.js' './regression-tests/*.js'",
+    "lint": "eslint --ext ts src",
     "test": "jest",
+    "build": "tsc",
     "coverage": "jest --coverage"
   },
   "version": "0.4.4",
   "description": "Linter for Tekton definitions",
-  "main": "runner.js",
+  "main": "lib/runner.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:IBM/tekton-lint.git"
   },
   "bin": {
-    "tekton-lint": "lint.js"
+    "tekton-lint": "lib/lint.js"
   },
   "author": "Bence Dányi <bence.danyi@ibm.com>",
   "license": "Apache-2.0",
@@ -46,9 +36,12 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "typescript": "^4.0.3"
   },
   "engines": {
     "node": ">= 12.0.0"
