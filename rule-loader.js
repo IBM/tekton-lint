@@ -55,6 +55,9 @@ const rules = {
 
   // prefer-kebab-case
   'prefer-kebab-case': require('./rules/prefer-kebab-case.js'),
+
+  // prefer-when-expression
+  'prefer-when-expression': require('./rules/prefer-when-expression.js'),
 };
 
 module.exports = rules;

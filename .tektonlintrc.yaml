@@ -22,3 +22,4 @@ rules: # error | warning | off
   no-unused-param: warning
   no-missing-resource: error
   no-undefined-param: error
+  prefer-when-expression: warning

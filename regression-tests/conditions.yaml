@@ -40,3 +40,16 @@ spec:
         name: task-without-params
       conditions:
         - conditionRef: missing-condition
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-with-multiple-conditions
+spec:
+  tasks:
+    - name: tekton-without-params
+      taskRef:
+        name: task-without-params
+      conditions:
+        - conditionRef: condition-with-unused-params
+        - conditionRef: condition-with-unused-params
