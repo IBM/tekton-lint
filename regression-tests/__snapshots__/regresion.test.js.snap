@@ -179,6 +179,22 @@ Array [
     "rule": "no-invalid-name",
   },
   Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 43,
+      "range": Array [
+        773,
+        807,
+      ],
+      "startColumn": 9,
+      "startLine": 42,
+    },
+    "message": "Task 'tekton-without-params' in Pipeline 'pipeline-with-missing-condition' is guarded by condition(s) ('missing-condition'). Conditions are deprecated, use WhenExpressions instead.",
+    "path": "./regression-tests/conditions.yaml",
+    "rule": "prefer-when-expression",
+  },
+  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 1,
@@ -193,6 +209,22 @@ Array [
     "message": "Pipeline 'pipeline-with-missing-condition' references Condition 'missing-condition' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.",
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 56,
+      "range": Array [
+        1033,
+        1131,
+      ],
+      "startColumn": 9,
+      "startLine": 54,
+    },
+    "message": "Task 'tekton-without-params' in Pipeline 'pipeline-with-multiple-conditions' is guarded by condition(s) ('condition-with-unused-params, condition-with-unused-params'). Conditions are deprecated, use WhenExpressions instead.",
+    "path": "./regression-tests/conditions.yaml",
+    "rule": "prefer-when-expression",
   },
   Object {
     "level": "warning",

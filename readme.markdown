@@ -208,6 +208,7 @@ for (const problem of problems) {
 - _kebab-case_ naming violations
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 - Missing `TriggerBinding` parameter values
+- Usage of deprecated `Condition` instead of `WhenExpression`
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
