@@ -19,3 +19,20 @@ spec:
     - name: qux
       default: false
   steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: task-param-array-pipeline
+spec:
+  tasks:
+    - name: task-param-array-task
+      taskRef:
+        name: doesnt-exist
+      params:
+        - name: compact-args
+          value: ["first", "second"]
+        - name: loose-args
+          value:
+            - "first"
+            - "second"
