@@ -115,6 +115,22 @@ Array [
     "rule": "no-unused-param",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 27,
+      "endLine": 31,
+      "range": Array [
+        478,
+        490,
+      ],
+      "startColumn": 15,
+      "startLine": 31,
+    },
+    "message": "Pipeline 'task-param-array-pipeline' references task 'doesnt-exist' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/array-params.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 1,

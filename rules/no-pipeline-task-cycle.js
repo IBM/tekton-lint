@@ -1,25 +1,34 @@
 const { alg, Graph } = require('graphlib');
 
-function readParamReference({ value }) {
-  const taskResultReferenceRegexp = /\$\(tasks\.[a-z|-]*\.results\.[a-z|-]*\)/;
-  if (!value) return;
-  if (!value.match(taskResultReferenceRegexp)) return;
-  const referencedTaskname = value.split('$(tasks.')[1].split('.')[0];
+const RESULT_PATTERN = '\\$\\(tasks\\.([^.]+)\\.results\\.[^.]*\\)';
+const RESULT_REGEX_G = new RegExp(RESULT_PATTERN, 'g');
+const RESULT_REGEX = new RegExp(RESULT_PATTERN);
 
-  return {
-    ref: referencedTaskname,
-  };
-};
+function getReferences(str) {
+  const matches = str.match(RESULT_REGEX_G);
+  if (!matches) return [];
+  return matches.map(substr => substr.match(RESULT_REGEX)[1]);
+}
 
-function paramsReferences({ params }) {
-  if (params === undefined || params === null) return [];
+function getResultReferences(param) {
+  if (Array.isArray(param.value)) {
+    return param.value.flatMap(getReferences);
+  } else if (param.value) {
+    return getReferences(param.value);
+  }
+  return [];
+}
 
-  return params.map(param => ({
-    ...readParamReference(param),
-    type: 'paramRef',
-  }))
-    .filter(({ ref }) => ref !== undefined);
-};
+function paramsReferences(task) {
+  if (!task.params) return [];
+  return task.params
+    .flatMap(getResultReferences)
+    .filter(Boolean)
+    .map(ref => ({
+      ref,
+      type: 'paramRef',
+    }));
+}
 
 function runAfterReferences({ runAfter }) {
   if (runAfter === undefined || runAfter === null) return [];
@@ -28,8 +37,7 @@ function runAfterReferences({ runAfter }) {
     ref: after,
     type: 'runAfterRef',
   }));
-};
-
+}
 
 function resourceInputReferences(task) {
   const { resources } = task;
