@@ -1,0 +1,28 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deprecated-task
+  labels:
+    tekton.dev/deprecated: true
+spec:
+  params: []
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: deprecated-pipeline
+  labels:
+    tekton.dev/deprecated: true
+spec:
+  tasks: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: deprecated-triggertemplate
+  labels:
+    tekton.dev/deprecated: true
+spec:
+  resourcetemplates: []

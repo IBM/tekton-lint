@@ -209,6 +209,7 @@ for (const problem of problems) {
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 - Missing `TriggerBinding` parameter values
 - Usage of deprecated `Condition` instead of `WhenExpression`
+- Usage of deprecated resources (resources marked with `tekton.dev/deprecated` label)
 
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
