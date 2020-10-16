@@ -230,6 +230,54 @@ Array [
     "level": "warning",
     "loc": Object {
       "endColumn": 32,
+      "endLine": 7,
+      "range": Array [
+        117,
+        121,
+      ],
+      "startColumn": 28,
+      "startLine": 7,
+    },
+    "message": "Task 'deprecated-task' is deprecated!",
+    "path": "./regression-tests/deprecated-resources.yaml",
+    "rule": "no-deprecated-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 17,
+      "range": Array [
+        278,
+        282,
+      ],
+      "startColumn": 28,
+      "startLine": 17,
+    },
+    "message": "Pipeline 'deprecated-pipeline' is deprecated!",
+    "path": "./regression-tests/deprecated-resources.yaml",
+    "rule": "no-deprecated-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 26,
+      "range": Array [
+        441,
+        445,
+      ],
+      "startColumn": 28,
+      "startLine": 26,
+    },
+    "message": "TriggerTemplate 'deprecated-triggertemplate' is deprecated!",
+    "path": "./regression-tests/deprecated-resources.yaml",
+    "rule": "no-deprecated-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
       "endLine": 2,
       "range": Array [
         16,

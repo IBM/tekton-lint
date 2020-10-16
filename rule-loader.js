@@ -58,6 +58,9 @@ const rules = {
 
   // prefer-when-expression
   'prefer-when-expression': require('./rules/prefer-when-expression.js'),
+
+  // no-deprecated-resource
+  'no-deprecated-resource': require('./rules/no-deprecated-resource.js'),
 };
 
 module.exports = rules;
