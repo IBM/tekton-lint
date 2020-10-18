@@ -1,9 +1,17 @@
 module.exports = (docs, tekton, report) => {
+  function check(step) {
+    if (!step) return;
+    const image = step.image;
+    if (!image) return;
+    if (/:latest$/.test(image) || /^[^:$]*$/.test(image)) {
+      report(`Invalid image: '${image}'. Specify the image tag instead of using ':latest'`, step, 'image');
+    }
+  }
+
   for (const task of Object.values(tekton.tasks)) {
+    check(task.spec.stepTemplate);
     for (const step of Object.values(task.spec.steps)) {
-      if (/:latest$/.test(step.image) || /^[^:$]*$/.test(step.image)) {
-        report(`Invalid image: '${step.image}' for step '${step.name}' in Task '${task.metadata.name}'. Specify the image tag instead of using ':latest'`, step, 'image');
-      }
+      check(step);
     }
   }
 };

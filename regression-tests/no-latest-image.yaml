@@ -1,0 +1,40 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-latest-image-1
+spec:
+  steps:
+    - name: step-1
+      image: alpine:latest
+      script: |
+        #!/bin/sh
+        echo "noop"
+    - name: step-2
+      image: alpine
+      script: |
+        #!/bin/sh
+        echo "noop"
+    - name: step-3
+      image: alpine:3.2.1
+      script: |
+        #!/bin/sh
+        echo "noop"
+    - name: step-4
+      image: alpine@sha256:abc123
+      script: |
+        #!/bin/sh
+        echo "noop"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-latest-image-2
+spec:
+  stepTemplate:
+    image: alpine
+  steps:
+    - name: step
+      script: |
+        #!/bin/sh
+        echo "noop"
