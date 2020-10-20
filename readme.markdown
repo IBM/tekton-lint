@@ -211,6 +211,29 @@ for (const problem of problems) {
 - Usage of deprecated `Condition` instead of `WhenExpression`
 - Usage of deprecated resources (resources marked with `tekton.dev/deprecated` label)
 
+### Configuring `tekton-lint`
+
+You can configure `tekton-lint` with a configuration file ([`.tektonlintrc.yaml`](./.tektonlintrc.yaml)) in your project's directory. You can decide which rules are enabled and at what error level.
+
+The configuration file should follow this format:
+```yaml
+---
+rules:
+  rule-name: error | warning | off
+```
+
+Example `.tektonlintrc.yaml` file:
+
+```yaml
+---
+rules:
+  no-duplicate-param: error
+  no-unused-param: warning
+  no-deprecated-resource: off
+```
+
+`tekton-lint` will look for a configuration file named `.tektonlintrc.yaml` in the directory where you run the command. If the configuration file is not present, `tekton-lint` will use the default configuration.
+
 [tekton]: https://tekton.dev
 [node]: https://nodejs.org
 [pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
