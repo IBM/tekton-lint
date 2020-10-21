@@ -78,10 +78,15 @@ $ tekton-lint --watch '**/*.yaml'
         const tooManyWarnings = maxWarnings >= 0 && warningCount > maxWarnings;
         // eslint-disable-next-line no-process-env
         if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
-          process.exitCode = 1;
+          return 1;
         }
+        return 0;
       }, (error) => {
-        console.error(error);
+        console.error(error.message);
+        return 1;
+      })
+      .then((code) => {
+        process.exitCode = code;
       });
   }
 })();
