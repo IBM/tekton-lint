@@ -37,12 +37,17 @@ const parse = docs => ({
 });
 
 export function lint(docs, reporter, config) {
+  docs = docs.filter(doc => doc && doc.metadata && doc.metadata.name);
+  const tekton = parse(docs);
+
+  if (Object.values(tekton).every((definitionKind => Object.keys(definitionKind).length === 0))) {
+    throw Error('No tekton definitions can be found with the given paths');
+  }
+
   reporter = reporter || new Reporter();
   config = config || {
     rules: {},
   };
-  docs = docs.filter(doc => doc && doc.metadata && doc.metadata.name);
-  const tekton = parse(docs);
 
   for (const [name, rule] of Object.entries(rules)) {
     const skipped = config.rules[name] && config.rules[name] === 'off';
