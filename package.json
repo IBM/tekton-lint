@@ -11,7 +11,7 @@
     "build": "tsc",
     "coverage": "jest --coverage"
   },
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Linter for Tekton definitions",
   "main": "lib/runner.js",
   "repository": {
