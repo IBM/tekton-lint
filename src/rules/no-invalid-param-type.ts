@@ -15,6 +15,13 @@ function getTaskParams(spec) {
 }
 
 export default (docs, tekton, report) => {
+  for (const triggerBinding of Object.values<any>(tekton.triggerBindings)) {
+    if (!triggerBinding.spec || !triggerBinding.spec.params) continue;
+    for (const param of triggerBinding.spec.params) {
+      if (param.value === undefined) report(`TriggerBinding '${triggerBinding.metadata.name}' defines parameter '${param.name}' with missing value`, param);
+    }
+  }
+
   for (const task of Object.values<any>(tekton.tasks)) {
     const params = getTaskParams(task.spec);
     if (!params) continue;
@@ -29,5 +36,17 @@ export default (docs, tekton, report) => {
   for (const pipeline of Object.values<any>(tekton.pipelines)) {
     if (!pipeline.spec.params) continue;
     checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params, report);
+  }
+
+  for (const pipeline of Object.values<any>(tekton.pipelines)) {
+    if (!pipeline.spec.params) continue;
+    for (const task of Object.values<any>(pipeline.spec.tasks)) {
+      if (!task.params) continue;
+      for (const param of Object.values<any>(task.params)) {
+        if (typeof param.value == 'undefined') {
+          report(`Task '${task.name}' has a parameter '${param.name}' that doesn't have a value in pipeline '${pipeline.metadata.name}'.`, param, 'name');
+        }
+      }
+    }
   }
 };
