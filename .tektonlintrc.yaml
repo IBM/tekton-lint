@@ -4,8 +4,6 @@ rules: # error | warning | off
   no-invalid-name: error
   no-invalid-param-type: error
   no-pipeline-missing-parameters: error
-  no-pipeline-missing-task: error
-  no-pipeline-task-cycle: error
   no-extra-param: error
   no-missing-workspace: error
   no-undefined-result: error
@@ -22,3 +20,4 @@ rules: # error | warning | off
   no-undefined-param: error
   prefer-when-expression: warning
   no-deprecated-resource: warning
+  no-invalid-dag: error

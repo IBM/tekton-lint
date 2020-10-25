@@ -15,7 +15,7 @@ const rules = {
   'no-extra-param': require('./rules/no-extra-param').default,
 
   // no-invalid-dag
-  'no-pipeline-task-cycle': require('./rules/no-pipeline-task-cycle').default,
+  'no-invalid-dag': require('./rules/no-invalid-dag').default,
 
   // no-invalid-name
   'no-invalid-name': require('./rules/no-invalid-name').default,
@@ -31,7 +31,6 @@ const rules = {
 
   // no-missing-resource
   'no-missing-resource': require('./rules/no-missing-resource').default,
-  'no-pipeline-missing-task': require('./rules/no-pipeline-missing-task').default, // TODO: split -> no-invalid-dag
 
   // no-missing-workspace
   'no-missing-workspace': require('./rules/no-missing-workspace').default,
