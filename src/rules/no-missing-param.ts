@@ -1,6 +1,6 @@
 function getTaskParams(spec) {
-  if (spec.inputs) return spec.inputs.params;
-  return spec.params;
+  if (spec.inputs) return spec.inputs.params ?? [];
+  return spec.params ?? [];
 }
 
 export default (docs, tekton, report) => {

@@ -963,6 +963,54 @@ Array [
     "rule": "no-duplicate-param",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        301,
+        332,
+      ],
+      "startColumn": 11,
+      "startLine": 19,
+    },
+    "message": "Pipeline 'no-extra-param-pipeline' references task 'no-extra-param-task' (as 'step-1'), and supplies parameter 'foo' to it, but it's not a valid parameter",
+    "path": "./regression-tests/no-extra-param.yaml",
+    "rule": "no-extra-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 27,
+      "range": Array [
+        409,
+        440,
+      ],
+      "startColumn": 11,
+      "startLine": 25,
+    },
+    "message": "Pipeline 'no-extra-param-pipeline' references task 'step-1', and supplies parameter 'foo' to it, but it's not a valid parameter",
+    "path": "./regression-tests/no-extra-param.yaml",
+    "rule": "no-extra-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 44,
+      "range": Array [
+        774,
+        807,
+      ],
+      "startColumn": 13,
+      "startLine": 42,
+    },
+    "message": "TriggerTemplate 'no-extra-param-template' references pipeline 'no-extra-param-pipeline', and supplies 'foo', but it's not a valid parameter.",
+    "path": "./regression-tests/no-extra-param.yaml",
+    "rule": "no-extra-param",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 27,

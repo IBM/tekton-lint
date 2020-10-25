@@ -1,0 +1,65 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-extra-param-task
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: no-extra-param-pipeline
+spec:
+  tasks:
+    - name: step-1
+      taskRef:
+        name: no-extra-param-task
+      params:
+        - name: foo
+          value: foo
+    - name: step-1
+      taskSpec:
+        steps: []
+      params:
+        - name: foo
+          value: foo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: no-extra-param-template
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: pipeline-run-1
+      spec:
+        pipelineRef:
+          name: no-extra-param-pipeline
+        params:
+          - name: foo
+            value: foo
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: pipeline-run-2
+      spec:
+        pipelineSpec:
+          tasks:
+            - name: step-1
+              taskRef:
+                name: no-extra-param-task
+              params:
+                - name: foo
+                  value: foo
+            - name: step-2
+              taskSpec:
+                steps: []
+              params:
+                - name: foo
+                  value: foo
+        params:
+          - name: foo
+            value: foo
