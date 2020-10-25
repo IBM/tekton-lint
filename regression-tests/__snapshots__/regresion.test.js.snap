@@ -725,6 +725,102 @@ Array [
   Object {
     "level": "warning",
     "loc": Object {
+      "endColumn": 20,
+      "endLine": 9,
+      "range": Array [
+        130,
+        136,
+      ],
+      "startColumn": 14,
+      "startLine": 9,
+    },
+    "message": "Invalid image: 'alpine'. Specify the image tag instead of using ':latest'",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-latest-image",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 21,
+      "range": Array [
+        318,
+        324,
+      ],
+      "startColumn": 14,
+      "startLine": 21,
+    },
+    "message": "Invalid image: 'alpine'. Specify the image tag instead of using ':latest'",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-latest-image",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 25,
+      "range": Array [
+        393,
+        396,
+      ],
+      "startColumn": 17,
+      "startLine": 25,
+    },
+    "message": "Step 'step-2' has env variable 'FOO' duplicated in task 'no-duplicate-env-1'.",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-duplicate-env",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 33,
+      "range": Array [
+        506,
+        512,
+      ],
+      "startColumn": 14,
+      "startLine": 33,
+    },
+    "message": "Invalid image: 'alpine'. Specify the image tag instead of using ':latest'",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-latest-image",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 52,
+      "range": Array [
+        797,
+        803,
+      ],
+      "startColumn": 14,
+      "startLine": 52,
+    },
+    "message": "Invalid image: 'alpine'. Specify the image tag instead of using ':latest'",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-latest-image",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 69,
+      "range": Array [
+        1051,
+        1057,
+      ],
+      "startColumn": 14,
+      "startLine": 69,
+    },
+    "message": "Invalid image: 'alpine'. Specify the image tag instead of using ':latest'",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-latest-image",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
       "endColumn": 27,
       "endLine": 9,
       "range": Array [

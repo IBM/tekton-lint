@@ -1,0 +1,76 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-duplicate-env-1
+spec:
+  steps:
+    - name: step-1
+      image: alpine
+      env:
+        - name: FOO
+          value: foo
+        - name: BAR
+          value: bar
+      script: |
+        #!/bin/sh
+
+        echo ${FOO}
+
+    - name: step-2
+      image: alpine
+      env:
+        - name: FOO
+          value: foo
+        - name: FOO
+          value: foo
+      script: |
+        #!/bin/sh
+
+        echo ${FOO}
+
+    - name: step-3
+      image: alpine
+      script: |
+        #!/bin/sh
+
+        echo ${FOO}
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-duplicate-env-2
+spec:
+  stepTemplate:
+    env:
+      - name: FOO
+        value: foo
+      - name: FOO
+        value: foo
+  steps:
+    - name: step-1
+      image: alpine
+      script: |
+        #!/bin/sh
+
+        echo ${FOO}
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-duplicate-env-3
+spec:
+  stepTemplate:
+    env:
+      - name: FOO
+        value: foo
+  steps:
+    - name: step-1
+      image: alpine
+      env:
+        - name: FOO
+          value: foo
+      script: |
+        #!/bin/sh
+
+        echo ${FOO}
