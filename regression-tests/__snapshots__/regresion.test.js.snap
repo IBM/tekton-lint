@@ -819,6 +819,150 @@ Array [
     "rule": "no-latest-image",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 10,
+      "range": Array [
+        157,
+        160,
+      ],
+      "startColumn": 13,
+      "startLine": 10,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 21,
+      "range": Array [
+        297,
+        324,
+      ],
+      "startColumn": 7,
+      "startLine": 19,
+    },
+    "message": "TriggerTemplate 'no-duplicate-param-2' defines parameter 'foo', but it's not used anywhere in the spec",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-unused-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 21,
+      "range": Array [
+        336,
+        339,
+      ],
+      "startColumn": 13,
+      "startLine": 21,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 33,
+      "range": Array [
+        492,
+        519,
+      ],
+      "startColumn": 7,
+      "startLine": 31,
+    },
+    "message": "Pipeline 'no-duplicate-param-3' defines parameter 'foo', but it's not used anywhere in the spec",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-unused-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 33,
+      "range": Array [
+        531,
+        534,
+      ],
+      "startColumn": 13,
+      "startLine": 33,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 20,
+      "endLine": 43,
+      "range": Array [
+        703,
+        706,
+      ],
+      "startColumn": 17,
+      "startLine": 43,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 54,
+      "range": Array [
+        835,
+        862,
+      ],
+      "startColumn": 7,
+      "startLine": 52,
+    },
+    "message": "Task 'no-duplicate-param-4' defines parameter 'foo', but it's not used anywhere in the spec",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-unused-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 16,
+      "endLine": 54,
+      "range": Array [
+        874,
+        877,
+      ],
+      "startColumn": 13,
+      "startLine": 54,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 92,
+      "range": Array [
+        1675,
+        1678,
+      ],
+      "startColumn": 19,
+      "startLine": 92,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 27,
