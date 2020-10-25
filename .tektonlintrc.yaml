@@ -1,23 +1,23 @@
 ---
 rules: # error | warning | off
+  no-deprecated-resource: warning
+  no-duplicate-env: error
   no-duplicate-param: error
+  no-duplicate-resource: error
+  no-extra-param: error
+  no-invalid-dag: error
   no-invalid-name: error
   no-invalid-param-type: error
-  no-pipeline-missing-parameters: error
-  no-extra-param: error
-  no-missing-workspace: error
-  no-undefined-result: error
-  no-missing-param: error
-  no-duplicate-resource: error
-  no-resourceversion: error
-  no-duplicate-env: error
-  no-undefined-volume: error
   no-latest-image: warning
+  no-missing-param: error
+  no-missing-resource: error
+  no-missing-workspace: error
+  no-pipeline-missing-parameters: error
+  no-resourceversion: error
+  no-undefined-param: error
+  no-undefined-result: error
+  no-undefined-volume: error
+  no-unused-param: warning
   prefer-beta: warning
   prefer-kebab-case: warning
-  no-unused-param: warning
-  no-missing-resource: error
-  no-undefined-param: error
   prefer-when-expression: warning
-  no-deprecated-resource: warning
-  no-invalid-dag: error
