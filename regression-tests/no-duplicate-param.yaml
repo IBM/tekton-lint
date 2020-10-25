@@ -10,32 +10,19 @@ spec:
     - name: foo
       value: foo
 ---
-apiVersion: tekton.dev/v1alpha1
-kind: TriggerTemplate
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
 metadata:
   name: no-duplicate-param-2
 spec:
   params:
     - name: foo
-      value: foo
     - name: foo
-      value: foo
-  resourcetemplates: []
----
-apiVersion: tekton.dev/v1beta1
-kind: Pipeline
-metadata:
-  name: no-duplicate-param-3
-spec:
-  params:
-    - name: foo
-      value: foo
-    - name: foo
-      value: foo
   tasks:
     - name: task
       taskSpec:
         params:
+          - name: foo
           - name: foo
       params:
         - name: foo
@@ -46,20 +33,21 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: no-duplicate-param-4
+  name: no-duplicate-param-3
 spec:
   params:
     - name: foo
-      value: foo
     - name: foo
-      value: foo
   steps: []
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: no-duplicate-param-5
+  name: no-duplicate-param-4
 spec:
+  params:
+    - name: foo
+    - name: foo
   resourcetemplates:
     - apiVersion: v1
       kind: ConfigMap
@@ -76,10 +64,12 @@ spec:
         pipelineSpec:
           params:
             - name: foo
+            - name: foo
           tasks:
             - name: task
               taskSpec:
                 params:
+                  - name: foo
                   - name: foo
               params:
                 - name: foo
