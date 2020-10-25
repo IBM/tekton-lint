@@ -21,9 +21,7 @@ const rules = {
   'no-invalid-name': require('./rules/no-invalid-name').default,
 
   // no-invalid-param-type
-  'no-binding-missing-params': require('./rules/no-binding-missing-params').default,
-  'no-wrong-param-type': require('./rules/no-wrong-param-type').default,
-  'no-pipeline-task-missing-params': require('./rules/no-pipeline-task-missing-params').default,
+  'no-invalid-param-type': require('./rules/no-invalid-param-type').default,
 
   // no-latest-image
   'no-latest-image': require('./rules/no-latest-image').default,

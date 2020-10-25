@@ -32,7 +32,7 @@ Array [
     },
     "message": "Task 'array-params' defines parameter 'bar' with wrong type (only strings and arrays of strings are allowed)",
     "path": "./regression-tests/array-params.yaml",
-    "rule": "no-wrong-param-type",
+    "rule": "no-invalid-param-type",
   },
   Object {
     "level": "warning",
@@ -64,7 +64,7 @@ Array [
     },
     "message": "Task 'array-params' defines parameter 'baz' with wrong type (only strings and arrays of strings are allowed)",
     "path": "./regression-tests/array-params.yaml",
-    "rule": "no-wrong-param-type",
+    "rule": "no-invalid-param-type",
   },
   Object {
     "level": "warning",
@@ -96,7 +96,7 @@ Array [
     },
     "message": "Task 'array-params' defines parameter 'qux' with wrong type (only strings and arrays of strings are allowed)",
     "path": "./regression-tests/array-params.yaml",
-    "rule": "no-wrong-param-type",
+    "rule": "no-invalid-param-type",
   },
   Object {
     "level": "warning",
@@ -432,7 +432,7 @@ Array [
     },
     "message": "Task 'my-task' has a parameter 'foo' that doesn't have a value in pipeline 'duplicate-params-pipeline'.",
     "path": "./regression-tests/duplicate-params.yaml",
-    "rule": "no-pipeline-task-missing-params",
+    "rule": "no-invalid-param-type",
   },
   Object {
     "level": "warning",
@@ -4723,7 +4723,7 @@ Array [
     "rule": "no-missing-resource",
   },
   Object {
-    "level": "warning",
+    "level": "error",
     "loc": Object {
       "endColumn": 1,
       "endLine": 93,
@@ -4736,7 +4736,7 @@ Array [
     },
     "message": "TriggerBinding 'binding-params-without-value' defines parameter 'revision' with missing value",
     "path": "./regression-tests/triggerbinding-test.yaml",
-    "rule": "no-binding-missing-params",
+    "rule": "no-invalid-param-type",
   },
   Object {
     "level": "error",
