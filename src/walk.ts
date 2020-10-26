@@ -1,4 +1,9 @@
-export function walk(node, path, visitor, parent?) {
+export function walk(
+  node: any,
+  path: (string | number)[],
+  visitor: Function,
+  parent?: any
+) {
   if (typeof node === 'string' || typeof node === 'number') {
     visitor(node, path, parent);
   } else if (Array.isArray(node)) {
@@ -13,7 +18,10 @@ export function walk(node, path, visitor, parent?) {
   }
 }
 
-export function pathToString(path) {
+export function pathToString(path: (string | number)[]) {
+  if (!path) {
+    throw Error('Path should contain at least one subpath in it');
+  }
   let str = '';
   for (const segment of path) {
     if (typeof segment == 'number') {

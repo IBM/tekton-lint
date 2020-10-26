@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "lint": "eslint --ext ts src",
-    "test": "jest",
+    "test": "npm run build && jest",
     "build": "tsc",
     "coverage": "jest --coverage"
   },
@@ -38,13 +38,28 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
+    "@types/jest": "^26.0.15",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "jest": "^26.0.1",
+    "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
   },
   "engines": {
     "node": ">= 12.0.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/tests",
+      "<rootDir>/regression-tests"
+    ],
+    "testMatch": [
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "preset": "ts-jest"
   },
   "husky": {
     "hooks": {
