@@ -787,6 +787,22 @@ Array [
     "rule": "no-latest-image",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 18,
+      "endLine": 48,
+      "range": Array [
+        733,
+        736,
+      ],
+      "startColumn": 15,
+      "startLine": 48,
+    },
+    "message": "StepTemplate has env variable 'FOO' duplicated in task 'no-duplicate-env-2'.",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-duplicate-env",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 20,
