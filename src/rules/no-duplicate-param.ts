@@ -18,6 +18,12 @@ function checkParams(params, report) {
 export default (docs, tekton, report) => {
   for (const t of ['triggerBindings', 'pipelines', 'tasks', 'triggerTemplates']) {
     for (const crd of Object.values<any>(tekton[t])) {
+      if (crd.spec && crd.spec.tasks) {
+        for (const task of crd.spec.tasks) {
+            if (task.taskSpec) checkParams(getParams('Task', task.taskSpec), report);
+            checkParams(getParams('Task', task), report);
+        }
+    }
       checkParams(getParams(crd.kind, crd.spec), report);
     }
   }
