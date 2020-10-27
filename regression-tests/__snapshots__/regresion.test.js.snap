@@ -485,6 +485,22 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 24,
+      "endLine": 51,
+      "range": Array [
+        851,
+        854,
+      ],
+      "startColumn": 21,
+      "startLine": 51,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/duplicate-params.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 1,
       "endLine": 64,
       "range": Array [
@@ -513,6 +529,22 @@ Array [
     "message": "Pipeline 'duplicate-params-pipeline-embedded' references task 'my-task', but parameter 'foo' is not supplied (it's a required param in 'my-task')",
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-missing-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 63,
+      "range": Array [
+        1065,
+        1068,
+      ],
+      "startColumn": 19,
+      "startLine": 63,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/duplicate-params.yaml",
+    "rule": "no-duplicate-param",
   },
   Object {
     "level": "warning",
@@ -877,6 +909,22 @@ Array [
       ],
       "startColumn": 13,
       "startLine": 20,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/no-duplicate-param.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 26,
+      "range": Array [
+        413,
+        416,
+      ],
+      "startColumn": 19,
+      "startLine": 26,
     },
     "message": "Duplicate param 'foo'",
     "path": "./regression-tests/no-duplicate-param.yaml",
@@ -3715,6 +3763,22 @@ Array [
     "rule": "no-missing-param",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 24,
+      "endLine": 34,
+      "range": Array [
+        555,
+        558,
+      ],
+      "startColumn": 21,
+      "startLine": 34,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+    "rule": "no-duplicate-param",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 32,
@@ -3777,6 +3841,22 @@ Array [
     "message": "Pipeline 'task-duplicate-params-embedded' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (my-task) with spec.params. Use spec.inputs.params instead.",
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "prefer-beta",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 22,
+      "endLine": 46,
+      "range": Array [
+        766,
+        769,
+      ],
+      "startColumn": 19,
+      "startLine": 46,
+    },
+    "message": "Duplicate param 'foo'",
+    "path": "./regression-tests/task-duplicate-params.yaml",
+    "rule": "no-duplicate-param",
   },
   Object {
     "level": "warning",

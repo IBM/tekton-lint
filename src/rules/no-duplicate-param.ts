@@ -32,6 +32,9 @@ export default (docs, tekton, report) => {
   for (const pipeline of Object.values<any>(tekton.pipelines)) {
     for (const task of pipeline.spec.tasks) {
       checkParams(getParams('Task', task), report);
+      if (task.taskSpec) {
+        checkParams(getParams('Task', task.taskSpec), report);
+      }
     }
   }
 };
