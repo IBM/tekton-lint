@@ -1,9 +1,17 @@
 import fs from 'fs';
 import yaml from 'yaml';
 import glob from 'fast-glob';
+import { TektonDefinition } from './interfaces';
 
-const collector = async (paths) => {
-  const docs = [];
+export interface Collectable {
+  content: TektonDefinition,
+  doc: yaml.Document.Parsed,
+  path: string,
+  raw: string,
+}
+
+const collector = async (paths: string[]): Promise<Collectable[]> => {
+  const docs: Collectable[] = [];
   const files = await glob(paths);
 
   for (const file of files) {

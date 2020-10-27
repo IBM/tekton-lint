@@ -1,5 +1,13 @@
+import { TektonDefinitions } from './interfaces';
+import { Problem, ReportFunction } from './reporter';
+
+/* eslint-disable-next-line no-unused-vars */
+type Rule = (docs: any, tekton: TektonDefinitions, report: ReportFunction) => Problem[]
+
 /* eslint-disable global-require */
-const rules = {
+const rules: {
+  [key: string]: Rule
+} = {
   'no-resourceversion': require('./rules/no-resourceversion').default,
 
   // no-duplicate-env

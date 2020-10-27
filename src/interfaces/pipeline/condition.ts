@@ -5,6 +5,7 @@ interface Condition extends Base {
   conditionRef: string;
   params?: ValueParam[];
   resources?: TaskResource[];
+  kind: string;
 }
 
 export default Condition;
