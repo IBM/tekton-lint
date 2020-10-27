@@ -1,16 +1,29 @@
 import { alg, Graph } from 'graphlib';
+import { Pipeline } from '../interfaces';
+import Task from '../interfaces/pipeline/task';
+import { ValueParam } from '../interfaces/common';
 
 const RESULT_PATTERN = '\\$\\(tasks\\.([^.]+)\\.results\\.[^.]*\\)';
 const RESULT_REGEX_G = new RegExp(RESULT_PATTERN, 'g');
 const RESULT_REGEX = new RegExp(RESULT_PATTERN);
 
-function getReferences(str) {
+type RefTypes = 'paramRef' | 'runAfterRef' | 'resourceRef'
+
+interface TaskReference {
+  type: RefTypes;
+  ref: string;
+}
+
+// eslint-disable-next-line no-unused-vars
+type ReferenceCreator = (task: Task) => TaskReference[]
+
+function getReferences(str: string) {
   const matches = str.match(RESULT_REGEX_G);
   if (!matches) return [];
   return matches.map(substr => substr.match(RESULT_REGEX)[1]);
 }
 
-function getResultReferences(param) {
+function getResultReferences(param: ValueParam) {
   if (Array.isArray(param.value)) {
     return param.value.flatMap(getReferences);
   } else if (param.value) {
@@ -19,9 +32,9 @@ function getResultReferences(param) {
   return [];
 }
 
-function paramsReferences(task) {
-  if (!task.params) return [];
-  return task.params
+function paramsReferences(taskSpec: Task): TaskReference[] {
+  if (!taskSpec.params) return [];
+  return taskSpec.params
     .flatMap(getResultReferences)
     .filter(Boolean)
     .map(ref => ({
@@ -30,7 +43,8 @@ function paramsReferences(task) {
     }));
 }
 
-function runAfterReferences({ runAfter }) {
+function runAfterReferences(taskSpec: Task): TaskReference[] {
+  const { runAfter } = taskSpec;
   if (runAfter === undefined || runAfter === null) return [];
 
   return runAfter.map(after => ({
@@ -39,19 +53,19 @@ function runAfterReferences({ runAfter }) {
   }));
 }
 
-function resourceInputReferences(task) {
+function resourceInputReferences(task: Task): TaskReference[] {
   const { resources } = task;
   if (resources === undefined || resources === null) return [];
   const { inputs } = resources;
   if (inputs === undefined || inputs === null) return [];
   const inputsFromTasks = inputs.filter(input => input.from !== undefined);
-  return inputsFromTasks.map(input => ({
-    ref: input.from,
+  return inputsFromTasks.flatMap(({ from }) => from.map(ref => ({
+    ref,
     type: 'resourceRef',
-  }));
+  })));
 };
 
-function buildTaskGraph(pipeline, referenceCreators) {
+function buildTaskGraph(pipeline: Pipeline, referenceCreators: ReferenceCreator[]) {
   const pipelineGraph = new Graph({ directed: true, multigraph: true });
   pipelineGraph.setGraph(pipeline.metadata.name);
   if (!pipeline.spec.tasks || pipeline.spec.tasks === []) {
@@ -62,7 +76,7 @@ function buildTaskGraph(pipeline, referenceCreators) {
     for (const referenceCreator of referenceCreators) {
       for (const { ref, type } of referenceCreator(task)) {
         if (!pipelineGraph.node(ref)) {
-          pipelineGraph.setNode(task, undefined);
+          pipelineGraph.setNode(task.name, undefined);
         }
         pipelineGraph.setEdge(ref, task.name, type);
       }
@@ -71,18 +85,18 @@ function buildTaskGraph(pipeline, referenceCreators) {
   return pipelineGraph;
 }
 
-function errorCyclesInPipeline(pipeline, referenceCreators, report) {
+function errorCyclesInPipeline(pipeline: Pipeline, referenceCreators: ReferenceCreator[], report) {
   const pipelineTaskGraph = buildTaskGraph(pipeline, referenceCreators);
   for (const cycle of alg.findCycles(pipelineTaskGraph)) {
     for (const taskNameInCycle of cycle) {
-      const taskInCycle = Object.values<any>(pipeline.spec.tasks).find(task => task.name === taskNameInCycle);
+      const taskInCycle = Object.values<Task>(pipeline.spec.tasks).find(task => task.name === taskNameInCycle);
       report(`Cycle found in tasks (dependency graph): ${[...cycle, cycle[0]].join(' -> ')}`, taskInCycle, 'name');
     }
   }
 }
 
 export default (docs, tekton, report) => {
-  for (const pipeline of Object.values(tekton.pipelines)) {
+  for (const pipeline of Object.values(tekton.pipelines) as Pipeline[]) {
     errorCyclesInPipeline(pipeline, [runAfterReferences, paramsReferences, resourceInputReferences], report);
   }
 };

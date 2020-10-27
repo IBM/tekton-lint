@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
+import { TektonDefinition } from './interfaces';
 import collector from './Collector';
 import Reporter from './reporter';
 import { lint as doLint } from './rules';
@@ -20,13 +21,13 @@ const getRulesConfig = () => {
   return defaultConfig;
 };
 
-export function lint(docs, reporter) {
+export function lint(docs: TektonDefinition[], reporter: Reporter) {
   reporter = reporter || new Reporter();
   const config = getRulesConfig();
   return doLint(docs, reporter, config);
 };
 
-export default async function runner(globs) {
+export default async function runner(globs: string[]) {
   const docs = await collector(globs);
   const reporter = new Reporter(docs);
   return lint(docs.map(doc => doc.content), reporter);
