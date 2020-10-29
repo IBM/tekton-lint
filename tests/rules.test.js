@@ -1,4 +1,4 @@
-const { default: lint } = require('../lib/runner');
+const { default: lint } = require('../src/runner');
 
 it('linter with no definitions should throw', async () => {
   await expect(lint([])).rejects.toThrow();
