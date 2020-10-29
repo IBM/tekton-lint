@@ -1,5 +1,5 @@
-const collect = require('../lib/Collector').default;
-const { default: runner, lint } = require('../lib/runner');
+const collect = require('../src/Collector').default;
+const { default: runner, lint } = require('../src/runner');
 
 it('regression tests with location', async () => {
   const result = await runner(['./regression-tests/*.yaml']);

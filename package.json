@@ -7,8 +7,9 @@
   ],
   "scripts": {
     "lint": "eslint --ext ts src",
-    "test": "npm run build && jest",
+    "test": "jest",
     "build": "tsc",
+    "prepare": "npm run build",
     "coverage": "jest --coverage"
   },
   "version": "0.5.2",
