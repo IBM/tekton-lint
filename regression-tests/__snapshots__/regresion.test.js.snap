@@ -1568,7 +1568,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-without-params' uses task 'clone' (referenced as 'git-clone'), and it depends on 'get-git-credentials', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2480,7 +2480,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-missing-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'runafter-test', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2544,7 +2544,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-task-with-null-runafter' uses task 'bar' (referenced as 'bar-task'), and it depends on 'null', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2576,7 +2576,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): my-task-1 -> my-task-1",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2592,7 +2592,7 @@ Array [
     },
     "message": "Pipeline 'pipeline-taskspec-invalid-runafters' uses task 'my-task-1' (defined in-line), and it depends on 'this-task-is-not-present', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/pipeline-test.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2816,7 +2816,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2864,7 +2864,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' uses task 'taks-2' (referenced as 'my-task'), and it depends on 'task-4', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2896,7 +2896,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' uses task 'taks-3' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2928,7 +2928,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-2', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2944,7 +2944,7 @@ Array [
     },
     "message": "Pipeline 'runafter-pipeline' uses task 'taks-4' (referenced as 'my-task'), and it depends on 'task-missing', which doesn't exists (declared in runAfter)",
     "path": "./regression-tests/run-after.yaml",
-    "rule": "no-pipeline-missing-task",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2960,7 +2960,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
     "path": "./regression-tests/task-dependency-cycles-combined.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2976,7 +2976,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-result -> task-with-resources-union -> task-with-result",
     "path": "./regression-tests/task-dependency-cycles-combined.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -2992,7 +2992,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-resources -> task-with-reflective-resources",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3008,7 +3008,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3024,7 +3024,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3040,7 +3040,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3056,7 +3056,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-b -> task-with-resources-a -> task-with-resources-b",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3072,7 +3072,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3088,7 +3088,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-resources-d -> task-with-resources-c -> task-with-resources-d",
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "warning",
@@ -3120,7 +3120,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result -> task-with-reflective-result",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3136,7 +3136,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3152,7 +3152,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3168,7 +3168,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3184,7 +3184,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3200,7 +3200,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3216,7 +3216,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-d -> task-with-reflective-result-c -> task-with-reflective-result-d",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3232,7 +3232,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3248,7 +3248,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3264,7 +3264,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3280,7 +3280,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-with-reflective-result-b -> task-with-reflective-result-c -> task-with-reflective-result-d -> task-with-reflective-result-a -> task-with-reflective-result-b",
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3296,7 +3296,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-1 -> task-1",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3328,7 +3328,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3360,7 +3360,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3392,7 +3392,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3424,7 +3424,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3456,7 +3456,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3488,7 +3488,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-4 -> task-3 -> task-4",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3520,7 +3520,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3552,7 +3552,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3584,7 +3584,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
@@ -3616,7 +3616,7 @@ Array [
     },
     "message": "Cycle found in tasks (dependency graph): task-2 -> task-3 -> task-4 -> task-1 -> task-2",
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
-    "rule": "no-pipeline-task-cycle",
+    "rule": "no-invalid-dag",
   },
   Object {
     "level": "error",
