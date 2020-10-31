@@ -5,7 +5,13 @@ import collector from './Collector';
 import Reporter from './reporter';
 import { lint as doLint } from './rules';
 
-const getRulesConfig = () => {
+interface Config {
+  rules: {
+    [rule: string]: 'off' | 'warning' | 'error';
+  };
+}
+
+const getRulesConfig = (): Config => {
   const defaultRcFile = fs.readFileSync(path.resolve(__dirname, '..', '.tektonlintrc.yaml'), 'utf8');
   const defaultConfig = yaml.parse(defaultRcFile);
 
@@ -20,14 +26,14 @@ const getRulesConfig = () => {
   return defaultConfig;
 };
 
-export function lint(docs, reporter) {
+export function lint(docs, reporter, config?: Config) {
   reporter = reporter || new Reporter();
-  const config = getRulesConfig();
+  config = config ?? getRulesConfig();
   return doLint(docs, reporter, config);
 };
 
-export default async function runner(globs) {
+export default async function runner(globs, config?: Config) {
   const docs = await collector(globs);
   const reporter = new Reporter(docs);
-  return lint(docs.map(doc => doc.content), reporter);
+  return lint(docs.map(doc => doc.content), reporter, config);
 };

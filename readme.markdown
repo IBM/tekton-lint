@@ -96,11 +96,13 @@ You can run this task from _Terminal_ > _Run Task..._ > _Run tekton-lint_:
 
 ### API
 
-#### `linter(globs: string[]): Promise<Problem[]>`
+#### `linter(globs: string[], config?: Config): Promise<Problem[]>`
 
 Runs the linter on the provided `globs`, and resolves to the list of found problems.
 Each problem has a `level` and a `message` property. `path` is the path to the
 original file, `loc` is an object which describes the location of the problem.
+
+An additional `config` object can be passed to fine-tune rules (see [Configuring `tekton-lint`](#configuring-tekton-lint)).
 
 ```ts
 interface Problem {
@@ -113,6 +115,12 @@ interface Problem {
     startColumn: number;
     endLine: number;
     endColumn: number;
+  };
+}
+
+interface Config {
+  rules: {
+    [rule: string]: 'off' | 'warning' | 'error';
   };
 }
 ```
@@ -129,7 +137,7 @@ for (const problem of problems) {
 }
 ```
 
-#### `linter.lint(docs: any[]): Problem[]`
+#### `linter.lint(docs: any[], config?: Config): Problem[]`
 
 Runs the linter on the provided parsed documents. Returns the list of found problems.
 
