@@ -2773,6 +2773,70 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 19,
+      "endLine": 10,
+      "range": Array [
+        153,
+        157,
+      ],
+      "startColumn": 15,
+      "startLine": 10,
+    },
+    "message": "Pipeline 'prefer-when-expression' references task 'task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/prefer-when-expression.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 5,
+      "endLine": 13,
+      "range": Array [
+        184,
+        214,
+      ],
+      "startColumn": 9,
+      "startLine": 12,
+    },
+    "message": "Task 'task-1' in Pipeline 'prefer-when-expression' is guarded by condition(s) ('condition'). Conditions are deprecated, use WhenExpressions instead.",
+    "path": "./regression-tests/prefer-when-expression.yaml",
+    "rule": "prefer-when-expression",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 13,
+      "range": Array [
+        186,
+        210,
+      ],
+      "startColumn": 11,
+      "startLine": 12,
+    },
+    "message": "Pipeline 'prefer-when-expression' references Condition 'condition' but the referenced Condition cannot be found. To fix this, include all the Condition definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/prefer-when-expression.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 19,
+      "endLine": 15,
+      "range": Array [
+        258,
+        262,
+      ],
+      "startColumn": 15,
+      "startLine": 15,
+    },
+    "message": "Pipeline 'prefer-when-expression' references task 'task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+    "path": "./regression-tests/prefer-when-expression.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 29,
       "endLine": 10,
       "range": Array [

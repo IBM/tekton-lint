@@ -1,0 +1,37 @@
+---
+apiVersion: tekton.dev/v1beta
+kind: Pipeline
+metadata:
+  name: prefer-when-expression
+spec:
+  tasks:
+    - name: task-1
+      taskRef:
+        name: task
+      conditions:
+        - conditionRef: condition
+    - name: task-2
+      taskRef:
+        name: task
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: prefer-when-expression
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta
+      kind: PipelineRun
+      metadata:
+        name: prefer-when-expression-run
+      spec:
+        pipelineSpec:
+          tasks:
+            - name: task-1
+              taskRef:
+                name: task
+              conditions:
+                - conditionRef: condition
+            - name: task-2
+              taskRef:
+                name: task
