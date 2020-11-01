@@ -1,0 +1,105 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name-FooBar # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: -no-invalid-name # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name- # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: .no-invalid-name # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name. # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name_foo # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name.foo # ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: 1-no-invalid-name # ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name-1 # ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: no-invalid-name
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: run-$(uid) # ok
+      spec:
+        pipelineRef:
+          name: no-invalid-name
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: -run-$(uid) # not ok
+      spec:
+        pipelineRef:
+          name: no-invalid-name
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-invalid-name
+spec:
+  params:
+    - name: foo # ok
+    - name: foo- # ok
+    - name: foo_ # ok
+    - name: FOO_BAR # ok
+    - name: FooBar # ok
+    - name: fooBar # ok
+    - name: foo-bar # ok
+    - name: foo-1-bar # ok
+    - name: foo_1-bar # ok
+    - name: 1-foo # not ok
+    - name: -foo # not ok
+    - name: _foo # not ok
+    - name: foo$bar # not ok
+  steps: []
