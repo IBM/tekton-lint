@@ -1,0 +1,33 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-deprecated-resource-1
+  labels:
+    tekton.dev/deprecated: true
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-deprecated-resource-2
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: no-deprecated-resource-1
+  labels:
+    tekton.dev/deprecated: true
+spec:
+  tasks: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: no-deprecated-resource-2
+  labels: {}
+spec:
+  tasks: []

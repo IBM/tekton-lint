@@ -757,6 +757,38 @@ Array [
   Object {
     "level": "warning",
     "loc": Object {
+      "endColumn": 32,
+      "endLine": 7,
+      "range": Array [
+        126,
+        130,
+      ],
+      "startColumn": 28,
+      "startLine": 7,
+    },
+    "message": "Task 'no-deprecated-resource-1' is deprecated!",
+    "path": "./regression-tests/no-deprecated-resource.yaml",
+    "rule": "no-deprecated-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 23,
+      "range": Array [
+        386,
+        390,
+      ],
+      "startColumn": 28,
+      "startLine": 23,
+    },
+    "message": "Pipeline 'no-deprecated-resource-1' is deprecated!",
+    "path": "./regression-tests/no-deprecated-resource.yaml",
+    "rule": "no-deprecated-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
       "endColumn": 20,
       "endLine": 9,
       "range": Array [
