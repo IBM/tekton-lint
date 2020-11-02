@@ -59,6 +59,9 @@ const rules = {
 
   // no-deprecated-resource
   'no-deprecated-resource': require('./rules/no-deprecated-resource').default,
+
+  // no-missing-hashbang
+  'no-missing-hashbang': require('./rules/no-missing-hashbang').default,
 };
 
 export default rules;
