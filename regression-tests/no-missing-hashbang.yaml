@@ -1,0 +1,23 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-missing-hashbang-1
+spec:
+  steps:
+    - name: step-1
+      image: alpine@sha256:abc123
+      script: |
+        #!/bin/sh
+        echo "noop"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: no-missing-hashbang-2
+spec:
+  steps:
+    - name: step-1
+      image: alpine@sha256:abc123
+      script: |
+        echo "noop"

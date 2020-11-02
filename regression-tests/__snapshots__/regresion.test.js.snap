@@ -1478,6 +1478,22 @@ Array [
     "level": "warning",
     "loc": Object {
       "endColumn": 1,
+      "endLine": 24,
+      "range": Array [
+        376,
+        398,
+      ],
+      "startColumn": 15,
+      "startLine": 22,
+    },
+    "message": "Step script 'step-1' should start with a hashbang line.",
+    "path": "./regression-tests/no-missing-hashbang.yaml",
+    "rule": "no-missing-hashbang",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
       "endLine": 9,
       "range": Array [
         103,
@@ -2947,6 +2963,22 @@ Array [
     "rule": "no-pipeline-missing-task",
   },
   Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 360,
+      "range": Array [
+        8561,
+        8599,
+      ],
+      "startColumn": 21,
+      "startLine": 358,
+    },
+    "message": "Step script 'step-1' should start with a hashbang line.",
+    "path": "./regression-tests/pipeline-test.yaml",
+    "rule": "no-missing-hashbang",
+  },
+  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 49,
@@ -2961,6 +2993,22 @@ Array [
     "message": "In Pipeline 'my-pipeline-with-undefined-result-reference' the value on path '.spec.tasks[1].params[1].value' refers to an undefined output result (as '$(tasks.first-task.results.bar)' - 'bar' is not a result in Task 'first-task')",
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 61,
+      "endLine": 392,
+      "range": Array [
+        9259,
+        9305,
+      ],
+      "startColumn": 15,
+      "startLine": 392,
+    },
+    "message": "Step script 'my-step' should start with a hashbang line.",
+    "path": "./regression-tests/pipeline-test.yaml",
+    "rule": "no-missing-hashbang",
   },
   Object {
     "level": "error",
@@ -3009,6 +3057,22 @@ Array [
     "message": "Task 'tekton-task-with-4-params' refers to task 'incident-issues-of-va-scan' at value of param 'my-param3' but there is no task with that name in pipeline 'pipeline-with-missing-task-in-param'",
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 430,
+      "range": Array [
+        10095,
+        10135,
+      ],
+      "startColumn": 21,
+      "startLine": 428,
+    },
+    "message": "Step script 'my-step' should start with a hashbang line.",
+    "path": "./regression-tests/pipeline-test.yaml",
+    "rule": "no-missing-hashbang",
   },
   Object {
     "level": "error",
@@ -3201,6 +3265,22 @@ Array [
     "message": "Pipeline 'pipeline-with-results-and-missing-tasks' references task 'a-missing-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
     "path": "./regression-tests/results-missing-tasks.yaml",
     "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 18,
+      "range": Array [
+        320,
+        373,
+      ],
+      "startColumn": 21,
+      "startLine": 16,
+    },
+    "message": "Step script 'first-step' should start with a hashbang line.",
+    "path": "./regression-tests/results-missing-tasks.yaml",
+    "rule": "no-missing-hashbang",
   },
   Object {
     "level": "error",
@@ -4993,6 +5073,22 @@ Array [
     "message": "Pipeline 'tekton-beta-mixed-pipeline' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (my-task) with spec.inputs.params. Use spec.params instead.",
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
+  },
+  Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 1,
+      "endLine": 58,
+      "range": Array [
+        936,
+        1011,
+      ],
+      "startColumn": 15,
+      "startLine": 56,
+    },
+    "message": "Step script 'script' should start with a hashbang line.",
+    "path": "./regression-tests/tekton-beta-mixed.yaml",
+    "rule": "no-missing-hashbang",
   },
   Object {
     "level": "warning",
