@@ -1385,7 +1385,7 @@ Array [
       "endLine": 104,
       "range": Array [
         1814,
-        1834,
+        1830,
       ],
       "startColumn": 7,
       "startLine": 103,
@@ -1400,8 +1400,8 @@ Array [
       "endColumn": 1,
       "endLine": 105,
       "range": Array [
-        1840,
-        1863,
+        1836,
+        1859,
       ],
       "startColumn": 7,
       "startLine": 104,
@@ -1416,8 +1416,8 @@ Array [
       "endColumn": 29,
       "endLine": 104,
       "range": Array [
-        1846,
-        1862,
+        1842,
+        1858,
       ],
       "startColumn": 13,
       "startLine": 104,

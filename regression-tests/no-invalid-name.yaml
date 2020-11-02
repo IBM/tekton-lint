@@ -100,6 +100,6 @@ spec:
     - name: foo_1-bar # ok
     - name: 1-foo # not ok
     - name: -foo # not ok
-    - name: _foo # not ok
+    - name: _foo # ok
     - name: foo$bar # not ok
   steps: []
