@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import 'source-map-support/register';
 import minimist from 'minimist';
 import watch from './watch';
 import run from './runner';
@@ -82,7 +83,7 @@ $ tekton-lint --watch '**/*.yaml'
         }
         return 0;
       }, (error) => {
-        console.error(error.message);
+        console.error(error);
         return 1;
       })
       .then((code) => {
