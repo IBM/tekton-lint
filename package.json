@@ -30,6 +30,7 @@
     "fast-glob": "^3.2.2",
     "graphlib": "^2.1.8",
     "minimist": "^1.2.5",
+    "source-map-support": "^0.5.20",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0",
     "yaml": "^1.8.2"
