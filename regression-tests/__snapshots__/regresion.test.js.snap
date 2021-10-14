@@ -755,6 +755,38 @@ Array [
     "rule": "no-missing-resource",
   },
   Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 31,
+      "endLine": 25,
+      "range": Array [
+        462,
+        479,
+      ],
+      "startColumn": 14,
+      "startLine": 25,
+    },
+    "message": "EventListener 'uses-ref' defines trigger template 'pipeline-template', but the trigger template is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
+      "endColumn": 32,
+      "endLine": 36,
+      "range": Array [
+        658,
+        675,
+      ],
+      "startColumn": 15,
+      "startLine": 36,
+    },
+    "message": "EventListener 'uses-name' defines trigger template 'pipeline-template', but the trigger template is missing.",
+    "path": "./regression-tests/eventlistener-test.yaml",
+    "rule": "no-missing-resource",
+  },
+  Object {
     "level": "warning",
     "loc": Object {
       "endColumn": 32,
