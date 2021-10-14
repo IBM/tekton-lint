@@ -12,6 +12,29 @@ spec:
         name: binding-missing
     - template:
         name: template-missing
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: uses-ref
+spec:
+  triggers:
+    - bindings:
+        name: pipeline-binding
+      template:
+        ref: pipeline-template
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: uses-name
+spec:
+  triggers:
+    - bindings:
+        name: pipeline-binding
+      template:
+        name: pipeline-template
+
 # Tekton linter should handle EventListener bindings
 # ---
 # apiVersion: tekton.dev/v1alpha1
