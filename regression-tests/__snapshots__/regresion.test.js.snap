@@ -3187,6 +3187,22 @@ Array [
     "rule": "no-missing-resource",
   },
   Object {
+    "level": "warning",
+    "loc": Object {
+      "endColumn": 13,
+      "endLine": 35,
+      "range": Array [
+        676,
+        714,
+      ],
+      "startColumn": 17,
+      "startLine": 34,
+    },
+    "message": "Task 'task-1' in PipelineRun 'prefer-when-expression-run' is guarded by condition(s) ('condition'). Conditions are deprecated, use WhenExpressions instead.",
+    "path": "./regression-tests/prefer-when-expression.yaml",
+    "rule": "prefer-when-expression",
+  },
+  Object {
     "level": "error",
     "loc": Object {
       "endColumn": 29,
