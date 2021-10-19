@@ -12,7 +12,7 @@
     "prepare": "npm run build",
     "coverage": "jest --coverage"
   },
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Linter for Tekton definitions",
   "main": "lib/runner.js",
   "repository": {
