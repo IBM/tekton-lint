@@ -1,7 +1,7 @@
 export default (docs, tekton, report) => {
   for (const task of Object.values<any>(tekton.tasks)) {
+    const templateEnvVars = new Set();
     if (task.spec.stepTemplate && task.spec.stepTemplate.env) {
-      const templateEnvVars = new Set();
       for (const env of task.spec.stepTemplate.env) {
         if (!templateEnvVars.has(env.name)) {
           templateEnvVars.add(env.name);
@@ -19,6 +19,9 @@ export default (docs, tekton, report) => {
           envVariables.add(env.name);
         } else {
           report(`Step '${step.name}' has env variable '${env.name}' duplicated in task '${task.metadata.name}'.`, env, 'name');
+        }
+        if (templateEnvVars.has(env.name)) {
+          report(`StepTemplate in task '${task.metadata.name}' and Step '${step.name}' define the same env variable.`, env, 'name');
         }
       }
     }

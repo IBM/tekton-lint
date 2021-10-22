@@ -933,6 +933,22 @@ Array [
   Object {
     "level": "error",
     "loc": Object {
+      "endColumn": 20,
+      "endLine": 71,
+      "range": Array [
+        1085,
+        1088,
+      ],
+      "startColumn": 17,
+      "startLine": 71,
+    },
+    "message": "StepTemplate in task 'no-duplicate-env-3' and Step 'step-1' define the same env variable.",
+    "path": "./regression-tests/no-duplicate-env.yaml",
+    "rule": "no-duplicate-env",
+  },
+  Object {
+    "level": "error",
+    "loc": Object {
       "endColumn": 16,
       "endLine": 10,
       "range": Array [
