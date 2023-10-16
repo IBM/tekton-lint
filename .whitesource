@@ -1,0 +1,9 @@
+{
+  "settingsInheritedFrom": "whitesource-config/whitesource-config@master",
+  "issueSettings": {
+    "issueRepoName": "sdks"
+  },
+  "scanSettings": {
+    "javaVersion": "17"
+  }
+}

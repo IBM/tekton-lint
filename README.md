@@ -4,7 +4,7 @@
 
 ## Requirements
 
-The only requirement is [node] (at least `12.0.0`).
+The only requirement is [node] (at least `16`).
 
 ## Install
 
