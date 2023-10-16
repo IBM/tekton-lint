@@ -22,25 +22,26 @@
   "bin": {
     "tekton-lint": "lib/lint.js"
   },
-  "author": "Bence Dányi <bence.danyi@ibm.com>",
+  "contributors": ["Matthew White <whitemat@uk.ibm.com>",
+                   "Bence Dányi <bence.danyi@ibm.com>"],
   "license": "Apache-2.0",
   "dependencies": {
-    "chalk": "^4.1.0",
-    "chokidar": "^3.4.0",
-    "fast-glob": "^3.2.2",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "fast-glob": "^3.3.1",
     "graphlib": "^2.1.8",
-    "minimist": "^1.2.5",
-    "source-map-support": "^0.5.20",
-    "strip-ansi": "^6.0.0",
+    "minimist": "^1.2.8",
+    "source-map-support": "^0.5.21",
+    "strip-ansi": "^6.0.1",
     "text-table": "^0.2.0",
-    "yaml": "^1.8.2"
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
-    "@types/jest": "^26.0.15",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "jest": "^26.0.1",
@@ -48,7 +49,7 @@
     "typescript": "^4.0.3"
   },
   "engines": {
-    "node": ">= 12.0.0"
+    "node": ">= 16.0.0"
   },
   "jest": {
     "roots": [
