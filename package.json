@@ -22,7 +22,7 @@
   "bin": {
     "tekton-lint": "lib/lint.js"
   },
-  "author": "Bence Dányi <bence.danyi@ibm.com>",
+  "contributors": ["Matthew White <whitemat@uk.ibm.com>", "Bence Dányi <bence.danyi@ibm.com>"],
   "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^4.1.0",
