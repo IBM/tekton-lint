@@ -22,3 +22,4 @@ rules: # error | warning | off
   no-undefined-param: error
   prefer-when-expression: warning
   no-deprecated-resource: warning
+  no-missing-hashbang: warning

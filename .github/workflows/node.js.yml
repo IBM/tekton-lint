@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v1
       with:
-        node-version: 14.x
+        node-version: 18.x
     - run: npm ci
     - run: npm run lint
 
@@ -24,7 +24,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [16.x, 18.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -35,3 +35,45 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Setup docker builds
+        uses: docker/setup-buildx-action@v1
+      
+      - name: loging to ghcr
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.repository_owner}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Docker meta
+        id: tekton-lint
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/ibm/tekton-lint
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
+      - name: build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          # platforms: linux/amd64,linux/arm/v7,linux/arm64
+          latforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.onviffmqtt.outputs.tags }}
+          labels: ${{ steps.onviffmqtt.outputs.labels }}
