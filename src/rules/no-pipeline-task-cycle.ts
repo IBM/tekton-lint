@@ -54,7 +54,7 @@ function resourceInputReferences(task) {
 function buildTaskGraph(pipeline, referenceCreators) {
   const pipelineGraph = new Graph({ directed: true, multigraph: true });
   pipelineGraph.setGraph(pipeline.metadata.name);
-  if (!pipeline.spec.tasks || pipeline.spec.tasks === []) {
+  if (!pipeline.spec.tasks || pipeline.spec.tasks.length === 0) {
     return pipelineGraph;
   }
   for (const task of pipeline.spec.tasks) {
