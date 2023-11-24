@@ -14,7 +14,7 @@
     "build": "tsc --pretty",
     "coverage": "jest --coverage",
     "prepare": "husky install",
-    "release": "commit-and-tag-version"
+    "release": "commit-and-tag-version --sign"
   },
   "version": "0.6.1",
   "description": "Linter for Tekton definitions",
