@@ -4,12 +4,18 @@
 
 ## Requirements
 
-The only requirement is [node] (at least `16`).
+The only requirement is [node] (at least `18`).
 
 ## Install
 
-```sh
-$ npm install -g tekton-lint
+> Please note that the npmjs module was published under the former maintainer's own ID
+> Please download the `tgz` and install locally
+
+```bash
+wget -qi https://github.com/IBM/tekton-lint/releases/download/v0.6.1/tekton-lint-0.6.1.tgz
+npm install -g tekton-lint-0.6.1.tgz
+tekton-lint --version
+rm tekton-lint-0.6.1.tgz
 ```
 
 ## Usage
