@@ -8,10 +8,10 @@ import logProblems from './log-problems';
 const pkg = require('../package.json');
 
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['watch'],
-  default: {
-    format: 'vscode',
-  },
+    boolean: ['watch'],
+    default: {
+        format: 'vscode',
+    },
 });
 
 const usageMessage = `Usage:
@@ -41,53 +41,58 @@ $ tekton-lint --watch '**/*.yaml'
 `;
 
 (() => {
-  if (argv.version) {
-    return console.log(`Version: ${pkg.version}`);
-  }
-
-  if (argv.help) {
-    return console.log(usageMessage);
-  }
-
-  if (argv._.length === 0) {
-    return console.log(usageMessage);
-  }
-
-  if (+process.version.slice(1).split('.')[0] < 12) {
-    process.exitCode = 1;
-    return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
-  }
-
-  let maxWarnings = -1;
-  if (argv['max-warnings'] !== undefined) {
-    if (typeof argv['max-warnings'] !== 'number') {
-      process.exitCode = 1;
-      return console.log(`Invalid value for 'max-warnings' option. Expected a number, received value: ${argv['max-warnings']}.`);
+    if (argv.version) {
+        return console.log(`Version: ${pkg.version}`);
     }
-    maxWarnings = argv['max-warnings'];
-  }
 
-  if (argv.watch) {
-    watch(argv._);
-  } else {
-    run(argv._)
-      .then((problems) => {
-        logProblems(argv as any, problems);
+    if (argv.help) {
+        return console.log(usageMessage);
+    }
 
-        const hasError = problems.some(p => p.level === 'error');
-        const warningCount = problems.filter(p => p.level === 'warning').length;
-        const tooManyWarnings = maxWarnings >= 0 && warningCount > maxWarnings;
-        // eslint-disable-next-line no-process-env
-        if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
-          return 1;
+    if (argv._.length === 0) {
+        return console.log(usageMessage);
+    }
+
+    if (+process.version.slice(1).split('.')[0] < 12) {
+        process.exitCode = 1;
+        return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
+    }
+
+    let maxWarnings = -1;
+    if (argv['max-warnings'] !== undefined) {
+        if (typeof argv['max-warnings'] !== 'number') {
+            process.exitCode = 1;
+            return console.log(
+                `Invalid value for 'max-warnings' option. Expected a number, received value: ${argv['max-warnings']}.`,
+            );
         }
-        return 0;
-      }, (error) => {
-        console.error(error);
-        return 1;
-      })
-      .then((code) => {
-        process.exitCode = code;
-      });
-  }
+        maxWarnings = argv['max-warnings'];
+    }
+
+    if (argv.watch) {
+        watch(argv._);
+    } else {
+        run(argv._)
+            .then(
+                (problems) => {
+                    logProblems(argv as any, problems);
+
+                    const hasError = problems.some((p) => p.level === 'error');
+                    const warningCount = problems.filter((p) => p.level === 'warning').length;
+                    const tooManyWarnings = maxWarnings >= 0 && warningCount > maxWarnings;
+                    // eslint-disable-next-line no-process-env
+                    if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
+                        return 1;
+                    }
+                    return 0;
+                },
+                (error) => {
+                    console.error(error);
+                    return 1;
+                },
+            )
+            .then((code) => {
+                process.exitCode = code;
+            });
+    }
 })();

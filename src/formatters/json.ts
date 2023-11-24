@@ -1,3 +1,3 @@
 export default (problems) => {
-  console.log(JSON.stringify(problems));
+    console.log(JSON.stringify(problems));
 };

@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`regression tests with location 1`] = `
-Array [
-  Object {
+[
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 12,
-      "range": Array [
+      "range": [
         99,
         152,
         152,
@@ -19,12 +19,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 16,
-      "range": Array [
+      "range": [
         158,
         209,
         209,
@@ -36,12 +36,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-invalid-param-type",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 16,
-      "range": Array [
+      "range": [
         158,
         209,
         209,
@@ -53,12 +53,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 19,
-      "range": Array [
+      "range": [
         215,
         257,
         257,
@@ -70,12 +70,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-invalid-param-type",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 19,
-      "range": Array [
+      "range": [
         215,
         257,
         257,
@@ -87,12 +87,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         263,
         294,
         294,
@@ -104,12 +104,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-invalid-param-type",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         263,
         294,
         294,
@@ -121,12 +121,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 27,
       "endLine": 31,
-      "range": Array [
+      "range": [
         478,
         490,
         491,
@@ -138,12 +138,12 @@ Array [
     "path": "./regression-tests/array-params.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         121,
         151,
         151,
@@ -155,12 +155,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 12,
-      "range": Array [
+      "range": [
         157,
         188,
         188,
@@ -172,12 +172,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 26,
-      "range": Array [
+      "range": [
         413,
         445,
         445,
@@ -189,12 +189,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 24,
-      "range": Array [
+      "range": [
         419,
         425,
         426,
@@ -206,12 +206,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 43,
-      "range": Array [
+      "range": [
         773,
         807,
         807,
@@ -223,12 +223,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "prefer-when-expression",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 43,
-      "range": Array [
+      "range": [
         775,
         807,
         807,
@@ -240,12 +240,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 56,
-      "range": Array [
+      "range": [
         1033,
         1131,
         1131,
@@ -257,12 +257,12 @@ Array [
     "path": "./regression-tests/conditions.yaml",
     "rule": "prefer-when-expression",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 7,
-      "range": Array [
+      "range": [
         117,
         121,
         122,
@@ -274,12 +274,12 @@ Array [
     "path": "./regression-tests/deprecated-resources.yaml",
     "rule": "no-deprecated-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 17,
-      "range": Array [
+      "range": [
         278,
         282,
         283,
@@ -291,12 +291,12 @@ Array [
     "path": "./regression-tests/deprecated-resources.yaml",
     "rule": "no-deprecated-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 26,
-      "range": Array [
+      "range": [
         441,
         445,
         446,
@@ -308,12 +308,12 @@ Array [
     "path": "./regression-tests/deprecated-resources.yaml",
     "rule": "no-deprecated-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 2,
-      "range": Array [
+      "range": [
         16,
         35,
         36,
@@ -325,12 +325,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         129,
         139,
         139,
@@ -342,12 +342,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 10,
-      "range": Array [
+      "range": [
         153,
         156,
         157,
@@ -359,12 +359,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 20,
-      "range": Array [
+      "range": [
         277,
         287,
         287,
@@ -376,12 +376,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 20,
-      "range": Array [
+      "range": [
         299,
         302,
         303,
@@ -393,12 +393,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 30,
-      "range": Array [
+      "range": [
         431,
         441,
         441,
@@ -410,12 +410,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 30,
-      "range": Array [
+      "range": [
         453,
         456,
         457,
@@ -427,12 +427,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 38,
-      "range": Array [
+      "range": [
         608,
         611,
         612,
@@ -444,12 +444,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 38,
-      "range": Array [
+      "range": [
         608,
         611,
         612,
@@ -461,12 +461,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-invalid-param-type",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 40,
-      "range": Array [
+      "range": [
         628,
         647,
         648,
@@ -478,12 +478,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 52,
-      "range": Array [
+      "range": [
         743,
         855,
         855,
@@ -495,12 +495,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 52,
-      "range": Array [
+      "range": [
         743,
         855,
         855,
@@ -512,12 +512,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 51,
-      "range": Array [
+      "range": [
         851,
         854,
         855,
@@ -529,12 +529,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 64,
-      "range": Array [
+      "range": [
         979,
         1069,
         1069,
@@ -546,12 +546,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 64,
-      "range": Array [
+      "range": [
         979,
         1069,
         1069,
@@ -563,12 +563,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1065,
         1068,
         1069,
@@ -580,12 +580,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 72,
-      "range": Array [
+      "range": [
         1192,
         1202,
         1202,
@@ -597,12 +597,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 72,
-      "range": Array [
+      "range": [
         1214,
         1217,
         1218,
@@ -614,12 +614,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 83,
-      "range": Array [
+      "range": [
         1468,
         1471,
         1472,
@@ -631,12 +631,12 @@ Array [
     "path": "./regression-tests/duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 27,
       "endLine": 10,
-      "range": Array [
+      "range": [
         103,
         121,
         122,
@@ -648,12 +648,12 @@ Array [
     "path": "./regression-tests/duplicate-resources.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 30,
-      "range": Array [
+      "range": [
         462,
         484,
         485,
@@ -665,12 +665,12 @@ Array [
     "path": "./regression-tests/duplicate-resources.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 37,
       "endLine": 50,
-      "range": Array [
+      "range": [
         846,
         874,
         875,
@@ -682,12 +682,12 @@ Array [
     "path": "./regression-tests/duplicate-resources.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 36,
       "endLine": 75,
-      "range": Array [
+      "range": [
         1341,
         1368,
         1369,
@@ -699,12 +699,12 @@ Array [
     "path": "./regression-tests/duplicate-resources.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 38,
       "endLine": 99,
-      "range": Array [
+      "range": [
         1856,
         1885,
         1886,
@@ -716,12 +716,12 @@ Array [
     "path": "./regression-tests/duplicate-resources.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 13,
-      "range": Array [
+      "range": [
         192,
         195,
         196,
@@ -733,12 +733,12 @@ Array [
     "path": "./regression-tests/env.yaml",
     "rule": "no-duplicate-env",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 30,
       "endLine": 8,
-      "range": Array [
+      "range": [
         131,
         146,
         147,
@@ -750,12 +750,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 10,
-      "range": Array [
+      "range": [
         177,
         193,
         194,
@@ -767,12 +767,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 30,
       "endLine": 12,
-      "range": Array [
+      "range": [
         223,
         238,
         239,
@@ -784,12 +784,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 14,
-      "range": Array [
+      "range": [
         269,
         285,
         286,
@@ -801,12 +801,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 25,
-      "range": Array [
+      "range": [
         462,
         479,
         480,
@@ -818,12 +818,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 36,
-      "range": Array [
+      "range": [
         658,
         675,
         676,
@@ -835,12 +835,12 @@ Array [
     "path": "./regression-tests/eventlistener-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 7,
-      "range": Array [
+      "range": [
         126,
         130,
         131,
@@ -852,12 +852,12 @@ Array [
     "path": "./regression-tests/no-deprecated-resource.yaml",
     "rule": "no-deprecated-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 23,
-      "range": Array [
+      "range": [
         386,
         390,
         391,
@@ -869,12 +869,12 @@ Array [
     "path": "./regression-tests/no-deprecated-resource.yaml",
     "rule": "no-deprecated-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 9,
-      "range": Array [
+      "range": [
         130,
         136,
         137,
@@ -886,12 +886,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 21,
-      "range": Array [
+      "range": [
         318,
         324,
         325,
@@ -903,12 +903,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 25,
-      "range": Array [
+      "range": [
         393,
         396,
         397,
@@ -920,12 +920,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-duplicate-env",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 33,
-      "range": Array [
+      "range": [
         506,
         512,
         513,
@@ -937,12 +937,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 48,
-      "range": Array [
+      "range": [
         733,
         736,
         737,
@@ -954,12 +954,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-duplicate-env",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 52,
-      "range": Array [
+      "range": [
         797,
         803,
         804,
@@ -971,12 +971,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 69,
-      "range": Array [
+      "range": [
         1051,
         1057,
         1058,
@@ -988,12 +988,12 @@ Array [
     "path": "./regression-tests/no-duplicate-env.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 10,
-      "range": Array [
+      "range": [
         157,
         160,
         161,
@@ -1005,12 +1005,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 20,
-      "range": Array [
+      "range": [
         289,
         299,
         299,
@@ -1022,12 +1022,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 20,
-      "range": Array [
+      "range": [
         311,
         314,
         315,
@@ -1039,12 +1039,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 26,
-      "range": Array [
+      "range": [
         413,
         416,
         417,
@@ -1056,12 +1056,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 30,
-      "range": Array [
+      "range": [
         488,
         491,
         492,
@@ -1073,12 +1073,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 40,
-      "range": Array [
+      "range": [
         620,
         630,
         630,
@@ -1090,12 +1090,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 40,
-      "range": Array [
+      "range": [
         642,
         645,
         646,
@@ -1107,12 +1107,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 50,
-      "range": Array [
+      "range": [
         777,
         787,
         787,
@@ -1124,12 +1124,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 50,
-      "range": Array [
+      "range": [
         799,
         802,
         803,
@@ -1141,12 +1141,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 82,
-      "range": Array [
+      "range": [
         1522,
         1525,
         1526,
@@ -1158,12 +1158,12 @@ Array [
     "path": "./regression-tests/no-duplicate-param.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         301,
         332,
         332,
@@ -1175,12 +1175,12 @@ Array [
     "path": "./regression-tests/no-extra-param.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 27,
-      "range": Array [
+      "range": [
         409,
         440,
         440,
@@ -1192,12 +1192,12 @@ Array [
     "path": "./regression-tests/no-extra-param.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 44,
-      "range": Array [
+      "range": [
         774,
         807,
         807,
@@ -1209,12 +1209,12 @@ Array [
     "path": "./regression-tests/no-extra-param.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 5,
-      "range": Array [
+      "range": [
         64,
         86,
         96,
@@ -1226,12 +1226,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 28,
       "endLine": 40,
-      "range": Array [
+      "range": [
         610,
         629,
         639,
@@ -1243,12 +1243,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 77,
-      "range": Array [
+      "range": [
         1249,
         1264,
         1265,
@@ -1260,12 +1260,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 84,
-      "range": Array [
+      "range": [
         1426,
         1441,
         1442,
@@ -1277,12 +1277,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 93,
-      "range": Array [
+      "range": [
         1544,
         1559,
         1559,
@@ -1294,12 +1294,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 94,
-      "range": Array [
+      "range": [
         1565,
         1581,
         1581,
@@ -1311,12 +1311,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 95,
-      "range": Array [
+      "range": [
         1587,
         1603,
         1603,
@@ -1328,12 +1328,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 96,
-      "range": Array [
+      "range": [
         1609,
         1628,
         1628,
@@ -1345,12 +1345,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 97,
-      "range": Array [
+      "range": [
         1634,
         1652,
         1652,
@@ -1362,12 +1362,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 98,
-      "range": Array [
+      "range": [
         1658,
         1676,
         1676,
@@ -1379,12 +1379,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 99,
-      "range": Array [
+      "range": [
         1682,
         1701,
         1701,
@@ -1396,12 +1396,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 100,
-      "range": Array [
+      "range": [
         1707,
         1728,
         1728,
@@ -1413,12 +1413,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 101,
-      "range": Array [
+      "range": [
         1734,
         1755,
         1755,
@@ -1430,12 +1430,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 102,
-      "range": Array [
+      "range": [
         1761,
         1782,
         1782,
@@ -1447,12 +1447,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 101,
-      "range": Array [
+      "range": [
         1767,
         1772,
         1782,
@@ -1464,12 +1464,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 103,
-      "range": Array [
+      "range": [
         1788,
         1808,
         1808,
@@ -1481,12 +1481,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 102,
-      "range": Array [
+      "range": [
         1794,
         1798,
         1808,
@@ -1498,12 +1498,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 104,
-      "range": Array [
+      "range": [
         1814,
         1830,
         1830,
@@ -1515,12 +1515,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 105,
-      "range": Array [
+      "range": [
         1836,
         1859,
         1859,
@@ -1532,12 +1532,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 104,
-      "range": Array [
+      "range": [
         1842,
         1849,
         1859,
@@ -1549,12 +1549,12 @@ Array [
     "path": "./regression-tests/no-invalid-name.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 27,
       "endLine": 9,
-      "range": Array [
+      "range": [
         129,
         142,
         143,
@@ -1566,12 +1566,12 @@ Array [
     "path": "./regression-tests/no-latest-image.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 20,
       "endLine": 14,
-      "range": Array [
+      "range": [
         229,
         235,
         236,
@@ -1583,12 +1583,12 @@ Array [
     "path": "./regression-tests/no-latest-image.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 35,
-      "range": Array [
+      "range": [
         611,
         617,
         618,
@@ -1600,12 +1600,12 @@ Array [
     "path": "./regression-tests/no-latest-image.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 24,
-      "range": Array [
+      "range": [
         376,
         398,
         398,
@@ -1617,12 +1617,12 @@ Array [
     "path": "./regression-tests/no-missing-hashbang.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 9,
-      "range": Array [
+      "range": [
         103,
         114,
         114,
@@ -1634,12 +1634,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 8,
-      "range": Array [
+      "range": [
         109,
         113,
         114,
@@ -1651,12 +1651,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         120,
         131,
         131,
@@ -1668,12 +1668,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 9,
-      "range": Array [
+      "range": [
         126,
         130,
         131,
@@ -1685,12 +1685,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 19,
-      "range": Array [
+      "range": [
         254,
         265,
         265,
@@ -1702,12 +1702,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 18,
-      "range": Array [
+      "range": [
         260,
         264,
         265,
@@ -1719,12 +1719,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 20,
-      "range": Array [
+      "range": [
         271,
         282,
         282,
@@ -1736,12 +1736,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 19,
-      "range": Array [
+      "range": [
         277,
         281,
         282,
@@ -1753,12 +1753,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 29,
-      "range": Array [
+      "range": [
         412,
         423,
         423,
@@ -1770,12 +1770,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 28,
-      "range": Array [
+      "range": [
         418,
         422,
         423,
@@ -1787,12 +1787,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 30,
-      "range": Array [
+      "range": [
         429,
         440,
         440,
@@ -1804,12 +1804,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 17,
       "endLine": 29,
-      "range": Array [
+      "range": [
         435,
         439,
         440,
@@ -1821,12 +1821,12 @@ Array [
     "path": "./regression-tests/param-names.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 1,
-      "range": Array [
+      "range": [
         12,
         31,
         32,
@@ -1838,12 +1838,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 9,
-      "range": Array [
+      "range": [
         108,
         171,
         171,
@@ -1855,12 +1855,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 17,
-      "range": Array [
+      "range": [
         401,
         450,
         450,
@@ -1872,12 +1872,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 19,
-      "range": Array [
+      "range": [
         456,
         516,
         516,
@@ -1889,12 +1889,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         522,
         584,
         584,
@@ -1906,12 +1906,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 25,
-      "range": Array [
+      "range": [
         590,
         732,
         732,
@@ -1923,12 +1923,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 28,
-      "range": Array [
+      "range": [
         799,
         815,
         816,
@@ -1940,12 +1940,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 35,
-      "range": Array [
+      "range": [
         1024,
         1051,
         1052,
@@ -1957,12 +1957,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 37,
-      "range": Array [
+      "range": [
         1068,
         1087,
         1088,
@@ -1974,12 +1974,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 46,
-      "range": Array [
+      "range": [
         1231,
         1247,
         1248,
@@ -1991,12 +1991,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 49,
-      "range": Array [
+      "range": [
         1311,
         1333,
         1334,
@@ -2008,12 +2008,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 51,
-      "range": Array [
+      "range": [
         1384,
         1411,
         1412,
@@ -2025,12 +2025,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 53,
-      "range": Array [
+      "range": [
         1456,
         1483,
         1484,
@@ -2042,12 +2042,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 53,
-      "range": Array [
+      "range": [
         1456,
         1483,
         1484,
@@ -2059,12 +2059,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 56,
-      "range": Array [
+      "range": [
         1531,
         1540,
         1541,
@@ -2076,12 +2076,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 59,
-      "range": Array [
+      "range": [
         1565,
         1587,
         1587,
@@ -2093,12 +2093,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1643,
         1665,
         1666,
@@ -2110,12 +2110,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 38,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1710,
         1730,
         1731,
@@ -2127,12 +2127,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 65,
-      "range": Array [
+      "range": [
         1771,
         1787,
         1788,
@@ -2144,12 +2144,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 36,
       "endLine": 69,
-      "range": Array [
+      "range": [
         1879,
         1897,
         1898,
@@ -2161,12 +2161,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 72,
-      "range": Array [
+      "range": [
         1947,
         1956,
         1957,
@@ -2178,12 +2178,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 26,
       "endLine": 78,
-      "range": Array [
+      "range": [
         2080,
         2089,
         2090,
@@ -2195,12 +2195,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 29,
       "endLine": 80,
-      "range": Array [
+      "range": [
         2130,
         2142,
         2143,
@@ -2212,12 +2212,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 81,
-      "range": Array [
+      "range": [
         2160,
         2182,
         2183,
@@ -2229,12 +2229,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 81,
-      "range": Array [
+      "range": [
         2160,
         2182,
         2183,
@@ -2246,12 +2246,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 83,
-      "range": Array [
+      "range": [
         2225,
         2247,
         2248,
@@ -2263,12 +2263,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 85,
-      "range": Array [
+      "range": [
         2264,
         2283,
         2284,
@@ -2280,12 +2280,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 94,
-      "range": Array [
+      "range": [
         2429,
         2448,
         2449,
@@ -2297,12 +2297,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 97,
-      "range": Array [
+      "range": [
         2512,
         2534,
         2535,
@@ -2314,12 +2314,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 99,
-      "range": Array [
+      "range": [
         2585,
         2612,
         2613,
@@ -2331,12 +2331,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 101,
-      "range": Array [
+      "range": [
         2657,
         2684,
         2685,
@@ -2348,12 +2348,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 101,
-      "range": Array [
+      "range": [
         2657,
         2684,
         2685,
@@ -2365,12 +2365,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 103,
-      "range": Array [
+      "range": [
         2701,
         2720,
         2721,
@@ -2382,12 +2382,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 111,
-      "range": Array [
+      "range": [
         2811,
         2874,
         2874,
@@ -2399,12 +2399,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 119,
-      "range": Array [
+      "range": [
         3104,
         3153,
         3153,
@@ -2416,12 +2416,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 121,
-      "range": Array [
+      "range": [
         3159,
         3219,
         3219,
@@ -2433,12 +2433,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 123,
-      "range": Array [
+      "range": [
         3225,
         3287,
         3287,
@@ -2450,12 +2450,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 127,
-      "range": Array [
+      "range": [
         3293,
         3435,
         3435,
@@ -2467,12 +2467,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 14,
       "endLine": 130,
-      "range": Array [
+      "range": [
         3504,
         3504,
         3504,
@@ -2484,12 +2484,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 137,
-      "range": Array [
+      "range": [
         3713,
         3740,
         3741,
@@ -2501,12 +2501,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 139,
-      "range": Array [
+      "range": [
         3757,
         3776,
         3777,
@@ -2518,12 +2518,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 147,
-      "range": Array [
+      "range": [
         3869,
         3932,
         3932,
@@ -2535,12 +2535,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 149,
-      "range": Array [
+      "range": [
         3938,
         4023,
         4023,
@@ -2552,12 +2552,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 151,
-      "range": Array [
+      "range": [
         4029,
         4089,
         4089,
@@ -2569,12 +2569,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 153,
-      "range": Array [
+      "range": [
         4095,
         4156,
         4156,
@@ -2586,12 +2586,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 155,
-      "range": Array [
+      "range": [
         4162,
         4211,
         4211,
@@ -2603,12 +2603,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 157,
-      "range": Array [
+      "range": [
         4217,
         4277,
         4277,
@@ -2620,12 +2620,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 159,
-      "range": Array [
+      "range": [
         4283,
         4345,
         4345,
@@ -2637,12 +2637,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 163,
-      "range": Array [
+      "range": [
         4351,
         4493,
         4493,
@@ -2654,12 +2654,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 169,
-      "range": Array [
+      "range": [
         4616,
         4635,
         4636,
@@ -2671,12 +2671,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 177,
-      "range": Array [
+      "range": [
         4730,
         4793,
         4793,
@@ -2688,12 +2688,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 179,
-      "range": Array [
+      "range": [
         4799,
         4884,
         4884,
@@ -2705,12 +2705,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 181,
-      "range": Array [
+      "range": [
         4890,
         4950,
         4950,
@@ -2722,12 +2722,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 183,
-      "range": Array [
+      "range": [
         4956,
         5017,
         5017,
@@ -2739,12 +2739,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 185,
-      "range": Array [
+      "range": [
         5023,
         5072,
         5072,
@@ -2756,12 +2756,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 187,
-      "range": Array [
+      "range": [
         5078,
         5138,
         5138,
@@ -2773,12 +2773,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 189,
-      "range": Array [
+      "range": [
         5144,
         5206,
         5206,
@@ -2790,12 +2790,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 193,
-      "range": Array [
+      "range": [
         5212,
         5354,
         5354,
@@ -2807,12 +2807,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 217,
-      "range": Array [
+      "range": [
         5602,
         5910,
         5910,
@@ -2824,12 +2824,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 217,
-      "range": Array [
+      "range": [
         5869,
         5910,
         5910,
@@ -2841,12 +2841,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 218,
-      "range": Array [
+      "range": [
         5926,
         5945,
         5946,
@@ -2858,12 +2858,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 226,
-      "range": Array [
+      "range": [
         6040,
         6094,
         6094,
@@ -2875,12 +2875,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 228,
-      "range": Array [
+      "range": [
         6100,
         6166,
         6166,
@@ -2892,12 +2892,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 231,
-      "range": Array [
+      "range": [
         6172,
         6263,
         6263,
@@ -2909,12 +2909,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 250,
-      "range": Array [
+      "range": [
         6616,
         6635,
         6636,
@@ -2926,12 +2926,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 263,
-      "range": Array [
+      "range": [
         6831,
         6869,
         6869,
@@ -2943,12 +2943,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 267,
-      "range": Array [
+      "range": [
         6938,
         6960,
         6961,
@@ -2960,12 +2960,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 283,
-      "range": Array [
+      "range": [
         7236,
         7258,
         7259,
@@ -2977,12 +2977,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 295,
-      "range": Array [
+      "range": [
         7448,
         7467,
         7468,
@@ -2994,12 +2994,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 298,
-      "range": Array [
+      "range": [
         7501,
         7523,
         7524,
@@ -3011,12 +3011,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 309,
-      "range": Array [
+      "range": [
         7683,
         7702,
         7703,
@@ -3028,12 +3028,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 318,
-      "range": Array [
+      "range": [
         7837,
         7845,
         7846,
@@ -3045,12 +3045,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 323,
-      "range": Array [
+      "range": [
         7898,
         7914,
         7914,
@@ -3062,12 +3062,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 324,
-      "range": Array [
+      "range": [
         7941,
         7949,
         7950,
@@ -3079,12 +3079,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 327,
-      "range": Array [
+      "range": [
         7982,
         8001,
         8002,
@@ -3096,12 +3096,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 336,
-      "range": Array [
+      "range": [
         8138,
         8146,
         8147,
@@ -3113,12 +3113,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 9,
       "endLine": 340,
-      "range": Array [
+      "range": [
         8199,
         8201,
         8201,
@@ -3130,12 +3130,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 342,
-      "range": Array [
+      "range": [
         8229,
         8237,
         8238,
@@ -3147,12 +3147,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 350,
-      "range": Array [
+      "range": [
         8354,
         8363,
         8364,
@@ -3164,12 +3164,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 354,
-      "range": Array [
+      "range": [
         8388,
         8435,
         8435,
@@ -3181,12 +3181,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 360,
-      "range": Array [
+      "range": [
         8561,
         8599,
         8599,
@@ -3198,12 +3198,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 379,
-      "range": Array [
+      "range": [
         9023,
         9054,
         9055,
@@ -3215,12 +3215,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 61,
       "endLine": 392,
-      "range": Array [
+      "range": [
         9259,
         9305,
         9306,
@@ -3232,12 +3232,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 46,
       "endLine": 405,
-      "range": Array [
+      "range": [
         9575,
         9603,
         9604,
@@ -3249,12 +3249,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 48,
       "endLine": 407,
-      "range": Array [
+      "range": [
         9647,
         9677,
         9678,
@@ -3266,12 +3266,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 413,
-      "range": Array [
+      "range": [
         9721,
         9821,
         9821,
@@ -3283,12 +3283,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-result",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 430,
-      "range": Array [
+      "range": [
         10095,
         10135,
         10135,
@@ -3300,12 +3300,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 36,
       "endLine": 432,
-      "range": Array [
+      "range": [
         10191,
         10209,
         10210,
@@ -3317,12 +3317,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 26,
       "endLine": 463,
-      "range": Array [
+      "range": [
         10922,
         10935,
         10936,
@@ -3334,12 +3334,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 467,
-      "range": Array [
+      "range": [
         10958,
         11006,
         11006,
@@ -3351,12 +3351,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 467,
-      "range": Array [
+      "range": [
         10960,
         11006,
         11006,
@@ -3368,12 +3368,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 31,
       "endLine": 465,
-      "range": Array [
+      "range": [
         10966,
         10980,
         10981,
@@ -3385,12 +3385,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 469,
-      "range": Array [
+      "range": [
         11056,
         11079,
         11080,
@@ -3402,12 +3402,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 475,
-      "range": Array [
+      "range": [
         11213,
         11226,
         11227,
@@ -3419,12 +3419,12 @@ Array [
     "path": "./regression-tests/pipeline-test.yaml",
     "rule": "prefer-kebab-case",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 10,
-      "range": Array [
+      "range": [
         153,
         157,
         158,
@@ -3436,12 +3436,12 @@ Array [
     "path": "./regression-tests/prefer-when-expression.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 13,
-      "range": Array [
+      "range": [
         184,
         210,
         210,
@@ -3453,12 +3453,12 @@ Array [
     "path": "./regression-tests/prefer-when-expression.yaml",
     "rule": "prefer-when-expression",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 13,
-      "range": Array [
+      "range": [
         186,
         210,
         210,
@@ -3470,12 +3470,12 @@ Array [
     "path": "./regression-tests/prefer-when-expression.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 15,
-      "range": Array [
+      "range": [
         258,
         262,
         263,
@@ -3487,12 +3487,12 @@ Array [
     "path": "./regression-tests/prefer-when-expression.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 35,
-      "range": Array [
+      "range": [
         676,
         702,
         702,
@@ -3504,12 +3504,12 @@ Array [
     "path": "./regression-tests/prefer-when-expression.yaml",
     "rule": "prefer-when-expression",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 29,
       "endLine": 10,
-      "range": Array [
+      "range": [
         175,
         189,
         190,
@@ -3521,12 +3521,12 @@ Array [
     "path": "./regression-tests/results-missing-tasks.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 18,
-      "range": Array [
+      "range": [
         320,
         373,
         373,
@@ -3538,12 +3538,12 @@ Array [
     "path": "./regression-tests/results-missing-tasks.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 11,
-      "range": Array [
+      "range": [
         167,
         174,
         175,
@@ -3555,12 +3555,12 @@ Array [
     "path": "./regression-tests/retries.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 8,
-      "range": Array [
+      "range": [
         113,
         119,
         120,
@@ -3572,12 +3572,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 10,
-      "range": Array [
+      "range": [
         149,
         156,
         157,
@@ -3589,12 +3589,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 14,
-      "range": Array [
+      "range": [
         230,
         237,
         238,
@@ -3606,12 +3606,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 15,
-      "range": Array [
+      "range": [
         263,
         269,
         269,
@@ -3623,12 +3623,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 18,
-      "range": Array [
+      "range": [
         319,
         326,
         327,
@@ -3640,12 +3640,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 25,
       "endLine": 19,
-      "range": Array [
+      "range": [
         343,
         351,
         352,
@@ -3657,12 +3657,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 22,
-      "range": Array [
+      "range": [
         400,
         407,
         408,
@@ -3674,12 +3674,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 39,
       "endLine": 23,
-      "range": Array [
+      "range": [
         424,
         446,
         447,
@@ -3691,12 +3691,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 38,
       "endLine": 23,
-      "range": Array [
+      "range": [
         433,
         445,
         445,
@@ -3708,12 +3708,12 @@ Array [
     "path": "./regression-tests/run-after.yaml",
     "rule": "no-pipeline-missing-task",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 38,
       "endLine": 8,
-      "range": Array [
+      "range": [
         125,
         150,
         151,
@@ -3725,12 +3725,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-combined.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 29,
       "endLine": 17,
-      "range": Array [
+      "range": [
         355,
         371,
         372,
@@ -3742,12 +3742,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-combined.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 43,
       "endLine": 26,
-      "range": Array [
+      "range": [
         481,
         511,
         512,
@@ -3759,12 +3759,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 42,
-      "range": Array [
+      "range": [
         859,
         880,
         881,
@@ -3776,12 +3776,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 51,
-      "range": Array [
+      "range": [
         1090,
         1111,
         1112,
@@ -3793,12 +3793,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 67,
-      "range": Array [
+      "range": [
         1452,
         1473,
         1474,
@@ -3810,12 +3810,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 76,
-      "range": Array [
+      "range": [
         1683,
         1704,
         1705,
@@ -3827,12 +3827,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 85,
-      "range": Array [
+      "range": [
         1914,
         1935,
         1936,
@@ -3844,12 +3844,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 94,
-      "range": Array [
+      "range": [
         2145,
         2166,
         2167,
@@ -3861,12 +3861,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-resources.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         107,
         170,
         170,
@@ -3878,12 +3878,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 29,
-      "range": Array [
+      "range": [
         572,
         599,
         600,
@@ -3895,12 +3895,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 42,
-      "range": Array [
+      "range": [
         907,
         936,
         937,
@@ -3912,12 +3912,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 48,
-      "range": Array [
+      "range": [
         1119,
         1148,
         1149,
@@ -3929,12 +3929,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1460,
         1489,
         1490,
@@ -3946,12 +3946,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 67,
-      "range": Array [
+      "range": [
         1672,
         1701,
         1702,
@@ -3963,12 +3963,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 73,
-      "range": Array [
+      "range": [
         1884,
         1913,
         1914,
@@ -3980,12 +3980,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 79,
-      "range": Array [
+      "range": [
         2096,
         2125,
         2126,
@@ -3997,12 +3997,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 92,
-      "range": Array [
+      "range": [
         2432,
         2461,
         2462,
@@ -4014,12 +4014,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 98,
-      "range": Array [
+      "range": [
         2644,
         2673,
         2674,
@@ -4031,12 +4031,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 104,
-      "range": Array [
+      "range": [
         2856,
         2885,
         2886,
@@ -4048,12 +4048,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 42,
       "endLine": 110,
-      "range": Array [
+      "range": [
         3068,
         3097,
         3098,
@@ -4065,12 +4065,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-results.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 8,
-      "range": Array [
+      "range": [
         138,
         144,
         145,
@@ -4082,12 +4082,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 10,
-      "range": Array [
+      "range": [
         174,
         181,
         182,
@@ -4099,12 +4099,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 19,
-      "range": Array [
+      "range": [
         347,
         353,
         354,
@@ -4116,12 +4116,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 21,
-      "range": Array [
+      "range": [
         383,
         390,
         391,
@@ -4133,12 +4133,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 23,
-      "range": Array [
+      "range": [
         428,
         434,
         435,
@@ -4150,12 +4150,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 25,
-      "range": Array [
+      "range": [
         464,
         471,
         472,
@@ -4167,12 +4167,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 34,
-      "range": Array [
+      "range": [
         639,
         645,
         646,
@@ -4184,12 +4184,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 36,
-      "range": Array [
+      "range": [
         675,
         682,
         683,
@@ -4201,12 +4201,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 38,
-      "range": Array [
+      "range": [
         720,
         726,
         727,
@@ -4218,12 +4218,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 40,
-      "range": Array [
+      "range": [
         756,
         763,
         764,
@@ -4235,12 +4235,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 42,
-      "range": Array [
+      "range": [
         801,
         807,
         808,
@@ -4252,12 +4252,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 44,
-      "range": Array [
+      "range": [
         837,
         844,
         845,
@@ -4269,12 +4269,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 46,
-      "range": Array [
+      "range": [
         882,
         888,
         889,
@@ -4286,12 +4286,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 48,
-      "range": Array [
+      "range": [
         918,
         925,
         926,
@@ -4303,12 +4303,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 57,
-      "range": Array [
+      "range": [
         1091,
         1097,
         1098,
@@ -4320,12 +4320,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 59,
-      "range": Array [
+      "range": [
         1127,
         1134,
         1135,
@@ -4337,12 +4337,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1172,
         1178,
         1179,
@@ -4354,12 +4354,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1208,
         1215,
         1216,
@@ -4371,12 +4371,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 65,
-      "range": Array [
+      "range": [
         1253,
         1259,
         1260,
@@ -4388,12 +4388,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 67,
-      "range": Array [
+      "range": [
         1289,
         1296,
         1297,
@@ -4405,12 +4405,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 69,
-      "range": Array [
+      "range": [
         1334,
         1340,
         1341,
@@ -4422,12 +4422,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-pipeline-task-cycle",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 71,
-      "range": Array [
+      "range": [
         1370,
         1377,
         1378,
@@ -4439,12 +4439,12 @@ Array [
     "path": "./regression-tests/task-dependency-cycles-runafter.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 2,
-      "range": Array [
+      "range": [
         16,
         35,
         36,
@@ -4456,12 +4456,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         129,
         139,
         139,
@@ -4473,12 +4473,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 10,
-      "range": Array [
+      "range": [
         153,
         156,
         157,
@@ -4490,12 +4490,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 20,
-      "range": Array [
+      "range": [
         282,
         292,
         292,
@@ -4507,12 +4507,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 16,
       "endLine": 20,
-      "range": Array [
+      "range": [
         304,
         307,
         308,
@@ -4524,12 +4524,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 23,
-      "range": Array [
+      "range": [
         336,
         355,
         356,
@@ -4541,12 +4541,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 35,
-      "range": Array [
+      "range": [
         447,
         559,
         559,
@@ -4558,12 +4558,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 35,
-      "range": Array [
+      "range": [
         447,
         559,
         559,
@@ -4575,12 +4575,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 34,
-      "range": Array [
+      "range": [
         555,
         558,
         559,
@@ -4592,12 +4592,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 36,
-      "range": Array [
+      "range": [
         575,
         594,
         595,
@@ -4609,12 +4609,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 47,
-      "range": Array [
+      "range": [
         680,
         770,
         770,
@@ -4626,12 +4626,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 47,
-      "range": Array [
+      "range": [
         680,
         770,
         770,
@@ -4643,12 +4643,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 47,
-      "range": Array [
+      "range": [
         736,
         770,
         770,
@@ -4660,12 +4660,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 46,
-      "range": Array [
+      "range": [
         766,
         769,
         770,
@@ -4677,12 +4677,12 @@ Array [
     "path": "./regression-tests/task-duplicate-params.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 2,
-      "range": Array [
+      "range": [
         16,
         35,
         36,
@@ -4694,12 +4694,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 22,
-      "range": Array [
+      "range": [
         551,
         722,
         722,
@@ -4711,12 +4711,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 28,
-      "range": Array [
+      "range": [
         859,
         955,
         955,
@@ -4728,12 +4728,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 36,
-      "range": Array [
+      "range": [
         1146,
         1172,
         1173,
@@ -4745,12 +4745,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1879,
         1898,
         1899,
@@ -4762,12 +4762,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 72,
-      "range": Array [
+      "range": [
         2128,
         2161,
         2162,
@@ -4779,12 +4779,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 75,
-      "range": Array [
+      "range": [
         2212,
         2238,
         2239,
@@ -4796,12 +4796,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 47,
       "endLine": 80,
-      "range": Array [
+      "range": [
         2342,
         2371,
         2372,
@@ -4813,12 +4813,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 82,
-      "range": Array [
+      "range": [
         2416,
         2443,
         2444,
@@ -4830,12 +4830,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 84,
-      "range": Array [
+      "range": [
         2493,
         2524,
         2525,
@@ -4847,12 +4847,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 52,
       "endLine": 98,
-      "range": Array [
+      "range": [
         2861,
         2893,
         2894,
@@ -4864,12 +4864,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 100,
-      "range": Array [
+      "range": [
         2910,
         2929,
         2930,
@@ -4881,12 +4881,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 111,
-      "range": Array [
+      "range": [
         3153,
         3186,
         3187,
@@ -4898,12 +4898,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 114,
-      "range": Array [
+      "range": [
         3237,
         3263,
         3264,
@@ -4915,12 +4915,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 47,
       "endLine": 119,
-      "range": Array [
+      "range": [
         3367,
         3396,
         3397,
@@ -4932,12 +4932,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 121,
-      "range": Array [
+      "range": [
         3441,
         3468,
         3469,
@@ -4949,12 +4949,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 123,
-      "range": Array [
+      "range": [
         3518,
         3549,
         3550,
@@ -4966,12 +4966,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 52,
       "endLine": 137,
-      "range": Array [
+      "range": [
         3886,
         3918,
         3919,
@@ -4983,12 +4983,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 172,
-      "range": Array [
+      "range": [
         4798,
         4817,
         4818,
@@ -5000,12 +5000,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 29,
       "endLine": 175,
-      "range": Array [
+      "range": [
         4847,
         4867,
         4868,
@@ -5017,12 +5017,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 183,
-      "range": Array [
+      "range": [
         5048,
         5081,
         5082,
@@ -5034,12 +5034,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 186,
-      "range": Array [
+      "range": [
         5132,
         5158,
         5159,
@@ -5051,12 +5051,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 47,
       "endLine": 191,
-      "range": Array [
+      "range": [
         5262,
         5291,
         5292,
@@ -5068,12 +5068,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 193,
-      "range": Array [
+      "range": [
         5336,
         5363,
         5364,
@@ -5085,12 +5085,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 195,
-      "range": Array [
+      "range": [
         5413,
         5444,
         5445,
@@ -5102,12 +5102,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 30,
       "endLine": 200,
-      "range": Array [
+      "range": [
         5557,
         5570,
         5571,
@@ -5119,12 +5119,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-volume",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 28,
       "endLine": 202,
-      "range": Array [
+      "range": [
         5619,
         5630,
         5631,
@@ -5136,12 +5136,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-volume",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 205,
-      "range": Array [
+      "range": [
         5658,
         5677,
         5678,
@@ -5153,12 +5153,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 216,
-      "range": Array [
+      "range": [
         5914,
         5947,
         5948,
@@ -5170,12 +5170,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 40,
       "endLine": 219,
-      "range": Array [
+      "range": [
         5998,
         6024,
         6025,
@@ -5187,12 +5187,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 47,
       "endLine": 224,
-      "range": Array [
+      "range": [
         6128,
         6157,
         6158,
@@ -5204,12 +5204,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 45,
       "endLine": 226,
-      "range": Array [
+      "range": [
         6202,
         6229,
         6230,
@@ -5221,12 +5221,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 49,
       "endLine": 228,
-      "range": Array [
+      "range": [
         6279,
         6310,
         6311,
@@ -5238,12 +5238,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 30,
       "endLine": 233,
-      "range": Array [
+      "range": [
         6423,
         6436,
         6437,
@@ -5255,12 +5255,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-volume",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 52,
       "endLine": 239,
-      "range": Array [
+      "range": [
         6580,
         6612,
         6613,
@@ -5272,12 +5272,12 @@ Array [
     "path": "./regression-tests/task-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 2,
-      "range": Array [
+      "range": [
         16,
         35,
         36,
@@ -5289,12 +5289,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 9,
-      "range": Array [
+      "range": [
         104,
         121,
         121,
@@ -5306,12 +5306,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 9,
-      "range": Array [
+      "range": [
         106,
         121,
         121,
@@ -5323,12 +5323,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 11,
-      "range": Array [
+      "range": [
         149,
         168,
         169,
@@ -5340,12 +5340,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         251,
         324,
         324,
@@ -5357,12 +5357,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 21,
-      "range": Array [
+      "range": [
         307,
         324,
         324,
@@ -5374,12 +5374,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 30,
-      "range": Array [
+      "range": [
         440,
         457,
         457,
@@ -5391,12 +5391,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 30,
-      "range": Array [
+      "range": [
         442,
         457,
         457,
@@ -5408,12 +5408,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 43,
-      "range": Array [
+      "range": [
         585,
         678,
         678,
@@ -5425,12 +5425,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 43,
-      "range": Array [
+      "range": [
         661,
         678,
         678,
@@ -5442,12 +5442,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 58,
-      "range": Array [
+      "range": [
         936,
         1011,
         1011,
@@ -5459,12 +5459,12 @@ Array [
     "path": "./regression-tests/tekton-beta-mixed.yaml",
     "rule": "no-missing-hashbang",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 2,
-      "range": Array [
+      "range": [
         16,
         35,
         36,
@@ -5476,12 +5476,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 11,
-      "range": Array [
+      "range": [
         138,
         160,
         160,
@@ -5493,12 +5493,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 51,
       "endLine": 19,
-      "range": Array [
+      "range": [
         375,
         408,
         409,
@@ -5510,12 +5510,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 32,
       "endLine": 23,
-      "range": Array [
+      "range": [
         521,
         540,
         541,
@@ -5527,12 +5527,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "prefer-beta",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 39,
-      "range": Array [
+      "range": [
         701,
         844,
         844,
@@ -5544,12 +5544,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 39,
-      "range": Array [
+      "range": [
         802,
         844,
         844,
@@ -5561,12 +5561,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1427,
         1570,
         1570,
@@ -5578,12 +5578,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1528,
         1570,
         1570,
@@ -5595,12 +5595,12 @@ Array [
     "path": "./regression-tests/tekton-beta-ref.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 10,
-      "range": Array [
+      "range": [
         120,
         142,
         142,
@@ -5612,12 +5612,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 44,
       "endLine": 18,
-      "range": Array [
+      "range": [
         348,
         374,
         375,
@@ -5629,12 +5629,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         657,
         800,
         800,
@@ -5646,12 +5646,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         758,
         800,
         800,
@@ -5663,12 +5663,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1338,
         1481,
         1481,
@@ -5680,12 +5680,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 61,
-      "range": Array [
+      "range": [
         1439,
         1481,
         1481,
@@ -5697,12 +5697,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 87,
-      "range": Array [
+      "range": [
         1966,
         1992,
         1993,
@@ -5714,12 +5714,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 105,
-      "range": Array [
+      "range": [
         2292,
         2348,
         2348,
@@ -5731,12 +5731,12 @@ Array [
     "path": "./regression-tests/tekton-beta.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 32,
-      "range": Array [
+      "range": [
         590,
         610,
         611,
@@ -5748,12 +5748,12 @@ Array [
     "path": "./regression-tests/triggerbinding-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 52,
       "endLine": 54,
-      "range": Array [
+      "range": [
         1025,
         1062,
         1063,
@@ -5765,12 +5765,12 @@ Array [
     "path": "./regression-tests/triggerbinding-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 93,
-      "range": Array [
+      "range": [
         1691,
         1706,
         1706,
@@ -5782,12 +5782,12 @@ Array [
     "path": "./regression-tests/triggerbinding-test.yaml",
     "rule": "no-invalid-param-type",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 19,
       "endLine": 106,
-      "range": Array [
+      "range": [
         1939,
         1947,
         1948,
@@ -5799,12 +5799,12 @@ Array [
     "path": "./regression-tests/triggerbinding-test.yaml",
     "rule": "no-duplicate-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 27,
-      "range": Array [
+      "range": [
         586,
         603,
         604,
@@ -5816,12 +5816,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5833,12 +5833,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5850,12 +5850,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5867,12 +5867,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5884,12 +5884,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5901,12 +5901,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5918,12 +5918,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5935,12 +5935,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         610,
         876,
         876,
@@ -5952,12 +5952,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 38,
-      "range": Array [
+      "range": [
         813,
         876,
         876,
@@ -5969,12 +5969,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-extra-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1413,
         1430,
         1431,
@@ -5986,12 +5986,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 28,
       "endLine": 70,
-      "range": Array [
+      "range": [
         1591,
         1602,
         1603,
@@ -6003,12 +6003,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 43,
       "endLine": 73,
-      "range": Array [
+      "range": [
         1670,
         1693,
         1694,
@@ -6020,12 +6020,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 83,
-      "range": Array [
+      "range": [
         1828,
         1881,
         1881,
@@ -6037,12 +6037,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 149,
-      "range": Array [
+      "range": [
         3369,
         3386,
         3387,
@@ -6054,12 +6054,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 156,
-      "range": Array [
+      "range": [
         3548,
         3548,
         3548,
@@ -6071,12 +6071,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 164,
-      "range": Array [
+      "range": [
         3716,
         3741,
         3742,
@@ -6088,12 +6088,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-duplicate-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 187,
-      "range": Array [
+      "range": [
         4235,
         4252,
         4253,
@@ -6105,12 +6105,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 38,
       "endLine": 194,
-      "range": Array [
+      "range": [
         4415,
         4434,
         4435,
@@ -6122,12 +6122,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 240,
-      "range": Array [
+      "range": [
         5459,
         5512,
         5512,
@@ -6139,12 +6139,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 258,
-      "range": Array [
+      "range": [
         5930,
         5947,
         5948,
@@ -6156,12 +6156,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6173,12 +6173,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6190,12 +6190,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6207,12 +6207,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6224,12 +6224,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6241,12 +6241,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6258,12 +6258,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6275,12 +6275,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 267,
-      "range": Array [
+      "range": [
         5954,
         6166,
         6166,
@@ -6292,12 +6292,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 276,
-      "range": Array [
+      "range": [
         6302,
         6355,
         6355,
@@ -6309,12 +6309,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 294,
-      "range": Array [
+      "range": [
         6773,
         6790,
         6791,
@@ -6326,12 +6326,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 18,
       "endLine": 301,
-      "range": Array [
+      "range": [
         6952,
         6952,
         6952,
@@ -6343,12 +6343,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 307,
-      "range": Array [
+      "range": [
         7045,
         7071,
         7072,
@@ -6360,12 +6360,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 330,
-      "range": Array [
+      "range": [
         7565,
         7582,
         7583,
@@ -6377,12 +6377,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 44,
       "endLine": 348,
-      "range": Array [
+      "range": [
         7990,
         8025,
         8026,
@@ -6394,12 +6394,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 371,
-      "range": Array [
+      "range": [
         8519,
         8536,
         8537,
@@ -6411,12 +6411,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 55,
       "endLine": 386,
-      "range": Array [
+      "range": [
         8866,
         8912,
         8913,
@@ -6428,12 +6428,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 391,
-      "range": Array [
+      "range": [
         8935,
         8988,
         8988,
@@ -6445,12 +6445,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 409,
-      "range": Array [
+      "range": [
         9406,
         9423,
         9424,
@@ -6462,12 +6462,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 431,
-      "range": Array [
+      "range": [
         9856,
         9909,
         9909,
@@ -6479,12 +6479,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 438,
-      "range": Array [
+      "range": [
         10064,
         10081,
         10082,
@@ -6496,12 +6496,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 37,
       "endLine": 443,
-      "range": Array [
+      "range": [
         10158,
         10186,
         10187,
@@ -6513,12 +6513,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-invalid-name",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 448,
-      "range": Array [
+      "range": [
         10209,
         10262,
         10262,
@@ -6530,12 +6530,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-unused-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 35,
       "endLine": 455,
-      "range": Array [
+      "range": [
         10417,
         10434,
         10435,
@@ -6547,12 +6547,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 34,
       "endLine": 463,
-      "range": Array [
+      "range": [
         10712,
         10720,
         10721,
@@ -6564,12 +6564,12 @@ Array [
     "path": "./regression-tests/triggertemplate-test.yaml",
     "rule": "no-resourceversion",
   },
-  Object {
+  {
     "level": "warning",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 9,
-      "range": Array [
+      "range": [
         113,
         119,
         120,
@@ -6581,12 +6581,12 @@ Array [
     "path": "./regression-tests/value-of-undefined.yaml",
     "rule": "no-latest-image",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 26,
       "endLine": 12,
-      "range": Array [
+      "range": [
         144,
         173,
         173,
@@ -6598,12 +6598,12 @@ Array [
     "path": "./regression-tests/value-of-undefined.yaml",
     "rule": "no-undefined-param",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 10,
-      "range": Array [
+      "range": [
         150,
         157,
         158,
@@ -6615,12 +6615,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 13,
-      "range": Array [
+      "range": [
         216,
         218,
         219,
@@ -6632,12 +6632,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 22,
       "endLine": 25,
-      "range": Array [
+      "range": [
         399,
         406,
         407,
@@ -6649,12 +6649,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-resource",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 28,
-      "range": Array [
+      "range": [
         465,
         467,
         468,
@@ -6666,12 +6666,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 24,
       "endLine": 30,
-      "range": Array [
+      "range": [
         508,
         510,
         511,
@@ -6683,12 +6683,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 51,
-      "range": Array [
+      "range": [
         762,
         820,
         820,
@@ -6700,12 +6700,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 51,
-      "range": Array [
+      "range": [
         762,
         820,
         820,
@@ -6717,12 +6717,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 64,
-      "range": Array [
+      "range": [
         1012,
         1049,
         1049,
@@ -6734,12 +6734,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 25,
       "endLine": 63,
-      "range": Array [
+      "range": [
         1045,
         1048,
         1049,
@@ -6751,12 +6751,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 25,
       "endLine": 81,
-      "range": Array [
+      "range": [
         1356,
         1359,
         1360,
@@ -6768,12 +6768,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 116,
-      "range": Array [
+      "range": [
         1940,
         2015,
         2015,
@@ -6785,12 +6785,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 129,
-      "range": Array [
+      "range": [
         2231,
         2278,
         2278,
@@ -6802,12 +6802,12 @@ Array [
     "path": "./regression-tests/workspaces.yaml",
     "rule": "no-missing-workspace",
   },
-  Object {
+  {
     "level": "error",
-    "loc": Object {
+    "loc": {
       "endColumn": 1,
       "endLine": 129,
-      "range": Array [
+      "range": [
         2231,
         2278,
         2278,
