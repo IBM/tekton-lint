@@ -5,82 +5,88 @@ import table from 'text-table';
 const pluralize = (word, count) => (count === 1 ? word : `${word}s`);
 
 const groupByPath = (problems) => {
-  const groups = {};
+    const groups = {};
 
-  for (const problem of problems) {
-    if (!groups[problem.path]) {
-      groups[problem.path] = [];
+    for (const problem of problems) {
+        if (!groups[problem.path]) {
+            groups[problem.path] = [];
+        }
+
+        groups[problem.path].push(problem);
     }
 
-    groups[problem.path].push(problem);
-  }
-
-  return groups;
+    return groups;
 };
 
 const messageRow = (obj) => {
-  const location = obj.loc || {};
-  const level = obj.level === 'error' ? chalk.red('error') : chalk.yellow('warning');
-  return [
-    '',
-    location.startLine || 0,
-    location.startColumn || 0,
-    level,
-    obj.message.replace(/([^ ])\.$/u, '$1'),
-    chalk.dim(obj.rule || ''),
-  ];
+    const location = obj.loc || {};
+    const level = obj.level === 'error' ? chalk.red('error') : chalk.yellow('warning');
+    return [
+        '',
+        location.startLine || 0,
+        location.startColumn || 0,
+        level,
+        obj.message.replace(/([^ ])\.$/u, '$1'),
+        chalk.dim(obj.rule || ''),
+    ];
 };
 
 export default (results) => {
-  let output = `\n`;
+    let output = `\n`;
 
-  for (const [path, problems] of Object.entries<any>(groupByPath(results))) {
-    output += `${chalk.underline(path)}\n`;
+    for (const [path, problems] of Object.entries<any>(groupByPath(results))) {
+        output += `${chalk.underline(path)}\n`;
 
-    const section = table(
-      problems.map(messageRow),
-      {
-        align: ['', 'r', 'l'],
-        stringLength(str) {
-          return stripAnsi(str).length;
-        },
-      },
-    )
-    .split(`\n`)
-    .map(el => el.replace(/(\d+)\s+(\d+)/u, (m, p1, p2) => chalk.dim(`${p1}:${p2}`)))
-    .join(`\n`);
+        const section = table(problems.map(messageRow), {
+            align: ['', 'r', 'l'],
+            stringLength(str) {
+                return stripAnsi(str).length;
+            },
+        })
+            .split(`\n`)
+            .map((el) => el.replace(/(\d+)\s+(\d+)/u, (m, p1, p2) => chalk.dim(`${p1}:${p2}`)))
+            .join(`\n`);
 
-    output += `${section}\n\n`;
-  }
-
-  let errorCount = 0;
-  let warningCount = 0;
-  let summaryColor = 'yellow';
-
-  results.forEach((result) => {
-    if (result.level === 'error') {
-      errorCount += 1;
-    } else {
-      warningCount += 1;
+        output += `${section}\n\n`;
     }
-  });
 
-  if (errorCount > 0) {
-    summaryColor = 'red';
-  }
+    let errorCount = 0;
+    let warningCount = 0;
+    let summaryColor = 'yellow';
 
-  const total = errorCount + warningCount;
+    results.forEach((result) => {
+        if (result.level === 'error') {
+            errorCount += 1;
+        } else {
+            warningCount += 1;
+        }
+    });
 
-  if (total > 0) {
-    output += chalk[summaryColor].bold([
-        '\u2716 ', total, pluralize(' problem', total),
-        ' (', errorCount, pluralize(' error', errorCount), ', ',
-        warningCount, pluralize(' warning', warningCount), ')\n',
-    ].join(''));
+    if (errorCount > 0) {
+        summaryColor = 'red';
+    }
 
-    // Resets output color, for prevent change on top level
-    console.log(chalk.reset(output));
-  }
+    const total = errorCount + warningCount;
 
-  console.log('');
+    if (total > 0) {
+        output += chalk[summaryColor].bold(
+            [
+                '\u2716 ',
+                total,
+                pluralize(' problem', total),
+                ' (',
+                errorCount,
+                pluralize(' error', errorCount),
+                ', ',
+                warningCount,
+                pluralize(' warning', warningCount),
+                ')\n',
+            ].join(''),
+        );
+
+        // Resets output color, for prevent change on top level
+        console.log(chalk.reset(output));
+    }
+
+    console.log('');
 };

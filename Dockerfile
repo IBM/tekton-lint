@@ -17,7 +17,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
 WORKDIR /usr/src/app
-COPY --chown=node:node --from=builder /usr/src/app/lib ./lib
+COPY --chown=node:node --from=builder /usr/src/app/dist ./dist
 COPY --chown=node:node --from=builder /usr/src/app/package.json ./
 COPY --chown=node:node --from=builder /usr/src/app/npm-shrinkwrap.json ./
 
@@ -25,4 +25,4 @@ USER node
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
 # ENTRYPOINT [ "/tini", "--", "node","lib/main.js" ]
-ENTRYPOINT [ "node","lib/main.js" ]
+ENTRYPOINT [ "node","dist/main.js" ]
