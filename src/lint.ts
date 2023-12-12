@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
-import 'source-map-support/register';
+import 'source-map-support/register.js';
 import minimist from 'minimist';
-import watch from './watch';
-import run from './runner';
-import logProblems from './log-problems';
-const pkg = require('../package.json');
+import watch from './watch.js';
+import run from './runner.js';
+import logProblems from './log-problems.js';
+
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import url from 'node:url';
+
+const p = path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', 'package.json');
+const pkg = JSON.parse(fs.readFileSync(p, 'utf-8'));
 
 const argv = minimist(process.argv.slice(2), {
     boolean: ['watch'],

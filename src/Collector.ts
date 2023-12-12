@@ -3,7 +3,7 @@ import yaml from 'yaml';
 import glob from 'fast-glob';
 
 const collector = async (paths) => {
-    const docs = [];
+    const docs: any = [];
     const files = await glob(paths);
 
     for (const file of files) {

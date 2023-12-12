@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
-import collector from './Collector';
-import Reporter from './reporter';
-import { lint as doLint } from './rules';
+import url from 'node:url';
+import collector from './Collector.js';
+import Reporter from './reporter.js';
+import { lint as doLint } from './rules.js';
 
 interface Config {
     rules: {
@@ -12,7 +13,10 @@ interface Config {
 }
 
 const getRulesConfig = (): Config => {
-    const defaultRcFile = fs.readFileSync(path.resolve(__dirname, '..', '.tektonlintrc.yaml'), 'utf8');
+    const defaultRcFile = fs.readFileSync(
+        path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', '.tektonlintrc.yaml'),
+        'utf8',
+    );
     const defaultConfig = yaml.parse(defaultRcFile);
 
     if (fs.existsSync('./.tektonlintrc.yaml')) {
@@ -36,7 +40,7 @@ export default async function runner(globs, config?: Config) {
     const docs = await collector(globs);
     const reporter = new Reporter(docs);
     return lint(
-        docs.map((doc) => doc.content),
+        docs.map((doc: any) => doc.content),
         reporter,
         config,
     );

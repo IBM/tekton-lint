@@ -16,7 +16,7 @@ describe.each([
 });
 
 it('stringifying empty path should throw an error', () => {
-    expect(() => pathToString(null)).toThrowError()
+    expect(() => pathToString(null as any)).toThrowError()
 })
 
 describe.each([

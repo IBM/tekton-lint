@@ -1,4 +1,4 @@
-import { walk, pathToString } from '../walk';
+import { walk, pathToString } from '../walk.js';
 
 const isValidName = (name) => {
     const valid = new RegExp('^[a-z0-9-()$.]*$');

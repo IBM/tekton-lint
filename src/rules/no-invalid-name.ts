@@ -1,4 +1,4 @@
-import collectResources from '../collect-resources';
+import collectResources from '../collect-resources.js';
 
 const isValidName = (name) => {
     const valid = new RegExp('^[a-z0-9-()$.]*$');
@@ -40,11 +40,13 @@ export default (docs, tekton, report) => {
     const resources = collectResources(docs);
 
     for (const [kind, resourceMap] of Object.entries(resources)) {
-        for (const resource of Object.values(resourceMap)) {
-            if (!isValidName(resource.metadata.name)) {
+        for (const resource of Object.values(resourceMap as any)) {
+            if (!isValidName((resource as any).metadata.name)) {
                 report(
-                    `Invalid name for ${kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format.`,
-                    resource.metadata,
+                    `Invalid name for ${kind} '${
+                        (resource as any).metadata.name
+                    }'. Names should be in lowercase, alphanumeric, kebab-case format.`,
+                    (resource as any).metadata,
                     'name',
                 );
             }
