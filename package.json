@@ -21,10 +21,10 @@
   "main": "lib/runner.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:IBM/tekton-lint.git"
+    "url": "git+ssh://git@github.com/IBM/tekton-lint.git"
   },
   "bin": {
-    "tekton-lint": "lib/lint.js"
+    "tekton-lint": "dist/lint.js"
   },
   "contributors": [
     "Matthew White <whitemat@uk.ibm.com>",
