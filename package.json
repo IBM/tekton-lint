@@ -1,5 +1,5 @@
 {
-  "name": "tekton-lint",
+  "name": "@ibm/tekton-lint",
   "files": [
     "lib/**/*.js",
     "lib/**/*.d.ts",
