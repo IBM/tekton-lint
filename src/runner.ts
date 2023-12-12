@@ -1,47 +1,50 @@
-import fs from 'fs';
-import path from 'path';
-import yaml from 'yaml';
-import url from 'node:url';
-import collector from './Collector.js';
+import { ToolConfig, getRulesConfig } from './config.js';
 import Reporter from './reporter.js';
 import { lint as doLint } from './rules.js';
 
-interface Config {
-    rules: {
-        [rule: string]: 'off' | 'warning' | 'error';
-    };
-}
+import glob from 'fast-glob';
+import yaml from 'yaml';
+import fs from 'node:fs';
+import { collectAllExternal } from './external.js';
+import { logger } from './logger.js';
 
-const getRulesConfig = (): Config => {
-    const defaultRcFile = fs.readFileSync(
-        path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', '.tektonlintrc.yaml'),
-        'utf8',
-    );
-    const defaultConfig = yaml.parse(defaultRcFile);
+/* Collect paths based on the glob pattern passed in  */
+const collector = async (paths: string[], cfg: ToolConfig) => {
+    const docs: any = [];
+    const files = await glob(paths);
+    logger.info('Found these files %j', files);
+    for (const file of files) {
+        const content = await fs.promises.readFile(file, 'utf8');
 
-    if (fs.existsSync('./.tektonlintrc.yaml')) {
-        const customRcFile = fs.readFileSync('./.tektonlintrc.yaml', 'utf8');
-        const customConfig = yaml.parse(customRcFile);
-        customConfig.rules = { ...defaultConfig.rules, ...customConfig.rules };
-
-        return customConfig;
+        for (const doc of yaml.parseAllDocuments(content)) {
+            docs.push({
+                content: doc.toJSON(),
+                doc,
+                path: file,
+                raw: content,
+                no_report: file.startsWith(cfg.cache_dir),
+            });
+        }
     }
 
-    return defaultConfig;
+    return docs;
 };
 
-export function lint(docs, reporter, config?: Config) {
-    reporter = reporter || new Reporter();
-    config = config ?? getRulesConfig();
-    return doLint(docs, reporter, config);
-}
+export default async function runner(cfg: ToolConfig) {
+    // setup the cache of the external tasks
+    const external_cached = collectAllExternal(cfg);
 
-export default async function runner(globs, config?: Config) {
-    const docs = await collector(globs);
-    const reporter = new Reporter(docs);
-    return lint(
-        docs.map((doc: any) => doc.content),
-        reporter,
-        config,
-    );
+    // get all the documents, including the external ones cached locally
+    const docs = await collector([...cfg.globs, ...external_cached], cfg);
+    if (docs && docs.length > 0) {
+        const reporter = new Reporter(docs);
+
+        return doLint(
+            docs.map((doc: any) => doc.content),
+            reporter,
+            getRulesConfig(cfg),
+        );
+    } else {
+        throw new Error(`No paths match glob "${cfg.globs}" - did you mean to add "*.yaml"`);
+    }
 }

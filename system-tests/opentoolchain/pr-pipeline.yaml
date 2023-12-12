@@ -1,0 +1,148 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pr-pipeline
+spec:
+  params:
+    - name: target-repository
+      description: the git repo
+    - name: target-branch
+      description: the branch for the git repo
+    - name: pr-repository
+      description: The source git repo for the PullRequest
+      default: ""
+    - name: pr-branch
+      description: The source branch for the PullRequest
+      default: ""
+    - name: pr-commit-id
+      description: the commit id/sha for the PullRequest
+      default: ""
+    - name: pipeline-debug
+      description: toggles debug mode for the pipeline
+      default: "1"
+    - name: build-container-image
+      default: us.icr.io/cil15-shared-registry/uki-research-tekton-build@sha256:059b2e14aec0f913e49419389bf1217ac2d00364ce4a9142924da6da4107e700
+    - name: description
+      default: "PR Build"
+    - name: cluster
+      description: The IBM Cloud Kubernetes cluster name
+    - name: cluster-region
+      description: The IBM Cloud Kubernetes cluster region
+      default: us-south
+    - name: cluster-namespace
+      description: The Kubernetes cluster namespace      
+  workspaces:
+    - name: pipeline-ws
+
+  tasks:
+    - name: set-git-commit-pending
+      taskRef:
+        name: git-set-commit-status
+      workspaces:
+        - name: artifacts
+          workspace: pipeline-ws
+      params:
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"      
+        - name: repository
+          value: $(params.target-repository)
+        - name: revision
+          value: $(params.pr-commit-id)
+        - name: description
+          value: $(params.description)
+        - name: state
+          value: "pending"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+    - name: git-clone
+      taskRef:
+        name: git-clone-repo
+      params:
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"
+        - name: repository
+          value: $(params.target-repository)
+        - name: branch
+          value: $(params.target-branch)
+        - name: pr-repository
+          value: $(params.pr-repository)
+        - name: pr-branch
+          value: $(params.pr-branch)
+        - name: pr-revision
+          value: $(params.pr-commit-id)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+    - name: unittest
+      runAfter: [git-clone]
+      taskRef:
+        name: unittest
+      results:
+        - name: output
+          description: Build Result
+      params:
+        - name: run-build-image
+          value: $(params.build-container-image)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+    - name: fvtest
+      runAfter: [unittest]
+      taskRef:
+        name: fvtest
+      results:
+        - name: output
+          description: Build Result
+      params:
+        - name: run-build-image
+          value: $(params.build-container-image)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"              
+        - name: cluster
+          value: $(params.cluster)
+        - name: cluster-namespace
+          value: "mcd-kfp"      # for use by the fv tests
+        - name: cluster-region
+          value: $(params.cluster-region)             
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+  finally:
+    - name: set-git-commit-status
+      taskRef:
+        name: git-set-commit-status
+      workspaces:
+        - name: artifacts
+          workspace: pipeline-ws
+      params:
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"      
+        - name: repository
+          value: $(params.target-repository)
+        - name: revision
+          value: $(params.pr-commit-id)
+        - name: description
+          value: $(params.description)
+        - name: state
+          value: "$(tasks.fvtest.status)"
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)

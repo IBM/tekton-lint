@@ -2,21 +2,14 @@
 
 > A linter for [tekton] resource definitions
 
-## Requirements
+## Quick Start 
 
-The only requirement is [node] (at least `18`).
+Using Node 20 or later:
 
-## Install
-
-> Please note that the npmjs module was published under the former maintainer's own ID
-> Please download the `tgz` and install locally
-
-```bash
-wget -qi https://github.com/IBM/tekton-lint/releases/download/v0.6.1/tekton-lint-0.6.1.tgz
-npm install -g tekton-lint-0.6.1.tgz
-tekton-lint --version
-rm tekton-lint-0.6.1.tgz
 ```
+npx @ibm/tekton-lint <glob-pattern-to-yaml-files>
+```
+
 
 ## Usage
 

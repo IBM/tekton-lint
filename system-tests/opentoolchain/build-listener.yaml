@@ -1,0 +1,25 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: trigger-binding-manual
+spec:
+  params:
+    - name: repository
+      value: "https://github.ibm.com/CodeNet/codellm-dataprep"
+    - name: branch
+      value: "main"
+    - name: releasetag
+      value: $(event.ref)
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: manual-run
+spec:
+  triggers:
+    - binding:
+        name: trigger-binding-manual
+      template:
+        name: trigger-template-build

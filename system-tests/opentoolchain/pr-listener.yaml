@@ -1,0 +1,38 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-ent-pr-listener
+spec:
+  triggers:
+    - bindings: 
+        - name: github-ent-pr-binding   
+      template:
+        name: pr-template
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: github-ent-pr-binding
+spec:
+  params:
+    - name: target-repository
+      value: $(event.pull_request.base.repo.clone_url)
+    - name: target-branch
+      value: $(event.pull_request.base.ref)
+    - name: target-commit-id
+      value: $(event.pull_request.base.sha)      
+    - name: pr-commit-id
+      value: $(event.pull_request.head.sha)
+    - name: pr-commit-timestamp
+      value: $(event.pull_request.head.repo.pushed_at)
+    - name: pr-repository
+      value: $(event.pull_request.head.repo.clone_url)
+    - name: pr-branch
+      value: $(event.pull_request.head.ref)
+    - name: pr-number
+      value: $(event.pull_request.number) 
+    - name: pr-name
+      value: $(event.pull_request.user.login)             
+    - name: scm-type
+      value: "github-ent"

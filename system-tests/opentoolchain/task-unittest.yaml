@@ -1,0 +1,60 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: unittest
+spec:
+  params:
+    - name: run-build-image
+      description: The name of the container image to use as the running host
+    - name: pipeline-debug
+      description: Pipeline debug mode
+      default: "0"  
+  workspaces:
+    - name: output
+      description: A workspace backing by a volume
+      mountPath: /artifacts
+  steps:
+    - name: run-unit-test
+      image: $(params.run-build-image)
+      env:
+        - name: WORKSPACE_PATH
+          value: $(workspaces.output.path)
+        - name: PIPELINE_DEBUG
+          value: $(params.pipeline-debug)
+      workingDir: $(workspaces.output.path)
+      command: ["/bin/bash", "-c"]
+      args:
+        - |
+            set -ex -o pipefail
+
+            if [ $PIPELINE_DEBUG == 1 ]; then
+              pwd
+              env
+              set -x
+              default_versions.sh
+              python3 --version
+            fi            
+            
+            just unittest
+
+      volumeMounts:
+        - name: cd-config-volume
+          mountPath: /cd-config
+        - name: environment-properties
+          mountPath: /cd-config/environment-properties
+        - name: secure-properties
+          mountPath: /cd-config/secure-properties
+  volumes:
+    - name: cd-config-volume
+      configMap:
+        name: toolchain
+        items:
+          - key: toolchain.json
+            path: toolchain.json
+    - name: environment-properties
+      configMap:
+        name: environment-properties
+    - name: secure-properties
+      secret:
+        secretName: secure-properties

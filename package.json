@@ -12,7 +12,7 @@
     "release": "commit-and-tag-version --sign"
   },
   "type": "module",
-  "version": "0.7.0",
+  "version": "1.0.0-beta.1",
   "description": "Linter for Tekton definitions",
   "repository": {
     "type": "git",
@@ -29,9 +29,12 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
+    "env-var": "^7.4.1",
     "fast-glob": "^3.3.2",
     "graphlib": "^2.1.8",
     "minimist": "^1.2.8",
+    "pino": "^8.17.2",
+    "pino-pretty": "^10.3.1",
     "source-map-support": "^0.5.21",
     "strip-ansi": "^6.0.1",
     "text-table": "^0.2.0",
