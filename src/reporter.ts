@@ -18,6 +18,7 @@ function getCol(chars, n) {
 function getLocation(m, node, prop) {
     if (!m.has(node)) return {};
     const k = m.get(node);
+
     const chars = Array.from(k.doc.raw);
     let n = prop ? k.node.get(prop, true) : k.node;
     if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
@@ -84,6 +85,13 @@ class Reporter {
     }
 
     report(message, node, prop, isError, rule?) {
+        // if this is trying to report on something in the cache ignore
+
+        if (this.m.has(node)) {
+            const k = this.m.get(node);
+            if (k.doc.no_report) return;
+        }
+
         this.problems.push({
             message,
             rule,

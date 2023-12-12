@@ -1,0 +1,191 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-pipeline
+spec:
+  params:
+    - name: repository
+      description: the git repo containing source code. If empty, the repository url will be found from toolchain
+      default: ""
+    - name: branch
+      description: the branch for the git repo
+      default: "main"
+    - name: revision
+      description: the git revision/commit for the git repo
+      default: ""
+    - name: pipeline-debug
+      default: "1"
+    - name: build-container-image
+      default: us.icr.io/cil15-shared-registry/uki-research-tekton-build@sha256:059b2e14aec0f913e49419389bf1217ac2d00364ce4a9142924da6da4107e700
+    - name: app-name
+      default: codellm-dataprep-ci
+    - name: releasetag
+      default: "refs/tags/000"
+    - name: cluster
+      description: The IBM Cloud Kubernetes cluster name
+    - name: cluster-region
+      description: The IBM Cloud Kubernetes cluster region
+      default: us-south
+    - name: cluster-namespace
+      description: The Kubernetes cluster namespace
+      
+  workspaces:
+    - name: pipeline-ws
+
+  tasks:
+    - name: extract-repository-url
+      taskRef:
+        name: toolchain-extract-value
+      params:
+        - name: expression
+          # if a params.repository is given, it takes precedence
+          value: '. as $toolchain | ["$(params.repository)"] | if .[0]=="" then $toolchain | .services[] | select(.toolchain_binding.name=="repo") | .dashboard_url else .[0] end'
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)  
+    - name: extract-doi-enablement
+      taskRef:
+        name: toolchain-extract-value
+      params:
+        # count the number of service in the toolchain that are DevopsInsights
+        - name: expression
+          value: 'reduce .services[] as $service (0; if $service.service_id=="draservicebroker" then .+1 else . end)'
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+
+
+
+    - name: publish-doi-buildrecord
+      runAfter: [extract-doi-enablement]
+      when:
+        - input: $(tasks.extract-doi-enablement.results.extracted-value)
+          operator: in
+          values: ["1"]
+      taskRef:
+        name: doi-publish-buildrecord
+      params:
+        - name: toolchain-apikey-secret-key
+          value: "toolchain-apikey"
+        - name: app-name
+          value: "mcd-codellm-dataprep-ci"
+        - name: git-repository
+          value: $(tasks.git-clone.results.git-repository)
+        - name: git-branch
+          value: $(tasks.git-clone.results.git-branch)
+        - name: git-commit
+          value: $(tasks.git-clone.results.git-commit)
+
+    - name: git-clone
+      taskRef:
+        name: git-clone-repo
+      params:
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"
+        - name: repository
+          value: $(tasks.extract-repository-url.results.extracted-value)
+        - name: branch
+          value: $(params.branch)
+        - name: revision
+          value: $(params.revision)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+    - name: record-version
+      runAfter: [git-clone]
+      taskRef:
+        name: record-version
+      params:
+        - name: run-build-image
+          value: $(params.build-container-image)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: version
+          value: $(params.releasetag)
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+    - name: build
+      runAfter: [record-version]
+      taskRef:
+        name: build
+      params:
+        - name: run-build-image
+          value: $(params.build-container-image)
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+        - name: version
+          value: $(tasks.record-version.results.versiontag)        
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: ibmcloud-apikey-secret-key
+          value: "toolchain-apikey"              
+        - name: cluster
+          value: $(params.cluster)
+        - name: cluster-namespace
+          value: $(params.cluster-namespace)      
+        - name: cluster-region
+          value: $(params.cluster-region)      
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+
+
+    - name: containerize
+      runAfter: [build]
+      taskRef:
+        name: icr-execute-in-dind
+      params:
+        - name: continuous-delivery-context-secret
+          value: "secure-properties"
+        - name: container-registry-apikey-secret-key
+          value: "toolchain-apikey"
+        # - name: registry-create-namespace
+        #   value: $(params.registry-create-namespace)
+        - name: registry-region
+          value: us.icr.io
+        - name: registry-namespace
+          value: cil15-shared-registry
+        - name: image-name
+          value: "mcd-exact-dedup-process"
+        - name: path-to-context
+          value: preprocessing/ray/exact-dedupe-annotation
+        - name: path-to-dockerfile
+          value: preprocessing/ray/exact-dedupe-annotation/docker/
+        - name: dockerfile
+          value: Dockerfile2
+        - name: docker-commands
+          value: |
+
+            cp ${PATH_TO_CONTEXT}/../rayutils/dist/rayutils-0.1.0-py3-none-any.whl ${PATH_TO_CONTEXT}
+
+            # Minting image tag using format: BUILD_NUMBER-BRANCH-COMMIT_ID-TIMESTAMP
+            # e.g. 3-master-50da6912-20181123114435
+            # (use build number as first segment to allow image tag as a patch release name according to semantic versioning)
+            GIT_BRANCH="$(tasks.git-clone.results.git-branch)"
+            GIT_COMMIT="$(tasks.git-clone.results.git-commit)"
+            TIMESTAMP=$( date -u "+%Y%m%d%H%M%S")
+            VERSION=$(cat raw_version.tag)
+
+            IMAGE_TAG=${VERSION}-${TIMESTAMP}
+            # if [ ! -z "${GIT_COMMIT}" ]; then
+            #   GIT_COMMIT_SHORT=$( echo ${GIT_COMMIT} | head -c 8 )
+            #   IMAGE_TAG=${GIT_COMMIT_SHORT}-${IMAGE_TAG}
+            # fi
+            # if [ ! -z "${GIT_BRANCH}" ]; then IMAGE_TAG=${GIT_BRANCH}-${IMAGE_TAG} ; fi
+            # IMAGE_TAG=${BUILD_NUMBER}-${IMAGE_TAG}
+            echo "$IMAGE_TAG"
+            # Default docker build / inspect / push command
+            docker build --tag "$IMAGE_URL:$IMAGE_TAG" --file $PATH_TO_DOCKERFILE/$DOCKERFILE $PATH_TO_CONTEXT
+            docker inspect ${IMAGE_URL}:${IMAGE_TAG}
+            docker push ${IMAGE_URL}:${IMAGE_TAG}
+        - name: pipeline-debug
+          value: $(params.pipeline-debug)
+      workspaces:
+        - name: source
+          workspace: pipeline-ws

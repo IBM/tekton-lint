@@ -1,5 +1,7 @@
 import rules from './rule-loader.js';
-import Reporter from './reporter.js';
+
+import { logger } from './logger.js';
+import { Tekton } from './interfaces/common.js';
 
 const createReporter = (rule, config, reporter) => {
     const isError = config.rules[rule] && config.rules[rule] === 'error';
@@ -9,24 +11,31 @@ const createReporter = (rule, config, reporter) => {
     };
 };
 
-const parse = (docs) => ({
-    tasks: Object.fromEntries(docs.filter((item) => item.kind === 'Task').map((item) => [item.metadata.name, item])),
-    pipelines: Object.fromEntries(
-        docs.filter((item) => item.kind === 'Pipeline').map((item) => [item.metadata.name, item]),
-    ),
-    listeners: Object.fromEntries(
-        docs.filter((item) => item.kind === 'EventListener').map((item) => [item.metadata.name, item]),
-    ),
-    triggerTemplates: Object.fromEntries(
-        docs.filter((item) => item.kind === 'TriggerTemplate').map((item) => [item.metadata.name, item]),
-    ),
-    triggerBindings: Object.fromEntries(
-        docs.filter((item) => item.kind === 'TriggerBinding').map((item) => [item.metadata.name, item]),
-    ),
-    conditions: Object.fromEntries(
-        docs.filter((item) => item.kind === 'Condition').map((item) => [item.metadata.name, item]),
-    ),
-});
+const parse = (docs): Tekton => {
+    const tkn: Tekton = {
+        tasks: Object.fromEntries(
+            docs.filter((item) => item.kind === 'Task').map((item) => [item.metadata.name, item]),
+        ),
+        pipelines: Object.fromEntries(
+            docs.filter((item) => item.kind === 'Pipeline').map((item) => [item.metadata.name, item]),
+        ),
+        listeners: Object.fromEntries(
+            docs.filter((item) => item.kind === 'EventListener').map((item) => [item.metadata.name, item]),
+        ),
+        triggerTemplates: Object.fromEntries(
+            docs.filter((item) => item.kind === 'TriggerTemplate').map((item) => [item.metadata.name, item]),
+        ),
+        triggerBindings: Object.fromEntries(
+            docs.filter((item) => item.kind === 'TriggerBinding').map((item) => [item.metadata.name, item]),
+        ),
+        conditions: Object.fromEntries(
+            docs.filter((item) => item.kind === 'Condition').map((item) => [item.metadata.name, item]),
+        ),
+    };
+
+    logger.info('Tekton: %o', tkn);
+    return tkn;
+};
 
 export function lint(docs, reporter, config) {
     docs = docs.filter((doc) => doc && doc.metadata && doc.metadata.name);
@@ -36,17 +45,17 @@ export function lint(docs, reporter, config) {
         throw Error('No tekton definitions can be found with the given paths');
     }
 
-    reporter = reporter || new Reporter();
-    config = config || {
-        rules: {},
-    };
-
     for (const [name, rule] of Object.entries(rules)) {
         const skipped = config.rules[name] && config.rules[name] === 'off';
+        if (skipped) {
+            logger.info('skipping rule %s', name);
+            continue;
+        }
 
-        if (skipped) continue;
-
+        logger.info('handling rule %s', name);
         const ruleReporter = createReporter(name, config, reporter);
+
+        // call the rule here
         rule(docs, tekton, ruleReporter);
     }
 

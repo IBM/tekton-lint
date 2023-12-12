@@ -1,0 +1,17 @@
+---
+external-tasks:
+  - name: git-clone-repo
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: git
+  - name: toolchain-extract-value
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: toolchain
+  - name: doi-publish-build-record
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: devops-insights    
+  - name: icr-publish
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: container-registry
+  - name: iks-detch
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: kubernetes-service

@@ -1,0 +1,95 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: fvtest
+spec:
+  params:
+    - name: run-build-image
+      description: The name of the image used for the run-build step
+      default: "icr.io/continuous-delivery/pipeline/pipeline-base-ubi:3.11"
+    - name: pipeline-debug
+      description: Pipeline debug mode
+      default: "0"
+    - name: continuous-delivery-context-secret
+      description: name of the secret containing the continuous delivery pipeline context secrets
+      default: secure-properties
+    - name: ibmcloud-apikey-secret-key
+      description: apiKey      
+    - name: cluster-namespace
+      default: prod
+    - name: cluster
+      description: The IBM Cloud Kubernetes cluster name
+    - name: cluster-region
+      description: The IBM Cloud Kubernetes cluster region       
+      default: us-south
+    - name: api
+      description: the ibmcloud api endpoint
+      default: "https://cloud.ibm.com"      
+  workspaces:
+    - name: output
+      description: A workspace backing by a volume
+      mountPath: /artifacts
+  steps:
+    - name: run-build
+      image: $(params.run-build-image)
+      env:
+        - name: WORKSPACE_PATH
+          value: $(workspaces.output.path)
+        - name: PIPELINE_DEBUG
+          value: $(params.pipeline-debug)
+        - name: IBMCLOUD_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: $(params.continuous-delivery-context-secret)
+              key: $(params.ibmcloud-apikey-secret-key)                
+        - name: API
+          value: $(params.api)
+        - name: CLUSTER_NAMESPACE
+          value: $(params.cluster-namespace)
+        - name: PIPELINE_KUBERNETES_CLUSTER_NAME
+          value: $(params.cluster)
+        - name: CLUSTER_REGION
+          value: $(params.cluster-region)
+      workingDir: $(workspaces.output.path)
+      command: ["/bin/bash", "-c"]
+      args:
+        - |
+            set -ex -o pipefail
+
+            if [ $PIPELINE_DEBUG == 1 ]; then
+              pwd
+              env
+              set -x
+              default_versions.sh
+              python3 --version
+            fi            
+            
+            ibmcloud login -a $API -r $CLUSTER_REGION 
+            ibmcloud ks cluster config -c "${PIPELINE_KUBERNETES_CLUSTER_NAME}"
+
+            oc login -u apikey -p "${IBMCLOUD_API_KEY}"
+            TOKEN=$(oc whoami --show-token)
+            export TOKEN
+           
+            just fvtest
+      volumeMounts:
+        - name: cd-config-volume
+          mountPath: /cd-config
+        - name: environment-properties
+          mountPath: /cd-config/environment-properties
+        - name: secure-properties
+          mountPath: /cd-config/secure-properties
+  volumes:
+    - name: cd-config-volume
+      configMap:
+        name: toolchain
+        items:
+          - key: toolchain.json
+            path: toolchain.json
+    - name: environment-properties
+      configMap:
+        name: environment-properties
+    - name: secure-properties
+      secret:
+        secretName: secure-properties

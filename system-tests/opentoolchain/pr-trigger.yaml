@@ -1,0 +1,95 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: pr-template
+spec:
+  params:
+    - name: target-repository
+      description: the repo integration name
+    - name: target-branch
+      description: target branch
+    - name: pr-repository
+      description: PR url
+    - name: pr-branch
+      description: branch
+    - name: pr-commit-id
+      description: commit id
+    - name: pipeline-debug
+      description: toggles debug mode for the pipeline
+    - name: dockerconfigjson
+      description: private docker registry pull secret      
+    - name: cluster-name
+      description: the name of the cluster to target
+    - name: dockerconfigjson
+      description: private docker registry pull secret
+    - name: releasetag
+      description: Release Tag from github
+    - name: cluster
+      description: The IBM Cloud Kubernetes cluster name
+    - name: cluster-region
+      description: The IBM Cloud Kubernetes cluster region
+      default: us-south
+    - name: cluster-namespace
+      description: The Kubernetes cluster namespace       
+    - name: apikey
+      description: the ibmcloud api key        
+  resourcetemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: pipelinerun-$(uid)-pvc
+      spec:
+        resources:
+          requests:
+            storage: 5Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+    - apiVersion: v1
+      kind: Secret
+      metadata:
+        name: private-registry-secret
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: $(params.dockerconfigjson)
+    - apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: docker-build-sa
+      imagePullSecrets:
+        - name: private-registry-secret    
+    
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: pipelinerun-$(uid)
+      spec:
+        pipelineRef:
+          name: pr-pipeline
+        workspaces:
+          - name: pipeline-ws
+            persistentVolumeClaim:
+              claimName: pipelinerun-$(uid)-pvc
+        params:
+          - name: pr-repository
+            value: $(params.pr-repository)
+          - name: pr-branch
+            value: $(params.pr-branch)
+          - name: pr-commit-id
+            value: $(params.pr-commit-id)
+          - name: target-repository
+            value: $(params.target-repository)
+          - name: target-branch
+            value: $(params.target-branch)
+          - name: pipeline-debug
+            value: $(params.pipeline-debug)
+          - name: apikey
+            value: $(param.apikey)
+          - name: cluster
+            value: $(params.cluster)
+          - name: cluster-namespace
+            value: $(params.cluster-namespace)      
+          - name: cluster-region
+            value: $(params.cluster-region)                           
+        serviceAccountName: docker-build-sa

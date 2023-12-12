@@ -1,0 +1,138 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: trigger-template-build
+spec:
+  params:
+    - name: apikey
+      description: the ibmcloud api key    
+    - name: repository
+      description: The git repo
+    - name: branch
+      description: the branch for the git repo
+      default: "main"
+    - name: revision
+      description: the git revision/commit for the git repo
+      default: ""
+    - name: app-name
+      description: application name
+    - name: fail-on-lint-errors
+      description: force failure of task when docker lint errors are found
+      default: "true"
+    - name: registry-region
+      description: The IBM Cloud region for image registry
+    - name: registry-namespace
+      description: container registry namespace
+    - name: image-name
+      description: image name
+    - name: path-to-context
+      default: "."
+    - name: path-to-dockerfile
+      default: "."
+    - name: dockerfile
+      default: "Dockerfile"
+    - name: build-args
+      description: ibmcloud cr build argument list in the format 'KEY=VALUE' with a key-value pair per line.
+      default: ""
+    - name: fail-on-scanned-issues
+      description: force failure of task when vulnerability advisor scan issues are found
+      default: "false"
+    - name: pipeline-debug
+      default: "0"
+    - name: cluster-name
+      description: the name of the cluster to target
+    - name: dockerconfigjson
+      description: private docker registry pull secret
+    - name: releasetag
+      description: Release Tag from github
+    - name: cluster
+      description: The IBM Cloud Kubernetes cluster name
+    - name: cluster-region
+      description: The IBM Cloud Kubernetes cluster region
+      default: us-south
+    - name: cluster-namespace
+      description: The Kubernetes cluster namespace      
+  resourcetemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: mcd-build-$(uid)-pvc
+      spec:
+        resources:
+          requests:
+            storage: 5Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+    - apiVersion: v1
+      kind: Secret
+      metadata:
+        name: private-registry-secret
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: $(params.dockerconfigjson)
+    - apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: docker-build-sa
+      imagePullSecrets:
+        - name: private-registry-secret
+
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: mcd-build-$(uid)
+      spec:
+        pipelineRef:
+          name: build-pipeline
+        params:
+          - name: apikey
+            value: $(param.apikey)
+          - name: repository
+            value: $(params.repository)
+          - name: branch
+            value: $(params.branch)
+          - name: revision
+            value: $(params.revision)
+          - name: app-name
+            value: $(params.app-name)
+          - name: fail-on-lint-errors
+            value: $(params.fail-on-lint-errors)
+          - name: registry-region
+            value: $(params.registry-region)
+          - name: registry-namespace
+            value: $(params.registry-namespace)
+          - name: image-name
+            value: $(params.image-name)
+          - name: path-to-context
+            value: $(params.path-to-context)
+          - name: path-to-dockerfile
+            value: $(params.path-to-dockerfile)
+          - name: dockerfile
+            value: $(params.dockerfile)
+          - name: build-args
+            value: $(params.build-args)
+          - name: fail-on-scanned-issues
+            value: $(params.fail-on-scanned-issues)
+          - name: cluster-name
+            value: $(params.cluster-name)
+          - name: dev-cluster-namespace
+            value: $(params.dev-cluster-namespace)
+          - name: pipeline-debug
+            value: $(params.pipeline-debug)
+          - name: releasetag
+            value: $(params.releasetag)
+          - name: odh-token
+            value: "odh-service-account-token"    
+          - name: cluster
+            value: $(params.cluster)
+          - name: cluster-namespace
+            value: $(params.cluster-namespace)      
+          - name: cluster-region
+            value: $(params.cluster-region)                  
+        serviceAccountName: docker-build-sa
+        workspaces:
+          - name: pipeline-ws
+            persistentVolumeClaim:
+              claimName: mcd-build-$(uid)-pvc

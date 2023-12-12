@@ -1,104 +1,71 @@
-#!/usr/bin/env node
-
-import 'source-map-support/register.js';
-import minimist from 'minimist';
-import watch from './watch.js';
-import run from './runner.js';
-import logProblems from './log-problems.js';
-
+import yargs from 'yargs/yargs';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import url from 'node:url';
+import { toolConfig } from './config.js';
+import run from './runner.js';
+import logProblems from './log-problems.js';
+
+import { logger } from './logger.js';
 
 const p = path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', 'package.json');
 const pkg = JSON.parse(fs.readFileSync(p, 'utf-8'));
 
-const argv = minimist(process.argv.slice(2), {
-    boolean: ['watch'],
-    default: {
-        format: 'vscode',
-    },
-});
+const parser = yargs(process.argv.slice(2))
+    .usage('$0 [<options>]  <glob-pattern-to-yaml-files> ... ')
+    .options({
+        watch: { type: 'boolean', default: false, describe: ' Run tekton-lint in watch mode' },
+        color: { type: 'boolean', default: true, describe: 'Forcefully enable/disable colored output' },
+        format: {
+            type: 'string',
+            default: 'stylish',
+            choices: ['vscode', 'stylish', 'json'],
+            describe: 'Format output. Available formatters: vscode | stylish | json',
+        },
+        quiet: { type: 'boolean', default: false, describe: 'Report errors only' },
+        'max-warnings': { type: 'number', default: -1, describe: 'Number of warnings to trigger nonzero exit code' },
+        config: {
+            type: 'string',
+            default: process.cwd(),
+            describe: 'location of the .tektonlintrc.yaml, defaults to cwd',
+        },
+        'refresh-cache': {
+            type: 'boolean',
+            default: 'false',
+            describe: 'If true will delete the cache directory for external tasks',
+        },
+    })
+    .version(pkg.version)
+    .help()
+    .example([
+        ['tekton-lint "**/*.yaml"', ' Globstar matching'],
+        ['tekton-lint path/to/my/pipeline.yaml "path/to/my/tasks/*.yaml"', ' Multiple glob patterns'],
+        ['tekton-lint --watch "**/*.yaml"', 'Watch mode'],
+    ]);
 
-const usageMessage = `Usage:
-tekton-lint <path-to-yaml-files>
+(async () => {
+    const argv = await parser.argv;
+    logger.info(argv);
 
-Options:
-$ tekton-lint --watch                # Run tekton-lint in watch mode
-$ tekton-lint --version              # Show version number
-$ tekton-lint --help                 # Show help
-$ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
-$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
-$ tekton-lint --quiet                # Report errors only - default: false
-$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
+    try {
+        const cfg = toolConfig(argv);
 
-Examples:
-# Globstar matching
-$ tekton-lint '**/*.yaml'
+        const problems = await run(cfg);
+        logProblems(cfg, problems);
 
-# Exact file path
-$ tekton-lint my-pipeline.yaml my-task.yaml
+        // determine the process exit code
+        const hasError = problems.some((p) => p.level === 'error');
+        const warningCount = problems.filter((p) => p.level === 'warning').length;
+        const tooManyWarnings = cfg.max_warnings >= 0 && warningCount > cfg.max_warnings;
 
-# Multiple glob patterns
-$ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
-
-# Watch mode
-$ tekton-lint --watch '**/*.yaml'
-`;
-
-(() => {
-    if (argv.version) {
-        return console.log(`Version: ${pkg.version}`);
-    }
-
-    if (argv.help) {
-        return console.log(usageMessage);
-    }
-
-    if (argv._.length === 0) {
-        return console.log(usageMessage);
-    }
-
-    if (+process.version.slice(1).split('.')[0] < 12) {
-        process.exitCode = 1;
-        return console.log(`The current node version is ${process.version}, but at least v12.0.0 is required`);
-    }
-
-    let maxWarnings = -1;
-    if (argv['max-warnings'] !== undefined) {
-        if (typeof argv['max-warnings'] !== 'number') {
+        // eslint-disable-next-line no-process-env
+        if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
             process.exitCode = 1;
-            return console.log(
-                `Invalid value for 'max-warnings' option. Expected a number, received value: ${argv['max-warnings']}.`,
-            );
+        } else {
+            process.exitCode = 0;
         }
-        maxWarnings = argv['max-warnings'];
-    }
-
-    if (argv.watch) {
-        watch(argv._);
-    } else {
-        run(argv._)
-            .then(
-                (problems) => {
-                    logProblems(argv as any, problems);
-
-                    const hasError = problems.some((p) => p.level === 'error');
-                    const warningCount = problems.filter((p) => p.level === 'warning').length;
-                    const tooManyWarnings = maxWarnings >= 0 && warningCount > maxWarnings;
-                    // eslint-disable-next-line no-process-env
-                    if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
-                        return 1;
-                    }
-                    return 0;
-                },
-                (error) => {
-                    console.error(error);
-                    return 1;
-                },
-            )
-            .then((code) => {
-                process.exitCode = code;
-            });
+    } catch (e) {
+        logger.error((e as Error).message);
+        process.exitCode = 1;
     }
 })();
