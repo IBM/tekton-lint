@@ -1,12 +1,12 @@
-import collectResources from '../collect-resources';
+import collectResources from '../collect-resources.js';
 
 const checkInvalidResourceKey = (invalidKey, resources, report) => {
     Object.entries(resources).forEach(([type, resourceList]) => {
-        Object.entries(resourceList).forEach(([name, resource]) => {
-            if (resource.metadata[invalidKey]) {
+        Object.entries(resourceList as any).forEach(([name, resource]) => {
+            if ((resource as any).metadata[invalidKey]) {
                 report(
                     `Resource ${type} '${name}' has an invalid '${invalidKey}' key in its resource definition.`,
-                    resource.metadata,
+                    (resource as any).metadata,
                     invalidKey,
                 );
             }
@@ -14,7 +14,7 @@ const checkInvalidResourceKey = (invalidKey, resources, report) => {
     });
 };
 
-export default (docs, tekton, report) => {
+export default (docs: any, tekton: any, report: any) => {
     const resources = collectResources(docs);
     checkInvalidResourceKey('resourceVersion', resources, report);
 };

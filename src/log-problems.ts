@@ -1,6 +1,6 @@
-import stylish from './formatters/stylish';
-import vscode from './formatters/vscode';
-import json from './formatters/json';
+import stylish from './formatters/stylish.js';
+import vscode from './formatters/vscode.js';
+import json from './formatters/json.js';
 
 const formatters = {
     stylish,

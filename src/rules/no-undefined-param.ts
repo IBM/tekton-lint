@@ -1,4 +1,4 @@
-import { walk, pathToString } from '../walk';
+import { walk, pathToString } from '../walk.js';
 
 const createVisitor = (resource, params, prefix, report) => (node, path, parent) => {
     if (path.includes('taskSpec')) return;

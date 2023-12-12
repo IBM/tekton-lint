@@ -1,14 +1,9 @@
 {
   "name": "@ibm/tekton-lint",
-  "files": [
-    "lib/**/*.js",
-    "lib/**/*.d.ts",
-    ".tektonlintrc.yaml"
-  ],
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint --ext ts src",
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "prebuild": "npm run format && npm run clean && npm run lint",
     "build": "tsc --pretty",
@@ -16,9 +11,9 @@
     "prepare": "husky install",
     "release": "commit-and-tag-version --sign"
   },
-  "version": "0.6.1",
+  "type": "module",
+  "version": "0.7.0",
   "description": "Linter for Tekton definitions",
-  "main": "lib/runner.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/IBM/tekton-lint.git"
@@ -45,7 +40,10 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/graphlib": "^2.1.12",
     "@types/jest": "^29.5.10",
+    "@types/source-map-support": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "commit-and-tag-version": "^12.0.0",
@@ -59,7 +57,7 @@
     "typescript": "^5.3.2"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 20.0.0"
   },
   "jest": {
     "roots": [

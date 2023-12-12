@@ -1,4 +1,5 @@
-import { alg, Graph } from 'graphlib';
+import pkg from 'graphlib';
+const { alg, Graph } = pkg;
 
 const RESULT_PATTERN = '\\$\\(tasks\\.([^.]+)\\.results\\.[^.]*\\)';
 const RESULT_REGEX_G = new RegExp(RESULT_PATTERN, 'g');

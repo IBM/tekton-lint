@@ -1,5 +1,5 @@
-import rules from './rule-loader';
-import Reporter from './reporter';
+import rules from './rule-loader.js';
+import Reporter from './reporter.js';
 
 const createReporter = (rule, config, reporter) => {
     const isError = config.rules[rule] && config.rules[rule] === 'error';

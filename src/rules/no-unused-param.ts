@@ -1,4 +1,4 @@
-import { walk } from '../walk';
+import { walk } from '../walk.js';
 
 const unused = (params, prefix) => (node) => {
     const r1 = new RegExp(`\\$\\(${prefix}.(.*?)\\)`, 'g');

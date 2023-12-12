@@ -1,6 +1,6 @@
 import chokidar from 'chokidar';
-import run from './runner';
-import { logProblems } from './utils';
+import run from './runner.js';
+import { logProblems } from './utils.js';
 
 const runLinter = async (cause, paths) => {
     console.log(cause);
