@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: Task-without-params
+spec:
+  params: []
+  steps:
+    - name: ls-build-sources
+      command: ["ls", "-ltr", "/workspace/source/$(params.contextDir)"]
+      image: busybox
+      workingDir: /workspace/source/$(params.contextDir)
+  workspaces:
+    - description: The git repo will be cloned onto the volume backing this workspace
+      name: source
