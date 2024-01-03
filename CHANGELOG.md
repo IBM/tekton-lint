@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-alpha.1](https://github.com/IBM/tekton-lint/compare/v0.7.0...v1.0.0-alpha.1) (2024-01-03)
+
+
+### Bug Fixes
+
+* multiple typscript errors ([d3a3547](https://github.com/IBM/tekton-lint/commit/d3a35471e4c1fb0a0c3048ef2ad50a5a2a75a4b0))
+
+## [1.0.0-alpha.0](https://github.com/IBM/tekton-lint/compare/v0.7.0...v1.0.0-alpha.0) (2024-01-03)
+
+
+### Bug Fixes
+
+* multiple typscript errors ([d3a3547](https://github.com/IBM/tekton-lint/commit/d3a35471e4c1fb0a0c3048ef2ad50a5a2a75a4b0))
+
 ## [0.6.1](https://github.com/IBM/tekton-lint/compare/v0.6.0...v0.6.1) (2023-11-24)
 
 
