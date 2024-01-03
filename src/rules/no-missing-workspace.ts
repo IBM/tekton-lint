@@ -2,7 +2,7 @@ export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
         if (!task.spec.workspaces) continue;
         const taskName = task.metadata.name;
-        const requiredWorkspaces = task.spec.workspaces.map((ws) => ws.name);
+        const requiredWorkspaces = task.spec.workspaces.filter((ws) => !ws.optional).map((ws) => ws.name);
 
         for (const pipeline of Object.values<any>(tekton.pipelines)) {
             const matchingTaskRefs = pipeline.spec.tasks.filter(

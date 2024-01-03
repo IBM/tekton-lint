@@ -38,7 +38,8 @@
     "source-map-support": "^0.5.21",
     "strip-ansi": "^6.0.1",
     "text-table": "^0.2.0",
-    "yaml": "^2.3.4"
+    "yaml": "^2.3.4",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
