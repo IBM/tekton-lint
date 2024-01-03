@@ -21,26 +21,29 @@ on the resulting document set. [More details on the pattern syntax.][pattern]
 Using `tekton-lint` in watch mode will monitor for any changes in the provided paths and automatically run the linter again.
 
 ```sh
+tekton-lint [<options>]  <glob-pattern-to-yaml-files> ...
+
 Options:
-$ tekton-lint --watch                # Run tekton-lint in watch mode
-$ tekton-lint --version              # Show version number
-$ tekton-lint --help                 # Show help
-$ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
-$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
-$ tekton-lint --quiet                # Report errors only - default: false
-$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
+  --watch           Run tekton-lint in watch mode     [boolean] [default: false]
+  --color          Forcefully enable/disable colored output
+                                                       [boolean] [default: true]
+  --format         Format output. Available formatters: vscode | stylish | json
+            [string] [choices: "vscode", "stylish", "json"] [default: "stylish"]
+  --quiet          Report errors only                 [boolean] [default: false]
+  --max-warnings   Number of warnings to trigger nonzero exit code
+                                                          [number] [default: -1]
+  --config         location of the .tektonlintrc.yaml, defaults to cwd
+                                             [string] [default: "/home/matthew"]
+  --refresh-cache  If true will delete the cache directory for external tasks
+                                                    [boolean] [default: "false"]
+  --version        Show version number                                 [boolean]
+  --help           Show help                                           [boolean]
 
-# exact file path
-$ tekton-lint my-pipeline.yaml my-task.yaml
-
-# globstar matching (note the quotes around the glob expression)
-$ tekton-lint '**/*.yaml'
-
-# multiple glob patterns
-$ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
-
-# Watch mode
-$ tekton-lint --watch '**/*.yaml'
+Examples:
+  tekton-lint "**/*.yaml"                   Globstar matching
+  tekton-lint path/to/my/pipeline.yaml      Multiple glob patterns
+  "path/to/my/tasks/*.yaml"
+  tekton-lint --watch "**/*.yaml"           Watch mode
 ```
 
 ### IDE Integration
