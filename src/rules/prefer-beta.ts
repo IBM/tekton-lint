@@ -1,7 +1,7 @@
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
+        if (!pipeline.spec) continue;
         for (const task of pipeline.spec.tasks) {
-            if (!task.taskSpec) continue;
             switch (pipeline.apiVersion) {
                 case 'tekton.dev/v1alpha1':
                     if (task.taskSpec.params)
@@ -22,6 +22,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         switch (task.apiVersion) {
             case 'tekton.dev/v1alpha1':
                 if (task.spec.params)

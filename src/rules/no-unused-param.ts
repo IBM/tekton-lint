@@ -24,6 +24,7 @@ function getParams(kind, spec) {
 
 export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         const params = getParams(task.kind, task.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         for (const prefix of ['inputs.params', 'params']) {
@@ -41,6 +42,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const condition of Object.values<any>(tekton.conditions)) {
+        if (!condition.spec) continue;
         const params = getParams(condition.kind, condition.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         walk(condition.spec.check, ['spec', 'check'], unused(occurences, 'params'));
@@ -54,6 +56,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
+        if (!template.spec) continue;
         const params = getParams(template.kind, template.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         walk(template.spec, ['spec'], unused(occurences, 'params'));
@@ -67,6 +70,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
+        if (!pipeline.spec) continue;
         const params = getParams(pipeline.kind, pipeline.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(occurences, 'params'));

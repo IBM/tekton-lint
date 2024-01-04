@@ -12,6 +12,8 @@ function getTaskParams(spec) {
 
 function checkInvalidParameterName(resources, report) {
     for (const resource of Object.values<any>(resources)) {
+        if (!resource.spec) continue;
+
         let params;
         if (resource.kind === 'Task') {
             params = getTaskParams(resource.spec);

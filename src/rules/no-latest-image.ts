@@ -9,6 +9,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         check(task.spec.stepTemplate);
         for (const step of Object.values(task.spec.steps)) {
             check(step);

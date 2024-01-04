@@ -1,4 +1,6 @@
-function getLine(chars, n) {
+import { Doc } from './interfaces/common.js';
+
+function getLine(chars: string[], n: number): number {
     let l = 1;
     for (let i = 0; i < n; i++) {
         if (chars[i] === '\n') l++;
@@ -6,7 +8,7 @@ function getLine(chars, n) {
     return l;
 }
 
-function getCol(chars, n) {
+function getCol(chars: string[], n: number): number {
     let c = 1;
     for (let i = 0; i < n; i++) {
         if (chars[i] === '\n') c = 0;
@@ -19,7 +21,7 @@ function getLocation(m, node, prop) {
     if (!m.has(node)) return {};
     const k = m.get(node);
 
-    const chars = Array.from(k.doc.raw);
+    const chars: string[] = Array.from(k.doc.raw);
     let n = prop ? k.node.get(prop, true) : k.node;
     if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
     return {
@@ -51,11 +53,11 @@ function walk(node, path, visitor) {
     }
 }
 
-function instrument(docs) {
+function instrument(docs: Doc[]) {
     const m = new Map();
     for (const doc of docs) {
         walk(doc.content, [], (node, path) => {
-            if (node != null && typeof node == 'object') {
+            if (node != null && typeof node == 'object') {                
                 m.set(node, {
                     node: path.length ? doc.doc.getIn(path, true) : doc.doc,
                     path,
@@ -71,7 +73,7 @@ class Reporter {
     private m: any;
     problems: any[];
 
-    constructor(docs = []) {
+    constructor(docs: Doc[] = []) {
         this.m = instrument(docs);
         this.problems = [];
     }

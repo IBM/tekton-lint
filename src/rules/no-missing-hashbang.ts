@@ -10,6 +10,7 @@ const checkSteps = (steps, report) => {
 
 export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         checkSteps(task.spec.steps, report);
     }
 

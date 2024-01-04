@@ -1,5 +1,6 @@
 export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         const volumes = (task.spec.volumes || []).map((volume) => volume.name);
 
         for (const step of task.spec.steps) {

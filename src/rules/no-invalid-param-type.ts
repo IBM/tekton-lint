@@ -30,23 +30,24 @@ export default (docs, tekton, report) => {
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         const params = getTaskParams(task.spec);
         if (!params) continue;
         checkParameterValues(task.metadata.name, task.kind, params, report);
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
-        if (!template.spec.params) continue;
+        if (!template.spec || !template.spec.params) continue;
         checkParameterValues(template.metadata.name, template.kind, template.spec.params, report);
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        if (!pipeline.spec.params) continue;
+        if (!pipeline.spec || !pipeline.spec.params) continue;
         checkParameterValues(pipeline.metadata.name, pipeline.kind, pipeline.spec.params, report);
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        if (!pipeline.spec.params) continue;
+        if (!pipeline.spec || !pipeline.spec.params) continue;
         for (const task of Object.values<any>(pipeline.spec.tasks)) {
             if (!task.params) continue;
             for (const param of Object.values<any>(task.params)) {

@@ -39,6 +39,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
         const params = getTaskParams(task);
         for (const prefix of ['inputs.params', 'params']) {
             for (const prop of ['steps', 'volumes', 'stepTemplate', 'sidecars']) {
