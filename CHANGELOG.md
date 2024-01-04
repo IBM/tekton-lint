@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.3](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.1...v1.0.0-beta.3) (2024-01-04)
+
+
+### Bug Fixes
+
+* issue 93 - workspace in pipeline tasks ([0a37798](https://github.com/IBM/tekton-lint/commit/0a377988652c881b9a721e918c51061b85d6e27f))
+
 ## [1.0.0-beta.2](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.0...v1.0.0-beta.2) (2024-01-04)
 
 
