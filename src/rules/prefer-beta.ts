@@ -4,14 +4,14 @@ export default (docs, tekton, report) => {
         for (const task of pipeline.spec.tasks) {
             switch (pipeline.apiVersion) {
                 case 'tekton.dev/v1alpha1':
-                    if (task.taskSpec.params)
+                    if (task.taskSpec && task.taskSpec.params)
                         report(
                             `Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1alpha1, but defines an inlined task (${task.name}) with spec.params. Use spec.inputs.params instead.`,
                             task.taskSpec.params,
                         );
                     break;
                 case 'tekton.dev/v1beta1':
-                    if (task.taskSpec.inputs && task.taskSpec.inputs.params)
+                    if (task.taskSpec && task.taskSpec.inputs && task.taskSpec.inputs.params)
                         report(
                             `Pipeline '${pipeline.metadata.name}' is defined with apiVersion tekton.dev/v1beta1, but defines an inlined task (${task.name}) with spec.inputs.params. Use spec.params instead.`,
                             task.taskSpec.inputs.params,
