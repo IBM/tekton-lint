@@ -1,3 +1,5 @@
+import { Document } from 'yaml';
+
 interface Base {
     apiVersion: string;
     metadata: {
@@ -41,5 +43,20 @@ interface Tekton {
     conditions?: listResources;
     externaltasks?: ExternalResource[];
 }
+
+// ref: https://dev.to/ankittanna/how-to-create-a-type-for-complex-json-object-in-typescript-d81
+type JSONValue = string | number | boolean | { [x: string]: JSONValue } | Array<JSONValue>;
+
+export interface Doc {
+    content: JSONValue;
+    doc: Document;
+    path: string;
+    raw: string;
+    no_report: boolean;
+}
+
+export type RuleReportFn = (message: string, node, prop) => void;
+
+export type RuleFn = (docs, tekton: Tekton, report: RuleReportFn) => void;
 
 export { Tekton, Base, Param, BaseName, ValueParam, ExternalResource };

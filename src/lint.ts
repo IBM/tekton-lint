@@ -8,7 +8,7 @@ import { toolConfig } from './config.js';
 import run from './runner.js';
 import logProblems from './log-problems.js';
 
-import { logger } from './logger.js';
+import { logger, usingLogfile } from './logger.js';
 
 const p = path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', 'package.json');
 const pkg = JSON.parse(fs.readFileSync(p, 'utf-8'));
@@ -67,7 +67,12 @@ const parser = yargs(process.argv.slice(2))
             process.exitCode = 0;
         }
     } catch (e) {
-        logger.error((e as Error).message);
+        if (usingLogfile()) {
+            logger.error(e as Error);
+        } else {
+            logger.error((e as Error).message);
+        }
+
         process.exitCode = 1;
     }
 })();

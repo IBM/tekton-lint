@@ -7,10 +7,11 @@ import yaml from 'yaml';
 import fs from 'node:fs';
 import { collectAllExternal } from './external.js';
 import { logger } from './logger.js';
+import { Doc } from './interfaces/common.js';
 
 /* Collect paths based on the glob pattern passed in  */
 const collector = async (paths: string[], cfg: ToolConfig) => {
-    const docs: any = [];
+    const docs: Doc[] = [];
     const files = await glob(paths);
     logger.info('Found these files %j', files);
     for (const file of files) {

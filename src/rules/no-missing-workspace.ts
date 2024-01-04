@@ -1,6 +1,6 @@
 export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
-        if (!task.spec.workspaces) continue;
+        if (!task.spec || !task.spec.workspaces) continue;
         const taskName = task.metadata.name;
         const requiredWorkspaces = task.spec.workspaces.filter((ws) => !ws.optional).map((ws) => ws.name);
 
@@ -42,7 +42,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        if (!pipeline.spec.workspaces) continue;
+        if (!pipeline.spec || !pipeline.spec.workspaces) continue;
         const required = pipeline.spec.workspaces.map((ws) => ws.name);
 
         for (const template of Object.values<any>(tekton.triggerTemplates)) {

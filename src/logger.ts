@@ -36,4 +36,13 @@ if (logfile) {
     });
 }
 
-export const logger = pino.pino(transports);
+export const logger = pino.pino(
+    {
+        serializers: {
+            err: pino.stdSerializers.err,
+        },
+    },
+    transports,
+);
+
+export const usingLogfile = () => logfile;

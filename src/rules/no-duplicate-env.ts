@@ -1,5 +1,7 @@
 export default (docs, tekton, report) => {
     for (const task of Object.values<any>(tekton.tasks)) {
+        if (!task.spec) continue;
+
         if (task.spec.stepTemplate && task.spec.stepTemplate.env) {
             const templateEnvVars = new Set();
             for (const env of task.spec.stepTemplate.env) {
