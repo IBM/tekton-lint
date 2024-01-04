@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.2](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.0...v1.0.0-beta.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* pipeline tasks specs ([3711109](https://github.com/IBM/tekton-lint/commit/3711109731b8a029d5be376111849066e9bd8c74))
+
 ## [1.0.0-beta.1](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2024-01-04)
 
 
