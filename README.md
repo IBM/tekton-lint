@@ -1,8 +1,9 @@
 # tekton-lint
 
-> A linter for [tekton] resource definitions
+> A linter for [tekton] resource definitions - v1 beta now available!!
 
-## Quick Start 
+---
+## Quick Start
 
 Using the latest v1 tekton-lint and Node 18 or later....
 
@@ -10,7 +11,6 @@ Using the latest v1 tekton-lint and Node 18 or later....
 npx @ibm/tekton-lint@latest <glob-pattern-to-yaml-files>
 ```
 
-> (v1 is currently in alpha)
 
 To try a quick example, grab the `example-task.yaml` from this repo
 
@@ -28,9 +28,9 @@ example-task.yaml
 
 ```
 
-## Usage
+You can use the tool as a regular lint tool from the CLI or scripts; alternatively you can use it as a [library via it's API](./_docs/usage_api.md) or from an [IDE such as VScode](./_docs/usage_ide.md).
 
-### CLI
+## Usage - CLI
 
 `tekton-lint` is parsing the passed files as yaml files, and checks the rules
 on the resulting document set. [More details on the pattern syntax.][pattern]
@@ -65,129 +65,7 @@ Examples:
   tekton-lint --watch "**/*.yaml"           Watch mode
 ```
 
-### IDE Integration
 
-> note this is hasn't been extensively tested yet in alpha - focussing on the cli invocation
-
-`tekton-lint` can be added as a [Task][vscode-task]:
-
-```js
-// .vscode/tasks.json
-
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Run tekton-lint in the workspace",
-      "type": "shell",
-      "command": "tekton-lint",
-      "args": [
-        "--watch",
-        "--format","vscode",
-        "--config","${workspaceFolder}/.vscode/.tektonlintrc.yaml",  // if needed, otherwise remove this line
-        "${workspaceFolder}/**/*.yaml" // Change this path to the path of your yaml files (this will watch for every yaml file in your currently open workspace)
-      ],
-      "problemMatcher": [
-        {
-          "fileLocation": "absolute",
-          "pattern": [
-            {
-              "regexp": "^([^\\s].*):$",
-              "file": 1
-            },
-            {
-              "regexp": "^(error|warning|info)\\s+\\((\\d+,\\d+,\\d+,\\d+)\\):(.*)$",
-              "severity": 1,
-              "location": 2,
-              "message": 3,
-              "loop": true
-            }
-          ],
-          "background": {
-            "activeOnStart": true,
-            "beginsPattern": "^File (.*) has been changed! Running Linter again!",
-            "endsPattern": "^Tekton-lint finished running!"
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-You can run this task from _Terminal_ > _Run Task..._ > _Run tekton-lint_:
-
-![vscode-screenshot]
-
-### API
-
-> note this is hasn't been extensively tested yet in alpha - focussing on the cli invocation
-
-#### `linter(globs: string[], config?: Config): Promise<Problem[]>`
-
-Runs the linter on the provided `globs`, and resolves to the list of found problems.
-Each problem has a `level` and a `message` property. `path` is the path to the
-original file, `loc` is an object which describes the location of the problem.
-
-An additional `config` object can be passed to fine-tune rules (see [Configuring `tekton-lint`](#configuring-tekton-lint)).
-
-```ts
-interface Problem {
-  level: 'warning' | 'error';
-  message: string;
-  path?: string;
-  loc?: {
-    range: [number, number];
-    startLine: number;
-    startColumn: number;
-    endLine: number;
-    endColumn: number;
-  };
-}
-
-interface Config {
-  rules: {
-    [rule: string]: 'off' | 'warning' | 'error';
-  };
-}
-```
-
-##### Example
-
-```js
-const linter = require('tekton-lint');
-
-const problems = await linter(['path/to/defs/**/*.yaml']);
-
-for (const problem of problems) {
-  console.log(problem.level, problem.message)
-}
-```
-
-#### `linter.lint(docs: any[], config?: Config): Problem[]`
-
-Runs the linter on the provided parsed documents. Returns the list of found problems.
-
-##### Example
-
-```js
-const linter = require('tekton-lint');
-
-const problems = linter.lint([{
-  apiVersion: 'tekton.dev/v1beta1',
-  kind: 'Task',
-  metadata: {
-    name: 'my-task',
-  },
-  spec: {
-    steps: [],
-  },
-}]);
-
-for (const problem of problems) {
-  console.log(problem.level, problem.message)
-}
-```
 
 ## Rules
 
@@ -247,7 +125,7 @@ for (const problem of problems) {
 - Usage of deprecated resources (resources marked with `tekton.dev/deprecated` label)
 - Missing `hashbang` line from a `Step`s `script`
 
-### Configuring `tekton-lint`
+## Configuring `tekton-lint`
 
 You can configure `tekton-lint` with a configuration file ([`.tektonlintrc.yaml`](./.tektonlintrc.yaml)).  You can decide which rules are enabled and at what error level. In addition you can specify external tekton tasks defined in a git repository; for example [OpenToolChain](https://github.com/open-toolchain/tekton-catalog) provides a set of tasks that are helpful. But if you lint just your own tekton files there will be errors about not being able to find `git-clone-repo` for example. Not will any checks be made to see if your usage is correct.
 
@@ -298,8 +176,14 @@ Search path for `.tektonlintrc.yaml`
 - default values used if nothing else found
 
 
-[tekton]: https://tekton.dev
-[node]: https://nodejs.org
-[pattern]: https://github.com/mrmlnc/fast-glob#pattern-syntax
-[vscode-task]: https://code.visualstudio.com/docs/editor/tasks
-[vscode-screenshot]: vscode.png
+## Issues?
+
+Please raise an issue in the usual manner, please try and include a short sample Tekton file that shows the problem.
+
+There is an internal logging system you can enable via setting and environment variable
+
+```
+TL_DEBUG=true tekton-lint <file.yaml>
+```
+
+This will write out a `app.log` file in [pino](https://github.com/pinojs/pino) json format - use [pino-pretty](https://github.com/pinojs/pino-pretty) to view
