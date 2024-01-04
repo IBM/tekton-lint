@@ -57,7 +57,7 @@ function instrument(docs: Doc[]) {
     const m = new Map();
     for (const doc of docs) {
         walk(doc.content, [], (node, path) => {
-            if (node != null && typeof node == 'object') {                
+            if (node != null && typeof node == 'object') {
                 m.set(node, {
                     node: path.length ? doc.doc.getIn(path, true) : doc.doc,
                     path,
