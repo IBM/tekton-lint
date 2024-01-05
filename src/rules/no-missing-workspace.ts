@@ -1,5 +1,4 @@
 export default (docs, tekton, report) => {
-    console.log('tasks');
     for (const task of Object.values<any>(tekton.tasks)) {
         if (!task.spec || !task.spec.workspaces) continue;
         const taskName = task.metadata.name;
@@ -24,12 +23,12 @@ export default (docs, tekton, report) => {
             }
         }
     }
-    console.log('pipelines');
+
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         const pipelineWorkspaces = pipeline.spec.workspaces || [];
         for (const task of pipeline.spec.tasks) {
             if (!task.workspaces) continue;
-            for (const workspace of task.workspaces) {                
+            for (const workspace of task.workspaces) {
                 let matchingWorkspace = false;
                 if (workspace.workspace) {
                     matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.workspace);
@@ -47,7 +46,6 @@ export default (docs, tekton, report) => {
             }
         }
     }
-    console.log('trigger templates');
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         if (!pipeline.spec || !pipeline.spec.workspaces) continue;
@@ -72,5 +70,4 @@ export default (docs, tekton, report) => {
             }
         }
     }
-    console.log('done');
 };

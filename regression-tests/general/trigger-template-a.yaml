@@ -1,0 +1,26 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: run-g11n-tr-pipeline-template
+spec:
+  params:
+    - name: g11n-step
+    - name: g11n-step-tt
+    - name: g11n-step-unused
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1
+      kind: PipelineRun
+      metadata:
+        name: run-g11n-pipeline-$(tt.params.g11n-step)
+      spec:
+        params:
+          - name: g11n-step-undefined-tt
+            value: "$(tt.params.g11n-step-tt-undefined)"
+          - name: g11n-step-undefined
+            value: "$(params.g11n-step-undefined)"
+          - name: g11n-step-defined-tt
+            value: "$(tt.params.g11n-step-tt)"
+          - name: g11n-step-defined
+            value: "$(params.g11n-step)"
+        pipelineRef:
+          name: run-g11n-pipeline

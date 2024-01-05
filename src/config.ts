@@ -3,26 +3,20 @@ import path from 'node:path';
 import env from 'env-var';
 import fs from 'node:fs';
 import yaml from 'yaml';
-import url from 'node:url';
+// import url from 'node:url';
+import defaultConfig from './default-rule-config.js';
 
 import { logger } from './logger.js';
 
-import { ExternalResource } from './interfaces/common.js';
-
-export interface RulesConfig {
-    rules: {
-        [rule: string]: 'off' | 'warning' | 'error';
-    };
-    'external-tasks': ExternalResource[];
-}
+import { RulesConfig } from './interfaces/common.js';
 
 export const getRulesConfig = (cfg: ToolConfig): RulesConfig => {
     // read the default file
-    const defaultRcFile = fs.readFileSync(
-        path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', '.tektonlintrc.yaml'),
-        'utf8',
-    );
-    const defaultConfig = yaml.parse(defaultRcFile);
+    // const defaultRcFile = fs.readFileSync(
+    //     path.resolve(path.dirname(new url.URL(import.meta.url).pathname), '..', '.tektonlintrc.yaml'),
+    //     'utf8',
+    // );
+    // const defaultConfig = yaml.parse(defaultRcFile);
 
     let user_tektonlintrc = path.resolve(cfg.tektonlintrc);
     if (fs.lstatSync(user_tektonlintrc).isDirectory()) {

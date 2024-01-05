@@ -60,6 +60,7 @@ export default (docs, tekton, report) => {
         const params = getParams(template.kind, template.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         walk(template.spec, ['spec'], unused(occurences, 'params'));
+        walk(template.spec, ['spec'], unused(occurences, 'tt.params'));
         for (const [param, n] of Object.entries(occurences)) {
             if (n) continue;
             report(

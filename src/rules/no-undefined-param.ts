@@ -55,5 +55,10 @@ export default (docs, tekton, report) => {
             ['spec', 'resourcetemplates'],
             createVisitor(template.metadata.name, params, 'params', report),
         );
+        walk(
+            template.spec.resourcetemplates,
+            ['spec', 'resourcetemplates'],
+            createVisitor(template.metadata.name, params, 'tt.params', report),
+        );
     }
 };

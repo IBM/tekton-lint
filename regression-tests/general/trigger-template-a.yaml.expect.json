@@ -1,0 +1,70 @@
+[
+    {
+        "message": "TriggerTemplate 'run-g11n-tr-pipeline-template' references pipeline 'run-g11n-pipeline', but the referenced pipeline cannot be found.",
+        "rule": "no-missing-resource",
+        "level": "error",
+        "path": "./regression-tests/general/trigger-template-a.yaml",
+        "loc": {
+            "range": [
+                765,
+                782,
+                783
+            ],
+            "startLine": 26,
+            "startColumn": 17,
+            "endLine": 26,
+            "endColumn": 34
+        }
+    },
+    {
+        "message": "Undefined param 'g11n-step-undefined' at .spec.resourcetemplates[0].spec.params[1].value in 'run-g11n-tr-pipeline-template'",
+        "rule": "no-undefined-param",
+        "level": "error",
+        "path": "./regression-tests/general/trigger-template-a.yaml",
+        "loc": {
+            "range": [
+                533,
+                564,
+                565
+            ],
+            "startLine": 20,
+            "startColumn": 20,
+            "endLine": 20,
+            "endColumn": 51
+        }
+    },
+    {
+        "message": "Undefined param 'g11n-step-tt-undefined' at .spec.resourcetemplates[0].spec.params[0].value in 'run-g11n-tr-pipeline-template'",
+        "rule": "no-undefined-param",
+        "level": "error",
+        "path": "./regression-tests/general/trigger-template-a.yaml",
+        "loc": {
+            "range": [
+                438,
+                475,
+                476
+            ],
+            "startLine": 18,
+            "startColumn": 20,
+            "endLine": 18,
+            "endColumn": 57
+        }
+    },
+    {
+        "message": "TriggerTemplate 'run-g11n-tr-pipeline-template' defines parameter 'g11n-step-unused', but it's not used anywhere in the spec",
+        "rule": "no-unused-param",
+        "level": "warning",
+        "path": "./regression-tests/general/trigger-template-a.yaml",
+        "loc": {
+            "range": [
+                179,
+                202,
+                202
+            ],
+            "startLine": 9,
+            "startColumn": 7,
+            "endLine": 10,
+            "endColumn": 1
+        }
+    }
+]

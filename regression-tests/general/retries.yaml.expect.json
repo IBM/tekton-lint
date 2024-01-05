@@ -1,0 +1,1 @@
+[{"message":"Pipeline 'pipeline-with-retries' references task 'my-task' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.","rule":"no-missing-resource","level":"error","path":"./regression-tests/general/retries.yaml","loc":{"range":[167,174,175],"startLine":11,"startColumn":15,"endLine":11,"endColumn":22}}]
