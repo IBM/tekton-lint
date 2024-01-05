@@ -12,13 +12,13 @@
     "release": "commit-and-tag-version --sign"
   },
   "type": "module",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Linter for Tekton definitions",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/IBM/tekton-lint.git"
   },
-  "main":"dist/index.js",
+  "main": "dist/index.js",
   "bin": {
     "tekton-lint": "dist/lint.js"
   },
@@ -68,7 +68,6 @@
   "engines": {
     "node": ">= 20.0.0"
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm test",
