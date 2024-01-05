@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: run-health-checks
+spec:
+  params:
+    - name: image-name
+      default: docker-na-public.artifactory.swg-devops.com/dsx-nb-docker-local/wca-health-checks
+    - name: image-tag
+      default: main-latest
+    - name: stage
+      default: dallas.ic.dev
+  workspaces:
+    - name: workspace-health-checks
+  tasks:
+    - name: run-health-checks
+      taskRef:
+        name: task-run-health-checks
+      params:
+        - name: image-name
+          value: $(params.image-name)
+        - name: image-tag
+          value: $(params.image-tag)
+        - name: stage
+          value: $(params.stage)
+      workspaces:
+        - name: workspace-health-checks

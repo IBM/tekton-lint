@@ -55,6 +55,13 @@ export interface Doc {
     no_report: boolean;
 }
 
+export interface RulesConfig {
+    rules: {
+        [rule: string]: 'off' | 'warning' | 'error';
+    };
+    'external-tasks': ExternalResource[];
+}
+
 export type RuleReportFn = (message: string, node, prop) => void;
 
 export type RuleFn = (docs, tekton: Tekton, report: RuleReportFn) => void;
