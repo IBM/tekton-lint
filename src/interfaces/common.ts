@@ -63,7 +63,24 @@ export interface RulesConfig {
 }
 
 export type RuleReportFn = (message: string, node, prop) => void;
-
 export type RuleFn = (docs, tekton: Tekton, report: RuleReportFn) => void;
+
+// problem report definitions
+
+export type Location = {
+    range: number[];
+    starLine: number;
+    startColumn: number;
+    endLine: number;
+    endColumn: number;
+};
+
+export type Problem = {
+    message: string;
+    rule: string;
+    level: 'error' | 'warning';
+    path: string;
+    loc: Location;
+};
 
 export { Tekton, Base, Param, BaseName, ValueParam, ExternalResource };

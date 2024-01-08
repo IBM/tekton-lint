@@ -48,23 +48,19 @@ export interface ToolConfig {
     quiet: boolean;
 }
 
-let CFG: ToolConfig;
-
 export const toolConfig = (cliConfig: any): ToolConfig => {
-    if (!CFG) {
-        CFG = {
-            tektonlintrc: cliConfig['config'],
-            cache_dir: env.get('TL_CACHE_DIR').default(path.join(os.homedir(), '.tekton-lint')).asString(),
-            max_warnings: cliConfig['max-warnings'],
-            globs: cliConfig['_'],
-            refresh_cache: cliConfig['refresh-cache'],
-            format: cliConfig['format'],
-            quiet: cliConfig['quiet'],
-        };
+    const CFG = {
+        tektonlintrc: cliConfig['config'],
+        cache_dir: env.get('TL_CACHE_DIR').default(path.join(os.homedir(), '.tekton-lint')).asString(),
+        max_warnings: cliConfig['max-warnings'],
+        globs: cliConfig['_'],
+        refresh_cache: cliConfig['refresh-cache'],
+        format: cliConfig['format'],
+        quiet: cliConfig['quiet'],
+    };
 
-        if (!fs.existsSync(CFG.cache_dir)) {
-            fs.mkdirSync(CFG.cache_dir, { recursive: true });
-        }
+    if (!fs.existsSync(CFG.cache_dir)) {
+        fs.mkdirSync(CFG.cache_dir, { recursive: true });
     }
 
     return CFG;

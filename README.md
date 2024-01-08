@@ -1,16 +1,27 @@
 # tekton-lint
 
-> A linter for [tekton] resource definitions - v1 beta now available!!
+A linter for Tekton resource definitions - **v1 beta now available!!**
+<!-- TOC -->
 
----
+- [tekton-lint](#tekton-lint)
+    - [Quick Start](#quick-start)
+    - [Usage - CLI](#usage---cli)
+    - [What yaml files to include?](#what-yaml-files-to-include)
+    - [Rules](#rules)
+        - [Detecting errors](#detecting-errors)
+        - [Best practices](#best-practices)
+    - [Configuring tekton-lint](#configuring-tekton-lint)
+    - [Issues?](#issues)
+
+<!-- /TOC -->
+
 ## Quick Start
 
-Using the latest v1 tekton-lint and Node 18 or later....
+Make sure you've NodeJS v18 or later installed, and run....
 
 ```
 npx @ibm/tekton-lint@latest <glob-pattern-to-yaml-files>
 ```
-
 
 To try a quick example, grab the `example-task.yaml` from this repo
 
@@ -29,6 +40,7 @@ example-task.yaml
 ```
 
 You can use the tool as a regular lint tool from the CLI or scripts; alternatively you can use it as a [library via it's API](./_docs/usage_api.md) or from an [IDE such as VScode](./_docs/usage_ide.md).
+
 
 ## Usage - CLI
 
@@ -65,7 +77,38 @@ Examples:
   tekton-lint --watch "**/*.yaml"           Watch mode
 ```
 
+## What yaml files to include?
 
+Only the yaml files that are specified are linted; depdending on how your Tekton instance is configured sometimes you might be using task descriptions that aren't part of your project or repository. In this case you'll get linter errors that "Task XYZ can't be found" - the latest v1 version of tool has added the concept of 'external tasks'.
+
+For example if you are using some of the OpenToolchain Tasks, you can add the following to the [configuration file](#configuring-tekton-lint)
+
+```
+---
+external-tasks:
+  - name: git-clone-repo
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: git
+  - name: toolchain-extract-value
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: toolchain
+  - name: doi-publish-build-record
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: devops-insights    
+  - name: icr-publish
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: container-registry
+  - name: iks-detch
+    uri: https://github.com/open-toolchain/tekton-catalog
+    path: kubernetes-service
+```
+
+This will clone the repos specified and extract the various directories to a local cache. When you lint your tools these external tasks and definitions will be included. This will prevent any errors about tasks missing; but also imnportantly ensure your use of the tasks is correct, eg no missed parameters.
+
+Note that these cached files won't be linted themselves.
+
+
+The cache is defined to be put to `~/.tektonlint`  If you wish to clear the cache, simply delete this directory - alternatively there is a cli option. 
 
 ## Rules
 

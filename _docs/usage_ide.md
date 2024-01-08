@@ -1,6 +1,6 @@
 ## IDE Integration
 
-> note this is hasn't been extensively tested yet in alpha - focussing on the cli invocation
+> note this is hasn't been extensively tested; a better VSCode plugin would be preferred should time permit
 
 `tekton-lint` can be added as a [Task][vscode-task]:
 

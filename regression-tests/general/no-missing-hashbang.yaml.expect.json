@@ -1,1 +1,19 @@
-[{"message":"Step script 'step-1' should start with a hashbang line.","rule":"no-missing-hashbang","level":"warning","path":"./regression-tests/general/no-missing-hashbang.yaml","loc":{"range":[376,398,398],"startLine":22,"startColumn":15,"endLine":24,"endColumn":1}}]
+[
+    {
+        "message": "Step script 'step-1' should start with a hashbang line.",
+        "rule": "no-missing-hashbang",
+        "level": "warning",
+        "path": "./regression-tests/general/no-missing-hashbang.yaml",
+        "loc": {
+            "range": [
+                376,
+                398,
+                398
+            ],
+            "startLine": 22,
+            "startColumn": 15,
+            "endLine": 24,
+            "endColumn": 1
+        }
+    }
+]
