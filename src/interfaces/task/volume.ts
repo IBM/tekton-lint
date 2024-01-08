@@ -1,29 +1,29 @@
-import { BaseName } from '../common';
+import { BaseName } from '../common.js';
 
 interface EmptyDirVolume extends BaseName {
-  emtyDir: {};
+    emtyDir: {};
 }
 
 interface ConfigMapVolume extends BaseName {
-  configMap: {
-    name: string;
-    items?: {
-      key: string;
-      path: string;
-    }[];
-  };
+    configMap: {
+        name: string;
+        items?: {
+            key: string;
+            path: string;
+        }[];
+    };
 }
 
 interface PersistentVolumeClaimVolume extends BaseName {
-  persistentVolumeClaim: {
-    claimName: string;
-  };
+    persistentVolumeClaim: {
+        claimName: string;
+    };
 }
 
 interface SecretVolume extends BaseName {
-  secret: {
-    secretName: string;
-  };
+    secret: {
+        secretName: string;
+    };
 }
 
 type Volume = EmptyDirVolume | ConfigMapVolume | PersistentVolumeClaimVolume | SecretVolume;

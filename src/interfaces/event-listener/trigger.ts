@@ -1,19 +1,19 @@
-import { BaseName } from '../common';
+import { BaseName } from '../common.js';
 
 interface BaseTrigger {
-  name? : string;
-  template: BaseName;
+    name?: string;
+    template: BaseName;
 }
 
 interface BindingTrigger extends BaseTrigger {
-  binding: BaseName;
+    binding: BaseName;
 }
 
 interface BindingsTrigger extends BaseTrigger {
-  bindings: {
-    name?: string;
-    ref?: string;
-  }[];
+    bindings: {
+        name?: string;
+        ref?: string;
+    }[];
 }
 
 type Trigger = BindingTrigger | BindingsTrigger;

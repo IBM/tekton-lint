@@ -24,7 +24,7 @@ interface ValueParam {
     value: string;
 }
 
-type listResources = {
+type ListResources = {
     [key: string]: Base;
 };
 
@@ -35,12 +35,12 @@ interface ExternalResource {
 }
 
 interface Tekton {
-    tasks?: listResources;
-    pipelines?: listResources;
-    listeners?: listResources;
-    triggerTemplates?: listResources;
-    triggerBindings?: listResources;
-    conditions?: listResources;
+    tasks?: { [key: string]: Base };
+    pipelines?: ListResources;
+    listeners?: ListResources;
+    triggerTemplates?: ListResources;
+    triggerBindings?: ListResources;
+    conditions?: ListResources;
     externaltasks?: ExternalResource[];
 }
 
@@ -83,4 +83,4 @@ export type Problem = {
     loc: Location;
 };
 
-export { Tekton, Base, Param, BaseName, ValueParam, ExternalResource };
+export { Tekton, Base, Param, BaseName, ValueParam, ExternalResource, ListResources };

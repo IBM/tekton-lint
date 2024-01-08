@@ -1,39 +1,39 @@
-import { BaseName } from '../common';
+import { BaseName } from '../common.js';
 
 interface ValueVariable extends BaseName {
-  value: string;
+    value: string;
 }
 
 interface AnnotationVariable extends BaseName {
-  valueFrom: {
-    fieldRef: {
-      fieldPath: string;
+    valueFrom: {
+        fieldRef: {
+            fieldPath: string;
+        };
     };
-  };
 }
 
 interface SecretKeyVariable extends BaseName {
-  valueFrom: {
-    secretKeyRef: {
-      name: string;
-      key: string;
+    valueFrom: {
+        secretKeyRef: {
+            name: string;
+            key: string;
+        };
     };
-  };
 }
 
 interface ConfigMapKeyVariable extends BaseName {
-  valueFrom: {
-    configMapKeyRef: {
-      name: string;
-      key: string;
+    valueFrom: {
+        configMapKeyRef: {
+            name: string;
+            key: string;
+        };
     };
-  };
 }
 
 type Variable = ValueVariable | AnnotationVariable | SecretKeyVariable | ConfigMapKeyVariable;
 
 interface StepTemplate {
-  env?: Variable[];
+    env?: Variable[];
 }
 
 export default StepTemplate;
