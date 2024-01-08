@@ -1,0 +1,5 @@
+- id: tekton-lint
+  name: tekton-lint
+  description: A linter for tekton resource definitions
+  entry: tekton-lint
+  language: node
