@@ -4,7 +4,7 @@ import yargs from 'yargs/yargs';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import url from 'node:url';
-import { toolConfig } from './config.js';
+import { Config } from './config.js';
 import run from './runner.js';
 import logProblems from './log-problems.js';
 
@@ -50,7 +50,7 @@ const parser = yargs(process.argv.slice(2))
     logger.info(argv);
 
     try {
-        const cfg = toolConfig(argv);
+        const cfg = new Config(argv);
 
         const problems = await run(cfg);
         logProblems(cfg, problems);

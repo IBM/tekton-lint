@@ -1,4 +1,4 @@
-import { ToolConfig, getRulesConfig } from './config.js';
+import { Config } from './config.js';
 import Reporter from './reporter.js';
 import { lint as doLint } from './rules.js';
 
@@ -10,7 +10,7 @@ import { logger } from './logger.js';
 import { Doc } from './interfaces/common.js';
 
 /* Collect paths based on the glob pattern passed in  */
-const collector = async (paths: string[], cfg: ToolConfig) => {
+const collector = async (paths: string[], cfg: Config) => {
     const docs: Doc[] = [];
     const files = await glob(paths);
     logger.info('Found these files %j', files);
@@ -31,7 +31,7 @@ const collector = async (paths: string[], cfg: ToolConfig) => {
     return docs;
 };
 
-export default async function runner(cfg: ToolConfig) {
+export default async function runner(cfg: Config) {
     // setup the cache of the external tasks
     const external_cached = collectAllExternal(cfg);
 
@@ -43,7 +43,7 @@ export default async function runner(cfg: ToolConfig) {
         return doLint(
             docs.map((doc: any) => doc.content),
             reporter,
-            getRulesConfig(cfg),
+            cfg.rulesConfig,
         );
     } else {
         throw new Error(`No paths match glob "${cfg.globs}" - did you mean to add "*.yaml"`);

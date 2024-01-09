@@ -24,4 +24,3 @@ rules: # error | warning | off
   no-deprecated-resource: warning
   no-missing-hashbang: warning
 
-
