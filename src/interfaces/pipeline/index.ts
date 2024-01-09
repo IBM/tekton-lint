@@ -11,6 +11,7 @@ interface Pipeline extends Base {
         resources?: PipelineResource[];
         workspaces?: Workspace[];
         tasks: Task[];
+        finally?: Task[];
     };
 }
 

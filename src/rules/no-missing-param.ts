@@ -5,7 +5,9 @@ function getTaskParams(spec) {
 
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        // include any finally tasks if they are present
+        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
             if (task.taskRef) {
                 const name = task.taskRef.name;
                 if (!tekton.tasks[name]) continue;
@@ -27,7 +29,9 @@ export default (docs, tekton, report) => {
         }
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        // include any finally tasks if they are present
+        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
             if (task.taskSpec) {
                 const params = getTaskParams(task.taskSpec);
                 if (task.params == null && params == null) continue;

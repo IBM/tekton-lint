@@ -36,6 +36,11 @@ export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         const params = getParams(pipeline);
         walk(pipeline.spec.tasks, ['spec', 'tasks'], createVisitor(pipeline.metadata.name, params, 'params', report));
+        walk(
+            pipeline.spec.finally,
+            ['spec', 'finally'],
+            createVisitor(pipeline.metadata.name, params, 'params', report),
+        );
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
