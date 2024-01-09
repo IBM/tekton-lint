@@ -1,12 +1,12 @@
 ---
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: no-extra-param-task
 spec:
   steps: []
 ---
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: no-extra-param-pipeline
@@ -25,7 +25,7 @@ spec:
         - name: foo
           value: foo
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1
 kind: TriggerTemplate
 metadata:
   name: no-extra-param-template
@@ -61,5 +61,5 @@ spec:
                 - name: foo
                   value: foo
         params:
-          - name: foo
+          - name: extra-param-foo
             value: foo

@@ -1,7 +1,7 @@
 import collectResources from '../collect-resources.js';
 
 const isValidName = (name) => {
-    const valid = new RegExp('^[a-z0-9-()$.]*$');
+    const valid = new RegExp('^[a-zA-Z_][a-z0-9-()$.]*$');
     return valid.test(name);
 };
 
@@ -47,7 +47,7 @@ export default (docs, tekton, report) => {
                 report(
                     `Invalid name for ${kind} '${
                         (resource as any).metadata.name
-                    }'. Names should be in lowercase, alphanumeric, kebab-case format.`,
+                    }'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names`,
                     (resource as any).metadata,
                     'name',
                 );
