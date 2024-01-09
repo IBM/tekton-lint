@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import fg from 'fast-glob';
-import {Problem, ToolConfig, getDefaultConfig,linter} from '../src/index'
+import {Problem, Config, Linter} from '../src/index'
 
 const pattern = "./regression-tests/general/*.yaml"
 const yamlfiles = fg.globSync(pattern)
@@ -9,8 +9,9 @@ const yamlfiles = fg.globSync(pattern)
 describe("Regression Tests",()=>{
 
     test.each(yamlfiles)("%s",async (yamlSrcPath)=>{                                                    
-        const cfg: ToolConfig = getDefaultConfig()
-        const problems: Problem[] = await linter(cfg,[yamlSrcPath])
+        const cfg: Config = Config.getDefaultConfig()
+        cfg.globs=[yamlSrcPath]
+        const problems: Problem[] = await Linter.run(cfg)
 
         const expectedPath =`${yamlSrcPath}.expect.json`
 

@@ -12,12 +12,15 @@
 - it is an ESM module therefore add `"type":"module"` to your `package.json`
 
 ```js
+
+import {Problem, Config, Linter} from '@ibm/tekton-linter'
+
 const main = async () =>{
 
-	const cfg = getDefaultConfig()
-
-	const yamlSrcPath = "./example-task.yaml"
-	const problems = await linter(cfg,[yamlSrcPath])
+	const cfg = Config.getDefaultConfig()
+    cfg.globs = ["./example-task.yaml"]
+	
+	const problems = await Linter.run(cfg)
 	problems.forEach(element => {
 		console.log(`${p.rule}:: ${p.message}`)
 	});
@@ -43,15 +46,15 @@ The API is used as part of the regression testing, see [regression.test.ts](../r
 ### ToolConfig
 
 ```ts
-getDefaultConfig(): ToolConfig
+Config.getDefaultConfig(): Config
 ```
   
 
 Structure is 
 
 ```ts
- interface ToolConfig {
-    tektonlintrc: string;
+ interface Config {
+    
     cache_dir: string;
     max_warnings: number;
     globs: string[];
@@ -64,10 +67,10 @@ Structure is
 ### Linter API
 
 ```ts
-async linter(cfg: ToolConfig, globs: string[]): Problems[]
+async Linter.run(cfg: ToolConfig): Promise<Problems[]>
 ```
  
-An async API, taking a `ToolConfig` instance and array of glob patterns for YAML files. These are appended to any if the config object.
+An async API, taking a `Config` instance containing options including the array of glob patterns for YAML files. 
 
 
 ### Problems

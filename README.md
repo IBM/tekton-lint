@@ -79,11 +79,21 @@ Examples:
 
 ## What yaml files to include?
 
-Only the yaml files that are specified are linted; depdending on how your Tekton instance is configured sometimes you might be using task descriptions that aren't part of your project or repository. In this case you'll get linter errors that "Task XYZ can't be found" - the latest v1 version of tool has added the concept of 'external tasks'.
+Only the yaml files that are specified are linted; these can be defined either on the command line, or via the `.tektonlintrc.yaml` file. 
+
+```yaml
+globs:
+  - example*.yaml
+```
+
+If both command line and the configuration file have patterns specified, both are used but the command line options come first.
+
+Depdending on how your Tekton instance is configured sometimes you might be using task descriptions that aren't part of your project or repository. In this case you'll get linter errors that "Task XYZ can't be found" - the latest v1 version of tool has added the concept of 'external tasks'.
 
 For example if you are using some of the OpenToolchain Tasks, you can add the following to the [configuration file](#configuring-tekton-lint)
 
-```
+
+```yaml
 ---
 external-tasks:
   - name: git-clone-repo
