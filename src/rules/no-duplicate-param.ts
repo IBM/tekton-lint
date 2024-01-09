@@ -6,6 +6,7 @@ function getParams(kind, spec) {
 }
 
 function checkParams(params, report) {
+    if (!params) return;
     const names = new Set();
     for (const param of params) {
         if (names.has(param.name)) {
@@ -26,6 +27,20 @@ export default (docs, tekton, report) => {
         for (const crd of template.spec.resourcetemplates) {
             if (crd.kind !== 'PipelineRun') continue;
             checkParams(getParams(crd.kind, crd.spec), report);
+
+            if (crd.spec.pipelineSpec) {
+                if (crd.spec.pipelineSpec.params) {
+                    checkParams(crd.spec.pipelineSpec.params, report);
+                }
+                if (crd.spec.pipelineSpec.tasks) {
+                    for (const t of crd.spec.pipelineSpec.tasks) {
+                        checkParams(t.params, report);
+                        if (t.taskSpec && t.taskSpec.params) {
+                            checkParams(t.taskSpec.params, report);
+                        }
+                    }
+                }
+            }
         }
     }
 
