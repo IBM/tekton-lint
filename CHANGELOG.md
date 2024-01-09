@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.6](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.4...v1.0.0-beta.6) (2024-01-09)
+
+
+### Bug Fixes
+
+* add support for finally tasks ([d889f1c](https://github.com/IBM/tekton-lint/commit/d889f1cae07335ea1c1697662d0efbb6eba4f34a))
+* issue 62 ([cd15fc5](https://github.com/IBM/tekton-lint/commit/cd15fc52d235cad62991dcfa8105bdce1d936d08))
+* pr 68 merge and added interfaces ([22beab6](https://github.com/IBM/tekton-lint/commit/22beab6cb4d456e7a0accc2d43006d397e9523b9))
+
+## [1.0.0-beta.5](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-01-09)
+
+
+### Bug Fixes
+
+* add support for finally tasks ([d889f1c](https://github.com/IBM/tekton-lint/commit/d889f1cae07335ea1c1697662d0efbb6eba4f34a))
+* issue 62 ([cd15fc5](https://github.com/IBM/tekton-lint/commit/cd15fc52d235cad62991dcfa8105bdce1d936d08))
+* pr 68 merge and added interfaces ([22beab6](https://github.com/IBM/tekton-lint/commit/22beab6cb4d456e7a0accc2d43006d397e9523b9))
+
 ## [1.0.0-beta.4](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-01-05)
 
 

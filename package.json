@@ -9,10 +9,10 @@
     "build": "tsc --pretty",
     "coverage": "jest --coverage",
     "prepare": "husky install",
-    "release": "commit-and-tag-version --sign"
+    "release": "commit-and-tag-version --signoff"
   },
   "type": "module",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.6",
   "description": "Linter for Tekton definitions",
   "repository": {
     "type": "git",
@@ -55,7 +55,7 @@
     "@types/source-map-support": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
-    "commit-and-tag-version": "^12.0.0",
+    "commit-and-tag-version": "^12.1.0",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
