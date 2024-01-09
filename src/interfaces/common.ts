@@ -42,6 +42,7 @@ interface Tekton {
     triggerBindings?: ListResources;
     conditions?: ListResources;
     externaltasks?: ExternalResource[];
+    finally?: ListResources;
 }
 
 // ref: https://dev.to/ankittanna/how-to-create-a-type-for-complex-json-object-in-typescript-d81

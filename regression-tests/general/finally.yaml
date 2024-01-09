@@ -1,0 +1,55 @@
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: cleanup
+spec:
+  params:
+    - name: taskexample
+  steps:
+    - name: ls-build-sources
+      command: ["ls", "-ltr", "/workspace/source/$(params.taskexample)"]
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: notification
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: build-deploy-cleaup-pipeline
+spec:
+  params:
+    - name: finallyparam
+    - name: really-unused
+  workspaces:
+    - name: shared-workspace    
+  tasks: []
+    
+  finally:
+    - name: cleanup
+      displayName: "Notification from $(params.notdefined)"
+      taskRef:
+        name: cleanup
+      params:
+        - name: unrequiredparam
+          value: "blank"
+        - name: taskexample
+          value: $(params.finallyparam)
+        - name: taskexample
+          value: $(params.undefined)
+        - name: "???_"
+          value: wibble
+      workspaces:
+        - name: shared-workspace
+          workspace: shared-workspace                    
+    - name: notification-using-context-variable
+      displayName: "Notification from $(params.finallyparam)"
+      taskRef:
+        name: notification
+      workspaces:
+        - name: shared-workspace
+          workspace: unknown-workspace        

@@ -74,7 +74,9 @@ export default (docs, tekton, report) => {
         if (!pipeline.spec) continue;
         const params = getParams(pipeline.kind, pipeline.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
+
         walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(occurences, 'params'));
+        walk(pipeline.spec.finally, ['spec', 'finally'], unused(occurences, 'params'));
         for (const [param, n] of Object.entries(occurences)) {
             if (n) continue;
             report(

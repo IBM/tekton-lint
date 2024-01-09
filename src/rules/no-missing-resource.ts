@@ -47,7 +47,9 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        // include any finally tasks if they are present
+        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
             if (!task.conditions) continue;
             for (const condition of task.conditions) {
                 if (tekton.conditions[condition.conditionRef]) continue;
@@ -60,7 +62,9 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        // include any finally tasks if they are present
+        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
             if (!task.taskRef) continue;
             const name = task.taskRef.name;
 

@@ -30,7 +30,9 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        // include any finally tasks if they are present
+        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
             checkParams(getParams('Task', task), report);
             if (task.taskSpec) {
                 checkParams(getParams('Task', task.taskSpec), report);
