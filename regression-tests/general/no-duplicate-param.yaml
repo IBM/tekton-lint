@@ -5,9 +5,9 @@ metadata:
   name: no-duplicate-param-1
 spec:
   params:
-    - name: foo
+    - name: triggerbinding-foo
       value: foo
-    - name: foo
+    - name: triggerbinding-foo
       value: foo
 ---
 apiVersion: tekton.dev/v1beta1
@@ -16,18 +16,18 @@ metadata:
   name: no-duplicate-param-2
 spec:
   params:
-    - name: foo
-    - name: foo
+    - name: pipeline-foo
+    - name: pipeline-foo
   tasks:
     - name: task
       taskSpec:
         params:
-          - name: foo
-          - name: foo
+          - name: pipelinetask-foo
+          - name: pipelinetask-foo
       params:
-        - name: foo
+        - name: pipelinetask-foo
           value: foo
-        - name: foo
+        - name: pipelinetask-foo
           value: foo
 ---
 apiVersion: tekton.dev/v1beta1
@@ -36,8 +36,8 @@ metadata:
   name: no-duplicate-param-3
 spec:
   params:
-    - name: foo
-    - name: foo
+    - name: task-foo
+    - name: task-foo
   steps: []
 ---
 apiVersion: tekton.dev/v1alpha1
@@ -46,8 +46,8 @@ metadata:
   name: no-duplicate-param-4
 spec:
   params:
-    - name: foo
-    - name: foo
+    - name: ttfoo
+    - name: ttfoo
   resourcetemplates:
     - apiVersion: v1
       kind: ConfigMap
@@ -63,21 +63,21 @@ spec:
       spec:
         pipelineSpec:
           params:
-            - name: foo
-            - name: foo
+            - name: psone
+            - name: psone
           tasks:
             - name: task
               taskSpec:
                 params:
-                  - name: foo
-                  - name: foo
+                  - name: taskspec-foo
+                  - name: taskspec-foo
               params:
-                - name: foo
-                  value: foo
-                - name: foo
-                  value: foo
+                - name: taskspec-foo
+                  value: $(params.psone)
+                - name: taskspec-foo
+                  value: $(params.psone)
         params:
-          - name: foo
-            value: foo
-          - name: foo
-            value: foo
+          - name: psone
+            value: $(tt.params.ttfoo)
+          - name: psone
+            value: $(tt.params.ttfoo)
