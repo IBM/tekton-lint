@@ -16,13 +16,13 @@ spec:
       taskRef:
         name: no-extra-param-task
       params:
-        - name: foo
+        - name: no-extra-param-for-taskref-foo
           value: foo
     - name: step-1
       taskSpec:
         steps: []
       params:
-        - name: foo
+        - name: no-extra-param-for-taskspec-foo
           value: foo
 ---
 apiVersion: tekton.dev/v1
@@ -34,6 +34,18 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
+        name: pipeline-run-3
+      spec:
+        pipelineRef:
+          name: no-extra-param-pipeline
+        params:
+          - name: foo
+            value: foo
+          - name: notndeed
+            value: blank  
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
         name: pipeline-run-1
       spec:
         pipelineRef:
@@ -41,25 +53,29 @@ spec:
         params:
           - name: foo
             value: foo
+          - name: reallynotndeed
+            value: blank
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: pipeline-run-2
       spec:
         pipelineSpec:
+          params:
+            - name: reallyneeded
           tasks:
             - name: step-1
               taskRef:
                 name: no-extra-param-task
               params:
-                - name: foo
+                - name: unspecifified
                   value: foo
             - name: step-2
               taskSpec:
                 steps: []
               params:
                 - name: foo
-                  value: foo
+                  value: $(params.readllyneeded)
         params:
           - name: extra-param-foo
             value: foo
