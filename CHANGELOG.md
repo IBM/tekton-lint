@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.7](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-01-10)
+
+
+### Features
+
+* improve config handling ([8387381](https://github.com/IBM/tekton-lint/commit/8387381c5b46ab8a8279da348901fe0059025816))
+
+
+### Bug Fixes
+
+* extra-params on embedded resources ([366faeb](https://github.com/IBM/tekton-lint/commit/366faeb3f82a7888d87004effe5013b57844d533))
+* fix issue 36 ([8589265](https://github.com/IBM/tekton-lint/commit/85892658465cb0d625ac11fa7c5e596986d40837))
+* fix issue 57 ([9bb31e0](https://github.com/IBM/tekton-lint/commit/9bb31e060b0a03a51eb4f2adf54de9e733d8f2c2))
+
 ## [1.0.0-beta.6](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.4...v1.0.0-beta.6) (2024-01-09)
 
 
