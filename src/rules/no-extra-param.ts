@@ -109,4 +109,10 @@ export default (docs, tekton, report) => {
             }
         }
     }
+
+    // for (const pr of Object.values<any>(tekton.pipelineRuns)) {
+    //     for (const task in pr.spec.pipelineSpec.tasks) {
+    //         console.log(task);
+    //     }
+    // }
 };

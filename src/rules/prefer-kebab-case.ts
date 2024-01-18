@@ -44,4 +44,13 @@ export default (docs, tekton, report) => {
         walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
         walk(pipeline.spec.finally, ['spec', 'finally'], naming(pipeline.metadata.name, 'params', report));
     }
+
+    for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
+        walk(pipeline.spec.tasks, ['spec', 'pipelineSpec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
+        walk(
+            pipeline.spec.finally,
+            ['spec', 'pipelineSpec', 'finally'],
+            naming(pipeline.metadata.name, 'params', report),
+        );
+    }
 };

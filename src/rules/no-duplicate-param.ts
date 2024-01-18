@@ -17,7 +17,7 @@ function checkParams(params, report) {
 }
 
 export default (docs, tekton, report) => {
-    for (const t of ['triggerBindings', 'pipelines', 'tasks', 'triggerTemplates']) {
+    for (const t of ['triggerBindings', 'pipelines', 'tasks', 'triggerTemplates', 'pipelineRuns']) {
         for (const crd of Object.values<any>(tekton[t])) {
             checkParams(getParams(crd.kind, crd.spec), report);
         }
@@ -52,6 +52,26 @@ export default (docs, tekton, report) => {
             if (task.taskSpec) {
                 checkParams(getParams('Task', task.taskSpec), report);
             }
+        }
+    }
+
+    for (const pipelineRun of Object.values<any>(tekton.pipelineRuns)) {
+        try {
+            if (!pipelineRun.spec.pipelineSpec) continue;
+
+            const tasks = [
+                ...(pipelineRun.spec.pipelineSpec.tasks ? pipelineRun.spec.pipelineSpec.tasks : []),
+                ...(pipelineRun.spec.pipelineSpec.finally ? pipelineRun.spec.pipelineSpec.finally : []),
+            ];
+            for (const task of tasks) {
+                checkParams(getParams('Task', task), report);
+                if (task.taskSpec) {
+                    checkParams(getParams('Task', task.taskSpec), report);
+                }
+            }
+        } catch (e) {
+            console.log(pipelineRun.metadata.name);
+            throw e;
         }
     }
 };

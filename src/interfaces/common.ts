@@ -43,6 +43,7 @@ interface Tekton {
     conditions?: ListResources;
     externaltasks?: ExternalResource[];
     finally?: ListResources;
+    pipelineRuns?: ListResources;
 }
 
 // ref: https://dev.to/ankittanna/how-to-create-a-type-for-complex-json-object-in-typescript-d81
@@ -63,7 +64,7 @@ export interface RulesConfig {
     'external-tasks': ExternalResource[];
 }
 
-export type RuleReportFn = (message: string, node, prop) => void;
+export type RuleReportFn = (message: string, node, prop?) => void;
 export type RuleFn = (docs, tekton: Tekton, report: RuleReportFn) => void;
 
 // problem report definitions
