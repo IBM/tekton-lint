@@ -1,5 +1,9 @@
+// Supports Pipeline and PipelineRun
+
 import pkg from 'graphlib';
 const { alg, Graph } = pkg;
+
+import { RuleError } from '../errorbase.js';
 
 const RESULT_PATTERN = '\\$\\(tasks\\.([^.]+)\\.results\\.[^.]*\\)';
 const RESULT_REGEX_G = new RegExp(RESULT_PATTERN, 'g');
@@ -52,13 +56,13 @@ function resourceInputReferences(task) {
     }));
 }
 
-function buildTaskGraph(pipeline, referenceCreators) {
+function buildTaskGraph(name, tasks, referenceCreators) {
     const pipelineGraph = new Graph({ directed: true, multigraph: true });
-    pipelineGraph.setGraph(pipeline.metadata.name);
-    if (!pipeline.spec.tasks || pipeline.spec.tasks.length === 0) {
+    pipelineGraph.setGraph(name);
+    if (!tasks || tasks.length === 0) {
         return pipelineGraph;
     }
-    for (const task of pipeline.spec.tasks) {
+    for (const task of tasks) {
         pipelineGraph.setNode(task.name, task);
         for (const referenceCreator of referenceCreators) {
             for (const { ref, type } of referenceCreator(task)) {
@@ -72,11 +76,11 @@ function buildTaskGraph(pipeline, referenceCreators) {
     return pipelineGraph;
 }
 
-function errorCyclesInPipeline(pipeline, referenceCreators, report) {
-    const pipelineTaskGraph = buildTaskGraph(pipeline, referenceCreators);
+function errorCyclesInPipeline(name, tasks, referenceCreators, report) {
+    const pipelineTaskGraph = buildTaskGraph(name, tasks, referenceCreators);
     for (const cycle of alg.findCycles(pipelineTaskGraph)) {
         for (const taskNameInCycle of cycle) {
-            const taskInCycle = Object.values<any>(pipeline.spec.tasks).find((task) => task.name === taskNameInCycle);
+            const taskInCycle = Object.values<any>(tasks).find((task) => task.name === taskNameInCycle);
             report(
                 `Cycle found in tasks (dependency graph): ${[...cycle, cycle[0]].join(' -> ')}`,
                 taskInCycle,
@@ -87,7 +91,24 @@ function errorCyclesInPipeline(pipeline, referenceCreators, report) {
 }
 
 export default (docs, tekton, report) => {
-    for (const pipeline of Object.values(tekton.pipelines)) {
-        errorCyclesInPipeline(pipeline, [runAfterReferences, paramsReferences, resourceInputReferences], report);
+    for (const pipeline of Object.values<any>(tekton.pipelines)) {
+        try {
+            const name = pipeline.metadata.name;
+            const tasks = pipeline.spec.tasks;
+            errorCyclesInPipeline(name, tasks, [runAfterReferences, paramsReferences, resourceInputReferences], report);
+        } catch (e) {
+            throw new RuleError("Can't process", 'no-pipeline-task-cycle', pipeline.metadata.name);
+        }
+    }
+
+    for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
+        try {
+            if (!pipeline.spec.pipelineSpec) continue;
+            const name = pipeline.metadata.name;
+            const tasks = pipeline.spec.pipelineSpec.tasks;
+            errorCyclesInPipeline(name, tasks, [runAfterReferences, paramsReferences, resourceInputReferences], report);
+        } catch (e) {
+            throw new RuleError("Can't process", 'no-pipeline-task-cycle', pipeline.metadata.name);
+        }
     }
 };

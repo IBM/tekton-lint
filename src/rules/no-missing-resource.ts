@@ -62,8 +62,33 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
+        if (!pipeline.spec) continue;
+
         // include any finally tasks if they are present
         const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const task of tasks) {
+            if (!task.taskRef) continue;
+            const name = task.taskRef.name;
+
+            if (!tekton.tasks[name]) {
+                report(
+                    `Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`,
+                    task.taskRef,
+                    'name',
+                );
+                continue;
+            }
+        }
+    }
+
+    // ---
+
+    for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
+        if (!pipeline.spec || !pipeline.spec.pipelineSpec) continue;
+        const maintasks = pipeline.spec.pipelineSpec.tasks ? pipeline.spec.pipelineSpec.tasks : [];
+        const finallytasks = pipeline.spec.pipelineSpec.finally ? pipeline.spec.pipelineSpec.finally : [];
+
+        const tasks = [...maintasks, ...finallytasks];
         for (const task of tasks) {
             if (!task.taskRef) continue;
             const name = task.taskRef.name;

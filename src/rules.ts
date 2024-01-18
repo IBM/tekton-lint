@@ -3,6 +3,7 @@ import rules from './rule-loader.js';
 import { logger } from './logger.js';
 import { Tekton } from './interfaces/common.js';
 
+
 const createReporter = (rule, config, reporter) => {
     const isError = config.rules[rule] && config.rules[rule] === 'error';
 
@@ -31,9 +32,13 @@ const parse = (docs): Tekton => {
         conditions: Object.fromEntries(
             docs.filter((item) => item.kind === 'Condition').map((item) => [item.metadata.name, item]),
         ),
+        pipelineRuns: Object.fromEntries(
+            docs.filter((item) => item.kind === 'PipelineRun').map((item) => [item.metadata.name, item]),
+        ),
     };
 
     logger.info('Tekton: %o', tkn);
+    //fs.writeFileSync('tekton.json', JSON.stringify(tkn), 'utf-8');
     return tkn;
 };
 

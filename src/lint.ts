@@ -1,5 +1,11 @@
 #! /usr/bin/env node
 
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+import sourceMapSupport from 'source-map-support';
+sourceMapSupport.install();
+
 import yargs from 'yargs/yargs';
 import * as fs from 'node:fs';
 import * as path from 'node:path';

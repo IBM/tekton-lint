@@ -1,4 +1,28 @@
-export default (docs, tekton, report) => {
+import { RuleReportFn } from 'src/interfaces/common.js';
+
+function checkTasks(tasks, parentWorkspaces, parentName, report) {
+    for (const task of tasks) {
+        if (!task.workspaces) continue;
+        for (const workspace of task.workspaces) {
+            let matchingWorkspace = false;
+            if (workspace.workspace) {
+                matchingWorkspace = parentWorkspaces.find(({ name }) => name === workspace.workspace);
+            } else {
+                // no workspace defined - which is strictly optional, so check the name field instead
+                matchingWorkspace = parentWorkspaces.find(({ name }) => name === workspace.name);
+            }
+            if (!matchingWorkspace) {
+                report(
+                    `Pipeline '${parentName}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${parentName}'`,
+                    workspace,
+                    'workspace',
+                );
+            }
+        }
+    }
+}
+
+export default (docs, tekton, report: RuleReportFn) => {
     for (const task of Object.values<any>(tekton.tasks)) {
         if (!task.spec || !task.spec.workspaces) continue;
         const taskName = task.metadata.name;
@@ -28,25 +52,35 @@ export default (docs, tekton, report) => {
         const pipelineWorkspaces = pipeline.spec.workspaces || [];
         // include any finally tasks if they are present
         const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
-        for (const task of tasks) {
-            if (!task.workspaces) continue;
-            for (const workspace of task.workspaces) {
-                let matchingWorkspace = false;
-                if (workspace.workspace) {
-                    matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.workspace);
-                } else {
-                    // no workspace defined - which is strictly optional, so check the name field instead
-                    matchingWorkspace = pipelineWorkspaces.find(({ name }) => name === workspace.name);
-                }
-                if (!matchingWorkspace) {
+        checkTasks(tasks, pipelineWorkspaces, pipeline.metadata.name, report);
+    }
+
+    for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
+        if (!pipeline || !pipeline.spec || !pipeline.spec.pipelineSpec) continue;
+        const pipelineWorkspaces = pipeline.spec.pipelineSpec.workspaces || [];
+        // include any finally tasks if they are present
+        const tasks = [
+            ...(pipeline.spec.pipelineSpec.tasks || []),
+            ...(pipeline.spec.pipelineSpec.finally ? pipeline.spec.pipelineSpec.finally : []),
+        ];
+        checkTasks(tasks, pipelineWorkspaces, pipeline.metadata.name, report);
+
+        // check the spec workspaces and the pieline spec
+        const runWorkspaces = pipeline.spec.workspaces;
+        const specWorkspaces = pipeline.spec.pipelineSpec.workspaces;
+        if (!specWorkspaces) continue;
+
+        specWorkspaces
+            .filter((s) => !s)
+            .forEach((sws) => {
+                if (!runWorkspaces.find((ws) => (sws as any).name == ws.name)) {
+                    console.log(`${sws.name} not found`);
                     report(
-                        `Pipeline '${pipeline.metadata.name}' provides workspace '${workspace.workspace}' for '${workspace.name}' for Task '${task.name}', but '${workspace.workspace}' doesn't exists in '${pipeline.metadata.name}'`,
-                        workspace,
-                        'workspace',
+                        `Pipeline run '${pipeline.metadata.name}' has a pipelineSpec with workspace '${sws.name}' that is not defined in the pipeline`,
+                        sws,
                     );
                 }
-            }
-        }
+            });
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
