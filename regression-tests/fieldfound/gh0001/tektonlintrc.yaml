@@ -1,0 +1,3 @@
+rules:
+  no-duplicate-resource: off
+  no-extra-param: warning
