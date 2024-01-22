@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.9](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-01-22)
+
+
+### Bug Fixes
+
+* properties loading ([c92897b](https://github.com/IBM/tekton-lint/commit/c92897bdc667bfba86765a6849be9ac69af8c0a0))
+
 ## [1.0.0-beta.8](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-01-18)
 
 
