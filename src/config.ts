@@ -26,15 +26,17 @@ export class Config {
         if (fs.existsSync(user_tektonlintrc)) {
             const customRcFile = fs.readFileSync(user_tektonlintrc, 'utf8');
             const customConfig = yaml.parse(customRcFile);
-            this._rulesConfig = { ...defaultConfig.rules, ...customConfig.rules };
 
             logger.info('Using .tektonlintrc.yaml at %s', user_tektonlintrc);
             logger.info('customConfig %o', customConfig);
-            this._rulesConfig = customConfig;
+
+            this._rulesConfig = { ...defaultConfig, ...customConfig };
+            this._rulesConfig.rules = { ...defaultConfig.rules, ...customConfig.rules };
             this._globs = [...cliConfig['_'], ...(customConfig.globs ? customConfig.globs : [])];
         } else {
             logger.warn('Unable to find configuration - using defaults');
             this._rulesConfig = defaultConfig;
+
             this._globs = [...cliConfig['_']];
         }
 

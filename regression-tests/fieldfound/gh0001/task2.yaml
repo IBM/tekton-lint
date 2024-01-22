@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: goodbye
+spec:
+  params:
+      - name: username
+  steps:
+    - name: echo
+      image: alpine:3.19.0
+      script: |
+        #!/bin/sh
+        echo "Hello World"  

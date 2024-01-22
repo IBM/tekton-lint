@@ -3,7 +3,6 @@ import rules from './rule-loader.js';
 import { logger } from './logger.js';
 import { Tekton } from './interfaces/common.js';
 
-
 const createReporter = (rule, config, reporter) => {
     const isError = config.rules[rule] && config.rules[rule] === 'error';
 
