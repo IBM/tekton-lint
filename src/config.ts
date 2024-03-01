@@ -16,6 +16,7 @@ export class Config {
     private _refresh_cache: boolean;
     private _format: string;
     private _quiet: boolean;
+    private _custom: { [name: string]: string } | undefined;
 
     public constructor(cliConfig: any) {
         let user_tektonlintrc = path.resolve(cliConfig['config']);
@@ -46,9 +47,14 @@ export class Config {
         this._format = cliConfig['format'];
         this._quiet = cliConfig['quiet'];
 
+        this._custom = this._rulesConfig['custom'];
         if (!fs.existsSync(this._cache_dir)) {
             fs.mkdirSync(this._cache_dir, { recursive: true });
         }
+    }
+
+    public get customRulesConfig() {
+        return this._custom;
     }
 
     public get rulesConfig() {

@@ -1,7 +1,7 @@
-import rules from './rule-loader.js';
+import { RuleLoader } from './rule-loader.js';
 
-import { logger } from './logger.js';
 import { Tekton } from './interfaces/common.js';
+import { logger } from './logger.js';
 
 const createReporter = (rule, config, reporter) => {
     const isError = config.rules[rule] && config.rules[rule] === 'error';
@@ -41,7 +41,9 @@ const parse = (docs): Tekton => {
     return tkn;
 };
 
-export function lint(docs, reporter, config) {
+export async function lint(docs, reporter, config) {
+    const rules = await RuleLoader.getRules(config);
+
     docs = docs.filter((doc) => doc && doc.metadata && doc.metadata.name);
     const tekton = parse(docs);
 

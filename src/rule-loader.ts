@@ -1,4 +1,6 @@
-const rules = {
+import { RulesConfig } from './interfaces/common.js';
+
+const defaultRules = {
     'no-resourceversion': (await import('./rules/no-resourceversion.js')).default,
 
     // no-duplicate-env
@@ -63,4 +65,26 @@ const rules = {
     'no-missing-hashbang': (await import('./rules/no-missing-hashbang.js')).default,
 };
 
-export default rules;
+export class RuleLoader {
+    public static async getRules(config: RulesConfig) {
+        // load the custom rules
+        const custom = config.custom;
+        if (custom) {
+            for await (const [name, ruleFile] of Object.entries(custom)) {
+                const pluginRules = (await import(ruleFile)).default;
+
+                pluginRules.rules.forEach((rule) => {
+                    const fqRuleName = `${name}#${rule.name}`;
+                    defaultRules[fqRuleName] = rule.ruleFn;
+
+                    // if not set by the user opt for default report level
+                    if (!config.rules[fqRuleName]) {
+                        config.rules[fqRuleName] = rule.reportDefault;
+                    }
+                });
+            }
+        }
+
+        return defaultRules;
+    }
+}

@@ -23,4 +23,7 @@ rules: # error | warning | off
   prefer-when-expression: warning
   no-deprecated-resource: warning
   no-missing-hashbang: warning
-
+  
+# custom: 
+#  my_rules: custom_rules 
+  
