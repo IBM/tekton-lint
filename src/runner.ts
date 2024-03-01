@@ -40,7 +40,7 @@ export default async function runner(cfg: Config) {
     if (docs && docs.length > 0) {
         const reporter = new Reporter(docs);
 
-        return doLint(
+        return await doLint(
             docs.map((doc: any) => doc.content),
             reporter,
             cfg.rulesConfig,

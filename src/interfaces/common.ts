@@ -62,6 +62,9 @@ export interface RulesConfig {
         [rule: string]: 'off' | 'warning' | 'error';
     };
     'external-tasks': ExternalResource[];
+    custom?: {
+        [name: string]: string;
+    };
 }
 
 export type RuleReportFn = (message: string, node, prop?) => void;

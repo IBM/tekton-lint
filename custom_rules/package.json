@@ -1,0 +1,12 @@
+{
+  "name": "custom_rules",
+  "version": "1.0.0",
+  "description": "Example of a custom rule",
+  "main": "my_rules.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

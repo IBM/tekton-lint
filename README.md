@@ -11,6 +11,7 @@ A linter for Tekton resource definitions - **v1 beta now available!!**
         - [Detecting errors](#detecting-errors)
         - [Best practices](#best-practices)
     - [Configuring tekton-lint](#configuring-tekton-lint)
+    - [Creating custom rules](#custom-rules)
     - [Issues?](#issues)
 
 <!-- /TOC -->
@@ -228,6 +229,51 @@ Search path for `.tektonlintrc.yaml`
 - current working directory
 - default values used if nothing else found
 
+## Custom Rules
+In additional the default set of rules, custom rules can provided as node modules; the mechanism is similar that used by tools such as eslint.
+
+An example is provided in [`custom_rules`](./custom_rules), and will be used in the examples below. Notes on writing rules are also in the [README.md](./custom_rules/README.md)
+
+### Configuring
+
+In the `.tektonrc.yaml` file add an object with names of the rules and node module that provides it.
+To load rules exported by the module `custom_rules`, and named under `my_rules` add the `custom` field to the yaml file.
+
+```yaml
+---
+rules:
+  ....
+external:tasks:
+  ...
+custom: 
+ my_rules: custom_rules 
+ # For debug and test, refer directly to the js file
+ # my_rules: ../customer_rules/my_rules.js
+```
+
+### Reporting
+
+A module may report more than one rule. There is one rule in the example, and this flags up any task that starts with the work 'Task' (not meant to be serious rule, but an example!)
+
+Running on the `example-task.yaml` file with the example configured adds a 4th report
+
+```
+./example-task.yaml
+  10:14  warning  Invalid image: 'busybox'. Specify the image tag instead of using ':latest'          no-latest-image
+   9:31  error    Undefined param 'contextDir' at .spec.steps[0].command[2] in 'Task-without-params'  no-undefined-param
+  11:19  error    Undefined param 'contextDir' at .spec.steps[0].workingDir in 'Task-without-params'  no-undefined-param
+   1:1   error    Tasks should not start with word 'Task'                                             my_rules#no-tasks-called-task
+
+✖ 4 problems (3 errors, 1 warning)
+```
+
+Within the representation of the rule name here `my_rules#no-tasks-called-task`; if you want to turn off this rule, then you can adjust the list of rules in the `.tektonrc.yaml` as for another rule
+
+```
+rules:
+  ...
+  my_rules#no-tasks-called-task: off
+```
 
 ## Issues?
 
