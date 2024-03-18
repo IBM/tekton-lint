@@ -84,22 +84,24 @@ class Reporter {
 
     _getLocation(m, node, prop): Location | {} {
         if (!m.has(node)) return {};
-
         const k = m.get(node);
-
-        const chars: string[] = Array.from(k.doc.raw);
-        let n = prop ? k.node.get(prop, true) : k.node;
-        if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
-        return {
-            path: k.doc.path,
-            loc: {
-                range: n.range,
-                startLine: this._getLine(chars, n.range[0]),
-                startColumn: this._getCol(chars, n.range[0]),
-                endLine: this._getLine(chars, n.range[1]),
-                endColumn: this._getCol(chars, n.range[1]),
-            },
-        };
+        try {
+            const chars: string[] = Array.from(k.doc.raw);
+            let n = prop ? k.node.get(prop, true) : k.node;
+            if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
+            return {
+                path: k.doc.path,
+                loc: {
+                    range: n.range,
+                    startLine: this._getLine(chars, n.range[0]),
+                    startColumn: this._getCol(chars, n.range[0]),
+                    endLine: this._getLine(chars, n.range[1]),
+                    endColumn: this._getCol(chars, n.range[1]),
+                },
+            };
+        } catch (e) {
+            return { path: k.doc.path, loc: {} };
+        }
     }
 }
 
