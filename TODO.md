@@ -1,4 +1,0 @@
-- TaskSpecs
-    - namespaces 
-- PipelineRun
-    - Reference pipelineref    

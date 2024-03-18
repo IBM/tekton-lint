@@ -1,17 +1,20 @@
 # tekton-lint
 
-A linter for Tekton resource definitions - **v1 beta now available!!**
+A linter for Tekton resource definitions
 <!-- TOC -->
 
 - [tekton-lint](#tekton-lint)
     - [Quick Start](#quick-start)
+    - [History](#history)
     - [Usage - CLI](#usage---cli)
     - [What yaml files to include?](#what-yaml-files-to-include)
     - [Rules](#rules)
         - [Detecting errors](#detecting-errors)
         - [Best practices](#best-practices)
     - [Configuring tekton-lint](#configuring-tekton-lint)
-    - [Creating custom rules](#custom-rules)
+    - [Custom Rules](#custom-rules)
+        - [Configuring](#configuring)
+        - [Reporting](#reporting)
     - [Issues?](#issues)
 
 <!-- /TOC -->
@@ -40,7 +43,16 @@ example-task.yaml
 
 ```
 
-You can use the tool as a regular lint tool from the CLI or scripts; alternatively you can use it as a [library via it's API](./_docs/usage_api.md) or from an [IDE such as VScode](./_docs/usage_ide.md).
+You can use the tool as a regular lint tool from the CLI or scripts; alternatively you can use it as a [library via it's API](./_docs/usage_api.md) or from an [IDE such as VScode](./_docs/usage_ide.md).  (please consider both the API and IDE use as experimental features.)
+
+## History
+
+When I first started using Tekton a few years ago, I found one of the harder things was keeping track of the dependencies between the YAML files. Comparing to say github actions, or travis, Tekton is a lot more verbose. The comparison isn't quite fair as the tools do work at slightly different levels. 
+
+Nevertheless, I was pleased to find this TektonLint tool; it was able to spot a number of the 'gotchas' before pushing the pipelines for execution. 
+After a brief hiatus, I was using Tekton again.  Bence Dányi the original author was no longer at IBM; as the tool had been useful for me I decided to take on the repo.
+
+I've updated typescript versions, added in additional features such as custom rules, allowed for caching of standard components. Theres more still I'd like to do; but of a MVP it's at v1.
 
 
 ## Usage - CLI
@@ -114,7 +126,7 @@ external-tasks:
     path: kubernetes-service
 ```
 
-This will clone the repos specified and extract the various directories to a local cache. When you lint your tools these external tasks and definitions will be included. This will prevent any errors about tasks missing; but also imnportantly ensure your use of the tasks is correct, eg no missed parameters.
+This will clone the repos specified and extract the various directories to a local cache. When you lint your tools these external tasks and definitions will be included. This will prevent any errors about tasks missing; but also importantly ensure your use of the tasks is correct, eg no missed parameters.
 
 Note that these cached files won't be linted themselves.
 
@@ -122,6 +134,10 @@ Note that these cached files won't be linted themselves.
 The cache is defined to be put to `~/.tektonlint`  If you wish to clear the cache, simply delete this directory - alternatively there is a cli option. 
 
 ## Rules
+
+**Please note** that the tool assumes that the files are syntax correct YAML files, and they are following the established schema for Tekton. For example referring to a field with the wrong spelling or case will confuse the rules. 
+
+If you see an error like ` Pipeline 'pipeline-test-perf-tag' references task 'undefined' but the referenced task cannot be found. ` referencing 'undefined' this more than likely means there is a syntax error in the yaml file.  This can be easily seen with casing, so using `Name: ..` rather than `name: .. `
 
 ### Detecting errors
 
@@ -267,13 +283,16 @@ Running on the `example-task.yaml` file with the example configured adds a 4th r
 ✖ 4 problems (3 errors, 1 warning)
 ```
 
-Within the representation of the rule name here `my_rules#no-tasks-called-task`; if you want to turn off this rule, then you can adjust the list of rules in the `.tektonrc.yaml` as for another rule
+Within the representation of the rule name here `my_rules#no-tasks-called-task`; if you want to turn off this rule, then you can adjust the list of rules in the `.tektonrc.yaml` as for another rule; Note that `#` in the name.
 
 ```
 rules:
   ...
   my_rules#no-tasks-called-task: off
 ```
+
+
+
 
 ## Issues?
 
