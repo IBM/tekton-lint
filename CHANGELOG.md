@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.2](https://github.com/IBM/tekton-lint/compare/v1.0.1...v1.0.2) (2024-04-04)
+
+
+### Bug Fixes
+
+* reporter performance ([23bf6e5](https://github.com/IBM/tekton-lint/commit/23bf6e552d256418afade5e880fd0794c025b15e))
+
 ## [1.0.1](https://github.com/IBM/tekton-lint/compare/v1.0.0-beta.9...v1.0.1) (2024-03-18)
 
 
