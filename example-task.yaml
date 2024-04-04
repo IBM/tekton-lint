@@ -1,11 +1,11 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: Task-without-params
+  name: Task_without-params
 spec:
   params: []
   steps:
-    - name: ls-build-sources
+    - name: ls-build_sources
       command: ["ls", "-ltr", "/workspace/source/$(params.contextDir)"]
       image: busybox
       workingDir: /workspace/source/$(params.contextDir)
