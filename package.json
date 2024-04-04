@@ -3,7 +3,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint --ext ts src",
-    "test": "node --experimental-vm-modules  --no-warnings node_modules/jest/bin/jest.js ",
+    "test": "node --experimental-vm-modules  --no-warnings node_modules/jest/bin/jest.js",
+    "test:debug": "node --experimental-vm-modules  --no-warnings --inspect-brk node_modules/jest/bin/jest.js --runInBand",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "prebuild": "npm run format && npm run clean && npm run lint",
     "build": "tsc --pretty",
