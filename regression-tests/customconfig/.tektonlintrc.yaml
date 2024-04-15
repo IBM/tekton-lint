@@ -1,0 +1,8 @@
+---
+rules: # error | warning | off
+  prefer-kebab-case: off
+  prefer-camel-kebab-case: warning
+  
+# custom: 
+#  my_rules: custom_rules 
+  

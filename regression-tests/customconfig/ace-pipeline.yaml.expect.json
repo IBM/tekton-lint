@@ -1,0 +1,53 @@
+[
+    {
+        "message": "Pipeline 'ace-pipeline' references task 'aceBuild' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+        "rule": "no-missing-resource",
+        "level": "error",
+        "path": "./regression-tests/customconfig/ace-pipeline.yaml",
+        "loc": {
+            "range": [
+                521,
+                529,
+                530
+            ],
+            "startLine": 25,
+            "startColumn": 15,
+            "endLine": 25,
+            "endColumn": 23
+        }
+    },
+    {
+        "message": "Pipeline 'ace-pipeline' references task 'deploy-to-cluster' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+        "rule": "no-missing-resource",
+        "level": "error",
+        "path": "./regression-tests/customconfig/ace-pipeline.yaml",
+        "loc": {
+            "range": [
+                930,
+                947,
+                948
+            ],
+            "startLine": 39,
+            "startColumn": 15,
+            "endLine": 39,
+            "endColumn": 32
+        }
+    },
+    {
+        "message": "Pipeline 'ace-pipeline' references task 'knative-deploy' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.",
+        "rule": "no-missing-resource",
+        "level": "error",
+        "path": "./regression-tests/customconfig/ace-pipeline.yaml",
+        "loc": {
+            "range": [
+                1442,
+                1456,
+                1457
+            ],
+            "startLine": 57,
+            "startColumn": 15,
+            "endLine": 57,
+            "endColumn": 29
+        }
+    }
+]
