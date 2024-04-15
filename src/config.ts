@@ -103,18 +103,25 @@ export class Config {
 
     public static getDefaultConfig(): Config {
         // create default cli-proxy
+        return Config.getConfig(process.cwd());
+    }
+
+    public static getConfig(dir: string): Config {
+        // create default cli-proxy
 
         const argv = {
             watch: false,
             color: true,
             format: json,
             quite: false,
-            config: process.cwd(),
+            config: dir,
             'refresh-cache': false,
+
             _: [],
         };
 
         const config = new Config(argv);
         return config;
     }
+
 }

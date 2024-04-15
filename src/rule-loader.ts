@@ -55,6 +55,9 @@ const defaultRules = {
     // prefer-kebab-case
     'prefer-kebab-case': (await import('./rules/prefer-kebab-case.js')).default,
 
+    // prefer-camel-kebab-case
+    'prefer-camel-kebab-case': (await import('./rules/prefer-camel-kebab-case.js')).default,
+
     // prefer-when-expression
     'prefer-when-expression': (await import('./rules/prefer-when-expression.js')).default,
 

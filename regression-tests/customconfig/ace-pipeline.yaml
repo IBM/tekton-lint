@@ -1,0 +1,72 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: ace-pipeline
+spec:
+  params:
+    - name: outputRegistry
+      type: string
+    - name: url
+      type: string
+      default: "https://github.com/ot4i/ace-demo-pipeline"
+    - name: revision
+      type: string
+      default: "main"
+    - name: buildImage
+      type: string
+    - name: runtimeBaseImage
+      type: string
+    - name: knativeDeploy
+      type: string
+      default: "false"
+  tasks:
+    - name: build-from-source
+      taskRef:
+        name: aceBuild
+      params:
+        - name: outputRegistry
+          value: $(params.outputRegistry)
+        - name: url
+          value: $(params.url)
+        - name: revision
+          value: $(params.revision)
+        - name: buildImage
+          value: $(params.buildImage)
+        - name: runtimeBaseImage
+          value: $(params.runtimeBaseImage)
+    - name: deploy-to-cluster
+      taskRef:
+        name: deploy-to-cluster
+      params:
+        - name: dockerRegistry
+          value: $(params.outputRegistry)
+        - name: url
+          value: $(params.url)
+        - name: revision
+          value: $(params.revision)
+        - name: tag
+          value: "$(tasks.build-from-source.results.tag)"
+      runAfter:
+        - build-from-source
+      when:
+        - input: "$(params.knativeDeploy)"
+          operator: in
+          values: ["false"]
+    - name: deploy-knative-to-cluster
+      taskRef:
+        name: knative-deploy
+      params:
+        - name: dockerRegistry
+          value: $(params.outputRegistry)
+        - name: url
+          value: $(params.url)
+        - name: revision
+          value: $(params.revision)
+        - name: tag
+          value: "$(tasks.build-from-source.results.tag)"
+      runAfter:
+        - build-from-source
+      when:
+        - input: "$(params.knativeDeploy)"
+          operator: in
+          values: ["true"]

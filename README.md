@@ -188,12 +188,23 @@ If you see an error like ` Pipeline 'pipeline-test-perf-tag' references task 'un
 - Unused `Pipeline` parameters
 - Unused `TriggerTemplate` parameters
 - Unpinned images in `Task` steps
-- _kebab-case_ naming violations
+- _kebab-case_ and OR _camelCase_ naming violations
 - `Task` & `Pipeline` definitions with `tekton.dev/v1alpha1` `apiVersion`
 - Missing `TriggerBinding` parameter values
 - Usage of deprecated `Condition` instead of `WhenExpression`
 - Usage of deprecated resources (resources marked with `tekton.dev/deprecated` label)
 - Missing `hashbang` line from a `Step`s `script`
+
+The default rule is for preferring _kebab-case_; _camelCase_ is equally popular and many of the official examples on the Tekton website are in camel case. To use the rule that accepts camel case as well swap the rules in the `.tektonrc.yaml` file
+
+```yaml
+---
+rules: # error | warning | off
+  prefer-kebab-case: off
+  prefer-camel-kebab-case: warning
+```
+
+
 
 ## Configuring `tekton-lint`
 

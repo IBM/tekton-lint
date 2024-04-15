@@ -19,6 +19,7 @@ const defaultRules: RulesConfig = {
         'no-latest-image': 'warning',
         'prefer-beta': 'warning',
         'prefer-kebab-case': 'warning',
+        'prefer-camel-kebab-case': 'off',
         'no-unused-param': 'warning',
         'no-missing-resource': 'error',
         'no-undefined-param': 'error',
