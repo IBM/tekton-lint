@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.0](https://github.com/IBM/tekton-lint/compare/v1.0.2...v1.1.0) (2024-05-24)
+
+
+### Features
+
+* add support for camelCase ([8f1e62e](https://github.com/IBM/tekton-lint/commit/8f1e62eb8415eaf99917c22980f0d2536c840e3c))
+* support ClusterTasks ([d62c6d3](https://github.com/IBM/tekton-lint/commit/d62c6d3c4e3102a36e5a4b4b61cc8696d0cfcf27))
+
 ## [1.0.2](https://github.com/IBM/tekton-lint/compare/v1.0.1...v1.0.2) (2024-04-04)
 
 
