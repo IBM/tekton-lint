@@ -71,11 +71,20 @@ export default (docs, tekton, report) => {
             const name = task.taskRef.name;
 
             if (!tekton.tasks[name]) {
-                report(
-                    `Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`,
-                    task.taskRef,
-                    'name',
-                );
+                if (task.taskRef.kind && task.taskRef.kind === 'ClusterTask') {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references cluster task '${name}' but the referenced task cannot be found locally.`,
+                        task.taskRef,
+                        'name',
+                    );
+                } else {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`,
+                        task.taskRef,
+                        'name',
+                    );
+                }
+
                 continue;
             }
         }
@@ -94,11 +103,19 @@ export default (docs, tekton, report) => {
             const name = task.taskRef.name;
 
             if (!tekton.tasks[name]) {
-                report(
-                    `Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`,
-                    task.taskRef,
-                    'name',
-                );
+                if (task.taskRef.kind && task.taskRef.kind === 'ClusterTask') {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references cluster task '${name}' but the referenced task cannot be found locally.`,
+                        task.taskRef,
+                        'name',
+                    );
+                } else {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references task '${name}' but the referenced task cannot be found. To fix this, include all the task definitions to the lint task for this pipeline.`,
+                        task.taskRef,
+                        'name',
+                    );
+                }
                 continue;
             }
         }

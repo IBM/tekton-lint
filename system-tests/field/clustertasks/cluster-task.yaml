@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: generate-random-number
+spec:
+  description: Generates a random number.
+  inputs:
+    parameters:
+    - name: min
+      type: string
+    - name: max
+      type: string
+  steps:
+  - name: generate-random-number
+    image: busybox
+    command: ["/bin/echo", "$((RANDOM % $(params.max - params.min) + params.min))"]
+  outputs:
+    result:
+      type: string
