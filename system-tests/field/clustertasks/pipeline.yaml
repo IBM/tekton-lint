@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: generate-random-number-pipeline
+spec:
+  tasks:
+  - name: generate-random-number
+    taskRef:
+      name: generate-random-number
+      kind: ClusterTask
+  results:
+  - name: random-number
+    value: $(tasks.generate-random-number.outputs.result)

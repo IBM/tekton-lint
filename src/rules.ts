@@ -14,7 +14,9 @@ const createReporter = (rule, config, reporter) => {
 const parse = (docs): Tekton => {
     const tkn: Tekton = {
         tasks: Object.fromEntries(
-            docs.filter((item) => item.kind === 'Task').map((item) => [item.metadata.name, item]),
+            docs
+                .filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask')
+                .map((item) => [item.metadata.name, item]),
         ),
         pipelines: Object.fromEntries(
             docs.filter((item) => item.kind === 'Pipeline').map((item) => [item.metadata.name, item]),
