@@ -5,9 +5,25 @@ import Workspace from './workspace.js';
 import { BaseName, ValueParam } from '../common.js';
 import { TaskResource } from './resources.js';
 
+interface MatrixParam {
+    name: string;
+    value: string | string[];
+}
+
+interface MatrixInclude {
+    name?: string;
+    params: MatrixParam[];
+}
+
+interface Matrix {
+    params: MatrixParam[];
+    include?: MatrixInclude[];
+}
+
 interface BaseTask {
     name: string;
     params?: ValueParam[];
+    matrix?: Matrix;
     resources?: TaskResource;
     workspaces?: Workspace[];
     conditions?: Condition[];

@@ -1,0 +1,110 @@
+---
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: valid-matrix-pipeline
+spec:
+  params:
+    - name: platforms
+      type: array
+      default:
+        - linux
+        - windows
+        - macos
+    - name: versions
+      type: array
+      default:
+        - "1.20"
+        - "1.21"
+  tasks:
+    - name: build-matrix
+      taskRef:
+        name: build-task
+      matrix:
+        params:
+          - name: platform
+            value: $(params.platforms[*])
+          - name: version
+            value: $(params.versions[*])
+    - name: test-with-include
+      taskRef:
+        name: build-task
+      matrix:
+        params:
+          - name: platform
+            value:
+              - linux
+              - windows
+          - name: version
+            value:
+              - "1.20"
+        include:
+          - name: linux-special
+            params:
+              - name: platform
+                value: linux
+              - name: version
+                value: "1.21"
+              - name: extra-flag
+                value: "--enable-feature"
+    - name: test-inline-values
+      taskRef:
+        name: repo-task
+      matrix:
+        params:
+          - name: repo
+            value:
+              - acme/frontend-app
+              - acme/backend-api
+              - acme/database-migrations
+              - acme/auth-service
+              - acme/notification-service
+              - acme/payment-gateway
+              - acme/analytics-engine
+              - acme/search-service
+              - acme/cache-layer
+              - acme/message-queue
+              - acme/monitoring-tools
+              - acme/deployment-scripts
+              - acme/shared-libraries
+              - acme/documentation
+              - acme/test-utilities
+              - acme/ci-cd-pipeline
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: build-task
+spec:
+  params:
+    - name: platform
+      type: string
+    - name: version
+      type: string
+    - name: extra-flag
+      type: string
+      default: ""
+  steps:
+    - name: build
+      image: alpine:3.18
+      script: |
+        #!/bin/sh
+        echo "Building for $(params.platform) version $(params.version)"
+        echo "Extra flags: $(params.extra-flag)"
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: repo-task
+spec:
+  params:
+    - name: repo
+      type: string
+  steps:
+    - name: process
+      image: alpine:3.18
+      script: |
+        #!/bin/sh
+        echo "Processing repository $(params.repo)"
+
+# Made with Bob

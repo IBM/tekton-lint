@@ -1,0 +1,22 @@
+[
+  {
+    "rule": "no-extra-param",
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-matrix' references task 'test-task' (as 'test-missing-matrix-param'), and supplies matrix parameter 'nonexistent' to it, but it's not a valid parameter"
+  },
+  {
+    "rule": "no-missing-param",
+    "level": "error",
+    "message": "Pipeline 'pipeline-with-matrix' references task 'test-task' (as 'test-missing-matrix-param'), but parameter 'platform' is not supplied (it's a required param in 'test-task')"
+  },
+  {
+    "rule": "no-undefined-param",
+    "level": "error",
+    "message": "Undefined param 'missing' at .spec.tasks[2].matrix.params[0].value in 'pipeline-with-matrix'"
+  },
+  {
+    "rule": "no-unused-param",
+    "level": "warning",
+    "message": "Task 'test-task' defines parameter 'flag', but it's not used anywhere in the spec"
+  }
+]

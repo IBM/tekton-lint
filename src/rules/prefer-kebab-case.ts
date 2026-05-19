@@ -22,7 +22,7 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
         return;
     }
 
-    const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)\\)`);
+    const parameterPlacementRx = new RegExp(`\\$\\(${prefix}.(.*?)(\\[\\*\\])?\\)`);
     const m = node && node.toString().match(parameterPlacementRx);
 
     if (m) {
