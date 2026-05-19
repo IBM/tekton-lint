@@ -123,5 +123,4 @@ export class Config {
         const config = new Config(argv);
         return config;
     }
-
 }

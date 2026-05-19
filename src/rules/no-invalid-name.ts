@@ -1,5 +1,3 @@
-import collectResources from '../collect-resources.js';
-
 const isValidName = (name) => {
     const valid = new RegExp('^[a-zA-Z_][a-z0-9-()$.]*$');
     return valid.test(name);
@@ -39,16 +37,14 @@ export default (docs, tekton, report) => {
     checkInvalidParameterName(tekton.conditions, report);
     checkInvalidParameterName(tekton.triggerTemplates, report);
     checkInvalidParameterName(tekton.pipelines, report);
-    const resources = collectResources(docs);
 
-    for (const [kind, resourceMap] of Object.entries(resources)) {
-        for (const resource of Object.values(resourceMap as any)) {
-            if (!isValidName((resource as any).metadata.name)) {
+    // Check resource names - iterate over docs directly to preserve instrumentation
+    for (const resource of docs) {
+        if (resource.metadata && resource.metadata.name && resource.kind) {
+            if (!isValidName(resource.metadata.name)) {
                 report(
-                    `Invalid name for ${kind} '${
-                        (resource as any).metadata.name
-                    }'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names`,
-                    (resource as any).metadata,
+                    `Invalid name for ${resource.kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names`,
+                    resource.metadata,
                     'name',
                 );
             }
