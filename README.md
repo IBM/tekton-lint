@@ -21,7 +21,7 @@ A linter for Tekton resource definitions
 
 ## Quick Start
 
-Make sure you've NodeJS v18 or later installed, and run....
+Make sure you've NodeJS v22 or later installed, and run....
 
 ```
 npx @ibm/tekton-lint@latest <glob-pattern-to-yaml-files>
@@ -47,9 +47,9 @@ You can use the tool as a regular lint tool from the CLI or scripts; alternative
 
 ## History
 
-When I first started using Tekton a few years ago, I found one of the harder things was keeping track of the dependencies between the YAML files. Comparing to say github actions, or travis, Tekton is a lot more verbose. The comparison isn't quite fair as the tools do work at slightly different levels. 
+When I first started using Tekton a few years ago, I found one of the harder things was keeping track of the dependencies between the YAML files. Comparing to say github actions, or travis, Tekton is a lot more verbose. The comparison isn't quite fair as the tools do work at slightly different levels.
 
-Nevertheless, I was pleased to find this TektonLint tool; it was able to spot a number of the 'gotchas' before pushing the pipelines for execution. 
+Nevertheless, I was pleased to find this TektonLint tool; it was able to spot a number of the 'gotchas' before pushing the pipelines for execution.
 After a brief hiatus, I was using Tekton again.  Bence Dányi the original author was no longer at IBM; as the tool had been useful for me I decided to take on the repo.
 
 I've updated typescript versions, added in additional features such as custom rules, allowed for caching of standard components. Theres more still I'd like to do; but of a MVP it's at v1.
@@ -62,7 +62,7 @@ on the resulting document set. [More details on the pattern syntax.][pattern]
 
 Using `tekton-lint` in watch mode will monitor for any changes in the provided paths and automatically run the linter again.
 
-Be mindful if you specify a glob pattern (eg `*.yaml`) that this might be expanded by your shell rather than the tool itself. It'll probably be fine for the vast majority of cases.  
+Be mindful if you specify a glob pattern (eg `*.yaml`) that this might be expanded by your shell rather than the tool itself. It'll probably be fine for the vast majority of cases.
 
 ```sh
 tekton-lint [<options>]  <glob-pattern-to-yaml-files> ...
@@ -92,7 +92,7 @@ Examples:
 
 ## What yaml files to include?
 
-Only the yaml files that are specified are linted; these can be defined either on the command line, or via the `.tektonlintrc.yaml` file. 
+Only the yaml files that are specified are linted; these can be defined either on the command line, or via the `.tektonlintrc.yaml` file.
 
 ```yaml
 globs:
@@ -117,7 +117,7 @@ external-tasks:
     path: toolchain
   - name: doi-publish-build-record
     uri: https://github.com/open-toolchain/tekton-catalog
-    path: devops-insights    
+    path: devops-insights
   - name: icr-publish
     uri: https://github.com/open-toolchain/tekton-catalog
     path: container-registry
@@ -131,11 +131,11 @@ This will clone the repos specified and extract the various directories to a loc
 Note that these cached files won't be linted themselves.
 
 
-The cache is defined to be put to `~/.tektonlint`  If you wish to clear the cache, simply delete this directory - alternatively there is a cli option. 
+The cache is defined to be put to `~/.tektonlint`  If you wish to clear the cache, simply delete this directory - alternatively there is a cli option.
 
 ## Rules
 
-**Please note** that the tool assumes that the files are syntax correct YAML files, and they are following the established schema for Tekton. For example referring to a field with the wrong spelling or case will confuse the rules. 
+**Please note** that the tool assumes that the files are syntax correct YAML files, and they are following the established schema for Tekton. For example referring to a field with the wrong spelling or case will confuse the rules.
 
 If you see an error like ` Pipeline 'pipeline-test-perf-tag' references task 'undefined' but the referenced task cannot be found. ` referencing 'undefined' this more than likely means there is a syntax error in the yaml file.  This can be easily seen with casing, so using `Name: ..` rather than `name: .. `
 
@@ -240,13 +240,13 @@ external-tasks:
     path: toolchain
   - name: doi-publish-build-record
     uri: https://github.com/open-toolchain/tekton-catalog
-    path: devops-insights    
+    path: devops-insights
   - name: icr-publish
     uri: https://github.com/open-toolchain/tekton-catalog
     path: container-registry
   - name: iks-detch
     uri: https://github.com/open-toolchain/tekton-catalog
-    path: kubernetes-service  
+    path: kubernetes-service
 
 ```
 
@@ -272,8 +272,8 @@ rules:
   ....
 external:tasks:
   ...
-custom: 
- my_rules: custom_rules 
+custom:
+ my_rules: custom_rules
  # For debug and test, refer directly to the js file
  # my_rules: ../customer_rules/my_rules.js
 ```
