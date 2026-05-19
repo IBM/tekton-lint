@@ -11,8 +11,26 @@ export default (docs, tekton, report) => {
             if (task.taskRef) {
                 const name = task.taskRef.name;
                 if (!tekton.tasks[name]) continue;
+
+                // Collect provided parameters from both params and matrix
+                const provided: string[] = [];
                 if (task.params) {
-                    const provided = task.params.map((param) => param.name);
+                    provided.push(...task.params.map((param) => param.name));
+                }
+                if (task.matrix && task.matrix.params) {
+                    provided.push(...task.matrix.params.map((param) => param.name));
+                }
+
+                // Also check matrix.include for additional params
+                if (task.matrix && task.matrix.include) {
+                    for (const includeItem of task.matrix.include) {
+                        if (includeItem.params) {
+                            provided.push(...includeItem.params.map((param) => param.name));
+                        }
+                    }
+                }
+
+                if (provided.length > 0) {
                     const params = getTaskParams(tekton.tasks[name].spec);
                     const required = params
                         .filter((param) => typeof param.default == 'undefined')
@@ -21,7 +39,7 @@ export default (docs, tekton, report) => {
                     for (const param of missing) {
                         report(
                             `Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), but parameter '${param}' is not supplied (it's a required param in '${name}')`,
-                            task.params,
+                            task.params || task.matrix,
                         );
                     }
                 }
@@ -34,9 +52,25 @@ export default (docs, tekton, report) => {
         for (const task of tasks) {
             if (task.taskSpec) {
                 const params = getTaskParams(task.taskSpec);
-                if (task.params == null && params == null) continue;
+                if (task.params == null && task.matrix == null && params == null) continue;
 
-                if (task.params == null) {
+                // Collect provided parameters from both params and matrix
+                const provided: string[] = [];
+                if (task.params) {
+                    provided.push(...task.params.map((param) => param.name));
+                }
+                if (task.matrix && task.matrix.params) {
+                    provided.push(...task.matrix.params.map((param) => param.name));
+                }
+                if (task.matrix && task.matrix.include) {
+                    for (const includeItem of task.matrix.include) {
+                        if (includeItem.params) {
+                            provided.push(...includeItem.params.map((param) => param.name));
+                        }
+                    }
+                }
+
+                if (provided.length === 0 && params) {
                     const required = params
                         .filter((param) => typeof param.default == 'undefined')
                         .map((param) => param.name);
@@ -48,7 +82,6 @@ export default (docs, tekton, report) => {
                         );
                     }
                 } else if (params) {
-                    const provided = task.params.map((param) => param.name);
                     const required = params
                         .filter((param) => typeof param.default == 'undefined')
                         .map((param) => param.name);
@@ -58,7 +91,7 @@ export default (docs, tekton, report) => {
                     for (const param of missing) {
                         report(
                             `Pipeline '${pipeline.metadata.name}' references task '${task.name}', but parameter '${param}' is not supplied (it's a required param in '${task.name}')`,
-                            task.params,
+                            task.params || task.matrix,
                         );
                     }
                 }

@@ -13,10 +13,12 @@ export default (docs, tekton, report) => {
 
                 if (!tekton.tasks[name]) continue;
 
+                const params = getTaskParams(tekton.tasks[name].spec);
+                const all = params.map((param) => param.name);
+
+                // Check regular params
                 if (task.params) {
                     const provided = task.params.map((param) => param.name);
-                    const params = getTaskParams(tekton.tasks[name].spec);
-                    const all = params.map((param) => param.name);
                     const extra = provided.filter((param) => !all.includes(param));
 
                     for (const param of extra) {
@@ -24,6 +26,36 @@ export default (docs, tekton, report) => {
                             `Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies parameter '${param}' to it, but it's not a valid parameter`,
                             task.params.find((p) => p.name === param),
                         );
+                    }
+                }
+
+                // Check matrix params
+                if (task.matrix && task.matrix.params) {
+                    const provided = task.matrix.params.map((param) => param.name);
+                    const extra = provided.filter((param) => !all.includes(param));
+
+                    for (const param of extra) {
+                        report(
+                            `Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies matrix parameter '${param}' to it, but it's not a valid parameter`,
+                            task.matrix.params.find((p) => p.name === param),
+                        );
+                    }
+                }
+
+                // Check matrix.include params
+                if (task.matrix && task.matrix.include) {
+                    for (const includeItem of task.matrix.include) {
+                        if (includeItem.params) {
+                            const provided = includeItem.params.map((param) => param.name);
+                            const extra = provided.filter((param) => !all.includes(param));
+
+                            for (const param of extra) {
+                                report(
+                                    `Pipeline '${pipeline.metadata.name}' references task '${name}' (as '${task.name}'), and supplies matrix.include parameter '${param}' to it, but it's not a valid parameter`,
+                                    includeItem.params.find((p) => p.name === param),
+                                );
+                            }
+                        }
                     }
                 }
             }
@@ -35,27 +67,72 @@ export default (docs, tekton, report) => {
         for (const task of tasks) {
             if (task.taskSpec) {
                 const params = getTaskParams(task.taskSpec);
-                if (task.params == null && params == null) continue;
+                if (task.params == null && task.matrix == null && params == null) continue;
 
                 if (params == null) {
-                    const provided = task.params.map((param) => param.name);
-                    for (const param of provided) {
-                        report(
-                            `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`,
-                            task.params.find((p) => p.name === param),
-                        );
+                    // No params defined in taskSpec, so any provided params are extra
+                    if (task.params) {
+                        const provided = task.params.map((param) => param.name);
+                        for (const param of provided) {
+                            report(
+                                `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`,
+                                task.params.find((p) => p.name === param),
+                            );
+                        }
                     }
-                } else if (task.params && task.params !== null) {
-                    const provided = task.params.map((param) => param.name);
+                    if (task.matrix && task.matrix.params) {
+                        const provided = task.matrix.params.map((param) => param.name);
+                        for (const param of provided) {
+                            report(
+                                `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies matrix parameter '${param}' to it, but it's not a valid parameter`,
+                                task.matrix.params.find((p) => p.name === param),
+                            );
+                        }
+                    }
+                } else {
                     const all = params.map((param) => param.name);
 
-                    const extra = provided.filter((param) => !all.includes(param));
+                    // Check regular params
+                    if (task.params && task.params !== null) {
+                        const provided = task.params.map((param) => param.name);
+                        const extra = provided.filter((param) => !all.includes(param));
 
-                    for (const param of extra) {
-                        report(
-                            `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`,
-                            task.params.find((p) => p.name === param),
-                        );
+                        for (const param of extra) {
+                            report(
+                                `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies parameter '${param}' to it, but it's not a valid parameter`,
+                                task.params.find((p) => p.name === param),
+                            );
+                        }
+                    }
+
+                    // Check matrix params
+                    if (task.matrix && task.matrix.params) {
+                        const provided = task.matrix.params.map((param) => param.name);
+                        const extra = provided.filter((param) => !all.includes(param));
+
+                        for (const param of extra) {
+                            report(
+                                `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies matrix parameter '${param}' to it, but it's not a valid parameter`,
+                                task.matrix.params.find((p) => p.name === param),
+                            );
+                        }
+                    }
+
+                    // Check matrix.include params
+                    if (task.matrix && task.matrix.include) {
+                        for (const includeItem of task.matrix.include) {
+                            if (includeItem.params) {
+                                const provided = includeItem.params.map((param) => param.name);
+                                const extra = provided.filter((param) => !all.includes(param));
+
+                                for (const param of extra) {
+                                    report(
+                                        `Pipeline '${pipeline.metadata.name}' references task '${task.name}', and supplies matrix.include parameter '${param}' to it, but it's not a valid parameter`,
+                                        includeItem.params.find((p) => p.name === param),
+                                    );
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -1,0 +1,73 @@
+---
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: pipeline-with-matrix
+spec:
+  params:
+    - name: platforms
+      type: array
+      default:
+        - linux
+        - windows
+    - name: browsers
+      type: array
+      default:
+        - chrome
+        - firefox
+  tasks:
+    - name: test-matrix
+      taskRef:
+        name: test-task
+      matrix:
+        params:
+          - name: platform
+            value: $(params.platforms[*])
+          - name: browser
+            value: $(params.browsers[*])
+    - name: test-matrix-include
+      taskRef:
+        name: test-task
+      matrix:
+        params:
+          - name: platform
+            value:
+              - linux
+              - windows
+        include:
+          - name: extra-flag
+            params:
+              - name: platform
+                value: linux
+              - name: flag
+                value: "--special"
+    - name: test-missing-matrix-param
+      taskRef:
+        name: test-task
+      matrix:
+        params:
+          - name: nonexistent
+            value: $(params.missing[*])
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: test-task
+spec:
+  params:
+    - name: platform
+      type: string
+    - name: browser
+      type: string
+      default: chrome
+    - name: flag
+      type: string
+      default: ""
+  steps:
+    - name: test
+      image: alpine:3.18
+      script: |
+        #!/bin/sh
+        echo "Testing on $(params.platform) with $(params.browser)"
+
+# Made with Bob
