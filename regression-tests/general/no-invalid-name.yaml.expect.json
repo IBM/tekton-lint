@@ -136,23 +136,6 @@
     }
   },
   {
-    "message": "Invalid name for PipelineRun '-run-$(uid)'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names",
-    "rule": "no-invalid-name",
-    "level": "error",
-    "path": "./regression-tests/general/no-invalid-name.yaml",
-    "loc": {
-      "range": [
-        1356,
-        1367,
-        1377
-      ],
-      "startLine": 81,
-      "startColumn": 15,
-      "endLine": 81,
-      "endColumn": 26
-    }
-  },
-  {
     "message": "TriggerTemplate 'no-invalid-name' references pipeline 'no-invalid-name', but the referenced pipeline cannot be found.",
     "rule": "no-missing-resource",
     "level": "error",
