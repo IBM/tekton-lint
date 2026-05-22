@@ -21,6 +21,13 @@ jobs:
           node-version: 26.x
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
+
+      - name: Update package.json version from tag
+        run: |
+             # Extracts '1.2.3' from 'refs/tags/v1.2.3'
+             VERSION=${GITHUB_REF#refs/tags/v}
+             npm version $VERSION --no-git-tag-version
+      
       - run: npm run build
       - run: npm publish --access public
         env:
