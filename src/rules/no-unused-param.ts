@@ -9,12 +9,23 @@ const unused = (params, prefix) => (node) => {
 
     for (const item of m) {
         const m2 = item.match(r2);
-        const param = m2[1];
+        let param = m2[1];
+        const parent = getParent(param)
+        if (parent) {
+            param = parent;
+        }
         if (params[param] != null) {
             params[param]++;
         }
     }
 };
+
+function getParent(param) {
+    const paramParts = param.split('.');
+    if (paramParts.length > 1) {
+        return paramParts[0];
+    }
+}
 
 function getParams(kind, spec) {
     if (kind === 'Task' && spec.inputs && spec.inputs.params) return spec.inputs.params;
