@@ -45,6 +45,8 @@ example-task.yaml
 
 You can use the tool as a regular lint tool from the CLI or scripts; alternatively you can use it as a [library via it's API](./_docs/usage_api.md) or from an [IDE such as VScode](./_docs/usage_ide.md).  (please consider both the API and IDE use as experimental features.)
 
+`tekton-lint` is also bundled in [MegaLinter](https://megalinter.io/latest/descriptors/tekton_tekton_lint/), an open-source linters aggregator - handy if you want to run it in CI alongside linters for the rest of your codebase.
+
 ## History
 
 When I first started using Tekton a few years ago, I found one of the harder things was keeping track of the dependencies between the YAML files. Comparing to say github actions, or travis, Tekton is a lot more verbose. The comparison isn't quite fair as the tools do work at slightly different levels.
