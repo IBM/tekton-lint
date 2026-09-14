@@ -1,4 +1,4 @@
-export function walk(node: any, path: (string | number)[], visitor: Function, parent?: any) {
+export function walk(node: any, path: (string | number)[], visitor: (node: any, path: (string | number)[], parent: any) => void, parent?: any) {
     if (typeof node === 'string' || typeof node === 'number') {
         visitor(node, path, parent);
     } else if (Array.isArray(node)) {

@@ -66,7 +66,6 @@ const parser = yargs(process.argv.slice(2))
         const warningCount = problems.filter((p) => p.level === 'warning').length;
         const tooManyWarnings = cfg.max_warnings >= 0 && warningCount > cfg.max_warnings;
 
-        // eslint-disable-next-line no-process-env
         if ((hasError || tooManyWarnings) && process.env.NODE_ENV !== 'test') {
             process.exitCode = 1;
         } else {
