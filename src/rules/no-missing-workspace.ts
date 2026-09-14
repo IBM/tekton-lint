@@ -1,4 +1,5 @@
 import { RuleReportFn } from 'src/interfaces/common.js';
+import { resolveTask } from '../utils.js';
 
 function checkTasks(tasks, parentWorkspaces, parentName, report) {
     for (const task of tasks) {
@@ -23,26 +24,23 @@ function checkTasks(tasks, parentWorkspaces, parentName, report) {
 }
 
 export default (docs, tekton, report: RuleReportFn) => {
-    for (const task of Object.values<any>(tekton.tasks)) {
-        if (!task.spec || !task.spec.workspaces) continue;
-        const taskName = task.metadata.name;
-        const requiredWorkspaces = task.spec.workspaces.filter((ws) => !ws.optional).map((ws) => ws.name);
+    for (const pipeline of Object.values<any>(tekton.pipelines)) {
+        const allTasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        for (const taskRef of allTasks) {
+            if (!taskRef.taskRef) continue;
+            const taskName = taskRef.taskRef.name;
+            const resolvedTask = resolveTask(tekton, pipeline, taskName);
+            if (!resolvedTask?.spec?.workspaces) continue;
 
-        for (const pipeline of Object.values<any>(tekton.pipelines)) {
-            const matchingTaskRefs = pipeline.spec.tasks.filter(
-                (task) => task.taskRef && task.taskRef.name === taskName,
-            );
+            const requiredWorkspaces = resolvedTask.spec.workspaces.filter((ws) => !ws.optional).map((ws) => ws.name);
+            const usedWorkspaces = taskRef.workspaces || [];
 
-            for (const taskRef of matchingTaskRefs) {
-                const usedWorkspaces = taskRef.workspaces || [];
-
-                for (const required of requiredWorkspaces) {
-                    if (!usedWorkspaces.find((ws) => ws.name === required)) {
-                        report(
-                            `Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`,
-                            taskRef.workspaces || taskRef,
-                        );
-                    }
+            for (const required of requiredWorkspaces) {
+                if (!usedWorkspaces.find((ws) => ws.name === required)) {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references Task '${taskName}' (as '${taskRef.name}'), but provides no workspace for '${required}' (it's a required workspace in '${taskName}')`,
+                        taskRef.workspaces || taskRef,
+                    );
                 }
             }
         }
