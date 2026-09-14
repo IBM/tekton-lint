@@ -1,6 +1,5 @@
+import { jest } from '@jest/globals';
 import { pathToString, walk } from '../src/walk';
-// Not necessary inside a Jest test file
-import jest from 'jest-mock';
 describe.each([
     [[], ''],
     [['somepath'], '.somepath'],
@@ -17,7 +16,7 @@ describe.each([
 });
 
 it('stringifying empty path should throw an error', () => {
-    expect(() => pathToString(null as any)).toThrowError()
+    expect(() => pathToString(null as any)).toThrow()
 })
 
 describe.each([
@@ -33,7 +32,7 @@ describe.each([
     [['existingElement', ['anotherExistingElement']], [], 2],
 ])('should work', (node, path, expectedVisitCalls) => {
     test(`Node ${JSON.stringify(node)} with path: ${path} should be visited ${expectedVisitCalls} times`, () => {
-        const mockVisitorFn: jest.Mock<any> = jest.fn();
+        const mockVisitorFn = jest.fn();
         walk(node, path, mockVisitorFn);
         expect(mockVisitorFn).toHaveBeenCalledTimes(expectedVisitCalls);
     });

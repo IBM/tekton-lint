@@ -1,7 +1,7 @@
 import { BaseName } from '../common.js';
 
 interface EmptyDirVolume extends BaseName {
-    emtyDir: {};
+    emtyDir: object;
 }
 
 interface ConfigMapVolume extends BaseName {

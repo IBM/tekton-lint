@@ -145,14 +145,14 @@ class Reporter {
 
     // given a range i.e from character x to character y get the locations
     // in lines/columns of the range.
-    _getLocation(m, node, prop): Location | {} {
+    _getLocation(m, node, prop): Location | object {
         if (!m.has(node)) return {};
         const k = m.get(node);
         try {
             // node this is something that could be abstracted away, and does give a boost
             // but doesn't alter the time complexity
             const chars: string[] = Array.from(k.doc.raw);
-            chars.length;
+            void chars.length;
             let n = prop ? k.node.get(prop, true) : k.node;
             if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
             return {
@@ -165,7 +165,7 @@ class Reporter {
                     endColumn: this._getCol(chars, n.range[1]),
                 },
             };
-        } catch (e) {
+        } catch (_e) {
             return { path: k.doc.path, loc: {} };
         }
     }
@@ -173,7 +173,7 @@ class Reporter {
     // gets the location from the avl tree, very similar function to the existing
     // but finds the two tree nodes for the start and end ranges.
     // note that the columns can be easily calculated from the start point of the key
-    _getLocationAVL(m, node, prop): Location | {} {
+    _getLocationAVL(m, node, prop): Location | object {
         if (!m.has(node)) return {};
         const k = m.get(node);
         try {
