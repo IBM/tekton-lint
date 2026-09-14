@@ -1,4 +1,5 @@
 import { walk, pathToString } from '../walk.js';
+import { resolveTask } from '../utils.js';
 
 const taskNameRegexp = /\$\(tasks\.(.*?)\..*?\)/;
 
@@ -10,8 +11,8 @@ const checkUndefinedResult = (pipeline, tekton, report) => (value, path, parent)
     const matchingTask = pipeline.spec.tasks.find((t) => t.name === task);
     if (!matchingTask) return;
 
-    if (matchingTask.taskRef && !tekton.tasks[matchingTask.taskRef.name]) return;
-    const taskSpec = matchingTask.taskSpec || tekton.tasks[matchingTask.taskRef.name].spec;
+    if (matchingTask.taskRef && !resolveTask(tekton, pipeline, matchingTask.taskRef.name)) return;
+    const taskSpec = matchingTask.taskSpec || resolveTask(tekton, pipeline, matchingTask.taskRef.name).spec;
 
     const matchingResult = taskSpec.results.find((result) => result.name === name);
     if (!matchingResult) {
