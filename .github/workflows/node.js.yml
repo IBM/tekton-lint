@@ -14,9 +14,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 26.x
+    - name: Diagnose npm config
+      run: npm config list; cat ~/.npmrc 2>/dev/null || true; cat /etc/npmrc 2>/dev/null || true
+    - name: Clear any injected npm auth
+      run: npm config delete //registry.npmjs.org/:_authToken --userconfig ~/.npmrc || true
     - run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ''
     - run: npm run lint
 
   test:
@@ -32,9 +34,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Diagnose npm config
+      run: npm config list; cat ~/.npmrc 2>/dev/null || true; cat /etc/npmrc 2>/dev/null || true
+    - name: Clear any injected npm auth
+      run: npm config delete //registry.npmjs.org/:_authToken --userconfig ~/.npmrc || true
     - run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ''
     - run: npm run build --if-present
     - run: npm test
 
