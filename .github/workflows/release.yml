@@ -6,37 +6,74 @@ on:
       - "v*.*.*"
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 26
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 26.x
-          registry-url: 'https://registry.npmjs.org'
+
       - run: npm ci
 
       - name: Update package.json version from tag
         run: |
-             # Extracts '1.2.3' from 'refs/tags/v1.2.3'
-             VERSION=${GITHUB_REF#refs/tags/v}
-             npm version $VERSION --no-git-tag-version
-      
+          # Extracts '1.2.3' from 'refs/tags/v1.2.3'
+          VERSION=${GITHUB_REF#refs/tags/v}
+          npm version $VERSION --no-git-tag-version
+
       - run: npm run build
-      - run: npm publish --access public
+
+      - name: Pack
+        run: npm pack
+
+      - name: Upload tarball
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-package
+          path: "*.tgz"
+          retention-days: 1
+
+  stage:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download tarball
+        uses: actions/download-artifact@v4
+        with:
+          name: npm-package
+
+      - name: Use Node.js 26
+        uses: actions/setup-node@v4
+        with:
+          node-version: 26.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish to next tag
+        run: npm publish *.tgz --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+  promote:
+    needs: stage
+    runs-on: ubuntu-latest
+    environment: npm-publish
+    steps:
+      - name: Use Node.js 26
+        uses: actions/setup-node@v4
+        with:
+          node-version: 26.x
+          registry-url: 'https://registry.npmjs.org'
 
-            # - name: Release
-            #   uses: softprops/action-gh-release@v1
-            #   with:
-            #     body_path: CHANGELOG.md
-            #     append_body: true
-            #     files: tekton-lint-*.tgz
+      - name: Promote next to latest
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          npm dist-tag add @ibm/tekton-lint@$VERSION latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
