@@ -6,7 +6,8 @@ on:
       - "v*.*.*"
 
 permissions:
-  contents: write
+  contents: read
+  id-token: write  # Required for OIDC trusted publishing
 
 jobs:
   build:
@@ -55,25 +56,9 @@ jobs:
           node-version: 26.x
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Publish to next tag
-        run: npm publish *.tgz --access public --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  promote:
-    needs: stage
-    runs-on: ubuntu-latest
-    environment: npm-publish
-    steps:
-      - name: Use Node.js 26
-        uses: actions/setup-node@v4
-        with:
-          node-version: 26.x
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Promote next to latest
-        run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          npm dist-tag add @ibm/tekton-lint@$VERSION latest
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Stages the package for review — does NOT publish to the live registry.
+      # A maintainer must approve with 2FA via:
+      #   npm stage approve <id>   (CLI)
+      # or via the Staged Packages tab on npmjs.com.
+      - name: Stage package
+        run: npm stage publish *.tgz --access public
