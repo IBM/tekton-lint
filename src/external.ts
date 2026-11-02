@@ -10,24 +10,78 @@ import { ExternalResource } from './interfaces/common.js';
 
 const appPrefix = 'tektonlint';
 
+const allowedProtocols = ['https:', 'ssh:'];
+
+// strip credentials so tokens in https://user:token@host/... never reach logs or errors
+function redact(uri: URL): string {
+    const copy = new URL(uri.href);
+    copy.username = '';
+    copy.password = '';
+    return copy.href;
+}
+
+function isInside(parent: string, child: string): boolean {
+    return child.startsWith(parent + path.sep);
+}
+
 export function getExternal(repo: string, subpath: string[], cfg: Config) {
-    const cacheDir = cfg.cache_dir;
-    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), appPrefix));
-
-    const r = child_process.execSync(`git clone ${repo} ${tmpDir}`, { stdio: ['ignore', 'pipe', 'ignore'] });
-    logger.info(r.toString());
-
+    // parse and validate before any network or filesystem work
     const uri = new URL(repo);
+    if (!allowedProtocols.includes(uri.protocol)) {
+        throw new Error(`unsupported protocol for external repo: ${redact(uri)}`);
+    }
+    // a host or user starting with '-' can be parsed by ssh as an option (CVE-2017-1000117 class)
+    if (!uri.hostname || uri.hostname.startsWith('-') || decodeURIComponent(uri.username).startsWith('-')) {
+        throw new Error(`invalid host in external repo: ${redact(uri)}`);
+    }
 
-    const repoName = path.basename(uri.pathname, '.git');
-    const orgName = path.relative('/', path.dirname(uri.pathname));
+    const cacheDir = path.resolve(cfg.cache_dir);
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), appPrefix));
+    const cloneDir = path.join(tmpDir, 'repo');
 
-    fs.mkdirSync(path.join(cacheDir, repoName, orgName), { recursive: true });
-    subpath.forEach((s) => {
-        const src = path.join(tmpDir, s);
-        const dest = path.join(cacheDir, repoName, orgName, s);
-        fs.cpSync(src, dest, { recursive: true });
-    });
+    try {
+        // execFileSync: no shell, so repo cannot inject commands. '--' stops option parsing.
+        // core.symlinks=false: symlinks in the remote repo become plain files, so they can't
+        // point the copy (or later glob) at files outside the clone.
+        // GIT_ALLOW_PROTOCOL: block ext::, file:, and redirects to other transports.
+        child_process.execFileSync(
+            'git',
+            ['-c', 'core.symlinks=false', 'clone', '--depth', '1', '--no-recurse-submodules', '--', repo, cloneDir],
+            {
+                stdio: ['ignore', 'pipe', 'pipe'],
+                env: { ...process.env, GIT_ALLOW_PROTOCOL: 'https:ssh', GIT_TERMINAL_PROMPT: '0' },
+            },
+        );
+
+        const repoName = path.basename(uri.pathname, '.git');
+        const orgName = path.relative('/', path.dirname(uri.pathname));
+        const destRoot = path.resolve(cacheDir, repoName, orgName);
+        if (destRoot !== cacheDir && !isInside(cacheDir, destRoot)) {
+            throw new Error(`external repo path escapes cache dir: ${redact(uri)}`);
+        }
+
+        fs.mkdirSync(destRoot, { recursive: true });
+        for (const s of subpath) {
+            const src = path.resolve(cloneDir, s);
+            const dest = path.resolve(destRoot, s);
+            if (!isInside(cloneDir, src) || !isInside(destRoot, dest)) {
+                throw new Error(`external path escapes repository: ${s}`);
+            }
+            // never copy symlinks (defense in depth if core.symlinks is overridden)
+            fs.cpSync(src, dest, { recursive: true, filter: (p) => !fs.lstatSync(p).isSymbolicLink() });
+        }
+    } catch (e) {
+        // execFileSync errors embed the full command line and git stderr, both of which
+        // can contain URL credentials. Log and rethrow a scrubbed error only.
+        const scrub = (s: string) => s.replaceAll(/\/\/[^/@\s]+@/g, '//');
+        const stderr = (e as { stderr?: Buffer }).stderr;
+        if (stderr) {
+            logger.error(scrub(stderr.toString()));
+        }
+        throw new Error(scrub(e instanceof Error ? e.message : String(e)));
+    } finally {
+        fs.rmSync(tmpDir, { recursive: true, force: true });
+    }
 }
 
 export function collectAllExternal(cfg: Config): string[] {
@@ -44,7 +98,9 @@ export function collectAllExternal(cfg: Config): string[] {
             if (!(e.uri in repoList)) {
                 repoList[e.uri] = [];
             }
-            repoList[e.uri].push(e.path!);
+            if (e.path) {
+                repoList[e.uri].push(e.path);
+            }
         });
 
         logger.info(repoList);
