@@ -1,3 +1,5 @@
+import { resolveTask } from '../utils.js';
+
 function getTaskParams(spec) {
     if (spec.inputs) return spec.inputs.params ?? [];
     return spec.params ?? [];
@@ -10,7 +12,8 @@ export default (docs, tekton, report) => {
         for (const task of tasks) {
             if (task.taskRef) {
                 const name = task.taskRef.name;
-                if (!tekton.tasks[name]) continue;
+                const resolvedTask = resolveTask(tekton, pipeline, name);
+                if (!resolvedTask) continue;
 
                 // Collect provided parameters from both params and matrix
                 const provided: string[] = [];
@@ -31,7 +34,7 @@ export default (docs, tekton, report) => {
                 }
 
                 if (provided.length > 0) {
-                    const params = getTaskParams(tekton.tasks[name].spec);
+                    const params = getTaskParams(resolvedTask.spec);
                     const required = params
                         .filter((param) => typeof param.default == 'undefined')
                         .map((param) => param.name);

@@ -132,6 +132,8 @@ This will clone the repos specified and extract the various directories to a loc
 
 Note that these cached files won't be linted themselves.
 
+The repositories are treated as untrusted data: only `https` and `ssh` URLs are accepted, symlinks are not followed, and paths must stay inside the repository. See [SECURITY.md](./SECURITY.md#threat-model-and-trust-boundaries) for details, including notes on YAML parsing and which configuration is trusted.
+
 
 The cache is defined to be put to `~/.tektonlint`  If you wish to clear the cache, simply delete this directory - alternatively there is a cli option.
 

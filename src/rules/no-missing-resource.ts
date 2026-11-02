@@ -1,3 +1,5 @@
+import { parsePacTaskAnnotations } from '../utils.js';
+
 export default (docs, tekton, report) => {
     for (const listener of Object.values<any>(tekton.listeners)) {
         for (const trigger of listener.spec.triggers) {
@@ -64,13 +66,24 @@ export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         if (!pipeline.spec) continue;
 
+        const requiredVersions = parsePacTaskAnnotations(pipeline);
         // include any finally tasks if they are present
         const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (!task.taskRef) continue;
             const name = task.taskRef.name;
+            const requiredVersion = requiredVersions[name];
 
-            if (!tekton.tasks[name]) {
+            if (requiredVersion) {
+                // Version-pinned via PAC annotation — check that specific version exists
+                if (!tekton.taskVersions?.[name]?.[requiredVersion]) {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references task '${name}' at version '${requiredVersion}' but that version cannot be found. To fix this, include the v${requiredVersion} task definition in the lint inputs.`,
+                        task.taskRef,
+                        'name',
+                    );
+                }
+            } else if (!tekton.tasks[name]) {
                 if (task.taskRef.kind && task.taskRef.kind === 'ClusterTask') {
                     report(
                         `Pipeline '${pipeline.metadata.name}' references cluster task '${name}' but the referenced task cannot be found locally.`,
@@ -84,8 +97,6 @@ export default (docs, tekton, report) => {
                         'name',
                     );
                 }
-
-                continue;
             }
         }
     }
@@ -97,12 +108,22 @@ export default (docs, tekton, report) => {
         const maintasks = pipeline.spec.pipelineSpec.tasks ? pipeline.spec.pipelineSpec.tasks : [];
         const finallytasks = pipeline.spec.pipelineSpec.finally ? pipeline.spec.pipelineSpec.finally : [];
 
+        const requiredVersions = parsePacTaskAnnotations(pipeline);
         const tasks = [...maintasks, ...finallytasks];
         for (const task of tasks) {
             if (!task.taskRef) continue;
             const name = task.taskRef.name;
+            const requiredVersion = requiredVersions[name];
 
-            if (!tekton.tasks[name]) {
+            if (requiredVersion) {
+                if (!tekton.taskVersions?.[name]?.[requiredVersion]) {
+                    report(
+                        `Pipeline '${pipeline.metadata.name}' references task '${name}' at version '${requiredVersion}' but that version cannot be found. To fix this, include the v${requiredVersion} task definition in the lint inputs.`,
+                        task.taskRef,
+                        'name',
+                    );
+                }
+            } else if (!tekton.tasks[name]) {
                 if (task.taskRef.kind && task.taskRef.kind === 'ClusterTask') {
                     report(
                         `Pipeline '${pipeline.metadata.name}' references cluster task '${name}' but the referenced task cannot be found locally.`,
@@ -116,7 +137,6 @@ export default (docs, tekton, report) => {
                         'name',
                     );
                 }
-                continue;
             }
         }
     }

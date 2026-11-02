@@ -1,0 +1,123 @@
+---
+# Task version 1.0 — has param only available in v1.0
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pac-versioned-task
+  labels:
+    app.kubernetes.io/version: "1.0"
+spec:
+  params:
+    - name: param-v1-0-only
+  steps: []
+---
+# Task version 1.1 — has param only available in v1.1
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pac-versioned-task
+  labels:
+    app.kubernetes.io/version: "1.1"
+spec:
+  params:
+    - name: param-v1-1-only
+  steps: []
+---
+# Pipeline pinned to v1.1 via PAC annotation — uses v1.1 param → no error
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-using-task-v1-1
+  annotations:
+    pipelinesascode.tekton.dev/task-1: "catalog-1://pac-versioned-task-1.1"
+spec:
+  tasks:
+    - name: run-task
+      taskRef:
+        name: pac-versioned-task
+      params:
+        - name: param-v1-1-only
+          value: hello
+---
+# Pipeline pinned to v1.0 via PAC annotation — uses v1.0 param → no error
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-using-task-v1-0
+  annotations:
+    pipelinesascode.tekton.dev/task-1: "catalog-1://pac-versioned-task-1.0"
+spec:
+  tasks:
+    - name: run-task
+      taskRef:
+        name: pac-versioned-task
+      params:
+        - name: param-v1-0-only
+          value: hello
+---
+# Pipeline pinned to a version that does not exist → missing resource error expected
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-using-task-v9-9
+  annotations:
+    pipelinesascode.tekton.dev/task-1: "catalog-1://pac-versioned-task-9.9"
+spec:
+  tasks:
+    - name: run-task
+      taskRef:
+        name: pac-versioned-task
+---
+# Task with workspaces at two versions
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pac-ws-task
+  labels:
+    app.kubernetes.io/version: "1.0"
+spec:
+  workspaces:
+    - name: ws-v1-0
+  steps: []
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pac-ws-task
+  labels:
+    app.kubernetes.io/version: "2.0"
+spec:
+  workspaces:
+    - name: ws-v2-0
+  steps: []
+---
+# Pipeline pinned to v2.0 and provides ws-v2-0 → no error
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-ws-v2-0-ok
+  annotations:
+    pipelinesascode.tekton.dev/task-1: "catalog-1://pac-ws-task-2.0"
+spec:
+  workspaces:
+    - name: ws-v2-0
+  tasks:
+    - name: run-task
+      taskRef:
+        name: pac-ws-task
+      workspaces:
+        - name: ws-v2-0
+          workspace: ws-v2-0
+---
+# Pipeline pinned to v2.0 but provides no workspace → missing workspace error expected
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-ws-v2-0-missing
+  annotations:
+    pipelinesascode.tekton.dev/task-1: "catalog-1://pac-ws-task-2.0"
+spec:
+  tasks:
+    - name: run-task
+      taskRef:
+        name: pac-ws-task

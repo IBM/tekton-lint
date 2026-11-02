@@ -36,6 +36,7 @@ interface ExternalResource {
 
 interface Tekton {
     tasks?: { [key: string]: Base };
+    taskVersions?: { [name: string]: { [version: string]: Base } };
     pipelines?: ListResources;
     listeners?: ListResources;
     triggerTemplates?: ListResources;

@@ -12,12 +12,21 @@ const createReporter = (rule, config, reporter) => {
 };
 
 const parse = (docs): Tekton => {
+    const taskDocs = docs.filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask');
+
+    const taskVersions: { [name: string]: { [version: string]: any } } = {};
+    for (const item of taskDocs) {
+        const version = item.metadata?.labels?.['app.kubernetes.io/version'];
+        if (version) {
+            const name = item.metadata.name;
+            if (!taskVersions[name]) taskVersions[name] = {};
+            taskVersions[name][version] = item;
+        }
+    }
+
     const tkn: Tekton = {
-        tasks: Object.fromEntries(
-            docs
-                .filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask')
-                .map((item) => [item.metadata.name, item]),
-        ),
+        tasks: Object.fromEntries(taskDocs.map((item) => [item.metadata.name, item])),
+        taskVersions,
         pipelines: Object.fromEntries(
             docs.filter((item) => item.kind === 'Pipeline').map((item) => [item.metadata.name, item]),
         ),
