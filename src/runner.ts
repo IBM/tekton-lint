@@ -35,8 +35,8 @@ export default async function runner(cfg: Config) {
     // setup the cache of the external tasks
     const external_cached = collectAllExternal(cfg);
 
-    // get all the documents, including the external ones cached locally
-    const docs = await collector([...cfg.globs, ...external_cached], cfg);
+    // get all the documents, putting external cached ones first so local tasks take precedence (last-wins)
+    const docs = await collector([...external_cached, ...cfg.globs], cfg);
     if (docs && docs.length > 0) {
         const reporter = new Reporter(docs);
 

@@ -5,6 +5,7 @@ import path from 'node:path';
 // import stream from 'node:stream';
 import { logger } from './logger.js';
 import { Config } from './config.js';
+import { sanitizeForLogging } from './utils.js';
 
 import { ExternalResource } from './interfaces/common.js';
 
@@ -94,7 +95,7 @@ export function collectAllExternal(cfg: Config): string[] {
         logger.info('located external-tasks in tool config');
         const externals = rc['external-tasks'];
         externals.forEach((e: ExternalResource) => {
-            logger.info(e);
+            logger.info(sanitizeForLogging(e));
             if (!(e.uri in repoList)) {
                 repoList[e.uri] = [];
             }
@@ -103,7 +104,7 @@ export function collectAllExternal(cfg: Config): string[] {
             }
         });
 
-        logger.info(repoList);
+        logger.info(sanitizeForLogging(repoList));
 
         for (const [key, value] of Object.entries(repoList)) {
             getExternal(key, value, cfg);
