@@ -94,7 +94,7 @@ export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         try {
             const name = pipeline.metadata.name;
-            const tasks = pipeline.spec.tasks;
+            const tasks = pipeline.spec?.tasks || [];
             errorCyclesInPipeline(name, tasks, [runAfterReferences, paramsReferences, resourceInputReferences], report);
         } catch (_e) {
             throw new RuleError("Can't process", 'no-pipeline-task-cycle', pipeline.metadata.name);
@@ -103,9 +103,9 @@ export default (docs, tekton, report) => {
 
     for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
         try {
-            if (!pipeline.spec.pipelineSpec) continue;
+            if (!pipeline.spec?.pipelineSpec) continue;
             const name = pipeline.metadata.name;
-            const tasks = pipeline.spec.pipelineSpec.tasks;
+            const tasks = pipeline.spec.pipelineSpec.tasks || [];
             errorCyclesInPipeline(name, tasks, [runAfterReferences, paramsReferences, resourceInputReferences], report);
         } catch (_e) {
             throw new RuleError("Can't process", 'no-pipeline-task-cycle', pipeline.metadata.name);

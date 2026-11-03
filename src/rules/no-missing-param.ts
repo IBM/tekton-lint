@@ -8,12 +8,12 @@ function getTaskParams(spec) {
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
-            if (task.taskRef) {
+            if (task.taskRef && task.taskRef.name) {
                 const name = task.taskRef.name;
                 const resolvedTask = resolveTask(tekton, pipeline, name);
-                if (!resolvedTask) continue;
+                if (!resolvedTask?.spec) continue;
 
                 // Collect provided parameters from both params and matrix
                 const provided: string[] = [];
@@ -51,7 +51,7 @@ export default (docs, tekton, report) => {
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (task.taskSpec) {
                 const params = getTaskParams(task.taskSpec);
@@ -103,12 +103,13 @@ export default (docs, tekton, report) => {
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         for (const template of Object.values<any>(tekton.triggerTemplates)) {
-            const matchingResource = template.spec.resourcetemplates.find(
-                (item) => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
+            const matchingResource = (template.spec?.resourcetemplates || []).find(
+                (item) =>
+                    item && item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
             );
             if (!matchingResource) continue;
-            const pipelineParams = pipeline.spec.params || [];
-            const templateParams = matchingResource.spec.params || [];
+            const pipelineParams = pipeline.spec?.params || [];
+            const templateParams = matchingResource.spec?.params || [];
             const missing = pipelineParams.filter(
                 (pipelineParam) =>
                     !templateParams.some((templateParam) => templateParam.name === pipelineParam.name) &&

@@ -8,13 +8,13 @@ function getTaskParams(spec) {
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
-            if (task.taskRef) {
+            if (task.taskRef && task.taskRef.name) {
                 const name = task.taskRef.name;
                 const resolvedTask = resolveTask(tekton, pipeline, name);
 
-                if (!resolvedTask) continue;
+                if (!resolvedTask?.spec) continue;
 
                 const params = getTaskParams(resolvedTask.spec);
                 const all = params.map((param) => param.name);
@@ -66,7 +66,7 @@ export default (docs, tekton, report) => {
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (task.taskSpec) {
                 const params = getTaskParams(task.taskSpec);
@@ -144,14 +144,15 @@ export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         for (const template of Object.values<any>(tekton.triggerTemplates)) {
             // iterate on the resources that athe pipelinelins
-            const matchingResource = template.spec.resourcetemplates.filter(
-                (item) => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
+            const matchingResource = (template.spec?.resourcetemplates || []).filter(
+                (item) =>
+                    item && item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
             );
 
             if (matchingResource.length == 0) continue;
             for (const resource of matchingResource) {
-                const pipelineParams = pipeline.spec.params || [];
-                const templateParams = resource.spec.params || [];
+                const pipelineParams = pipeline.spec?.params || [];
+                const templateParams = resource.spec?.params || [];
                 const extra = templateParams.filter(
                     (templateParam) =>
                         !pipelineParams.some((pipelineParam) => pipelineParam.name === templateParam.name),
@@ -169,21 +170,23 @@ export default (docs, tekton, report) => {
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
         // iterate on the resources that athe pipelinelins
-        const matchingResource = template.spec.resourcetemplates.filter((item) => item.spec && item.spec.pipelineSpec);
+        const matchingResource = (template.spec?.resourcetemplates || []).filter(
+            (item) => item && item.spec && item.spec.pipelineSpec,
+        );
 
         if (matchingResource.length == 0) continue;
         for (const resource of matchingResource) {
             const pipeline = resource.spec.pipelineSpec;
 
             const pipelineParams = pipeline.params || [];
-            const templateParams = resource.spec.params || [];
+            const templateParams = resource.spec?.params || [];
 
             const extra = templateParams.filter(
                 (templateParam) => !pipelineParams.some((pipelineParam) => pipelineParam.name === templateParam.name),
             );
             for (const param of extra) {
                 report(
-                    `TriggerTemplate '${template.metadata.name}' references pipeline '${resource.metadata.name}', and supplies '${param.name}', but it's not a valid parameter.`,
+                    `TriggerTemplate '${template.metadata.name}' references pipeline '${resource.metadata?.name || template.metadata.name}', and supplies '${param.name}', but it's not a valid parameter.`,
                     templateParams.find((p) => p.name === param.name),
                 );
             }

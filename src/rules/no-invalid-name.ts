@@ -9,8 +9,8 @@ function getTaskParams(spec) {
 }
 
 function checkInvalidParameterName(resources, report) {
-    for (const resource of Object.values<any>(resources)) {
-        if (!resource.spec) continue;
+    for (const resource of Object.values<any>(resources || {})) {
+        if (!resource || !resource.spec) continue;
 
         let params;
         if (resource.kind === 'Task') {
@@ -39,8 +39,8 @@ export default (docs, tekton, report) => {
     checkInvalidParameterName(tekton.pipelines, report);
 
     // Check resource names - iterate over docs directly to preserve instrumentation
-    for (const resource of docs) {
-        if (resource.metadata && resource.metadata.name && resource.kind) {
+    for (const resource of docs || []) {
+        if (resource && resource.metadata && resource.metadata.name && resource.kind) {
             if (!isValidName(resource.metadata.name)) {
                 report(
                     `Invalid name for ${resource.kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names`,

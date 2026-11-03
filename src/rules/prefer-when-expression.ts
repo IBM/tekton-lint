@@ -1,6 +1,6 @@
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        for (const task of pipeline.spec?.tasks || []) {
             if (task.conditions) {
                 const guardedBy = task.conditions.map((condition) => condition.conditionRef);
                 report(
@@ -17,8 +17,8 @@ export default (docs, tekton, report) => {
     }
 
     for (const triggerTemplate of Object.values<any>(tekton.triggerTemplates)) {
-        for (const crd of triggerTemplate.spec.resourcetemplates) {
-            if (crd.kind !== 'PipelineRun') continue;
+        for (const crd of triggerTemplate.spec?.resourcetemplates || []) {
+            if (!crd || crd.kind !== 'PipelineRun' || !crd.spec) continue;
             const pipelineSpec = crd.spec.pipelineSpec;
             if (!pipelineSpec || !pipelineSpec.tasks) continue;
             for (const task of pipelineSpec.tasks) {

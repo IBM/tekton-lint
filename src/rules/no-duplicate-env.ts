@@ -24,7 +24,7 @@ export default (docs, tekton: Tekton, report) => {
             }
         }
 
-        for (const step of task.spec.steps) {
+        for (const step of task.spec.steps || []) {
             if (!step.env) continue;
             const envVariables = new Set();
             for (const env of step.env) {

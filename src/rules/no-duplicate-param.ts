@@ -24,8 +24,8 @@ export default (docs, tekton, report) => {
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
-        for (const crd of template.spec.resourcetemplates) {
-            if (crd.kind !== 'PipelineRun') continue;
+        for (const crd of template.spec?.resourcetemplates || []) {
+            if (!crd || crd.kind !== 'PipelineRun' || !crd.spec) continue;
             checkParams(getParams(crd.kind, crd.spec), report);
 
             if (crd.spec.pipelineSpec) {
@@ -46,7 +46,7 @@ export default (docs, tekton, report) => {
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             checkParams(getParams('Task', task), report);
             if (task.taskSpec) {
@@ -56,22 +56,17 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipelineRun of Object.values<any>(tekton.pipelineRuns)) {
-        try {
-            if (!pipelineRun.spec.pipelineSpec) continue;
+        if (!pipelineRun.spec || !pipelineRun.spec.pipelineSpec) continue;
 
-            const tasks = [
-                ...(pipelineRun.spec.pipelineSpec.tasks ? pipelineRun.spec.pipelineSpec.tasks : []),
-                ...(pipelineRun.spec.pipelineSpec.finally ? pipelineRun.spec.pipelineSpec.finally : []),
-            ];
-            for (const task of tasks) {
-                checkParams(getParams('Task', task), report);
-                if (task.taskSpec) {
-                    checkParams(getParams('Task', task.taskSpec), report);
-                }
+        const tasks = [
+            ...(pipelineRun.spec.pipelineSpec.tasks ? pipelineRun.spec.pipelineSpec.tasks : []),
+            ...(pipelineRun.spec.pipelineSpec.finally ? pipelineRun.spec.pipelineSpec.finally : []),
+        ];
+        for (const task of tasks) {
+            checkParams(getParams('Task', task), report);
+            if (task.taskSpec) {
+                checkParams(getParams('Task', task.taskSpec), report);
             }
-        } catch (e) {
-            console.log(pipelineRun.metadata.name);
-            throw e;
         }
     }
 };

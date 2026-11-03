@@ -35,12 +35,20 @@ function getTaskParams(crd) {
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         const params = getParams(pipeline);
-        walk(pipeline.spec.tasks, ['spec', 'tasks'], createVisitor(pipeline.metadata.name, params, 'params', report));
-        walk(
-            pipeline.spec.finally,
-            ['spec', 'finally'],
-            createVisitor(pipeline.metadata.name, params, 'params', report),
-        );
+        if (pipeline.spec?.tasks) {
+            walk(
+                pipeline.spec.tasks,
+                ['spec', 'tasks'],
+                createVisitor(pipeline.metadata.name, params, 'params', report),
+            );
+        }
+        if (pipeline.spec?.finally) {
+            walk(
+                pipeline.spec.finally,
+                ['spec', 'finally'],
+                createVisitor(pipeline.metadata.name, params, 'params', report),
+            );
+        }
     }
 
     for (const task of Object.values<any>(tekton.tasks)) {
@@ -48,22 +56,26 @@ export default (docs, tekton, report) => {
         const params = getTaskParams(task);
         for (const prefix of ['inputs.params', 'params']) {
             for (const prop of ['steps', 'volumes', 'stepTemplate', 'sidecars']) {
-                walk(task.spec[prop], ['spec', prop], createVisitor(task.metadata.name, params, prefix, report));
+                if (task.spec[prop]) {
+                    walk(task.spec[prop], ['spec', prop], createVisitor(task.metadata.name, params, prefix, report));
+                }
             }
         }
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
         const params = getParams(template);
-        walk(
-            template.spec.resourcetemplates,
-            ['spec', 'resourcetemplates'],
-            createVisitor(template.metadata.name, params, 'params', report),
-        );
-        walk(
-            template.spec.resourcetemplates,
-            ['spec', 'resourcetemplates'],
-            createVisitor(template.metadata.name, params, 'tt.params', report),
-        );
+        if (template.spec?.resourcetemplates) {
+            walk(
+                template.spec.resourcetemplates,
+                ['spec', 'resourcetemplates'],
+                createVisitor(template.metadata.name, params, 'params', report),
+            );
+            walk(
+                template.spec.resourcetemplates,
+                ['spec', 'resourcetemplates'],
+                createVisitor(template.metadata.name, params, 'tt.params', report),
+            );
+        }
     }
 };

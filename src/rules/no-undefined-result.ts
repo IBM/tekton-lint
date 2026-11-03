@@ -8,11 +8,17 @@ const checkUndefinedResult = (pipeline, tekton, report) => (value, path, parent)
     if (!reference) return;
 
     const [, task, name] = reference;
-    const matchingTask = pipeline.spec.tasks.find((t) => t.name === task);
+    const matchingTask = pipeline.spec?.tasks?.find((t) => t.name === task);
     if (!matchingTask) return;
 
-    if (matchingTask.taskRef && !resolveTask(tekton, pipeline, matchingTask.taskRef.name)) return;
-    const taskSpec = matchingTask.taskSpec || resolveTask(tekton, pipeline, matchingTask.taskRef.name).spec;
+    if (
+        matchingTask.taskRef &&
+        (!matchingTask.taskRef.name || !resolveTask(tekton, pipeline, matchingTask.taskRef.name))
+    )
+        return;
+    const resolved = matchingTask.taskRef?.name ? resolveTask(tekton, pipeline, matchingTask.taskRef.name) : undefined;
+    const taskSpec = matchingTask.taskSpec || resolved?.spec;
+    if (!taskSpec || !taskSpec.results) return;
 
     const matchingResult = taskSpec.results.find((result) => result.name === name);
     if (!matchingResult) {
@@ -31,14 +37,14 @@ export default (docs, tekton, report) => {
         walk(pipeline, [], checkUndefinedResult(pipeline, tekton, report));
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        for (const task of pipeline.spec?.tasks || []) {
             if (!task.params) continue;
             for (const param of task.params) {
                 if (typeof param.value !== 'string') continue;
                 const taskReference = param.value.match(taskNameRegexp);
                 if (taskReference) {
                     const taskName = taskReference[1];
-                    const matchingTask = pipeline.spec.tasks.find((task) => task.name === taskName);
+                    const matchingTask = (pipeline.spec?.tasks || []).find((t) => t.name === taskName);
                     if (!matchingTask) {
                         report(
                             `Task '${task.name}' refers to task '${taskName}' at value of param '${param.name}' but there is no task with that name in pipeline '${pipeline.metadata.name}'`,

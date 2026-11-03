@@ -50,16 +50,28 @@ const naming = (resource, prefix, report) => (node, path, parent) => {
 
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
-        walk(pipeline.spec.finally, ['spec', 'finally'], naming(pipeline.metadata.name, 'params', report));
+        if (pipeline.spec?.tasks) {
+            walk(pipeline.spec.tasks, ['spec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
+        }
+        if (pipeline.spec?.finally) {
+            walk(pipeline.spec.finally, ['spec', 'finally'], naming(pipeline.metadata.name, 'params', report));
+        }
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelineRuns)) {
-        walk(pipeline.spec.tasks, ['spec', 'pipelineSpec', 'tasks'], naming(pipeline.metadata.name, 'params', report));
-        walk(
-            pipeline.spec.finally,
-            ['spec', 'pipelineSpec', 'finally'],
-            naming(pipeline.metadata.name, 'params', report),
-        );
+        if (pipeline.spec?.tasks) {
+            walk(
+                pipeline.spec.tasks,
+                ['spec', 'pipelineSpec', 'tasks'],
+                naming(pipeline.metadata.name, 'params', report),
+            );
+        }
+        if (pipeline.spec?.finally) {
+            walk(
+                pipeline.spec.finally,
+                ['spec', 'pipelineSpec', 'finally'],
+                naming(pipeline.metadata.name, 'params', report),
+            );
+        }
     }
 };

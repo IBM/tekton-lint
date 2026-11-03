@@ -1,11 +1,16 @@
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec.tasks) {
+        const pipelineTasks = pipeline.spec?.tasks || [];
+        for (const task of pipelineTasks) {
             if (!task.runAfter) continue;
 
             for (const dependency of task.runAfter) {
-                const exists = pipeline.spec.tasks.some((task) => task.name === dependency);
-                const details = task.taskSpec ? 'defined in-line' : `referenced as '${task.taskRef.name}'`;
+                const exists = pipelineTasks.some((t: any) => t.name === dependency);
+                const details = task.taskSpec
+                    ? 'defined in-line'
+                    : task.taskRef?.name
+                      ? `referenced as '${task.taskRef.name}'`
+                      : 'referenced via resolver';
 
                 if (!exists) {
                     report(
@@ -27,8 +32,12 @@ export default (docs, tekton, report) => {
                 if (!task.runAfter) continue;
 
                 for (const dependency of task.runAfter) {
-                    const exists = taskRoot.some((task) => task.name === dependency);
-                    const details = task.taskSpec ? 'defined in-line' : `referenced as '${task.taskRef.name}'`;
+                    const exists = taskRoot.some((t: any) => t.name === dependency);
+                    const details = task.taskSpec
+                        ? 'defined in-line'
+                        : task.taskRef?.name
+                          ? `referenced as '${task.taskRef.name}'`
+                          : 'referenced via resolver';
 
                     if (!exists) {
                         report(
