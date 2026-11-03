@@ -22,10 +22,10 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 
 | Status | ID | Severity | Finding | Location |
 |---|---|---|---|---|
-| [ ] | C1 | Medium | "Diagnose npm config" step runs `cat ~/.npmrc` and greps for token; can print auth material into logs. Remove. | `.github/workflows/node.js.yml:17,45` |
-| [ ] | C2 | Medium | Dockerfile: EOL `node:18`/`node:16`; tini via `ADD` URL with no checksum; `npm shrinkwrap` after `npm ci`; `ENTRYPOINT dist/main.js` but bin is `dist/lint.js` (image cannot work). Docker job publishes this to ghcr. | `Dockerfile`, `.github/workflows/node.js.yml:61` |
-| [ ] | C3 | Low | No `permissions:` block in CI workflow (default token scope). | `.github/workflows/node.js.yml` |
-| [ ] | C4 | Low | Actions pinned by tag, not commit SHA. | `.github/workflows/*.yml` |
+| [x] | C1 | Medium | "Diagnose npm config" step runs `cat ~/.npmrc` and greps for token; can print auth material into logs. Remove. | `.github/workflows/node.js.yml:17,45` |
+| [x] | C2 | Medium | Dockerfile: EOL `node:18`/`node:16`; tini via `ADD` URL with no checksum; `npm shrinkwrap` after `npm ci`; `ENTRYPOINT dist/main.js` but bin is `dist/lint.js` (image cannot work). Docker job publishes this to ghcr. | `Dockerfile`, `.github/workflows/node.js.yml:61` |
+| [x] | C3 | Low | No `permissions:` block in CI workflow (default token scope). | `.github/workflows/node.js.yml` |
+| [x] | C4 | Low | Actions pinned by tag, not commit SHA. | `.github/workflows/*.yml` |
 | [ ] | C5 | Low | `NPM_TOKEN` fallback kept beside OIDC; drop once trusted publisher confirmed. | `.github/workflows/release.yml:69` |
 | [ ] | C6 | Info | `.whitesource` sets `javaVersion: 17` on a Node project. | `.whitesource` |
 
