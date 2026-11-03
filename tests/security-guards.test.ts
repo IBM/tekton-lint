@@ -2,7 +2,7 @@ import collectResources from '../src/collect-resources.js';
 import { lint } from '../src/rules.js';
 import Reporter from '../src/reporter.js';
 import { Config } from '../src/config.js';
-import { redactUrl, sanitizeForLogging } from '../src/utils.js';
+import { redactUrl, sanitizeForLogging, parsePacTaskAnnotations } from '../src/utils.js';
 import YAML from 'yaml';
 
 describe('Security guards (S1, S6, T2)', () => {
@@ -234,6 +234,22 @@ spec:
             const latestImageError = problems.find((p) => p.rule === 'no-latest-image');
             expect(latestImageError).toBeDefined();
             expect(latestImageError?.path).toBe('local/task.yaml');
+        });
+    });
+
+    describe('S7: Regex safety and PAC parsing', () => {
+        test('parsePacTaskAnnotations parses PAC annotations correctly without backtracking', () => {
+            const pipeline = {
+                metadata: {
+                    annotations: {
+                        'pipelinesascode.tekton.dev/task-git-clone': 'catalog://git-clone-0.4',
+                        'pipelinesascode.tekton.dev/task-maven': 'maven-0.2.1',
+                    },
+                },
+            };
+            const versions = parsePacTaskAnnotations(pipeline);
+            expect(versions['git-clone']).toBe('0.4');
+            expect(versions['maven']).toBe('0.2.1');
         });
     });
 });

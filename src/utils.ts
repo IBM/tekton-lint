@@ -32,8 +32,8 @@ export function sanitizeForLogging(obj: any, seen = new WeakSet()): any {
 
 const PAC_TASK_ANNOTATION_PREFIX = 'pipelinesascode.tekton.dev/task-';
 // Matches an optional "catalog://" prefix, then captures name and version.
-// Version is the trailing "-N.N..." segment (greedy name, last semver-like suffix).
-const PAC_VALUE_REGEXP = /^(?:[^/]+:\/\/)?(.+)-(\d+\.\d+[\w.]*)$/;
+// Version is the trailing "-N.N..." segment.
+const PAC_VALUE_REGEXP = /^(?:[^/]+:\/\/)?([a-zA-Z0-9_.-]+?)-(\d+\.\d+[\w.]*)$/;
 
 /**
  * Parses pipelinesascode.tekton.dev/task-* annotations on a pipeline and
