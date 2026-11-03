@@ -3,7 +3,7 @@ export default (docs, tekton, report) => {
         if (!task.spec) continue;
         const volumes = (task.spec.volumes || []).map((volume) => volume.name);
 
-        for (const step of task.spec.steps) {
+        for (const step of task.spec.steps || []) {
             const mounts = step.volumeMounts || [];
             for (const mount of mounts) {
                 if (mount.name.match(/\$\(.*\)/)) continue;

@@ -1,7 +1,8 @@
 export default (docs, tekton, report) => {
     const resourceNames = new Map();
 
-    for (const resource of docs) {
+    for (const resource of docs || []) {
+        if (!resource || !resource.kind || !resource.metadata || !resource.metadata.name) continue;
         if (!resourceNames.has(resource.kind)) {
             resourceNames.set(resource.kind, new Set());
         }

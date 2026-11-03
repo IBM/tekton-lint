@@ -153,8 +153,14 @@ class Reporter {
             // but doesn't alter the time complexity
             const chars: string[] = Array.from(k.doc.raw);
             void chars.length;
-            let n = prop ? k.node.get(prop, true) : k.node;
-            if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
+            let n = prop && k.node?.get ? k.node.get(prop, true) : k.node;
+            if (!n && k.node?.items && Array.isArray(k.node.items)) {
+                const pair = k.node.items.find((p: any) => p?.key?.value === prop);
+                if (pair?.key) n = pair.key;
+            }
+            if (!n) n = k.node;
+            if (!n || !n.range) return { path: k.doc.path, loc: {} };
+
             return {
                 path: k.doc.path,
                 loc: {
@@ -166,7 +172,7 @@ class Reporter {
                 },
             };
         } catch (_e) {
-            return { path: k.doc.path, loc: {} };
+            return { path: k?.doc?.path, loc: {} };
         }
     }
 
@@ -177,8 +183,13 @@ class Reporter {
         if (!m.has(node)) return {};
         const k = m.get(node);
         try {
-            let n = prop ? k.node.get(prop, true) : k.node;
-            if (!n) n = k.node.items.find((pair) => pair.key.value === prop).key;
+            let n = prop && k.node?.get ? k.node.get(prop, true) : k.node;
+            if (!n && k.node?.items && Array.isArray(k.node.items)) {
+                const pair = k.node.items.find((p: any) => p?.key?.value === prop);
+                if (pair?.key) n = pair.key;
+            }
+            if (!n) n = k.node;
+            if (!n || !n.range) return { path: k.doc.path, loc: {} };
 
             // create the search node
             const start_sn = new IndexRange(n.range[0]);

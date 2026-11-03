@@ -29,7 +29,9 @@ export default (docs, tekton, report) => {
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
         for (const prefix of ['inputs.params', 'params']) {
             for (const prop of ['steps', 'volumes', 'stepTemplate', 'sidecars', 'workspaces']) {
-                walk(task.spec[prop], ['spec', prop], unused(occurences, prefix));
+                if (task.spec[prop]) {
+                    walk(task.spec[prop], ['spec', prop], unused(occurences, prefix));
+                }
             }
         }
         for (const [param, n] of Object.entries(occurences)) {
@@ -45,7 +47,9 @@ export default (docs, tekton, report) => {
         if (!condition.spec) continue;
         const params = getParams(condition.kind, condition.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
-        walk(condition.spec.check, ['spec', 'check'], unused(occurences, 'params'));
+        if (condition.spec.check) {
+            walk(condition.spec.check, ['spec', 'check'], unused(occurences, 'params'));
+        }
         for (const [param, n] of Object.entries(occurences)) {
             if (n) continue;
             report(
@@ -75,8 +79,12 @@ export default (docs, tekton, report) => {
         const params = getParams(pipeline.kind, pipeline.spec);
         const occurences = Object.fromEntries(params.map((param) => [param.name, 0]));
 
-        walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(occurences, 'params'));
-        walk(pipeline.spec.finally, ['spec', 'finally'], unused(occurences, 'params'));
+        if (pipeline.spec.tasks) {
+            walk(pipeline.spec.tasks, ['spec', 'tasks'], unused(occurences, 'params'));
+        }
+        if (pipeline.spec.finally) {
+            walk(pipeline.spec.finally, ['spec', 'finally'], unused(occurences, 'params'));
+        }
         for (const [param, n] of Object.entries(occurences)) {
             if (n) continue;
             report(

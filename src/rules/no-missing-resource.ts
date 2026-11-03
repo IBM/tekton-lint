@@ -2,7 +2,7 @@ import { parsePacTaskAnnotations } from '../utils.js';
 
 export default (docs, tekton, report) => {
     for (const listener of Object.values<any>(tekton.listeners)) {
-        for (const trigger of listener.spec.triggers) {
+        for (const trigger of listener.spec?.triggers || []) {
             if (!trigger.binding) continue;
             const name = trigger.binding.name;
             if (!tekton.triggerBindings[name]) {
@@ -16,7 +16,7 @@ export default (docs, tekton, report) => {
     }
 
     for (const listener of Object.values<any>(tekton.listeners)) {
-        for (const trigger of listener.spec.triggers) {
+        for (const trigger of listener.spec?.triggers || []) {
             if (!trigger.template) continue;
             const triggerReference = trigger.template.name ?? trigger.template.ref;
             const referenceKey = trigger.template.name ? 'name' : 'ref';
@@ -31,16 +31,19 @@ export default (docs, tekton, report) => {
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
-        for (const resourceTemplate of template.spec.resourcetemplates) {
-            if (resourceTemplate.kind !== 'PipelineRun') continue;
+        for (const resourceTemplate of template.spec?.resourcetemplates || []) {
+            if (!resourceTemplate || resourceTemplate.kind !== 'PipelineRun' || !resourceTemplate.spec) continue;
             if (resourceTemplate.spec.pipelineSpec) continue;
+            if (!resourceTemplate.spec.pipelineRef) continue;
+            if (resourceTemplate.spec.pipelineRef.resolver) continue;
 
-            const isRuntimeCreated = /\$\([\S]*\)/g.test(resourceTemplate.spec.pipelineRef.name);
+            const pipelineName = resourceTemplate.spec.pipelineRef.name;
+            const isRuntimeCreated = /\$\([\S]*\)/g.test(String(pipelineName));
             if (isRuntimeCreated) continue;
 
-            if (!tekton.pipelines[resourceTemplate.spec.pipelineRef.name]) {
+            if (!tekton.pipelines[pipelineName]) {
                 report(
-                    `TriggerTemplate '${template.metadata.name}' references pipeline '${resourceTemplate.spec.pipelineRef.name}', but the referenced pipeline cannot be found.`,
+                    `TriggerTemplate '${template.metadata.name}' references pipeline '${pipelineName}', but the referenced pipeline cannot be found.`,
                     resourceTemplate.spec.pipelineRef,
                     'name',
                 );
@@ -50,7 +53,7 @@ export default (docs, tekton, report) => {
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (!task.conditions) continue;
             for (const condition of task.conditions) {
@@ -68,11 +71,13 @@ export default (docs, tekton, report) => {
 
         const requiredVersions = parsePacTaskAnnotations(pipeline);
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec.tasks || []), ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (!task.taskRef) continue;
+            if (task.taskRef.resolver || task.taskRef.bundle) continue;
+
             const name = task.taskRef.name;
-            const requiredVersion = requiredVersions[name];
+            const requiredVersion = name ? requiredVersions[name] : undefined;
 
             if (requiredVersion) {
                 // Version-pinned via PAC annotation — check that specific version exists
@@ -112,8 +117,10 @@ export default (docs, tekton, report) => {
         const tasks = [...maintasks, ...finallytasks];
         for (const task of tasks) {
             if (!task.taskRef) continue;
+            if (task.taskRef.resolver || task.taskRef.bundle) continue;
+
             const name = task.taskRef.name;
-            const requiredVersion = requiredVersions[name];
+            const requiredVersion = name ? requiredVersions[name] : undefined;
 
             if (requiredVersion) {
                 if (!tekton.taskVersions?.[name]?.[requiredVersion]) {

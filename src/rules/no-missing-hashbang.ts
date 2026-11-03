@@ -16,7 +16,7 @@ export default (docs, tekton, report) => {
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
             if (!task.taskSpec) continue;
             checkSteps(task.taskSpec.steps, report);
@@ -24,8 +24,8 @@ export default (docs, tekton, report) => {
     }
 
     for (const template of Object.values<any>(tekton.triggerTemplates)) {
-        for (const resourceTemplate of template.spec.resourcetemplates) {
-            if (resourceTemplate.kind !== 'PipelineRun') continue;
+        for (const resourceTemplate of template.spec?.resourcetemplates || []) {
+            if (!resourceTemplate || resourceTemplate.kind !== 'PipelineRun' || !resourceTemplate.spec) continue;
             const pipelineSpec = resourceTemplate.spec.pipelineSpec;
             if (!pipelineSpec) continue;
             if (!Array.isArray(pipelineSpec.tasks)) continue;

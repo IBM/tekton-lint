@@ -25,9 +25,9 @@ function checkTasks(tasks, parentWorkspaces, parentName, report) {
 
 export default (docs, tekton, report: RuleReportFn) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        const allTasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const allTasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         for (const taskRef of allTasks) {
-            if (!taskRef.taskRef) continue;
+            if (!taskRef.taskRef || !taskRef.taskRef.name) continue;
             const taskName = taskRef.taskRef.name;
             const resolvedTask = resolveTask(tekton, pipeline, taskName);
             if (!resolvedTask?.spec?.workspaces) continue;
@@ -47,9 +47,9 @@ export default (docs, tekton, report: RuleReportFn) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        const pipelineWorkspaces = pipeline.spec.workspaces || [];
+        const pipelineWorkspaces = pipeline.spec?.workspaces || [];
         // include any finally tasks if they are present
-        const tasks = [...pipeline.spec.tasks, ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
+        const tasks = [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally ? pipeline.spec.finally : [])];
         checkTasks(tasks, pipelineWorkspaces, pipeline.metadata.name, report);
     }
 
@@ -64,7 +64,7 @@ export default (docs, tekton, report: RuleReportFn) => {
         checkTasks(tasks, pipelineWorkspaces, pipeline.metadata.name, report);
 
         // check the spec workspaces and the pieline spec
-        const runWorkspaces = pipeline.spec.workspaces;
+        const runWorkspaces = pipeline.spec.workspaces || [];
         const specWorkspaces = pipeline.spec.pipelineSpec.workspaces;
         if (!specWorkspaces) continue;
 
@@ -72,7 +72,6 @@ export default (docs, tekton, report: RuleReportFn) => {
             .filter((s) => !s)
             .forEach((sws) => {
                 if (!runWorkspaces.find((ws) => (sws as any).name == ws.name)) {
-                    console.log(`${sws.name} not found`);
                     report(
                         `Pipeline run '${pipeline.metadata.name}' has a pipelineSpec with workspace '${sws.name}' that is not defined in the pipeline`,
                         sws,
@@ -86,18 +85,19 @@ export default (docs, tekton, report: RuleReportFn) => {
         const required = pipeline.spec.workspaces.map((ws) => ws.name);
 
         for (const template of Object.values<any>(tekton.triggerTemplates)) {
-            const pipelineRuns = template.spec.resourcetemplates.filter(
-                (item) => item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
+            const pipelineRuns = (template.spec?.resourcetemplates || []).filter(
+                (item) =>
+                    item && item.spec && item.spec.pipelineRef && item.spec.pipelineRef.name === pipeline.metadata.name,
             );
 
             for (const pipelineRun of pipelineRuns) {
-                const provided = pipelineRun.spec.workspaces || [];
+                const provided = pipelineRun.spec?.workspaces || [];
 
                 for (const workspace of required) {
                     if (!provided.find((ws) => ws.name === workspace)) {
                         report(
                             `TriggerTemplate '${template.metadata.name}' references Pipeline '${pipeline.metadata.name}', but provides no workspace for '${workspace}' (it's a required workspace in '${pipeline.metadata.name}')`,
-                            pipelineRun.spec.workspaces || pipelineRun.spec,
+                            pipelineRun.spec?.workspaces || pipelineRun.spec,
                         );
                     }
                 }

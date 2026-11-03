@@ -11,40 +11,48 @@ const createReporter = (rule, config, reporter) => {
     };
 };
 
-const parse = (docs): Tekton => {
-    const taskDocs = docs.filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask');
+const DANGEROUS_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 
-    const taskVersions: { [name: string]: { [version: string]: any } } = {};
+const parse = (docs: any[]): Tekton => {
+    const safeDocs = (docs || []).filter(
+        (item) =>
+            item &&
+            item.kind &&
+            item.metadata &&
+            item.metadata.name &&
+            !DANGEROUS_KEYS.has(item.kind) &&
+            !DANGEROUS_KEYS.has(item.metadata.name),
+    );
+
+    const taskDocs = safeDocs.filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask');
+
+    const taskVersions: { [name: string]: { [version: string]: any } } = Object.create(null);
     for (const item of taskDocs) {
         const version = item.metadata?.labels?.['app.kubernetes.io/version'];
-        if (version) {
+        if (version && !DANGEROUS_KEYS.has(version)) {
             const name = item.metadata.name;
-            if (!taskVersions[name]) taskVersions[name] = {};
+            if (!taskVersions[name]) taskVersions[name] = Object.create(null);
             taskVersions[name][version] = item;
         }
     }
 
+    const buildRecord = (items: any[]) => {
+        const rec = Object.create(null);
+        for (const item of items) {
+            rec[item.metadata.name] = item;
+        }
+        return rec;
+    };
+
     const tkn: Tekton = {
-        tasks: Object.fromEntries(taskDocs.map((item) => [item.metadata.name, item])),
+        tasks: buildRecord(taskDocs),
         taskVersions,
-        pipelines: Object.fromEntries(
-            docs.filter((item) => item.kind === 'Pipeline').map((item) => [item.metadata.name, item]),
-        ),
-        listeners: Object.fromEntries(
-            docs.filter((item) => item.kind === 'EventListener').map((item) => [item.metadata.name, item]),
-        ),
-        triggerTemplates: Object.fromEntries(
-            docs.filter((item) => item.kind === 'TriggerTemplate').map((item) => [item.metadata.name, item]),
-        ),
-        triggerBindings: Object.fromEntries(
-            docs.filter((item) => item.kind === 'TriggerBinding').map((item) => [item.metadata.name, item]),
-        ),
-        conditions: Object.fromEntries(
-            docs.filter((item) => item.kind === 'Condition').map((item) => [item.metadata.name, item]),
-        ),
-        pipelineRuns: Object.fromEntries(
-            docs.filter((item) => item.kind === 'PipelineRun').map((item) => [item.metadata.name, item]),
-        ),
+        pipelines: buildRecord(safeDocs.filter((item) => item.kind === 'Pipeline')),
+        listeners: buildRecord(safeDocs.filter((item) => item.kind === 'EventListener')),
+        triggerTemplates: buildRecord(safeDocs.filter((item) => item.kind === 'TriggerTemplate')),
+        triggerBindings: buildRecord(safeDocs.filter((item) => item.kind === 'TriggerBinding')),
+        conditions: buildRecord(safeDocs.filter((item) => item.kind === 'Condition')),
+        pipelineRuns: buildRecord(safeDocs.filter((item) => item.kind === 'PipelineRun')),
     };
 
     logger.info('Tekton: %o', tkn);
@@ -55,7 +63,15 @@ const parse = (docs): Tekton => {
 export async function lint(docs, reporter, config) {
     const rules = await RuleLoader.getRules(config);
 
-    docs = docs.filter((doc) => doc && doc.metadata && doc.metadata.name);
+    docs = (docs || []).filter(
+        (doc) =>
+            doc &&
+            doc.kind &&
+            doc.metadata &&
+            doc.metadata.name &&
+            !DANGEROUS_KEYS.has(doc.kind) &&
+            !DANGEROUS_KEYS.has(doc.metadata.name),
+    );
     const tekton = parse(docs);
 
     if (Object.values(tekton).every((definitionKind) => Object.keys(definitionKind).length === 0)) {
