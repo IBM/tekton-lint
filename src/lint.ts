@@ -40,7 +40,7 @@ const parser = yargs(process.argv.slice(2))
         },
         'refresh-cache': {
             type: 'boolean',
-            default: 'false',
+            default: false,
             describe: 'If true will delete the cache directory for external tasks',
         },
     })

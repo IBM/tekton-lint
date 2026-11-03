@@ -44,11 +44,14 @@ export class Config {
 
         this._cache_dir = env.get('TL_CACHE_DIR').default(path.join(os.homedir(), '.tekton-lint')).asString();
         this._max_warnings = cliConfig['max-warnings'];
-        this._refresh_cache = cliConfig['refresh-cache'];
+        this._refresh_cache = Boolean(cliConfig['refresh-cache']);
         this._format = cliConfig['format'];
         this._quiet = cliConfig['quiet'];
 
         this._custom = this._rulesConfig['custom'];
+        if (this._refresh_cache && fs.existsSync(this._cache_dir)) {
+            fs.rmSync(this._cache_dir, { recursive: true, force: true });
+        }
         if (!fs.existsSync(this._cache_dir)) {
             fs.mkdirSync(this._cache_dir, { recursive: true });
         }

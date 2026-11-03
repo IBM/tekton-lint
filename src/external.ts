@@ -50,7 +50,21 @@ export function getExternal(repo: string, subpath: string[], cfg: Config) {
             ['-c', 'core.symlinks=false', 'clone', '--depth', '1', '--no-recurse-submodules', '--', repo, cloneDir],
             {
                 stdio: ['ignore', 'pipe', 'pipe'],
-                env: { ...process.env, GIT_ALLOW_PROTOCOL: 'https:ssh', GIT_TERMINAL_PROMPT: '0' },
+                timeout: 30000,
+                maxBuffer: 10 * 1024 * 1024,
+                env: {
+                    PATH: process.env.PATH || '',
+                    HOME: process.env.HOME || tmpDir,
+                    GIT_ALLOW_PROTOCOL: 'https:ssh',
+                    GIT_TERMINAL_PROMPT: '0',
+                    GIT_CONFIG_NOSYSTEM: '1',
+                    GIT_CONFIG_GLOBAL: '/dev/null',
+                    ...(process.env.HTTPS_PROXY ? { HTTPS_PROXY: process.env.HTTPS_PROXY } : {}),
+                    ...(process.env.HTTP_PROXY ? { HTTP_PROXY: process.env.HTTP_PROXY } : {}),
+                    ...(process.env.NO_PROXY ? { NO_PROXY: process.env.NO_PROXY } : {}),
+                    ...(process.env.SSL_CERT_FILE ? { SSL_CERT_FILE: process.env.SSL_CERT_FILE } : {}),
+                    ...(process.env.SSL_CERT_DIR ? { SSL_CERT_DIR: process.env.SSL_CERT_DIR } : {}),
+                },
             },
         );
 
@@ -91,7 +105,7 @@ export function collectAllExternal(cfg: Config): string[] {
     const rc = cfg.rulesConfig;
     const repoList: { [key: string]: string[] } = {};
 
-    if ('external-tasks' in rc) {
+    if ('external-tasks' in rc && Array.isArray(rc['external-tasks'])) {
         logger.info('located external-tasks in tool config');
         const externals = rc['external-tasks'];
         externals.forEach((e: ExternalResource) => {
@@ -106,10 +120,25 @@ export function collectAllExternal(cfg: Config): string[] {
 
         logger.info(sanitizeForLogging(repoList));
 
+        const matchedGlobs: string[] = [];
+        const cacheDir = path.resolve(cfg.cache_dir);
+
         for (const [key, value] of Object.entries(repoList)) {
             getExternal(key, value, cfg);
+            const uri = new URL(key);
+            const repoName = path.basename(uri.pathname, '.git');
+            const orgName = path.relative('/', path.dirname(uri.pathname));
+            const destRoot = path.resolve(cacheDir, repoName, orgName);
+            for (const s of value) {
+                const target = path.resolve(destRoot, s);
+                if (fs.existsSync(target) && fs.statSync(target).isDirectory()) {
+                    matchedGlobs.push(path.join(target, '**/*.yaml'), path.join(target, '**/*.yml'));
+                } else {
+                    matchedGlobs.push(target);
+                }
+            }
         }
-        return [`${cfg.cache_dir}/**/*.yaml`];
+        return matchedGlobs;
     }
 
     return [];
