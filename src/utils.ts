@@ -1,5 +1,35 @@
 import chalk from 'chalk';
 
+/**
+ * Strips credentials (username:password@ or token@) from URL strings.
+ */
+export function redactUrl(urlStr: string): string {
+    if (typeof urlStr !== 'string') return urlStr;
+    return urlStr.replace(/(https?|ssh):\/\/[^/@\s]+@/g, '$1://');
+}
+
+/**
+ * Recursively scrubs credentials from objects, arrays, and strings for safe logging.
+ */
+export function sanitizeForLogging(obj: any, seen = new WeakSet()): any {
+    if (obj === null || obj === undefined) return obj;
+    if (typeof obj === 'string') return redactUrl(obj);
+    if (typeof obj !== 'object') return obj;
+    if (seen.has(obj)) return '[Circular]';
+    seen.add(obj);
+
+    if (Array.isArray(obj)) {
+        return obj.map((item) => sanitizeForLogging(item, seen));
+    }
+
+    const sanitized: Record<string, any> = {};
+    for (const [key, value] of Object.entries(obj)) {
+        const sanitizedKey = redactUrl(key);
+        sanitized[sanitizedKey] = sanitizeForLogging(value, seen);
+    }
+    return sanitized;
+}
+
 const PAC_TASK_ANNOTATION_PREFIX = 'pipelinesascode.tekton.dev/task-';
 // Matches an optional "catalog://" prefix, then captures name and version.
 // Version is the trailing "-N.N..." segment (greedy name, last semver-like suffix).

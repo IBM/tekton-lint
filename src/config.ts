@@ -6,6 +6,7 @@ import yaml from 'yaml';
 import defaultConfig from './default-rule-config.js';
 import { logger } from './logger.js';
 import { RulesConfig } from './interfaces/common.js';
+import { sanitizeForLogging } from './utils.js';
 import json from './formatters/json.js';
 export class Config {
     private _rulesConfig: RulesConfig;
@@ -29,7 +30,7 @@ export class Config {
             const customConfig = yaml.parse(customRcFile);
 
             logger.info('Using .tektonlintrc.yaml at %s', user_tektonlintrc);
-            logger.info('customConfig %o', customConfig);
+            logger.info('customConfig %o', sanitizeForLogging(customConfig));
 
             this._rulesConfig = { ...defaultConfig, ...customConfig };
             this._rulesConfig.rules = { ...defaultConfig.rules, ...customConfig.rules };

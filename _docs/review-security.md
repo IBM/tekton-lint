@@ -10,8 +10,8 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 | Status | ID | Severity | Finding | Location |
 |---|---|---|---|---|
 | [x] | S1 | Medium | Prototype pollution: YAML `kind: __proto__` + `metadata.name` writes to `Object.prototype` (confirmed). Use `Object.create(null)`/`Map`, or reject `__proto__`/`constructor`/`prototype`. | `src/collect-resources.ts:3` |
-| [ ] | S2 | Medium | Credentials leak into debug logs: raw URIs, config and argv logged; `TL_DEBUG=true` writes `app.log` at trace level. `redact()` only applied to errors. | `src/external.ts:97,106`, `src/config.ts:32`, `src/lint.ts:56`, `src/rules.ts:50` |
-| [ ] | S3 | Medium | External tasks shadow local tasks: cache files listed last, `Object.fromEntries` last-wins, so a cached task with same name replaces the local one and local findings vanish. | `src/runner.ts:39`, `src/rules.ts:28` |
+| [x] | S2 | Medium | Credentials leak into debug logs: raw URIs, config and argv logged; `TL_DEBUG=true` writes `app.log` at trace level. `redact()` only applied to errors. | `src/external.ts:97,106`, `src/config.ts:32`, `src/lint.ts:56`, `src/rules.ts:50` |
+| [x] | S3 | Medium | External tasks shadow local tasks: cache files listed last, `Object.fromEntries` last-wins, so a cached task with same name replaces the local one and local findings vanish. | `src/runner.ts:39`, `src/rules.ts:28` |
 | [ ] | S4 | Low-Med | Shared never-cleaned cache; `--refresh-cache` parsed but unused (`default: 'false'` is a truthy string); `${cache_dir}/**/*.yaml` loads all repos ever cloned; no ref/commit pinning. | `src/lint.ts:42`, `src/config.ts:46`, `src/external.ts:111` |
 | [ ] | S5 | Low-Med | `git clone` has no `timeout`/`maxBuffer`; full `process.env` passed through. Consider `GIT_CONFIG_NOSYSTEM=1`, `GIT_CONFIG_GLOBAL=/dev/null`. | `src/external.ts:47` |
 | [x] | S6 | Low | Crash on schema-incomplete input: Pipeline with no `spec` aborts run (`Cannot read properties of undefined (reading 'tasks')`, confirmed). Unguarded `pipeline.spec.tasks` in several rules. | `prefer-when-expression`, `no-pipeline-missing-task`, `no-undefined-param`, `no-missing-hashbang` |

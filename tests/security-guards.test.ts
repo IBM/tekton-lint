@@ -2,6 +2,7 @@ import collectResources from '../src/collect-resources.js';
 import { lint } from '../src/rules.js';
 import Reporter from '../src/reporter.js';
 import { Config } from '../src/config.js';
+import { redactUrl, sanitizeForLogging } from '../src/utils.js';
 import YAML from 'yaml';
 
 describe('Security guards (S1, S6, T2)', () => {
@@ -166,6 +167,73 @@ spec:
             const config = Config.getDefaultConfig();
 
             await expect(lint(docs.map((d) => d.content), reporter, config.rulesConfig)).resolves.not.toThrow();
+        });
+    });
+
+    describe('S2: Credential redaction in logging', () => {
+        test('redactUrl strips username and password from URLs', () => {
+            expect(redactUrl('https://user:secret-token@github.com/org/repo.git')).toBe(
+                'https://github.com/org/repo.git',
+            );
+            expect(redactUrl('ssh://git:pass123@gitlab.com/org/repo.git')).toBe(
+                'ssh://gitlab.com/org/repo.git',
+            );
+        });
+
+        test('sanitizeForLogging scrubs nested objects and arrays', () => {
+            const sensitiveConfig = {
+                'external-tasks': [
+                    { uri: 'https://oauth2:ghp_secret@github.com/org/repo.git', path: 'tasks' },
+                ],
+                other: 'https://user:pass@host/path',
+            };
+            const sanitized = sanitizeForLogging(sensitiveConfig);
+            expect(sanitized['external-tasks'][0].uri).toBe('https://github.com/org/repo.git');
+            expect(sanitized.other).toBe('https://host/path');
+        });
+    });
+
+    describe('S3: Local tasks are not shadowed by cached external tasks', () => {
+        test('local task takes precedence over cached task with the same name', async () => {
+            const localYaml = `
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-clone
+spec:
+  steps:
+    - name: local-step
+      image: node:latest
+      script: "echo local"
+`;
+            const cachedYaml = `
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-clone
+spec:
+  steps:
+    - name: cached-step
+      image: node:18
+      script: "#!/bin/sh\\necho cached"
+`;
+            const docLocal = YAML.parseDocument(localYaml);
+            const docCached = YAML.parseDocument(cachedYaml);
+
+            const docs = [
+                { content: docCached.toJSON(), raw: cachedYaml, doc: docCached, path: '/home/user/.tekton-lint/cache/task.yaml', no_report: true },
+                { content: docLocal.toJSON(), raw: localYaml, doc: docLocal, path: 'local/task.yaml', no_report: false },
+            ];
+
+            const reporter = new Reporter(docs as any);
+            const config = Config.getDefaultConfig();
+
+            const problems = await lint(docs.map((d) => d.content), reporter, config.rulesConfig);
+            // Local task has node:latest (triggers no-latest-image) and missing hashbang (triggers no-missing-hashbang)
+            // If cached task shadowed it, findings would vanish because cached task has hashbang and node:18 and no_report: true
+            const latestImageError = problems.find((p) => p.rule === 'no-latest-image');
+            expect(latestImageError).toBeDefined();
+            expect(latestImageError?.path).toBe('local/task.yaml');
         });
     });
 });

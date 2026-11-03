@@ -13,6 +13,7 @@ import url from 'node:url';
 import { Config } from './config.js';
 import run from './runner.js';
 import logProblems from './log-problems.js';
+import { sanitizeForLogging } from './utils.js';
 
 import { logger, usingLogfile } from './logger.js';
 
@@ -53,7 +54,7 @@ const parser = yargs(process.argv.slice(2))
 
 (async () => {
     const argv = await parser.argv;
-    logger.info(argv);
+    logger.info(sanitizeForLogging(argv));
 
     try {
         const cfg = new Config(argv);

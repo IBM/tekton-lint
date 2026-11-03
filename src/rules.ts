@@ -55,7 +55,16 @@ const parse = (docs: any[]): Tekton => {
         pipelineRuns: buildRecord(safeDocs.filter((item) => item.kind === 'PipelineRun')),
     };
 
-    logger.info('Tekton: %o', tkn);
+    logger.info(
+        'Tekton definitions parsed: %d tasks, %d pipelines, %d listeners, %d triggerTemplates, %d triggerBindings, %d conditions, %d pipelineRuns',
+        Object.keys(tkn.tasks).length,
+        Object.keys(tkn.pipelines).length,
+        Object.keys(tkn.listeners).length,
+        Object.keys(tkn.triggerTemplates).length,
+        Object.keys(tkn.triggerBindings).length,
+        Object.keys(tkn.conditions).length,
+        Object.keys(tkn.pipelineRuns).length,
+    );
     //fs.writeFileSync('tekton.json', JSON.stringify(tkn), 'utf-8');
     return tkn;
 };
