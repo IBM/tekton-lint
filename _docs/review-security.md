@@ -15,8 +15,8 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 | [x] | S4 | Low-Med | Shared never-cleaned cache; `--refresh-cache` parsed but unused (`default: 'false'` is a truthy string); `${cache_dir}/**/*.yaml` loads all repos ever cloned; no ref/commit pinning. | `src/lint.ts:42`, `src/config.ts:46`, `src/external.ts:111` |
 | [x] | S5 | Low-Med | `git clone` has no `timeout`/`maxBuffer`; full `process.env` passed through. Consider `GIT_CONFIG_NOSYSTEM=1`, `GIT_CONFIG_GLOBAL=/dev/null`. | `src/external.ts:47` |
 | [x] | S6 | Low | Crash on schema-incomplete input: Pipeline with no `spec` aborts run (`Cannot read properties of undefined (reading 'tasks')`, confirmed). Unguarded `pipeline.spec.tasks` in several rules. | `prefer-when-expression`, `no-pipeline-missing-task`, `no-undefined-param`, `no-missing-hashbang` |
-| [ ] | S7 | Low | Possible regex backtracking (not benchmarked). | `src/utils.ts:6`, `src/rules/no-undefined-param.ts:5` |
-| [ ] | S8 | Low | `custom` rules load arbitrary code via `import()`; `--config` defaults to cwd so a fork's config is auto-loaded. Consider explicit opt-in flag. (Documented in `SECURITY.md`.) | `src/rule-loader.ts:77` |
+| [x] | S7 | Low | Possible regex backtracking (not benchmarked). | `src/utils.ts:6`, `src/rules/no-undefined-param.ts:5` |
+| [x] | S8 | Low | `custom` rules load arbitrary code via `import()`; `--config` defaults to cwd so a fork's config is auto-loaded. Consider explicit opt-in flag. (Documented in `SECURITY.md`.) | `src/rule-loader.ts:77` |
 
 ## CI and packaging
 
@@ -26,8 +26,8 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 | [x] | C2 | Medium | Dockerfile: EOL `node:18`/`node:16`; tini via `ADD` URL with no checksum; `npm shrinkwrap` after `npm ci`; `ENTRYPOINT dist/main.js` but bin is `dist/lint.js` (image cannot work). Docker job publishes this to ghcr. | `Dockerfile`, `.github/workflows/node.js.yml:61` |
 | [x] | C3 | Low | No `permissions:` block in CI workflow (default token scope). | `.github/workflows/node.js.yml` |
 | [x] | C4 | Low | Actions pinned by tag, not commit SHA. | `.github/workflows/*.yml` |
-| [ ] | C5 | Low | `NPM_TOKEN` fallback kept beside OIDC; drop once trusted publisher confirmed. | `.github/workflows/release.yml:69` |
-| [ ] | C6 | Info | `.whitesource` sets `javaVersion: 17` on a Node project. | `.whitesource` |
+| [x] | C5 | Low | `NPM_TOKEN` fallback kept beside OIDC; drop once trusted publisher confirmed. | `.github/workflows/release.yml:69` |
+| [x] | C6 | Info | `.whitesource` sets `javaVersion: 17` on a Node project. | `.whitesource` |
 
 ## Suggested order
 

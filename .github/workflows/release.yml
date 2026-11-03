@@ -62,8 +62,5 @@ jobs:
       # A maintainer must approve with 2FA via:
       #   npm stage approve <id>   (CLI)
       # or via the Staged Packages tab on npmjs.com.
-      # NODE_AUTH_TOKEN is used as fallback if OIDC trusted publisher is not yet configured.
       - name: Stage package
         run: npm stage publish *.tgz --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
