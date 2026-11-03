@@ -109,6 +109,8 @@ describe('getExternal invokes git safely', () => {
         expect(args[terminator + 1]).toBe('https://example.com/org/repo.git');
         expect(env.GIT_ALLOW_PROTOCOL).toBe('https:ssh');
         expect(env.GIT_TERMINAL_PROMPT).toBe('0');
+        expect(env.GIT_CONFIG_NOSYSTEM).toBe('1');
+        expect(env.GIT_CONFIG_GLOBAL).toBe('/dev/null');
     });
 
     it('passes shell metacharacters in the url as a single literal argument', () => {
@@ -214,5 +216,11 @@ describe('collectAllExternal', () => {
             /unsupported protocol/,
         );
         expect(execFileSync).not.toHaveBeenCalled();
+    });
+
+    it('returns specific task glob paths instead of wildcard entire cache directory', () => {
+        const result = collectAllExternal(makeCfg([{ uri: 'https://example.com/org/repo.git', path: 'tasks' }]));
+        expect(result).toHaveLength(2);
+        expect(result[0]).toContain(path.join('repo', 'org', 'tasks'));
     });
 });
