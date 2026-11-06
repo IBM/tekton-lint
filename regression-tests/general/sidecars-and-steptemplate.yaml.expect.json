@@ -1,1 +1,1 @@
-[]
+[{"message":"Invalid image: 'my-sidecar-image'. Specify the image tag instead of using ':latest'","rule":"no-latest-image","level":"warning","path":"./regression-tests/general/sidecars-and-steptemplate.yaml","loc":{"range":[172,188,189],"startLine":12,"startColumn":14,"endLine":12,"endColumn":30}}]

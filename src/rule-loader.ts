@@ -66,6 +66,9 @@ const defaultRules = {
 
     // no-missing-hashbang
     'no-missing-hashbang': (await import('./rules/no-missing-hashbang.js')).default,
+
+    // prefer-image-digest
+    'prefer-image-digest': (await import('./rules/prefer-image-digest.js')).default,
 };
 
 export class RuleLoader {
