@@ -9,7 +9,7 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 
 | Status | ID | Severity | Finding | Location |
 |---|---|---|---|---|
-| [ ] | T1 | High | False errors on v1 variable syntax. `$(params.arr[0])`, `$(params.obj.a)`, `$(params['arr'][*])` all reported as undefined (confirmed); object param flagged unused. Regex only strips trailing `[*]`. | `src/rules/no-undefined-param.ts:5`, `no-unused-param` |
+| [x] | T1 | High | False errors on v1 variable syntax. `$(params.arr[0])`, `$(params.obj.a)`, `$(params['arr'][*])` all reported as undefined (confirmed); object param flagged unused. Regex only strips trailing `[*]`. | `src/rules/no-undefined-param.ts:5`, `no-unused-param` |
 | [x] | T2 | High | Crash on resolver refs: `taskRef: {resolver: git}` (no `name`) throws from the reporter in `no-missing-resource` (confirmed). Handle name-less refs everywhere (git, bundles, hub, cluster). | `src/rules/no-missing-resource.ts:94`, `src/reporter.ts:181` |
 | [ ] | T3 | Medium | `prefer-beta` out of date: only knows alpha1/beta1; no v1beta1 -> v1 suggestion; no `ClusterTask` (deprecated/removed), `Condition`/`conditions:`, `PipelineResources` checks. `parse()` still treats `ClusterTask` as `Task`. | `src/rules/prefer-beta.ts`, `src/rules.ts:15` |
 | [ ] | T4 | Medium | `no-latest-image` gaps: `localhost:5000/img` (registry port colon) treated as tagged; ignores `sidecars`, inline `taskSpec` in Pipeline/PipelineRun, `stepTemplate` outside Tasks; no digest-pinning check. | `src/rules/no-latest-image.ts:6` |
