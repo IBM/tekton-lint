@@ -1,4 +1,5 @@
 import { RuleLoader } from './rule-loader.js';
+import { normalizeDocs } from './normalize.js';
 
 import { Tekton } from './interfaces/common.js';
 import { logger } from './logger.js';
@@ -81,6 +82,7 @@ export async function lint(docs, reporter, config) {
             !DANGEROUS_KEYS.has(doc.kind) &&
             !DANGEROUS_KEYS.has(doc.metadata.name),
     );
+    normalizeDocs(docs);
     const tekton = parse(docs);
 
     if (Object.values(tekton).every((definitionKind) => Object.keys(definitionKind).length === 0)) {
