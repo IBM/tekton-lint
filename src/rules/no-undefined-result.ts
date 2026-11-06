@@ -37,7 +37,7 @@ export default (docs, tekton, report) => {
         walk(pipeline, [], checkUndefinedResult(pipeline, tekton, report));
     }
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec?.tasks || []) {
+        for (const task of [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally || [])]) {
             if (!task.params) continue;
             for (const param of task.params) {
                 if (typeof param.value !== 'string') continue;
