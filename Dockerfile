@@ -15,7 +15,7 @@ RUN apk add --no-cache tini git
 WORKDIR /usr/src/app
 COPY --chown=node:node --from=builder /usr/src/app/package*.json ./
 COPY --chown=node:node --from=builder /usr/src/app/dist ./dist
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --ignore-scripts
 
 USER node
 ENV NODE_ENV=production
