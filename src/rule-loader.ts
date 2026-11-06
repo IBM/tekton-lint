@@ -75,6 +75,12 @@ const defaultRules = {
     'no-insecure-security-context': (await import('./rules/no-insecure-security-context.js')).default,
     'no-hardcoded-secret': (await import('./rules/no-hardcoded-secret.js')).default,
     'no-unpinned-remote': (await import('./rules/no-unpinned-remote.js')).default,
+
+    // prefer-v1
+    'prefer-v1': (await import('./rules/prefer-v1.js')).default,
+
+    // no-deprecated-feature
+    'no-deprecated-feature': (await import('./rules/no-deprecated-feature.js')).default,
 };
 
 export class RuleLoader {
