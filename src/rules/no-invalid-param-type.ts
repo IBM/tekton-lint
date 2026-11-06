@@ -47,10 +47,15 @@ export default (docs, tekton, report) => {
     }
 
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        if (!pipeline.spec || !pipeline.spec.params) continue;
+        if (!pipeline.spec) continue;
         // include any finally tasks if they are present
         const tasks = [...(pipeline.spec.tasks || []), ...(pipeline.spec.finally ? pipeline.spec.finally : [])];
         for (const task of tasks) {
+            // params of an embedded task spec
+            const embeddedParams = task.taskSpec ? getTaskParams(task.taskSpec) : undefined;
+            if (embeddedParams) {
+                checkParameterValues(pipeline.metadata.name, pipeline.kind, embeddedParams, report);
+            }
             if (!task.params) continue;
             for (const param of Object.values<any>(task.params)) {
                 if (typeof param.value == 'undefined') {
