@@ -21,7 +21,7 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 
 | Status | ID | Severity | Finding | Location |
 |---|---|---|---|---|
-| [ ] | Q1 | Medium | `--watch` dead/broken: `watch.ts` never imported, wrong `run(paths)` signature, imports `logProblems` from `utils`. README advertises it. Fix or remove. | `src/watch.ts` |
+| [x] | Q1 | Medium | `--watch` dead/broken: `watch.ts` never imported, wrong `run(paths)` signature, imports `logProblems` from `utils`. README advertises it. Fix or remove. | `src/watch.ts` |
 | [x] | Q2 | Medium | JSON output polluted: pino-pretty errors go to stdout (`destination: 1`); breaks `--format json` consumers. Use fd 2. | `src/logger.ts:23,32` |
 | [x] | Q3 | Medium | Config bugs: empty `.tektonlintrc.yaml` -> `null` -> throws on `customConfig.rules`; nonexistent `--config` path throws from `lstatSync` before defaults branch; `getConfig` passes `json` fn as `format`, typo `quite`. | `src/config.ts:23,34,112` |
 | [ ] | Q4 | Low-Med | Loose typing: `noImplicitAny: false`, rules take `any`; hid S6 crash. | `tsconfig.json`, `src/rules/*` |

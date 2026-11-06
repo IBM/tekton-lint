@@ -12,6 +12,7 @@ import * as path from 'node:path';
 import url from 'node:url';
 import { Config } from './config.js';
 import run from './runner.js';
+import watch from './watch.js';
 import logProblems from './log-problems.js';
 import { sanitizeForLogging } from './utils.js';
 
@@ -58,6 +59,12 @@ const parser = yargs(process.argv.slice(2))
 
     try {
         const cfg = new Config(argv);
+
+        if (argv.watch) {
+            // runs until interrupted; exit code is not meaningful in watch mode
+            watch(cfg);
+            return;
+        }
 
         const problems = await run(cfg);
         logProblems(cfg, problems);
