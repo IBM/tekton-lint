@@ -66,6 +66,12 @@ const defaultRules = {
 
     // no-missing-hashbang
     'no-missing-hashbang': (await import('./rules/no-missing-hashbang.js')).default,
+
+    // prefer-v1
+    'prefer-v1': (await import('./rules/prefer-v1.js')).default,
+
+    // no-deprecated-feature
+    'no-deprecated-feature': (await import('./rules/no-deprecated-feature.js')).default,
 };
 
 export class RuleLoader {

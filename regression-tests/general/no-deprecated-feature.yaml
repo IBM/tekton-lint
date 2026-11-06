@@ -1,0 +1,64 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: deprecated-cluster-task
+spec:
+  steps:
+    - name: s
+      image: alpine:3.20
+---
+apiVersion: tekton.dev/v1beta1
+kind: Condition
+metadata:
+  name: deprecated-condition
+spec:
+  check:
+    image: alpine:3.20
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: deprecated-resource
+spec:
+  type: git
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deprecated-task
+spec:
+  resources:
+    inputs:
+      - name: src
+        type: git
+  steps:
+    - name: s
+      image: alpine:3.20
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: deprecated-pipeline
+spec:
+  tasks:
+    - name: uses-cluster-task
+      taskRef:
+        name: deprecated-cluster-task
+        kind: ClusterTask
+    - name: uses-resources
+      taskRef:
+        name: deprecated-task
+      resources:
+        inputs:
+          - name: src
+            resource: my-git
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: clean-task
+spec:
+  steps:
+    - name: s
+      image: alpine:3.20
