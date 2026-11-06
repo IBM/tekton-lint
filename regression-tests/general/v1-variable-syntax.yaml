@@ -1,0 +1,33 @@
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: v1-variable-syntax
+spec:
+  params:
+    - name: arr
+      type: array
+      default: ["a", "b"]
+    - name: obj
+      type: object
+      properties:
+        key: { type: string }
+    - name: str
+      type: string
+      default: ""
+    - name: truly-unused
+      type: string
+      default: ""
+  steps:
+    - name: index
+      image: alpine:3.20
+      args: ["$(params.arr[0])", "$(params.arr[*])", "$(params['arr'][*])"]
+    - name: object-key
+      image: alpine:3.20
+      args: ["$(params.obj.key)", "$(params.obj[*])", "$(params[\"obj\"].key)"]
+    - name: undefined-forms
+      image: alpine:3.20
+      args: ["$(params.nope[0])", "$(params.nope2.key)", "$(params['nope3'][*])"]
+    - name: plain
+      image: alpine:3.20
+      args: ["$(params.str)"]

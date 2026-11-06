@@ -1,15 +1,12 @@
 import { walk, pathToString } from '../walk.js';
+import { extractVariableRefs, resolveParamName } from '../utils.js';
 
 const createVisitor = (resource, params, prefix, report) => (node, path, parent) => {
     if (path.includes('taskSpec')) return;
-    const r1 = new RegExp(`\\$\\(${prefix}\\.([^()]+?)\\)`, 'g');
-    const r2 = new RegExp(`\\$\\(${prefix}\\.([^()]+?)(\\[\\*\\])?\\)`);
-    const m = node.toString().match(r1);
-    if (!m) return;
-    for (const item of m) {
-        const m2 = item.match(r2);
-        const param = m2[1];
-        if (!params.includes(param)) {
+    const known = new Set<string>(params);
+    for (const segments of extractVariableRefs(node.toString(), `${prefix}`)) {
+        if (!resolveParamName(segments, known)) {
+            const param = segments[0];
             report(
                 `Undefined param '${param}' at ${pathToString(path)} in '${resource}'`,
                 parent,
