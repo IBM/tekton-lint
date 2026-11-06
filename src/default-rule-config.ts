@@ -26,6 +26,8 @@ const defaultRules: RulesConfig = {
         'prefer-when-expression': 'warning',
         'no-deprecated-resource': 'warning',
         'no-missing-hashbang': 'warning',
+        'prefer-v1': 'off',
+        'no-deprecated-feature': 'warning',
     },
     'external-tasks': [],
 };
