@@ -69,6 +69,12 @@ const defaultRules = {
 
     // prefer-image-digest
     'prefer-image-digest': (await import('./rules/prefer-image-digest.js')).default,
+
+    // security hygiene
+    'no-script-injection': (await import('./rules/no-script-injection.js')).default,
+    'no-insecure-security-context': (await import('./rules/no-insecure-security-context.js')).default,
+    'no-hardcoded-secret': (await import('./rules/no-hardcoded-secret.js')).default,
+    'no-unpinned-remote': (await import('./rules/no-unpinned-remote.js')).default,
 };
 
 export class RuleLoader {
