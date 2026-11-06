@@ -1,0 +1,94 @@
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: security-hygiene
+spec:
+  params:
+    - name: msg
+      default: hi
+  steps:
+    - name: injectable
+      image: alpine:3.20
+      script: |
+        #!/bin/sh
+        echo "$(params.msg)"
+    - name: safe-script
+      image: alpine:3.20
+      env:
+        - name: MSG
+          value: $(params.msg)
+      script: |
+        #!/bin/sh
+        echo "$MSG"
+    - name: privileged
+      image: alpine:3.20
+      securityContext:
+        privileged: true
+        allowPrivilegeEscalation: true
+        runAsUser: 0
+        runAsNonRoot: false
+    - name: hardened
+      image: alpine:3.20
+      securityContext:
+        privileged: false
+        allowPrivilegeEscalation: false
+        runAsUser: 1000
+        runAsNonRoot: true
+    - name: secrets
+      image: alpine:3.20
+      env:
+        - name: API_TOKEN
+          value: abc123 # not ok
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db
+              key: password
+        - name: PASSWORD_FROM_PARAM
+          value: $(params.msg)
+        - name: LOG_LEVEL
+          value: debug
+---
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: security-hygiene-pipeline
+spec:
+  tasks:
+    - name: git-unpinned-branch
+      taskRef:
+        resolver: git
+        params:
+          - name: revision
+            value: main
+    - name: git-pinned
+      taskRef:
+        resolver: git
+        params:
+          - name: revision
+            value: 0123456789abcdef0123456789abcdef01234567
+    - name: bundle-unpinned
+      taskRef:
+        resolver: bundles
+        params:
+          - name: bundle
+            value: registry.example.com/catalog/task:1.0
+    - name: bundle-pinned
+      taskRef:
+        resolver: bundles
+        params:
+          - name: bundle
+            value: registry.example.com/catalog/task@sha256:0000000000000000000000000000000000000000000000000000000000000000
+    - name: legacy-bundle
+      taskRef:
+        name: x
+        bundle: registry.example.com/catalog/task:1.0
+    - name: inline-injectable
+      taskSpec:
+        steps:
+          - name: s
+            image: alpine:3.20
+            script: |
+              #!/bin/sh
+              echo $(params.msg)

@@ -27,6 +27,10 @@ const defaultRules: RulesConfig = {
         'no-deprecated-resource': 'warning',
         'no-missing-hashbang': 'warning',
         'prefer-image-digest': 'off',
+        'no-script-injection': 'warning',
+        'no-insecure-security-context': 'warning',
+        'no-hardcoded-secret': 'warning',
+        'no-unpinned-remote': 'off',
     },
     'external-tasks': [],
 };
