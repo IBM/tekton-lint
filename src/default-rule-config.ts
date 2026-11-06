@@ -31,6 +31,8 @@ const defaultRules: RulesConfig = {
         'no-insecure-security-context': 'warning',
         'no-hardcoded-secret': 'warning',
         'no-unpinned-remote': 'off',
+        'prefer-v1': 'off',
+        'no-deprecated-feature': 'warning',
     },
     'external-tasks': [],
 };
