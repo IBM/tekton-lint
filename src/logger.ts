@@ -20,7 +20,8 @@ if (logfile) {
             {
                 target: 'pino-pretty',
                 level: 'error',
-                options: { destination: 1, level: 'error' }, // use 2 for stderr
+                // stderr, so stdout stays clean for --format json consumers
+                options: { destination: 2, level: 'error' },
             },
         ],
     });
@@ -30,7 +31,8 @@ if (logfile) {
             {
                 target: 'pino-pretty',
                 level: 'error',
-                options: { destination: 1, level: 'error' }, // use 2 for stderr
+                // stderr, so stdout stays clean for --format json consumers
+                options: { destination: 2, level: 'error' },
             },
         ],
     });
