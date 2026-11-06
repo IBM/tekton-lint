@@ -1,6 +1,12 @@
+// Kubernetes DNS-1123 subdomain: lowercase alphanumerics, '-' or '.', starting and ending with an alphanumeric.
+const DNS_1123_SUBDOMAIN = /^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$/;
+const MAX_NAME_LENGTH = 253;
+
 const isValidName = (name) => {
-    const valid = new RegExp('^[a-zA-Z_][a-z0-9-()$.]*$');
-    return valid.test(name);
+    if (typeof name !== 'string') return false;
+    // Tekton variable substitutions, e.g. $(uid), are resolved at runtime; validate the surrounding text.
+    const resolved = name.replace(/\$\([^()]*\)/g, 'x');
+    return resolved.length <= MAX_NAME_LENGTH && DNS_1123_SUBDOMAIN.test(resolved);
 };
 
 function getTaskParams(spec) {
@@ -43,7 +49,7 @@ export default (docs, tekton, report) => {
         if (resource && resource.metadata && resource.metadata.name && resource.kind) {
             if (!isValidName(resource.metadata.name)) {
                 report(
-                    `Invalid name for ${resource.kind} '${resource.metadata.name}'. Names should be in lowercase, alphanumeric, kebab-case format. and follow DNS subdomain names`,
+                    `Invalid name for ${resource.kind} '${resource.metadata.name}'. Names must be a DNS-1123 subdomain: lowercase alphanumeric characters, '-' or '.', start and end with an alphanumeric character, and be at most ${MAX_NAME_LENGTH} characters`,
                     resource.metadata,
                     'name',
                 );
