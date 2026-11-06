@@ -7,7 +7,6 @@ import defaultConfig from './default-rule-config.js';
 import { logger } from './logger.js';
 import { RulesConfig } from './interfaces/common.js';
 import { sanitizeForLogging } from './utils.js';
-import json from './formatters/json.js';
 export class Config {
     private _rulesConfig: RulesConfig;
 
@@ -21,13 +20,14 @@ export class Config {
 
     public constructor(cliConfig: any) {
         let user_tektonlintrc = path.resolve(cliConfig['config']);
-        if (fs.lstatSync(user_tektonlintrc).isDirectory()) {
+        if (fs.existsSync(user_tektonlintrc) && fs.lstatSync(user_tektonlintrc).isDirectory()) {
             user_tektonlintrc = path.join(user_tektonlintrc, '.tektonlintrc.yaml');
         }
 
         if (fs.existsSync(user_tektonlintrc)) {
             const customRcFile = fs.readFileSync(user_tektonlintrc, 'utf8');
-            const customConfig = yaml.parse(customRcFile);
+            // an empty file parses to null
+            const customConfig = yaml.parse(customRcFile) ?? {};
 
             logger.info('Using .tektonlintrc.yaml at %s', user_tektonlintrc);
             logger.info('customConfig %o', sanitizeForLogging(customConfig));
@@ -116,8 +116,8 @@ export class Config {
         const argv = {
             watch: false,
             color: true,
-            format: json,
-            quite: false,
+            format: 'json',
+            quiet: false,
             config: dir,
             'refresh-cache': false,
 
