@@ -103,3 +103,31 @@ spec:
     - name: _foo # ok
     - name: foo$bar # not ok
   steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: trailing-dash- # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: dotted.name-ok # ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: paren(thesis) # not ok
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa # not ok, 254 chars
+spec:
+  steps: []
