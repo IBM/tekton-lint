@@ -1,6 +1,6 @@
 export default (docs, tekton, report) => {
     for (const pipeline of Object.values<any>(tekton.pipelines)) {
-        for (const task of pipeline.spec?.tasks || []) {
+        for (const task of [...(pipeline.spec?.tasks || []), ...(pipeline.spec?.finally || [])]) {
             if (task.conditions) {
                 const guardedBy = task.conditions.map((condition) => condition.conditionRef);
                 report(

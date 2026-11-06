@@ -45,10 +45,26 @@ const parse = (docs: any[]): Tekton => {
         return rec;
     };
 
+    // Specs embedded in runs are linted like standalone ones. Entries are keyed 'Kind/name' (a character
+    // that cannot appear in a Kubernetes name), so they never shadow or resolve as a real Pipeline or Task.
+    // `spec` is the embedded object itself, so the reporter still maps findings back to source locations.
+    const embedded = (kind: string, specKey: string) => {
+        const rec = Object.create(null);
+        for (const item of safeDocs.filter((doc) => doc.kind === kind)) {
+            const spec = item.spec?.[specKey];
+            if (!spec || typeof spec !== 'object') continue;
+            rec[`${kind}/${item.metadata.name}`] = { ...item, spec };
+        }
+        return rec;
+    };
+
     const tkn: Tekton = {
-        tasks: buildRecord(taskDocs),
+        tasks: Object.assign(buildRecord(taskDocs), embedded('TaskRun', 'taskSpec')),
         taskVersions,
-        pipelines: buildRecord(safeDocs.filter((item) => item.kind === 'Pipeline')),
+        pipelines: Object.assign(
+            buildRecord(safeDocs.filter((item) => item.kind === 'Pipeline')),
+            embedded('PipelineRun', 'pipelineSpec'),
+        ),
         listeners: buildRecord(safeDocs.filter((item) => item.kind === 'EventListener')),
         triggerTemplates: buildRecord(safeDocs.filter((item) => item.kind === 'TriggerTemplate')),
         triggerBindings: buildRecord(safeDocs.filter((item) => item.kind === 'TriggerBinding')),

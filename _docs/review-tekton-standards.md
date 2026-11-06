@@ -15,7 +15,7 @@ Status: `[ ]` open, `[~]` in progress, `[x]` done.
 | [x] | T4 | Medium | `no-latest-image` gaps: `localhost:5000/img` (registry port colon) treated as tagged; ignores `sidecars`, inline `taskSpec` in Pipeline/PipelineRun, `stepTemplate` outside Tasks; no digest-pinning check. | `src/rules/no-latest-image.ts:6` |
 | [ ] | T5 | Medium | `no-invalid-name` regex `^[a-zA-Z_][a-z0-9-()$.]*$` allows uppercase/underscore start, `(`, `)`, `$`; message claims DNS subdomain. Should be DNS-1123: `^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$`, max 253 chars. | `src/rules/no-invalid-name.ts:2` |
 | [ ] | T6 | Medium | No security-hygiene rules: script injection via `$(params.*)`/`$(tt.params.*)` in `script:` (use `env`), `securityContext.privileged`, `runAsUser: 0`, `allowPrivilegeEscalation`, unpinned remote bundles/resolvers, hard-coded secrets in `env`. | new rules |
-| [ ] | T7 | Low-Med | Inconsistent coverage of `PipelineRun`/`TaskRun` embedded specs, `finally` tasks and `matrix` across `no-invalid-param-type`, `no-missing-workspace`, `no-undefined-volume`, `no-undefined-result`, `no-extra-param`, `prefer-when-expression`, `no-undefined-param`. | `src/rules/*` |
+| [x] | T7 | Low-Med | Inconsistent coverage of `PipelineRun`/`TaskRun` embedded specs, `finally` tasks and `matrix` across `no-invalid-param-type`, `no-missing-workspace`, `no-undefined-volume`, `no-undefined-result`, `no-extra-param`, `prefer-when-expression`, `no-undefined-param`. | `src/rules/*` |
 
 ## Code quality and correctness
 
