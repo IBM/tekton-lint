@@ -1,16 +1,10 @@
 import { walk } from '../walk.js';
+import { extractVariableRefs, resolveParamName } from '../utils.js';
 
 const unused = (params, prefix) => (node) => {
-    const r1 = new RegExp(`\\$\\(${prefix}\\.([^()]+?)\\)`, 'g');
-    const r2 = new RegExp(`\\$\\(${prefix}\\.([^()]+?)(\\[\\*\\])?\\)`);
-    const m = node.toString().match(r1);
-
-    if (!m) return;
-
-    for (const item of m) {
-        const m2 = item.match(r2);
-        const param = m2[1];
-        if (params[param] != null) {
+    for (const segments of extractVariableRefs(node.toString(), prefix)) {
+        const param = resolveParamName(segments, Object.keys(params));
+        if (param !== undefined) {
             params[param]++;
         }
     }

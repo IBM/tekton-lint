@@ -1,0 +1,70 @@
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: latest-image-task
+spec:
+  params:
+    - name: image
+      default: alpine:3.20
+  stepTemplate:
+    image: alpine # not ok: no tag
+  steps:
+    - name: tagged
+      image: alpine:3.20 # ok
+    - name: latest
+      image: alpine:latest # not ok
+    - name: registry-port-no-tag
+      image: localhost:5000/img # not ok: the port is not a tag
+    - name: registry-port-tagged
+      image: localhost:5000/img:1.0 # ok
+    - name: digest
+      image: alpine@sha256:0000000000000000000000000000000000000000000000000000000000000000 # ok
+    - name: tag-and-digest
+      image: alpine:latest@sha256:0000000000000000000000000000000000000000000000000000000000000000 # ok
+    - name: variable
+      image: $(params.image) # ok: cannot be resolved statically
+  sidecars:
+    - name: sidecar
+      image: redis # not ok
+---
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: latest-image-pipeline
+spec:
+  tasks:
+    - name: inline
+      taskSpec:
+        steps:
+          - name: s
+            image: busybox # not ok
+  finally:
+    - name: inline-finally
+      taskSpec:
+        steps:
+          - name: s
+            image: busybox:latest # not ok
+---
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: latest-image-pipelinerun
+spec:
+  pipelineSpec:
+    tasks:
+      - name: inline
+        taskSpec:
+          steps:
+            - name: s
+              image: ubuntu # not ok
+---
+apiVersion: tekton.dev/v1
+kind: TaskRun
+metadata:
+  name: latest-image-taskrun
+spec:
+  taskSpec:
+    steps:
+      - name: s
+        image: ubuntu # not ok

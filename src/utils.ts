@@ -71,6 +71,74 @@ export function resolveTask(tekton: any, pipeline: any, taskName: string): any {
     return tekton.tasks?.[taskName];
 }
 
+/**
+ * Parses the part of a variable reference that follows its prefix, e.g. the
+ * `.arr[0]` in `$(params.arr[0])` or the `['a'][*]` in `$(params['a'][*])`.
+ * Returns the path segments, or null when the syntax is not recognised.
+ */
+function parseVariablePath(rest: string): string[] | null {
+    const segments: string[] = [];
+    let i = 0;
+    while (i < rest.length) {
+        if (rest[i] === '.') {
+            let j = i + 1;
+            while (j < rest.length && rest[j] !== '.' && rest[j] !== '[') j++;
+            if (j === i + 1) return null;
+            segments.push(rest.slice(i + 1, j));
+            i = j;
+        } else if (rest[i] === '[') {
+            const end = rest.indexOf(']', i);
+            if (end === -1) return null;
+            const inner = rest.slice(i + 1, end);
+            const quoted = inner.match(/^(['"])(.*)\1$/);
+            if (!quoted && inner !== '*' && !/^\d+$/.test(inner)) return null;
+            segments.push(quoted ? quoted[2] : inner);
+            i = end + 1;
+        } else {
+            return null;
+        }
+    }
+    return segments.length ? segments : null;
+}
+
+/**
+ * Finds `$(<prefix>...)` variable references in a string and returns the path segments of each.
+ * Handles the dot, bracket, array index, `[*]` and object key forms:
+ * `$(params.a)`, `$(params.a[0])`, `$(params.a[*])`, `$(params.a.key)`, `$(params['a'])`, `$(params["a"][*])`.
+ */
+export function extractVariableRefs(text: string, prefix: string): string[][] {
+    const refs: string[][] = [];
+    const marker = `$(${prefix}`;
+    let from = 0;
+    for (;;) {
+        const start = text.indexOf(marker, from);
+        if (start === -1) break;
+        const bodyStart = start + marker.length;
+        const end = text.indexOf(')', bodyStart);
+        if (end === -1) break;
+        const body = text.slice(bodyStart, end);
+        from = bodyStart;
+        if (body.includes('(')) continue;
+        const segments = parseVariablePath(body);
+        if (segments) refs.push(segments);
+        from = end + 1;
+    }
+    return refs;
+}
+
+/**
+ * Resolves a reference to the name of the declared parameter it points at, preferring
+ * the longest match (parameter names may themselves contain dots). Returns undefined when none match.
+ */
+export function resolveParamName(segments: string[], known: Iterable<string>): string | undefined {
+    const names = known instanceof Set ? known : new Set(known);
+    for (let n = segments.length; n > 0; n--) {
+        const candidate = segments.slice(0, n).join('.');
+        if (names.has(candidate)) return candidate;
+    }
+    return undefined;
+}
+
 export function formatLine(problem) {
     const level = problem.level === 'error' ? `${chalk.red(problem.level)}  ` : chalk.yellow(problem.level);
     if (problem.loc) {
