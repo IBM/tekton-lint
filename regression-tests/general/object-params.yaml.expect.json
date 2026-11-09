@@ -1,0 +1,36 @@
+[
+    {
+        "message": "Task 'object-params' defines parameter 'environment', but it's not used anywhere in the spec",
+        "rule": "no-unused-param",
+        "level": "warning",
+        "path": "./regression-tests/general/object-params.yaml",
+        "loc": {
+            "range": [
+                244,
+                281,
+                281
+            ],
+            "startLine": 15,
+            "startColumn": 7,
+            "endLine": 17,
+            "endColumn": 1
+        }
+    },
+    {
+        "message": "Task 'object-params' defines parameter 'version', but it's not used anywhere in the spec",
+        "rule": "no-unused-param",
+        "level": "warning",
+        "path": "./regression-tests/general/object-params.yaml",
+        "loc": {
+            "range": [
+                287,
+                320,
+                320
+            ],
+            "startLine": 17,
+            "startColumn": 7,
+            "endLine": 19,
+            "endColumn": 1
+        }
+    }
+]

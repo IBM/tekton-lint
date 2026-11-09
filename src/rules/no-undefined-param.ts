@@ -9,7 +9,7 @@ const createVisitor = (resource, params, prefix, report) => (node, path, parent)
     for (const item of m) {
         const m2 = item.match(r2);
         const param = m2[1];
-        if (!params.includes(param)) {
+        if (!containsParam(params,param)) {
             report(
                 `Undefined param '${param}' at ${pathToString(path)} in '${resource}'`,
                 parent,
@@ -19,16 +19,29 @@ const createVisitor = (resource, params, prefix, report) => (node, path, parent)
     }
 };
 
+function containsParam(allParams, param) {
+    if (allParams.some((p) => p.name === param)) return true;
+    const paramParts = param.split('.');
+    if (paramParts.length > 1) {
+        const paramName = paramParts[0];
+        const propName = paramParts[1];
+        const paramObj = allParams.find((p) => p.name === paramName);
+        return (paramObj && paramObj.type === 'object' && paramObj.properties && paramObj.properties[propName])
+    }
+
+    return false;
+}
+
 function getParams(crd) {
     if (!crd.spec || !crd.spec.params) return [];
-    return crd.spec.params.map((param) => param.name);
+    return crd.spec.params
 }
 
 function getTaskParams(crd) {
     if (!crd.spec) return [];
-    if (crd.spec.params) return crd.spec.params.map((param) => param.name);
+    if (crd.spec.params) return crd.spec.params
     if (!crd.spec.inputs) return [];
-    if (crd.spec.inputs.params) return crd.spec.inputs.params.map((param) => param.name);
+    if (crd.spec.inputs.params) return crd.spec.inputs.params
     return [];
 }
 

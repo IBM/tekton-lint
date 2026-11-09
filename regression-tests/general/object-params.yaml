@@ -1,0 +1,50 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: object-params
+spec:
+  params:
+    - name: build-vars
+      type: object
+      properties:
+        environment:
+          type: string
+        version:
+          type: string
+    - name: environment
+      type: string
+    - name: version
+      type: string
+  steps:
+    - name: echo-build-vars
+      image: ubuntu:alpine
+      script: |
+        #!/bin/bash
+        echo "Environment: $(params.build-vars.environment)"
+        echo "Version: $(params.build-vars.version)"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: task-param-object-pipeline
+spec:
+  params:
+    - name: build-vars
+      type: object
+      properties:
+        environment:
+          type: string
+        version:
+          type: string
+  tasks:
+    - name: task-param-array-task
+      taskRef:
+        name: object-params
+      params:
+        - name: build-vars
+          value: $(params.build-vars)
+        - name: environment
+          value: $(params.build-vars.environment)
+        - name: version
+          value: "1.2.3"
