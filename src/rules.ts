@@ -14,16 +14,20 @@ const createReporter = (rule, config, reporter) => {
 
 const DANGEROUS_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 
+// Runs are normally created with `metadata.generateName` instead of `metadata.name`
+const GENERATED_NAME_KINDS = new Set(['PipelineRun', 'TaskRun']);
+
+const resourceName = (item): string | undefined =>
+    item.metadata.name || (GENERATED_NAME_KINDS.has(item.kind) ? item.metadata.generateName : undefined);
+
+const isNamedResource = (item): boolean =>
+    !!(item && item.kind && item.metadata) &&
+    !!resourceName(item) &&
+    !DANGEROUS_KEYS.has(item.kind) &&
+    !DANGEROUS_KEYS.has(resourceName(item) as string);
+
 const parse = (docs: any[]): Tekton => {
-    const safeDocs = (docs || []).filter(
-        (item) =>
-            item &&
-            item.kind &&
-            item.metadata &&
-            item.metadata.name &&
-            !DANGEROUS_KEYS.has(item.kind) &&
-            !DANGEROUS_KEYS.has(item.metadata.name),
-    );
+    const safeDocs = (docs || []).filter(isNamedResource);
 
     const taskDocs = safeDocs.filter((item) => item.kind === 'Task' || item.kind === 'ClusterTask');
 
@@ -40,7 +44,7 @@ const parse = (docs: any[]): Tekton => {
     const buildRecord = (items: any[]) => {
         const rec = Object.create(null);
         for (const item of items) {
-            rec[item.metadata.name] = item;
+            rec[resourceName(item) as string] = item;
         }
         return rec;
     };
@@ -54,6 +58,7 @@ const parse = (docs: any[]): Tekton => {
         triggerBindings: buildRecord(safeDocs.filter((item) => item.kind === 'TriggerBinding')),
         conditions: buildRecord(safeDocs.filter((item) => item.kind === 'Condition')),
         pipelineRuns: buildRecord(safeDocs.filter((item) => item.kind === 'PipelineRun')),
+        taskRuns: buildRecord(safeDocs.filter((item) => item.kind === 'TaskRun')),
     };
 
     logger.info(
@@ -73,15 +78,7 @@ const parse = (docs: any[]): Tekton => {
 export async function lint(docs, reporter, config) {
     const rules = await RuleLoader.getRules(config);
 
-    docs = (docs || []).filter(
-        (doc) =>
-            doc &&
-            doc.kind &&
-            doc.metadata &&
-            doc.metadata.name &&
-            !DANGEROUS_KEYS.has(doc.kind) &&
-            !DANGEROUS_KEYS.has(doc.metadata.name),
-    );
+    docs = (docs || []).filter(isNamedResource);
     normalizeDocs(docs);
     const tekton = parse(docs);
 
