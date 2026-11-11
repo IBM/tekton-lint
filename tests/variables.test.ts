@@ -1,4 +1,5 @@
 import { extractVariableRefs, resolveParamName } from '../src/utils.js';
+import { hasVariableReference } from '../src/variables.js';
 
 describe('extractVariableRefs (T1)', () => {
     test.each([
@@ -22,6 +23,26 @@ describe('extractVariableRefs (T1)', () => {
         const text = '$(params.' + 'a['.repeat(50000);
         const start = Date.now();
         extractVariableRefs(text, 'params');
+        expect(Date.now() - start).toBeLessThan(1000);
+    });
+});
+
+describe('hasVariableReference', () => {
+    test.each([
+        ['$(params.name)', true],
+        ["$(params['name'])", true],
+        ['$(tt.params.name)', true],
+        ['$(context.pipelineRun.name)', true],
+        ['$(params.my-param)', true],
+        ['$(word)', false],
+        ['$(', false],
+    ])('%s', (text, expected) => {
+        expect(hasVariableReference(text)).toBe(expected);
+    });
+
+    test('handles pathological input quickly', () => {
+        const start = Date.now();
+        hasVariableReference('$(A.' + '-.'.repeat(50000));
         expect(Date.now() - start).toBeLessThan(1000);
     });
 });
