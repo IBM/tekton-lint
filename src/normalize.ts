@@ -32,11 +32,22 @@ function cleanContainer(container: any) {
     cleanObjectList(container, 'volumeMounts');
 }
 
+function cleanMatrix(matrix: any) {
+    if (!isObject(matrix)) return;
+    cleanObjectList(matrix, 'params');
+    cleanObjectList(matrix, 'include');
+    if (Array.isArray(matrix.include)) {
+        for (const item of matrix.include) cleanObjectList(item, 'params');
+    }
+}
+
 function cleanTaskSpec(spec: any) {
     if (!isObject(spec)) return;
     for (const key of ['params', 'steps', 'sidecars', 'volumes', 'workspaces', 'results']) {
         cleanObjectList(spec, key);
     }
+    // Legacy (v1alpha1/v1beta1) location of Task parameters
+    cleanObjectList(spec.inputs, 'params');
     cleanContainer(spec.stepTemplate);
     for (const container of [...(spec.steps || []), ...(spec.sidecars || [])]) {
         cleanContainer(container);
@@ -55,6 +66,7 @@ function cleanPipelineSpec(spec: any) {
             cleanObjectList(task, 'workspaces');
             cleanObjectList(task, 'conditions');
             requireList(task, 'runAfter');
+            cleanMatrix(task.matrix);
             cleanTaskSpec(task.taskSpec);
         }
     }
@@ -91,6 +103,7 @@ function cleanDoc(doc: any, depth = 0) {
             cleanObjectList(spec, 'triggers');
             break;
         case 'Condition':
+        case 'TriggerBinding':
             cleanObjectList(spec, 'params');
             break;
     }
