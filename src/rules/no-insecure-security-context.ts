@@ -1,4 +1,4 @@
-import { collectContainers, collectTaskSpecs } from '../task-specs.js';
+import { collectContainers, collectPodTemplates, collectTaskSpecs } from '../task-specs.js';
 
 export default (docs, tekton, report) => {
     for (const doc of docs || []) {
@@ -32,6 +32,23 @@ export default (docs, tekton, report) => {
                         'runAsNonRoot',
                     );
                 }
+            }
+        }
+
+        // pod-level settings apply to every step that does not override them
+        for (const { owner, podTemplate } of collectPodTemplates(doc)) {
+            const context = podTemplate.securityContext;
+            if (!context || typeof context !== 'object') continue;
+
+            if (context.runAsUser === 0) {
+                report(`${owner} pod template runs as root (runAsUser: 0). Use a non-root user`, context, 'runAsUser');
+            }
+            if (context.runAsNonRoot === false) {
+                report(
+                    `${owner} pod template sets runAsNonRoot to false. Set 'securityContext.runAsNonRoot' to true`,
+                    context,
+                    'runAsNonRoot',
+                );
             }
         }
     }

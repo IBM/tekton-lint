@@ -42,6 +42,39 @@ function* pipelineTaskSpecs(pipelineSpec: any): Generator<any> {
 }
 
 /**
+ * Yields every pod template of a TaskRun or PipelineRun (including ones nested in a TriggerTemplate),
+ * with a label for the owning resource: `spec.podTemplate`, `spec.taskRunTemplate.podTemplate` and
+ * `spec.taskRunSpecs[].podTemplate`.
+ */
+export function* collectPodTemplates(doc: any, depth = 0): Generator<{ owner: string; podTemplate: any }> {
+    if (!doc || typeof doc !== 'object' || depth > 3) return;
+    const spec = doc.spec;
+    if (!spec || typeof spec !== 'object') return;
+    const owner = `${doc.kind} '${doc.metadata?.name ?? doc.metadata?.generateName}'`;
+
+    switch (doc.kind) {
+        case 'TaskRun':
+        case 'PipelineRun': {
+            const candidates = [spec.podTemplate, spec.taskRunTemplate?.podTemplate];
+            if (Array.isArray(spec.taskRunSpecs)) {
+                for (const taskRunSpec of spec.taskRunSpecs) candidates.push(taskRunSpec?.podTemplate);
+            }
+            for (const podTemplate of candidates) {
+                if (podTemplate && typeof podTemplate === 'object') yield { owner, podTemplate };
+            }
+            break;
+        }
+        case 'TriggerTemplate':
+            if (Array.isArray(spec.resourcetemplates)) {
+                for (const template of spec.resourcetemplates) {
+                    yield* collectPodTemplates(template, depth + 1);
+                }
+            }
+            break;
+    }
+}
+
+/**
  * Yields every container-like entry in a task spec that carries an `image`:
  * `stepTemplate`, `steps` and `sidecars`.
  */

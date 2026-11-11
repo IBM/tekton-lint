@@ -1,6 +1,7 @@
 import { collectContainers, collectTaskSpecs } from '../task-specs.js';
 
-const INJECTABLE = /\$\((?:tt\.)?params\./;
+// $(params.x), $(params['x']), $(tt.params.x) and the v1alpha1 form $(inputs.params.x)
+const INJECTABLE = /\$\((?:tt\.|inputs\.)?params(?:\.|\[)/;
 
 export default (docs, tekton, report) => {
     for (const doc of docs || []) {

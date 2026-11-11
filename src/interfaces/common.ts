@@ -45,6 +45,7 @@ interface Tekton {
     externaltasks?: ExternalResource[];
     finally?: ListResources;
     pipelineRuns?: ListResources;
+    taskRuns?: ListResources;
 }
 
 // ref: https://dev.to/ankittanna/how-to-create-a-type-for-complex-json-object-in-typescript-d81

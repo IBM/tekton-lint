@@ -9,8 +9,11 @@ export default (docs, tekton, report) => {
         const { tag, digest } = parseImage(image);
         // a digest pins the image exactly, whatever the tag says
         if (digest) return;
-        // unresolved variables (for example `$(params.image)`) cannot be judged statically
-        if (image.includes('$(') && tag !== 'latest') return;
+        // A variable in the final path segment (for example `$(params.image)`) can supply the name or tag,
+        // so it cannot be judged statically. A variable only in the registry or namespace part
+        // (`$(params.registry)/alpine`) leaves the tag fixed, so such images are still checked.
+        const lastSegment = image.slice(image.lastIndexOf('/') + 1);
+        if (lastSegment.includes('$(') && tag !== 'latest') return;
 
         if (tag === undefined || tag === 'latest') {
             report(`Invalid image: '${image}'. Specify the image tag instead of using ':latest'`, container, 'image');
