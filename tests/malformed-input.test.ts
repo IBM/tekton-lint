@@ -10,6 +10,10 @@ const companion = `---\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n  name
 const base = (kind: string, spec: string) =>
     `apiVersion: tekton.dev/v1\nkind: ${kind}\nmetadata:\n  name: x\n${spec}${companion}`;
 
+// A Pipeline that declares a workspace, so rules comparing against it have something to match.
+const workspacePipeline = `---\napiVersion: tekton.dev/v1\nkind: Pipeline\nmetadata:\n  name: wp\nspec:\n  workspaces:\n    - name: ws\n  tasks: []\n`;
+const withPipeline = (kind: string, spec: string) => base(kind, spec) + workspacePipeline;
+
 const malformed: Record<string, string> = {
     'pipeline without spec': base('Pipeline', ''),
     'pipeline with null spec': base('Pipeline', 'spec:\n'),
@@ -55,6 +59,42 @@ const malformed: Record<string, string> = {
     'pipeline matrix include params entry null': base(
         'Pipeline',
         'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      matrix:\n        include:\n          - name: i\n            params:\n              - null\n',
+    ),
+    'pipeline task resources inputs entry null': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      resources:\n        inputs:\n          - null\n',
+    ),
+    'pipeline task resources inputs not a list': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      resources:\n        inputs: nope\n',
+    ),
+    'pipelinerun workspaces entry null': withPipeline(
+        'PipelineRun',
+        'spec:\n  pipelineRef:\n    name: wp\n  workspaces:\n    - null\n',
+    ),
+    'pipelinerun workspaces not a list': withPipeline(
+        'PipelineRun',
+        'spec:\n  pipelineRef:\n    name: wp\n  workspaces: nope\n',
+    ),
+    'triggertemplate pipelinerun workspaces entry null': withPipeline(
+        'TriggerTemplate',
+        'spec:\n  resourcetemplates:\n    - apiVersion: tekton.dev/v1\n      kind: PipelineRun\n      spec:\n        pipelineRef:\n          name: wp\n        workspaces:\n          - null\n',
+    ),
+    'triggertemplate pipelinerun workspaces not a list': withPipeline(
+        'TriggerTemplate',
+        'spec:\n  resourcetemplates:\n    - apiVersion: tekton.dev/v1\n      kind: PipelineRun\n      spec:\n        pipelineRef:\n          name: wp\n        workspaces: nope\n',
+    ),
+    'task volumeMount without name': base(
+        'Task',
+        'spec:\n  steps:\n    - name: s\n      volumeMounts:\n        - mountPath: /data\n',
+    ),
+    'task volumeMount name not a string': base(
+        'Task',
+        'spec:\n  steps:\n    - name: s\n      volumeMounts:\n        - name: 1\n          mountPath: /data\n',
+    ),
+    'task stepTemplate volumeMount without name': base(
+        'Task',
+        'spec:\n  stepTemplate:\n    volumeMounts:\n      - mountPath: /data\n  steps: []\n',
     ),
     'task without spec': base('Task', ''),
     'task legacy inputs params entry null': base('Task', 'spec:\n  inputs:\n    params:\n      - null\n  steps: []\n'),

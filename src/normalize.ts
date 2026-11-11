@@ -30,6 +30,12 @@ function cleanContainer(container: any) {
     if (!isObject(container)) return;
     cleanObjectList(container, 'env');
     cleanObjectList(container, 'volumeMounts');
+    // Rules read `mount.name` as a string, so drop mounts without a usable name
+    if (Array.isArray(container.volumeMounts)) {
+        for (let i = container.volumeMounts.length - 1; i >= 0; i--) {
+            if (typeof container.volumeMounts[i].name !== 'string') container.volumeMounts.splice(i, 1);
+        }
+    }
 }
 
 function cleanMatrix(matrix: any) {
@@ -66,6 +72,8 @@ function cleanPipelineSpec(spec: any) {
             cleanObjectList(task, 'workspaces');
             cleanObjectList(task, 'conditions');
             requireList(task, 'runAfter');
+            // Legacy (v1alpha1) pipeline resources
+            cleanObjectList(task.resources, 'inputs');
             cleanMatrix(task.matrix);
             cleanTaskSpec(task.taskSpec);
         }
@@ -90,6 +98,7 @@ function cleanDoc(doc: any, depth = 0) {
             break;
         case 'PipelineRun':
             cleanObjectList(spec, 'params');
+            cleanObjectList(spec, 'workspaces');
             cleanPipelineSpec(spec.pipelineSpec);
             break;
         case 'TriggerTemplate':
