@@ -36,7 +36,29 @@ const malformed: Record<string, string> = {
         'Pipeline',
         'spec:\n  workspaces:\n  tasks:\n    - name: a\n      taskRef:\n        name: y\n      workspaces:\n',
     ),
+    'pipeline inline taskSpec with matrix params not a list': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskSpec:\n        params: []\n        steps: []\n      matrix:\n        params: nope\n',
+    ),
+    'pipeline matrix params entry null': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      matrix:\n        params:\n          - null\n',
+    ),
+    'pipeline matrix include not a list': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      matrix:\n        include: nope\n',
+    ),
+    'pipeline matrix include entry null': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      matrix:\n        include:\n          - null\n',
+    ),
+    'pipeline matrix include params entry null': base(
+        'Pipeline',
+        'spec:\n  tasks:\n    - name: a\n      taskRef:\n        name: companion\n      matrix:\n        include:\n          - name: i\n            params:\n              - null\n',
+    ),
     'task without spec': base('Task', ''),
+    'task legacy inputs params entry null': base('Task', 'spec:\n  inputs:\n    params:\n      - null\n  steps: []\n'),
+    'task legacy inputs params not a list': base('Task', 'spec:\n  inputs:\n    params: nope\n  steps: []\n'),
     'task null spec': base('Task', 'spec:\n'),
     'task steps null': base('Task', 'spec:\n  steps:\n'),
     'task step entry null': base('Task', 'spec:\n  steps:\n    - null\n'),
@@ -62,6 +84,9 @@ const malformed: Record<string, string> = {
     'eventlistener null triggers': base('EventListener', 'spec:\n  triggers:\n'),
     'eventlistener trigger null': base('EventListener', 'spec:\n  triggers:\n    - null\n'),
     'triggerbinding without spec': base('TriggerBinding', ''),
+    'triggerbinding params null': base('TriggerBinding', 'spec:\n  params:\n'),
+    'triggerbinding params not a list': base('TriggerBinding', 'spec:\n  params: nope\n'),
+    'triggerbinding param entry null': base('TriggerBinding', 'spec:\n  params:\n    - null\n'),
     'condition without spec': base('Condition', ''),
     'cluster task without spec': base('ClusterTask', ''),
 };
