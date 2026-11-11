@@ -131,3 +131,48 @@ metadata:
   name: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa # not ok, 254 chars
 spec:
   steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: 1..task # not ok, empty label
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: 1-.task # not ok, label ends with '-'
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: 1.-task # not ok, label starts with '-'
+spec:
+  steps: []
+---
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: run-$(uid) # ok, substitution
+spec:
+  pipelineRef:
+    name: no-invalid-name
+---
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: Run-$(uid) # not ok, uppercase surrounding text
+spec:
+  pipelineRef:
+    name: no-invalid-name
+---
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: run_$(uid) # not ok, invalid surrounding text
+spec:
+  pipelineRef:
+    name: no-invalid-name
