@@ -1,5 +1,6 @@
-// Kubernetes DNS-1123 subdomain: lowercase alphanumerics, '-' or '.', starting and ending with an alphanumeric.
-const DNS_1123_SUBDOMAIN = /^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$/;
+// Kubernetes DNS-1123 subdomain: dot-separated, non-empty labels of lowercase alphanumerics or '-',
+// each starting and ending with an alphanumeric.
+const DNS_1123_SUBDOMAIN = /^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$/;
 const MAX_NAME_LENGTH = 253;
 
 const isValidName = (name) => {
